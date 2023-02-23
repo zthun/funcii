@@ -1,7 +1,7 @@
 {
   "name": "@zthun/helpful-fn",
   "version": "0.0.0",
-  "description": "Helpful functions that are not found in other libraries such as lodash.",
+  "description": "Helpful, isolated pure functions that are not found in other libraries such as lodash.",
   "author": "Anthony Bonta",
   "license": "MIT",
   "repository": {
