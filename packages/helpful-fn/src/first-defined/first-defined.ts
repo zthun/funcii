@@ -23,8 +23,10 @@ export function firstDefined<T = any>(
   }
 
   for (let i = 0; i < remaining.length; ++i) {
-    if (remaining[i] != null) {
-      return remaining[i] as T;
+    const val = remaining[i];
+
+    if (val != null) {
+      return val;
     }
   }
 
