@@ -3364,6 +3364,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@zthun/helpful-query@workspace:packages/helpful-query":
+  version: 0.0.0-use.local
+  resolution: "@zthun/helpful-query@workspace:packages/helpful-query"
+  dependencies:
+    microbundle: ^0.15.1
+    vite: ^4.1.4
+    vitest: ^0.28.5
+  languageName: unknown
+  linkType: soft
+
 "@zthun/helpful@workspace:.":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful@workspace:."
