@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { commaJoinList, cssJoinList, JoinListInputParameter, spaceJoinList } from './join-list';
+import { commaJoinDefined, cssJoinDefined, JoinListInputParameter, spaceJoinDefined } from './join-defined';
 
 describe('join list', () => {
   function assertProducesList<T>(
@@ -15,20 +15,30 @@ describe('join list', () => {
   }
 
   it('should return the empty string if no items are passed.', () => {
-    assertProducesList('', spaceJoinList);
+    assertProducesList('', spaceJoinDefined);
   });
 
   it('should return the empty string if only null and undefined items are passed.', () => {
-    assertProducesList('', spaceJoinList, undefined, null);
+    assertProducesList('', spaceJoinDefined, undefined, null);
   });
 
   it('should return the elements if a [T boolean] tuple has a true boolean.', () => {
     const expected = 'yes';
-    assertProducesList('yes', cssJoinList, [expected, true]);
+    assertProducesList('yes', cssJoinDefined, [expected, true]);
   });
 
   it('should join all elements that are non null, non undefined, and non false tuples.', () => {
     const expected = 'One,Two,Four,Seven';
-    assertProducesList(expected, commaJoinList, 'One', 'Two', undefined, 'Four', null, ['Six', false], ['Seven', true]);
+    assertProducesList(
+      expected,
+      commaJoinDefined,
+      'One',
+      'Two',
+      undefined,
+      'Four',
+      null,
+      ['Six', false],
+      ['Seven', true]
+    );
   });
 });

@@ -11,7 +11,7 @@ export type JoinListInputParameter<T> = T | [T, boolean] | null | undefined;
  * @returns
  *        A string that joins the items that are defined, separated by delimiter.
  */
-export function joinList<T>(delimiter: string, ...items: JoinListInputParameter<T>[]) {
+export function joinDefined<T>(delimiter: string, ...items: JoinListInputParameter<T>[]) {
   return items
     .map((item) => (item instanceof Array ? (item[1] ? item[0] : null) : item))
     .filter((item) => item != null)
@@ -27,7 +27,7 @@ export function joinList<T>(delimiter: string, ...items: JoinListInputParameter<
  * @returns
  *        A string that joins the items that are defined, separated by space delimiter.
  */
-export const spaceJoinList: <T>(...items: JoinListInputParameter<T>[]) => string = joinList.bind(null, ' ');
+export const spaceJoinDefined: <T>(...items: JoinListInputParameter<T>[]) => string = joinDefined.bind(null, ' ');
 
 /**
  * Alias of spaceJoinList.
@@ -38,7 +38,7 @@ export const spaceJoinList: <T>(...items: JoinListInputParameter<T>[]) => string
  * @returns
  *        A string that joins the items that are defined, separated by a space delimiter.
  */
-export const cssJoinList: <T>(...items: JoinListInputParameter<T>[]) => string = spaceJoinList;
+export const cssJoinDefined: <T>(...items: JoinListInputParameter<T>[]) => string = spaceJoinDefined;
 
 /**
  * Alias of joinList with a comma delimiter.
@@ -49,7 +49,7 @@ export const cssJoinList: <T>(...items: JoinListInputParameter<T>[]) => string =
  * @returns
  *        A string that joins the items that are defined, separated by a comma delimiter.
  */
-export const commaJoinList: <T>(...items: JoinListInputParameter<T>[]) => string = joinList.bind(null, ',');
+export const commaJoinDefined: <T>(...items: JoinListInputParameter<T>[]) => string = joinDefined.bind(null, ',');
 
 /**
  * Alias of joinList with a semi-colon delimiter.
@@ -60,7 +60,7 @@ export const commaJoinList: <T>(...items: JoinListInputParameter<T>[]) => string
  * @returns
  *        A string that joins the items that are defined, separated by a semi-colon delimiter.
  */
-export const semiColonJoinList: <T>(...items: JoinListInputParameter<T>[]) => string = joinList.bind(null, ';');
+export const semiColonJoinDefined: <T>(...items: JoinListInputParameter<T>[]) => string = joinDefined.bind(null, ';');
 
 /**
  * Alias of joinList with a pipe delimiter.
@@ -71,4 +71,4 @@ export const semiColonJoinList: <T>(...items: JoinListInputParameter<T>[]) => st
  * @returns
  *        A string that joins the items that are defined, separated by a pipe delimiter.
  */
-export const pipeJoinList: <T>(...items: JoinListInputParameter<T>[]) => string = joinList.bind(null, '|');
+export const pipeJoinDefined: <T>(...items: JoinListInputParameter<T>[]) => string = joinDefined.bind(null, '|');
