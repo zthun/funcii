@@ -1,0 +1,33 @@
+{
+  "name": "@zthun/funcii-dash",
+  "version": "0.3.0",
+  "description": "Combines lodash with additional methods and helpers.",
+  "author": "Anthony Bonta",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zthun/funcii",
+    "directory": "packages/funcii-dash"
+  },
+  "main": "./dist/lib/index.js",
+  "module": "./dist/lib/index.esm.js",
+  "types": "./dist/types/index.d.ts",
+  "scripts": {
+    "build": "microbundle --format esm,cjs --tsconfig tsconfig.prod.json --no-sourcemap"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "futil-js": "^1.72.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "microbundle": "^0.15.1",
+    "vitest": "^0.28.5"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false
+}
