@@ -1,2 +1,3 @@
-# lower-dash
-Lodash and futil-js with some extended methods
+# Description
+
+Lodash with some extended methods

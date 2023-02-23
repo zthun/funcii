@@ -1,0 +1,48 @@
+{
+  "name": "@zthun/funcii",
+  "description": "Combines lodash with futil-js, and adds some additional methods.",
+  "author": "Anthony Bonta",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zthun/funcii"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "clean": "rimraf 'dist' 'reports' '*.tgz' '*.log' 'packages/**/dist' 'packages/**/docs' 'packages/**/*.tgz' 'packages/**/*.log'",
+    "test": "vitest --run --coverage",
+    "lint": "lint-janitor",
+    "build": "lerna run build",
+    "make": "yarn clean && yarn lint && yarn test && yarn build",
+    "postinstall": "husky install"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@cucumber/cucumber": "^8.11.1",
+    "@types/jsdom": "^21.1.0",
+    "@types/lodash": "^4.14.191",
+    "@types/node": "^18.14.0",
+    "@types/selenium-webdriver": "^4.1.11",
+    "@vitest/coverage-istanbul": "^0.28.5",
+    "@zthun/lint-janitor": "^14.1.0",
+    "@zthun/lint-janitor-config": "^14.1.0",
+    "husky": "^8.0.3",
+    "jsdom": "^21.1.0",
+    "lerna": "^6.5.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rimraf": "^4.1.2",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.2",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.2",
+    "vitest": "^0.28.5",
+    "vitest-tsconfig-paths": "^3.4.1"
+  },
+  "packageManager": "yarn@3.3.1"
+}
