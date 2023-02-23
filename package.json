@@ -1,12 +1,12 @@
 {
-  "name": "@zthun/funcii",
-  "description": "Combines lodash with futil-js, and adds some additional methods.",
+  "name": "@zthun/helpful",
+  "description": "Useful low level classes and functions that help with common tasks.",
   "author": "Anthony Bonta",
   "license": "MIT",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/zthun/funcii"
+    "url": "https://github.com/zthun/helpful"
   },
   "workspaces": [
     "packages/*"
@@ -25,7 +25,6 @@
     "@commitlint/config-conventional": "^17.4.4",
     "@cucumber/cucumber": "^8.11.1",
     "@types/jsdom": "^21.1.0",
-    "@types/lodash": "^4.14.191",
     "@types/node": "^18.14.0",
     "@types/selenium-webdriver": "^4.1.11",
     "@vitest/coverage-istanbul": "^0.28.5",

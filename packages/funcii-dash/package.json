@@ -1,13 +1,13 @@
 {
-  "name": "@zthun/funcii-dash",
-  "version": "0.3.0",
-  "description": "Combines lodash with additional methods and helpers.",
+  "name": "@zthun/helpful-dash",
+  "version": "0.0.0",
+  "description": "Helpful functions that are not found in other libraries such as lodash.",
   "author": "Anthony Bonta",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zthun/funcii",
-    "directory": "packages/funcii-dash"
+    "url": "https://github.com/zthun/helpful",
+    "directory": "packages/helpful-dash"
   },
   "main": "./dist/lib/index.js",
   "module": "./dist/lib/index.esm.js",
@@ -18,12 +18,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {
-    "futil-js": "^1.72.0",
-    "lodash": "^4.17.21"
-  },
   "devDependencies": {
     "microbundle": "^0.15.1",
+    "vite": "^4.1.4",
     "vitest": "^0.28.5"
   },
   "files": [
