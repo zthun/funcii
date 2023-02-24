@@ -190,3 +190,16 @@ export class ZFilterBinaryBuilder {
 export function isBinaryFilter(filter: IZFilterMetadata): filter is IZFilterBinary {
   return filter.__type__ === ZFilterBinaryBuilder.Type;
 }
+
+/**
+ * A mapping of comparators that relates a data to a value.
+ */
+export const BinaryComparators: Record<ZOperatorBinary, (data: any, value: any) => boolean> = {
+  [ZOperatorBinary.Equal]: (d, v) => d === v,
+  [ZOperatorBinary.NotEqual]: (d, v) => d !== v,
+  [ZOperatorBinary.GreaterThan]: (d, v) => d > v,
+  [ZOperatorBinary.GreaterThanEqualTo]: (d, v) => d >= v,
+  [ZOperatorBinary.LessThan]: (d, v) => d < v,
+  [ZOperatorBinary.LessThanEqualTo]: (d, v) => d <= v,
+  [ZOperatorBinary.Like]: (d, v) => `${d}`.indexOf(`${v}`) >= 0
+};
