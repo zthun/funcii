@@ -4,6 +4,7 @@ import { ZDataFilterFields } from '../filter/data-filter-fields';
 import { IZFilter } from '../filter/filter';
 import { ZFilterBinaryBuilder } from '../filter/filter-binary';
 import { ZFilterCollectionBuilder } from '../filter/filter-collection';
+import { ZFilterLogicBuilder } from '../filter/filter-logic';
 import { ZFilterUnaryBuilder } from '../filter/filter-unary';
 import { IZDataMatch } from '../match/data-match';
 import { ZDataSearchFields } from '../search/data-search-fields';
@@ -326,6 +327,38 @@ describe('ZDataSourceStatic', () => {
         });
       });
     });
+
+    describe('Logic', () => {
+      describe('And', () => {
+        it('should include data that only matches all clauses', async () => {
+          data = [{ person: { id: null } }, ...objects];
+          const expected = data.filter((d) => d.person.id != null && d.person.id < 10);
+          await assertMatchesData(
+            expected,
+            new ZFilterLogicBuilder()
+              .and()
+              .clause(new ZFilterUnaryBuilder().subject('person.id').isNotNull().build())
+              .clause(new ZFilterBinaryBuilder().subject('person.id').lessThan().value(10).build())
+              .build()
+          );
+        });
+      });
+
+      describe('Or', () => {
+        it('should include data that matches at least one clause', async () => {
+          data = [{ person: { id: -1 } }, ...objects];
+          const expected = data.filter((d) => d.person.name == null || d.person.id === 10);
+          await assertMatchesData(
+            expected,
+            new ZFilterLogicBuilder()
+              .or()
+              .clause(new ZFilterUnaryBuilder().subject('person.name').isNull().build())
+              .clause(new ZFilterBinaryBuilder().subject('person.id').equal().value(10).build())
+              .build()
+          );
+        });
+      });
+    });
   });
 
   describe('Search', () => {
@@ -350,6 +383,17 @@ describe('ZDataSourceStatic', () => {
 
       search = new ZDataSearchFields();
       data = [batman, superman, wonderWoman, johnConstantine, greenLantern];
+    });
+
+    it('should default to always return data', async () => {
+      // Arrange.
+      search = undefined;
+      const target = createTestTarget();
+      const request = new ZDataRequestBuilder().search('man').build();
+      // Act.
+      const actual = await target.retrieve(request);
+      // Assert.
+      expect(actual).toEqual(data);
     });
 
     it('should only find the objects which match any property', async () => {
