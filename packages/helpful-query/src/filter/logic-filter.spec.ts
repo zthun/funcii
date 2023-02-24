@@ -18,7 +18,7 @@ describe('LogicFilterBuilder', () => {
   beforeEach(() => {
     clauseA = new ZBinaryFilterBuilder().subject('age').greaterThan().value(2).build();
     clauseB = new ZBinaryFilterBuilder().subject('age').lessThan().value(10).build();
-    clauseC = new ZUnaryFilterBuilder().field('collection').isNull().build();
+    clauseC = new ZUnaryFilterBuilder().subject('collection').isNull().build();
     clauseD = new ZCollectionFilterBuilder().subject('state').in().value('Texas').value('Arizona').build();
   });
 
