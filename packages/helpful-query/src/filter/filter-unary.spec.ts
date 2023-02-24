@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { ZFilterUnaryBuilder, ZOperatorUnary } from './filter-unary';
 
-describe('UnaryFilterBuilder', () => {
+describe('Unary Filter', () => {
   function createTestTarget() {
     return new ZFilterUnaryBuilder();
   }
