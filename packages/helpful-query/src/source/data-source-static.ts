@@ -3,7 +3,7 @@ import { IZFilter } from '../filter/filter';
 import { IZDataMatch } from '../match/data-match';
 import { ZDataMatchAlways } from '../match/data-match-always';
 import { IZDataRequest } from './data-request';
-import { filter, paginate } from './data-results';
+import { filter, paginate, sort } from './data-results';
 import { IZDataSource } from './data-source';
 
 /**
@@ -37,10 +37,11 @@ export class ZDataSourceStatic<T> implements IZDataSource<T> {
   }
 
   public retrieve(request: IZDataRequest): Promise<T[]> {
-    const { page = 1, size = Infinity, search: _search, filter: _filter } = request;
+    const { page = 1, size = Infinity, search: _search, filter: _filter, sort: _sort } = request;
     let data = this._data;
     data = filter(data, _search, this._search);
     data = filter(data, _filter, this._filter);
+    data = sort(data, _sort);
     data = paginate(data, page, size);
     return Promise.resolve(data);
   }

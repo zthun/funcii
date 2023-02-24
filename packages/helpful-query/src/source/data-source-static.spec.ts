@@ -9,6 +9,7 @@ import { ZFilterUnaryBuilder } from '../filter/filter-unary';
 import { IZDataMatch } from '../match/data-match';
 import { ZDataSearchFields } from '../search/data-search-fields';
 import { ZDataSearchText } from '../search/data-search-text';
+import { ZSortBuilder } from '../sort/sort';
 import { IZDataRequest, ZDataRequestBuilder } from './data-request';
 import { ZDataSourceStatic } from './data-source-static';
 
@@ -428,6 +429,46 @@ describe('ZDataSourceStatic', () => {
       const actual = await target.retrieve(request);
       // Assert.
       expect(actual).toEqual([]);
+    });
+  });
+
+  describe('Sort', () => {
+    it('should sort the data', async () => {
+      // Arrange.
+      data = [null, 1, 3, 5, 7, null, 2, 4, 8, 6, null];
+      const expected = [null, null, null, 1, 2, 3, 4, 5, 6, 7, 8];
+      const target = createTestTarget();
+      const request = new ZDataRequestBuilder().sort(new ZSortBuilder().ascending().build()).build();
+      // Act.
+      const actual = await target.retrieve(request);
+      // Assert.
+      expect(actual).toEqual(expected);
+    });
+
+    it('should sort by properties in order', async () => {
+      // Arrange.
+      data = [
+        { id: 4, name: 'Batman' },
+        { id: 2, name: 'Superman' },
+        { id: 1, name: 'John Constantine' },
+        { id: 3, name: 'Batman' },
+        { id: 5, name: 'Green Lantern' }
+      ];
+      const expected = [
+        { id: 4, name: 'Batman' },
+        { id: 3, name: 'Batman' },
+        { id: 5, name: 'Green Lantern' },
+        { id: 1, name: 'John Constantine' },
+        { id: 2, name: 'Superman' }
+      ];
+      const target = createTestTarget();
+      const request = new ZDataRequestBuilder()
+        .sort(new ZSortBuilder().ascending('name').descending('id').build())
+        .build();
+      // Act.
+      const actual = await target.retrieve(new ZDataRequestBuilder().copy(request).build());
+      // Assert.
+      expect(actual).toEqual(expected);
     });
   });
 });
