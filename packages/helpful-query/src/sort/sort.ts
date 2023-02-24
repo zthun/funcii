@@ -19,7 +19,7 @@ export interface IZSort {
   /**
    * The subject to sort by.
    */
-  subject: string;
+  subject?: string;
 
   /**
    * The direction to sort.
@@ -49,7 +49,7 @@ export class ZSortBuilder {
    * @returns
    *        This object
    */
-  public ascending(subject: string): this {
+  public ascending(subject?: string): this {
     this._sort.push({ subject, direction: ZSortDirection.Ascending });
     return this;
   }
@@ -63,7 +63,7 @@ export class ZSortBuilder {
    * @returns
    *        This object
    */
-  public descending(subject: string): this {
+  public descending(subject?: string): this {
     this._sort.push({ subject: subject, direction: ZSortDirection.Descending });
     return this;
   }
