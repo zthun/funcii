@@ -23,6 +23,7 @@
     "@babel/core": "^7.21.0",
     "@commitlint/cli": "^17.4.4",
     "@commitlint/config-conventional": "^17.4.4",
+    "@types/lodash": "^4.14.191",
     "@types/node": "^18.14.1",
     "@vitest/coverage-istanbul": "^0.28.5",
     "@zthun/lint-janitor": "^14.1.0",
