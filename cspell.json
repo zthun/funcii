@@ -10,9 +10,16 @@
     "DOCKERHUB",
     "funcii",
     "futil",
+    "gteq",
+    "lteq",
     "microbundle",
     "npmrc",
     "zthun"
   ],
-  "dictionaries": ["typescript", "node", "npm", "en_US"]
+  "dictionaries": [
+    "typescript",
+    "node",
+    "npm",
+    "en_US"
+  ]
 }
