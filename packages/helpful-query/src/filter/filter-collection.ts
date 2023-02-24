@@ -1,4 +1,4 @@
-import { IZFilterSubject } from './filter-subject';
+import { IZFilterMetadata, IZFilterSubject } from './filter-subject';
 
 /**
  * Represents an operator that compares collections.
@@ -17,28 +17,27 @@ export enum ZOperatorCollection {
 /**
  * A filter that operates on a collection of values.
  */
-export interface IZFilterCollection<TValue = any, TSubject = string>
-  extends IZFilterSubject<ZOperatorCollection, TSubject> {
+export interface IZFilterCollection extends IZFilterSubject<ZOperatorCollection> {
   /**
    * The values to compare the field against.
    */
-  values: TValue[];
+  values: any[];
 }
 
 /**
  * Represents a builder for a collection filter.
  */
-export class ZFilterCollectionBuilder<TValue = any, TSubject = string> {
+export class ZFilterCollectionBuilder {
   public static readonly Type = 'collection';
 
-  private _filter: IZFilterCollection<TValue, TSubject>;
+  private _filter: IZFilterCollection;
 
   /**
    * Initializes a new instance of this object.
    */
   public constructor() {
     this._filter = {
-      subject: null as any,
+      subject: '',
       operator: ZOperatorCollection.In,
       values: [],
       __type__: ZFilterCollectionBuilder.Type
@@ -54,7 +53,7 @@ export class ZFilterCollectionBuilder<TValue = any, TSubject = string> {
    * @returns
    *        This object.
    */
-  public subject(val: TSubject): this {
+  public subject(val: string): this {
     this._filter.subject = val;
     return this;
   }
@@ -68,7 +67,7 @@ export class ZFilterCollectionBuilder<TValue = any, TSubject = string> {
    * @returns
    *        This object.
    */
-  public values(values: TValue[]): this {
+  public values(values: any[]): this {
     this._filter.values = values;
     return this;
   }
@@ -82,7 +81,7 @@ export class ZFilterCollectionBuilder<TValue = any, TSubject = string> {
    * @returns
    *        This object.
    */
-  public value(value: TValue): this {
+  public value(value: any): this {
     this._filter.values.push(value);
     return this;
   }
@@ -115,7 +114,7 @@ export class ZFilterCollectionBuilder<TValue = any, TSubject = string> {
    * @returns
    *        A copy of the currently built filter.
    */
-  public build(): IZFilterCollection<TValue> {
+  public build(): IZFilterCollection {
     return JSON.parse(JSON.stringify(this._filter));
   }
 }
@@ -129,6 +128,6 @@ export class ZFilterCollectionBuilder<TValue = any, TSubject = string> {
  * @returns
  *        True if filters type is a collection filter.  False otherwise.
  */
-export function isCollectionFilter<T, S>(filter: IZFilterSubject<any, any>): filter is IZFilterCollection<T, S> {
+export function isCollectionFilter(filter: IZFilterMetadata): filter is IZFilterCollection {
   return filter.__type__ === ZFilterCollectionBuilder.Type;
 }

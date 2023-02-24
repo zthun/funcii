@@ -24,12 +24,12 @@ describe('Logic Filter', () => {
 
   it('sets the clauses.', () => {
     const expected = [clauseA, clauseB, clauseC, clauseD];
-    expect(createTestTarget().clauses(expected).build().subject).toEqual(expected);
+    expect(createTestTarget().clauses(expected).build().clauses).toEqual(expected);
   });
 
   it('adds clauses.', () => {
     const expected = [clauseA, clauseB, clauseC, clauseD];
-    const actual = createTestTarget().clause(clauseA).clause(clauseB).clause(clauseC).clause(clauseD).build().subject;
+    const actual = createTestTarget().clause(clauseA).clause(clauseB).clause(clauseC).clause(clauseD).build().clauses;
     expect(actual).toEqual(expected);
   });
 

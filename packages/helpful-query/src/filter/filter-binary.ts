@@ -1,4 +1,4 @@
-import { IZFilterSubject } from './filter-subject';
+import { IZFilterMetadata, IZFilterSubject } from './filter-subject';
 
 /**
  * Represents the available operators for a binary filter.
@@ -37,28 +37,28 @@ export enum ZOperatorBinary {
 /**
  * Represents a standard comparison filter between a field and a wanted value.
  */
-export interface IZFilterBinary<TValue = any, TSubject = string> extends IZFilterSubject<ZOperatorBinary, TSubject> {
+export interface IZFilterBinary extends IZFilterSubject<ZOperatorBinary> {
   /**
    * The value to sort by.
    */
-  value: TValue;
+  value: any;
 }
 
 /**
  * Represents an object that can build up a binary filter.
  */
-export class ZFilterBinaryBuilder<TValue = any, TSubject = string> {
+export class ZFilterBinaryBuilder {
   public static readonly Type = 'binary';
 
-  private _filter: IZFilterBinary<TValue, TSubject>;
+  private _filter: IZFilterBinary;
 
   /**
    * Initializes a new instance of this object.
    */
   public constructor() {
     this._filter = {
-      subject: null as any,
-      value: null as any,
+      subject: '',
+      value: null,
       operator: ZOperatorBinary.Equal,
       __type__: ZFilterBinaryBuilder.Type
     };
@@ -72,7 +72,7 @@ export class ZFilterBinaryBuilder<TValue = any, TSubject = string> {
    *
    * @returns This object.
    */
-  public subject(val: TSubject): this {
+  public subject(val: string): this {
     this._filter.subject = val;
     return this;
   }
@@ -85,7 +85,7 @@ export class ZFilterBinaryBuilder<TValue = any, TSubject = string> {
    *
    * @returns This object.
    */
-  public value(val: TValue): this {
+  public value(val: any): this {
     this._filter.value = val;
     return this;
   }
@@ -173,7 +173,7 @@ export class ZFilterBinaryBuilder<TValue = any, TSubject = string> {
    * @returns
    *        A copy of the currently built filter.
    */
-  public build(): IZFilterBinary<TValue, TSubject> {
+  public build(): IZFilterBinary {
     return { ...this._filter };
   }
 }
@@ -187,6 +187,6 @@ export class ZFilterBinaryBuilder<TValue = any, TSubject = string> {
  * @returns
  *        True if filters type is a binary filter.  False otherwise.
  */
-export function isCollectionFilter<T, S>(filter: IZFilterSubject<any, any>): filter is IZFilterBinary<T, S> {
+export function isBinaryFilter(filter: IZFilterMetadata): filter is IZFilterBinary {
   return filter.__type__ === ZFilterBinaryBuilder.Type;
 }

@@ -1,4 +1,4 @@
-import { IZFilterSubject } from './filter-subject';
+import { IZFilterMetadata, IZFilterSubject } from './filter-subject';
 
 /**
  * Operators for a unary filter.
@@ -17,15 +17,15 @@ export enum ZOperatorUnary {
 /**
  * Represents a yes/no style filter.
  */
-export interface IZFilterUnary<TSubject = string> extends IZFilterSubject<ZOperatorUnary, TSubject> {}
+export interface IZFilterUnary extends IZFilterSubject<ZOperatorUnary> {}
 
 /**
  * Represents a builder for a UnaryFilter object.
  */
-export class ZFilterUnaryBuilder<TSubject = string> {
+export class ZFilterUnaryBuilder {
   public static readonly Type = 'unary';
 
-  private _filter: IZFilterUnary<TSubject>;
+  private _filter: IZFilterUnary;
 
   /**
    * Initializes a new instance of this object.
@@ -47,7 +47,7 @@ export class ZFilterUnaryBuilder<TSubject = string> {
    * @returns
    *        This object.
    */
-  public subject(val: TSubject): this {
+  public subject(val: string): this {
     this._filter.subject = val;
     return this;
   }
@@ -80,7 +80,7 @@ export class ZFilterUnaryBuilder<TSubject = string> {
    * @returns
    *        A copy of the current filter.
    */
-  public build(): IZFilterUnary<TSubject> {
+  public build(): IZFilterUnary {
     return { ...this._filter };
   }
 }
@@ -94,6 +94,6 @@ export class ZFilterUnaryBuilder<TSubject = string> {
  * @returns
  *        True if filters type is a unary filter.  False otherwise.
  */
-export function isUnaryFilter<S>(filter: IZFilterSubject<any, any>): filter is IZFilterUnary<S> {
+export function isUnaryFilter(filter: IZFilterMetadata): filter is IZFilterUnary {
   return filter.__type__ === ZFilterUnaryBuilder.Type;
 }

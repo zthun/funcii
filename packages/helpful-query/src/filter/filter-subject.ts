@@ -1,35 +1,26 @@
 /**
- * The root filter that relates an operator to a subject.
+ * The root filter that contains metadata information about the filter.
  */
-export interface IZFilterSubject<TOperator, TSubject = string> {
-  /**
-   * The filed to sort by.
-   */
-  subject: TSubject;
-
-  /**
-   * The operator that relates the subject to something.
-   */
-  operator: TOperator;
-
+export interface IZFilterMetadata {
   /**
    * Metadata type information about this filter.
    */
   __type__: string;
 }
 
+export interface IZFilterOperator<TOperator> extends IZFilterMetadata {
+  /**
+   * The operator that relates the subject to something.
+   */
+  operator: TOperator;
+}
+
 /**
- * Type guard helper which determines if a filter is a specified type.
- *
- * @param __type__ -
- *        The type to check.
- * @param filter -
- *        The filter to check against.
- *
- * @returns
- *        True if the filter.__type__ property equals __type__.  False
- *        otherwise.
+ * The root filter that relates an operator to a subject.
  */
-export function filterIsType(__type__: string, filter: IZFilterSubject<any, any>): boolean {
-  return filter.__type__ === __type__;
+export interface IZFilterSubject<TOperator> extends IZFilterOperator<TOperator> {
+  /**
+   * The filed to sort by.
+   */
+  subject: string;
 }
