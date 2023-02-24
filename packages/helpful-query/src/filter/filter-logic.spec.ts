@@ -5,7 +5,7 @@ import { ZFilterCollectionBuilder } from './filter-collection';
 import { ZFilterLogicBuilder, ZOperatorLogic } from './filter-logic';
 import { ZFilterUnaryBuilder } from './filter-unary';
 
-describe('LogicFilterBuilder', () => {
+describe('Logic Filter', () => {
   let clauseA: IZFilter;
   let clauseB: IZFilter;
   let clauseC: IZFilter;
