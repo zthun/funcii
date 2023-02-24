@@ -1,3 +1,5 @@
+import { IZFilterSubject } from './filter-subject';
+
 /**
  * Represents an operator that compares collections.
  */
@@ -15,15 +17,8 @@ export enum ZCollectionOperator {
 /**
  * A filter that operates on a collection of values.
  */
-export interface IZCollectionFilter<TValue = any, TSubject = string> {
-  /**
-   * The collection subject.
-   */
-  subject: TSubject;
-  /**
-   * The collection operator against the field.
-   */
-  operator: ZCollectionOperator;
+export interface IZCollectionFilter<TValue = any, TSubject = string>
+  extends IZFilterSubject<ZCollectionOperator, TSubject> {
   /**
    * The values to compare the field against.
    */
@@ -34,6 +29,8 @@ export interface IZCollectionFilter<TValue = any, TSubject = string> {
  * Represents a builder for a collection filter.
  */
 export class ZCollectionFilterBuilder<TValue = any, TSubject = string> {
+  public static readonly Type = 'collection';
+
   private _filter: IZCollectionFilter<TValue, TSubject>;
 
   /**
@@ -43,7 +40,8 @@ export class ZCollectionFilterBuilder<TValue = any, TSubject = string> {
     this._filter = {
       subject: null as any,
       operator: ZCollectionOperator.In,
-      values: []
+      values: [],
+      __type__: ZCollectionFilterBuilder.Type
     };
   }
 

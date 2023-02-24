@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ZCollectionFilterBuilder, ZCollectionOperator } from './collection-filter';
+import { ZCollectionFilterBuilder, ZCollectionOperator } from './filter-collection';
 
 describe('CollectionFilterBuilder', () => {
   function createTestTarget() {

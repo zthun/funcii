@@ -1,3 +1,5 @@
+import { IZFilterSubject } from './filter-subject';
+
 /**
  * Operators for a unary filter.
  */
@@ -15,22 +17,14 @@ export enum ZUnaryOperator {
 /**
  * Represents a yes/no style filter.
  */
-export interface IZUnaryFilter<TSubject = string> {
-  /**
-   * The subject to apply the filter on.
-   */
-  subject: TSubject;
-
-  /**
-   * The operator for the filter.
-   */
-  operator: ZUnaryOperator;
-}
+export interface IZUnaryFilter<TSubject = string> extends IZFilterSubject<ZUnaryOperator, TSubject> {}
 
 /**
  * Represents a builder for a UnaryFilter object.
  */
 export class ZUnaryFilterBuilder<TSubject = string> {
+  public static readonly Type = 'unary';
+
   private _filter: IZUnaryFilter<TSubject>;
 
   /**
@@ -39,7 +33,8 @@ export class ZUnaryFilterBuilder<TSubject = string> {
   public constructor() {
     this._filter = {
       subject: null as any,
-      operator: ZUnaryOperator.IsNull
+      operator: ZUnaryOperator.IsNull,
+      __type__: 'unary'
     };
   }
 

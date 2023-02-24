@@ -1,7 +1,9 @@
+import { IZFilterSubject } from './filter-subject';
+
 /**
  * Represents the available operators for a binary filter.
  */
-export enum ZBinaryOperator {
+export enum ZOperatorBinary {
   /**
    * Equals
    */
@@ -35,15 +37,7 @@ export enum ZBinaryOperator {
 /**
  * Represents a standard comparison filter between a field and a wanted value.
  */
-export interface IZBinaryFilter<TValue = any, TSubject = string> {
-  /**
-   * The filed to sort by.
-   */
-  subject: TSubject;
-  /**
-   * The comparison operator.
-   */
-  operator: ZBinaryOperator;
+export interface IZFilterBinary<TValue = any, TSubject = string> extends IZFilterSubject<ZOperatorBinary, TSubject> {
   /**
    * The value to sort by.
    */
@@ -53,8 +47,10 @@ export interface IZBinaryFilter<TValue = any, TSubject = string> {
 /**
  * Represents an object that can build up a binary filter.
  */
-export class ZBinaryFilterBuilder<TValue = any, TSubject = string> {
-  private _filter: IZBinaryFilter<TValue, TSubject>;
+export class ZFilterBinaryBuilder<TValue = any, TSubject = string> {
+  public static readonly Type = 'binary';
+
+  private _filter: IZFilterBinary<TValue, TSubject>;
 
   /**
    * Initializes a new instance of this object.
@@ -63,7 +59,8 @@ export class ZBinaryFilterBuilder<TValue = any, TSubject = string> {
     this._filter = {
       subject: null as any,
       value: null as any,
-      operator: ZBinaryOperator.Equal
+      operator: ZOperatorBinary.Equal,
+      __type__: ZFilterBinaryBuilder.Type
     };
   }
 
@@ -100,7 +97,7 @@ export class ZBinaryFilterBuilder<TValue = any, TSubject = string> {
    *        This object
    */
   public equal(): this {
-    this._filter.operator = ZBinaryOperator.Equal;
+    this._filter.operator = ZOperatorBinary.Equal;
     return this;
   }
 
@@ -111,7 +108,7 @@ export class ZBinaryFilterBuilder<TValue = any, TSubject = string> {
    *        This object
    */
   public notEqual(): this {
-    this._filter.operator = ZBinaryOperator.NotEqual;
+    this._filter.operator = ZOperatorBinary.NotEqual;
     return this;
   }
 
@@ -122,7 +119,7 @@ export class ZBinaryFilterBuilder<TValue = any, TSubject = string> {
    *        This object
    */
   public lessThan(): this {
-    this._filter.operator = ZBinaryOperator.LessThan;
+    this._filter.operator = ZOperatorBinary.LessThan;
     return this;
   }
 
@@ -133,7 +130,7 @@ export class ZBinaryFilterBuilder<TValue = any, TSubject = string> {
    *        This object.
    */
   public greaterThan(): this {
-    this._filter.operator = ZBinaryOperator.GreaterThan;
+    this._filter.operator = ZOperatorBinary.GreaterThan;
     return this;
   }
 
@@ -144,7 +141,7 @@ export class ZBinaryFilterBuilder<TValue = any, TSubject = string> {
    *        This object.
    */
   public lessThanEqualTo(): this {
-    this._filter.operator = ZBinaryOperator.LessThanEqualTo;
+    this._filter.operator = ZOperatorBinary.LessThanEqualTo;
     return this;
   }
 
@@ -155,7 +152,7 @@ export class ZBinaryFilterBuilder<TValue = any, TSubject = string> {
    *        A new filter builder object.
    */
   public greaterThanEqualTo(): this {
-    this._filter.operator = ZBinaryOperator.GreaterThanEqualTo;
+    this._filter.operator = ZOperatorBinary.GreaterThanEqualTo;
     return this;
   }
 
@@ -166,7 +163,7 @@ export class ZBinaryFilterBuilder<TValue = any, TSubject = string> {
    *        A new filter builder object.
    */
   public like(): this {
-    this._filter.operator = ZBinaryOperator.Like;
+    this._filter.operator = ZOperatorBinary.Like;
     return this;
   }
 
@@ -176,7 +173,7 @@ export class ZBinaryFilterBuilder<TValue = any, TSubject = string> {
    * @returns
    *        A copy of the currently built filter.
    */
-  public build(): IZBinaryFilter<TValue, TSubject> {
+  public build(): IZFilterBinary<TValue, TSubject> {
     return { ...this._filter };
   }
 }

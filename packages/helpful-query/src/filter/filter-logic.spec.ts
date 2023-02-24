@@ -1,9 +1,9 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { ZBinaryFilterBuilder } from './binary-filter';
-import { ZCollectionFilterBuilder } from './collection-filter';
 import { IZFilter } from './filter';
-import { ZLogicFilterBuilder, ZLogicOperator } from './logic-filter';
-import { ZUnaryFilterBuilder } from './unary-filter';
+import { ZFilterBinaryBuilder } from './filter-binary';
+import { ZCollectionFilterBuilder } from './filter-collection';
+import { ZLogicFilterBuilder, ZLogicOperator } from './filter-logic';
+import { ZUnaryFilterBuilder } from './filter-unary';
 
 describe('LogicFilterBuilder', () => {
   let clauseA: IZFilter;
@@ -16,20 +16,20 @@ describe('LogicFilterBuilder', () => {
   }
 
   beforeEach(() => {
-    clauseA = new ZBinaryFilterBuilder().subject('age').greaterThan().value(2).build();
-    clauseB = new ZBinaryFilterBuilder().subject('age').lessThan().value(10).build();
+    clauseA = new ZFilterBinaryBuilder().subject('age').greaterThan().value(2).build();
+    clauseB = new ZFilterBinaryBuilder().subject('age').lessThan().value(10).build();
     clauseC = new ZUnaryFilterBuilder().subject('collection').isNull().build();
     clauseD = new ZCollectionFilterBuilder().subject('state').in().value('Texas').value('Arizona').build();
   });
 
   it('sets the clauses.', () => {
     const expected = [clauseA, clauseB, clauseC, clauseD];
-    expect(createTestTarget().clauses(expected).build().clauses).toEqual(expected);
+    expect(createTestTarget().clauses(expected).build().subject).toEqual(expected);
   });
 
   it('adds clauses.', () => {
     const expected = [clauseA, clauseB, clauseC, clauseD];
-    const actual = createTestTarget().clause(clauseA).clause(clauseB).clause(clauseC).clause(clauseD).build().clauses;
+    const actual = createTestTarget().clause(clauseA).clause(clauseB).clause(clauseC).clause(clauseD).build().subject;
     expect(actual).toEqual(expected);
   });
 

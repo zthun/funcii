@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { ZBinaryFilterBuilder, ZBinaryOperator } from './binary-filter';
+import { ZFilterBinaryBuilder, ZOperatorBinary } from './filter-binary';
 
 describe('BinaryFilterBuilder', () => {
   function createTestTarget() {
-    return new ZBinaryFilterBuilder();
+    return new ZFilterBinaryBuilder();
   }
 
   it('sets the field.', () => {
@@ -17,30 +17,30 @@ describe('BinaryFilterBuilder', () => {
   });
 
   it('sets the operator to equal.', () => {
-    expect(createTestTarget().equal().build().operator).toEqual(ZBinaryOperator.Equal);
+    expect(createTestTarget().equal().build().operator).toEqual(ZOperatorBinary.Equal);
   });
 
   it('sets the operator to not equal.', () => {
-    expect(createTestTarget().notEqual().build().operator).toEqual(ZBinaryOperator.NotEqual);
+    expect(createTestTarget().notEqual().build().operator).toEqual(ZOperatorBinary.NotEqual);
   });
 
   it('sets the operator to greater than.', () => {
-    expect(createTestTarget().greaterThan().build().operator).toEqual(ZBinaryOperator.GreaterThan);
+    expect(createTestTarget().greaterThan().build().operator).toEqual(ZOperatorBinary.GreaterThan);
   });
 
   it('sets the operator to greater than equal to.', () => {
-    expect(createTestTarget().greaterThanEqualTo().build().operator).toEqual(ZBinaryOperator.GreaterThanEqualTo);
+    expect(createTestTarget().greaterThanEqualTo().build().operator).toEqual(ZOperatorBinary.GreaterThanEqualTo);
   });
 
   it('sets the operator to less than.', () => {
-    expect(createTestTarget().lessThan().build().operator).toEqual(ZBinaryOperator.LessThan);
+    expect(createTestTarget().lessThan().build().operator).toEqual(ZOperatorBinary.LessThan);
   });
 
   it('sets the operator to less than equal to.', () => {
-    expect(createTestTarget().lessThanEqualTo().build().operator).toEqual(ZBinaryOperator.LessThanEqualTo);
+    expect(createTestTarget().lessThanEqualTo().build().operator).toEqual(ZOperatorBinary.LessThanEqualTo);
   });
 
   it('sets the operator to like.', () => {
-    expect(createTestTarget().like().build().operator).toEqual(ZBinaryOperator.Like);
+    expect(createTestTarget().like().build().operator).toEqual(ZOperatorBinary.Like);
   });
 });

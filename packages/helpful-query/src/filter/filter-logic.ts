@@ -1,4 +1,5 @@
 import { IZFilter } from './filter';
+import { IZFilterSubject } from './filter-subject';
 
 /**
  * Represents the connector for a logic filter.
@@ -17,21 +18,14 @@ export enum ZLogicOperator {
 /**
  * Represents a composite logical filter.
  */
-export interface IZLogicFilter {
-  /**
-   * The collection of child clauses.
-   */
-  clauses: IZFilter[];
-  /**
-   * The operator relationship between the clauses.
-   */
-  operator: ZLogicOperator;
-}
+export interface IZLogicFilter extends IZFilterSubject<ZLogicOperator, IZFilter[]> {}
 
 /**
  * Represents a builder for a logic filter.
  */
 export class ZLogicFilterBuilder {
+  public static readonly Type = 'logic';
+
   private _filter: IZLogicFilter;
 
   /**
@@ -39,8 +33,9 @@ export class ZLogicFilterBuilder {
    */
   public constructor() {
     this._filter = {
-      clauses: [],
-      operator: ZLogicOperator.And
+      subject: [],
+      operator: ZLogicOperator.And,
+      __type__: ZLogicFilterBuilder.Type
     };
   }
 
@@ -76,7 +71,7 @@ export class ZLogicFilterBuilder {
    *        This object.
    */
   public clause(val: IZFilter): this {
-    this._filter.clauses.push(val);
+    this._filter.subject.push(val);
     return this;
   }
 
@@ -90,7 +85,7 @@ export class ZLogicFilterBuilder {
    *        This object
    */
   public clauses(val: IZFilter[]): this {
-    this._filter.clauses = val;
+    this._filter.subject = val;
     return this;
   }
 
