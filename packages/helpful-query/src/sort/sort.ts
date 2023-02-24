@@ -15,11 +15,12 @@ export enum ZSortDirection {
 /**
  * Represents an option for sorting.
  */
-export interface IZSort<TSubject = string> {
+export interface IZSort {
   /**
-   * The field id to sort by.
+   * The subject to sort by.
    */
-  subject: TSubject;
+  subject: string;
+
   /**
    * The direction to sort.
    */
@@ -29,8 +30,8 @@ export interface IZSort<TSubject = string> {
 /**
  * Represents a builder for a sort list.
  */
-export class ZSortBuilder<TSubject = string> {
-  private _sort: IZSort<TSubject>[];
+export class ZSortBuilder {
+  private _sort: IZSort[];
 
   /**
    * Initializes a new instance of this object.
@@ -42,28 +43,28 @@ export class ZSortBuilder<TSubject = string> {
   /**
    * Adds an ascending order clause.
    *
-   * @param field -
-   *        The field to sort by.
+   * @param subject -
+   *        The subject to sort by.
    *
    * @returns
    *        This object
    */
-  public ascending(field: TSubject): this {
-    this._sort.push({ subject: field, direction: ZSortDirection.Ascending });
+  public ascending(subject: string): this {
+    this._sort.push({ subject, direction: ZSortDirection.Ascending });
     return this;
   }
 
   /**
    * Adds a descending order clause.
    *
-   * @param field -
-   *        The field to sort by.
+   * @param subject -
+   *        The subject to sort by.
    *
    * @returns
    *        This object
    */
-  public descending(field: TSubject): this {
-    this._sort.push({ subject: field, direction: ZSortDirection.Descending });
+  public descending(subject: string): this {
+    this._sort.push({ subject: subject, direction: ZSortDirection.Descending });
     return this;
   }
 
