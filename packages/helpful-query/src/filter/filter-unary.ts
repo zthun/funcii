@@ -97,3 +97,11 @@ export class ZFilterUnaryBuilder {
 export function isUnaryFilter(filter: IZFilterMetadata): filter is IZFilterUnary {
   return filter.__type__ === ZFilterUnaryBuilder.Type;
 }
+
+/**
+ * Comparators for unary operators.
+ */
+export const UnaryComparators: Record<ZOperatorUnary, (data: any) => boolean> = {
+  [ZOperatorUnary.IsNull]: (data: any) => data == null,
+  [ZOperatorUnary.IsNotNull]: (data: any) => data != null
+};

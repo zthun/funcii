@@ -3,6 +3,8 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { ZDataFilterFields } from '../filter/data-filter-fields';
 import { IZFilter } from '../filter/filter';
 import { ZFilterBinaryBuilder } from '../filter/filter-binary';
+import { ZFilterCollectionBuilder } from '../filter/filter-collection';
+import { ZFilterUnaryBuilder } from '../filter/filter-unary';
 import { IZDataMatch } from '../match/data-match';
 import { ZDataSearchFields } from '../search/data-search-fields';
 import { ZDataSearchText } from '../search/data-search-text';
@@ -126,6 +128,15 @@ describe('ZDataSourceStatic', () => {
   });
 
   describe('Filter', () => {
+    let ranges: number[];
+    let objects: { person: { id: number; name: string } }[];
+
+    beforeEach(() => {
+      ranges = range(0, 100);
+      objects = ranges.map((r) => ({ person: { id: r, name: r.toString() } }));
+      data = objects;
+    });
+
     async function assertMatchesData(expected: any[], filter: IZFilter) {
       // Arrange.
       const target = createTestTarget();
@@ -137,15 +148,6 @@ describe('ZDataSourceStatic', () => {
     }
 
     describe('Binary', () => {
-      let ranges: number[];
-      let objects: { person: { id: number; name: string } }[];
-
-      beforeEach(() => {
-        ranges = range(0, 100);
-        objects = ranges.map((r) => ({ person: { id: r, name: r.toString() } }));
-        data = objects;
-      });
-
       describe('Equals', () => {
         it('should match data when the value is exact [path]', async () => {
           await assertMatchesData(
@@ -257,6 +259,70 @@ describe('ZDataSourceStatic', () => {
         it('should match data that contains the value [self]', async () => {
           data = ['Batman', 'Superman', 'Green Lantern'];
           await assertMatchesData(['Batman', 'Superman'], new ZFilterBinaryBuilder().like().value('man').build());
+        });
+      });
+    });
+
+    describe('Collection', () => {
+      describe('In', () => {
+        it('should match data when the value is in the specific set of data [path]', async () => {
+          await assertMatchesData(
+            [data[10], data[11], data[12]],
+            new ZFilterCollectionBuilder().subject('person.id').in().values([10, 11, 12]).build()
+          );
+        });
+
+        it('should match data when the value is in the specific set of data [self]', async () => {
+          data = ranges;
+          await assertMatchesData(
+            [10, 11, 12],
+            new ZFilterCollectionBuilder().in().value(10).value(11).value(12).build()
+          );
+        });
+      });
+
+      describe('Not In', () => {
+        it('should match data when the value is excluded in the specific set of data [path]', async () => {
+          const exclude = ranges.filter((i) => i < 95);
+          await assertMatchesData(
+            [data[95], data[96], data[97], data[98], data[99]],
+            new ZFilterCollectionBuilder().subject('person.id').notIn().values(exclude).build()
+          );
+        });
+
+        it('should match data when the value is excluded in the specific set of data [self]', async () => {
+          data = ranges;
+          const exclude = ranges.filter((i) => i < 95);
+          await assertMatchesData([95, 96, 97, 98, 99], new ZFilterCollectionBuilder().notIn().values(exclude).build());
+        });
+      });
+    });
+
+    describe('Unary', () => {
+      describe('Not null', () => {
+        it('should match data when the value is not null or undefined [path]', async () => {
+          data = [{}, { person: {} }, ...objects, { person: { id: null } }];
+          await assertMatchesData(objects, new ZFilterUnaryBuilder().subject('person.id').isNotNull().build());
+        });
+
+        it('should match data when the value is in the specific set of data [self]', async () => {
+          data = [undefined, ...ranges, null];
+          await assertMatchesData(ranges, new ZFilterUnaryBuilder().isNotNull().build());
+        });
+      });
+
+      describe('Null', () => {
+        it('should match data when the value is null or undefined [path]', async () => {
+          data = [{}, { person: {} }, ...objects, { person: { id: null } }];
+          await assertMatchesData(
+            [data[0], data[1], data[data.length - 1]],
+            new ZFilterUnaryBuilder().subject('person.id').isNull().build()
+          );
+        });
+
+        it('should match data when the value is null or undefined [self]', async () => {
+          data = [undefined, ...ranges, null, null];
+          await assertMatchesData([undefined, null, null], new ZFilterUnaryBuilder().isNull().build());
         });
       });
     });

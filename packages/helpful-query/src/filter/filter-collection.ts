@@ -131,3 +131,11 @@ export class ZFilterCollectionBuilder {
 export function isCollectionFilter(filter: IZFilterMetadata): filter is IZFilterCollection {
   return filter.__type__ === ZFilterCollectionBuilder.Type;
 }
+
+/**
+ * A mapping of comparators that determine if data exists or does not exist within a data set.
+ */
+export const CollectionComparators: Record<ZOperatorCollection, (data: any, values: any[]) => boolean> = {
+  [ZOperatorCollection.In]: (d, v) => v.indexOf(d) >= 0,
+  [ZOperatorCollection.NotIn]: (d, v) => v.indexOf(d) < 0
+};
