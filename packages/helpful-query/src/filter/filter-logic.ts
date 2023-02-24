@@ -99,3 +99,16 @@ export class ZFilterLogicBuilder {
     return { ...this._filter };
   }
 }
+
+/**
+ * Type guard for determining if a target filter is a logic filter.
+ *
+ * @param filter -
+ *        The filter to test.
+ *
+ * @returns
+ *        True if filters type is a logic filter.  False otherwise.
+ */
+export function isLogicFilter(filter: IZFilterSubject<any, any>): filter is IZFilterLogic {
+  return filter.__type__ === ZFilterLogicBuilder.Type;
+}

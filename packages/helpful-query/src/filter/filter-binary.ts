@@ -177,3 +177,16 @@ export class ZFilterBinaryBuilder<TValue = any, TSubject = string> {
     return { ...this._filter };
   }
 }
+
+/**
+ * Type guard for determining if a target filter is a binary filter.
+ *
+ * @param filter -
+ *        The filter to test.
+ *
+ * @returns
+ *        True if filters type is a binary filter.  False otherwise.
+ */
+export function isCollectionFilter<T, S>(filter: IZFilterSubject<any, any>): filter is IZFilterBinary<T, S> {
+  return filter.__type__ === ZFilterBinaryBuilder.Type;
+}

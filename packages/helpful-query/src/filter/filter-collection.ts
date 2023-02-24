@@ -119,3 +119,16 @@ export class ZFilterCollectionBuilder<TValue = any, TSubject = string> {
     return JSON.parse(JSON.stringify(this._filter));
   }
 }
+
+/**
+ * Type guard for determining if a target filter is a collection filter.
+ *
+ * @param filter -
+ *        The filter to test.
+ *
+ * @returns
+ *        True if filters type is a collection filter.  False otherwise.
+ */
+export function isCollectionFilter<T, S>(filter: IZFilterSubject<any, any>): filter is IZFilterCollection<T, S> {
+  return filter.__type__ === ZFilterCollectionBuilder.Type;
+}

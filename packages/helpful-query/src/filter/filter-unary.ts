@@ -84,3 +84,16 @@ export class ZFilterUnaryBuilder<TSubject = string> {
     return { ...this._filter };
   }
 }
+
+/**
+ * Type guard for determining if a target filter is a unary filter.
+ *
+ * @param filter -
+ *        The filter to test.
+ *
+ * @returns
+ *        True if filters type is a unary filter.  False otherwise.
+ */
+export function isUnaryFilter<S>(filter: IZFilterSubject<any, any>): filter is IZFilterUnary<S> {
+  return filter.__type__ === ZFilterUnaryBuilder.Type;
+}
