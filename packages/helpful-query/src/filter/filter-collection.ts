@@ -3,7 +3,7 @@ import { IZFilterSubject } from './filter-subject';
 /**
  * Represents an operator that compares collections.
  */
-export enum ZCollectionOperator {
+export enum ZOperatorCollection {
   /**
    * In
    */
@@ -17,8 +17,8 @@ export enum ZCollectionOperator {
 /**
  * A filter that operates on a collection of values.
  */
-export interface IZCollectionFilter<TValue = any, TSubject = string>
-  extends IZFilterSubject<ZCollectionOperator, TSubject> {
+export interface IZFilterCollection<TValue = any, TSubject = string>
+  extends IZFilterSubject<ZOperatorCollection, TSubject> {
   /**
    * The values to compare the field against.
    */
@@ -28,10 +28,10 @@ export interface IZCollectionFilter<TValue = any, TSubject = string>
 /**
  * Represents a builder for a collection filter.
  */
-export class ZCollectionFilterBuilder<TValue = any, TSubject = string> {
+export class ZFilterCollectionBuilder<TValue = any, TSubject = string> {
   public static readonly Type = 'collection';
 
-  private _filter: IZCollectionFilter<TValue, TSubject>;
+  private _filter: IZFilterCollection<TValue, TSubject>;
 
   /**
    * Initializes a new instance of this object.
@@ -39,9 +39,9 @@ export class ZCollectionFilterBuilder<TValue = any, TSubject = string> {
   public constructor() {
     this._filter = {
       subject: null as any,
-      operator: ZCollectionOperator.In,
+      operator: ZOperatorCollection.In,
       values: [],
-      __type__: ZCollectionFilterBuilder.Type
+      __type__: ZFilterCollectionBuilder.Type
     };
   }
 
@@ -94,7 +94,7 @@ export class ZCollectionFilterBuilder<TValue = any, TSubject = string> {
    *        This object.
    */
   public in(): this {
-    this._filter.operator = ZCollectionOperator.In;
+    this._filter.operator = ZOperatorCollection.In;
     return this;
   }
 
@@ -105,7 +105,7 @@ export class ZCollectionFilterBuilder<TValue = any, TSubject = string> {
    *        This object.
    */
   public notIn(): this {
-    this._filter.operator = ZCollectionOperator.NotIn;
+    this._filter.operator = ZOperatorCollection.NotIn;
     return this;
   }
 
@@ -115,7 +115,7 @@ export class ZCollectionFilterBuilder<TValue = any, TSubject = string> {
    * @returns
    *        A copy of the currently built filter.
    */
-  public build(): IZCollectionFilter<TValue> {
+  public build(): IZFilterCollection<TValue> {
     return JSON.parse(JSON.stringify(this._filter));
   }
 }

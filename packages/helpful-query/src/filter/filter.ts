@@ -1,9 +1,9 @@
 import { IZFilterBinary } from './filter-binary';
-import { IZCollectionFilter } from './filter-collection';
-import { IZLogicFilter } from './filter-logic';
-import { IZUnaryFilter } from './filter-unary';
+import { IZFilterCollection } from './filter-collection';
+import { IZFilterLogic } from './filter-logic';
+import { IZFilterUnary } from './filter-unary';
 
 /**
  * Represents one of the filter types.
  */
-export type IZFilter = IZFilterBinary | IZLogicFilter | IZCollectionFilter | IZUnaryFilter;
+export type IZFilter = IZFilterBinary | IZFilterLogic | IZFilterCollection | IZFilterUnary;

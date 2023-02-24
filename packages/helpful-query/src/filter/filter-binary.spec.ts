@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { ZFilterBinaryBuilder, ZOperatorBinary } from './filter-binary';
 
-describe('BinaryFilterBuilder', () => {
+describe('Binary Filter', () => {
   function createTestTarget() {
     return new ZFilterBinaryBuilder();
   }

@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { ZCollectionFilterBuilder, ZCollectionOperator } from './filter-collection';
+import { ZFilterCollectionBuilder, ZOperatorCollection } from './filter-collection';
 
-describe('CollectionFilterBuilder', () => {
+describe('Collection Filter', () => {
   function createTestTarget() {
-    return new ZCollectionFilterBuilder();
+    return new ZFilterCollectionBuilder();
   }
 
   it('sets the field.', () => {
@@ -22,10 +22,10 @@ describe('CollectionFilterBuilder', () => {
   });
 
   it('sets the operator to in.', () => {
-    expect(createTestTarget().in().build().operator).toEqual(ZCollectionOperator.In);
+    expect(createTestTarget().in().build().operator).toEqual(ZOperatorCollection.In);
   });
 
   it('sets the operator to not in.', () => {
-    expect(createTestTarget().notIn().build().operator).toEqual(ZCollectionOperator.NotIn);
+    expect(createTestTarget().notIn().build().operator).toEqual(ZOperatorCollection.NotIn);
   });
 });

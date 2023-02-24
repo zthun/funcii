@@ -4,7 +4,7 @@ import { IZFilterSubject } from './filter-subject';
 /**
  * Represents the connector for a logic filter.
  */
-export enum ZLogicOperator {
+export enum ZOperatorLogic {
   /**
    * And.
    */
@@ -18,15 +18,15 @@ export enum ZLogicOperator {
 /**
  * Represents a composite logical filter.
  */
-export interface IZLogicFilter extends IZFilterSubject<ZLogicOperator, IZFilter[]> {}
+export interface IZFilterLogic extends IZFilterSubject<ZOperatorLogic, IZFilter[]> {}
 
 /**
  * Represents a builder for a logic filter.
  */
-export class ZLogicFilterBuilder {
+export class ZFilterLogicBuilder {
   public static readonly Type = 'logic';
 
-  private _filter: IZLogicFilter;
+  private _filter: IZFilterLogic;
 
   /**
    * Initializes a new instance of this object.
@@ -34,8 +34,8 @@ export class ZLogicFilterBuilder {
   public constructor() {
     this._filter = {
       subject: [],
-      operator: ZLogicOperator.And,
-      __type__: ZLogicFilterBuilder.Type
+      operator: ZOperatorLogic.And,
+      __type__: ZFilterLogicBuilder.Type
     };
   }
 
@@ -46,7 +46,7 @@ export class ZLogicFilterBuilder {
    *        This object.
    */
   public and(): this {
-    this._filter.operator = ZLogicOperator.And;
+    this._filter.operator = ZOperatorLogic.And;
     return this;
   }
 
@@ -57,7 +57,7 @@ export class ZLogicFilterBuilder {
    *        This object.
    */
   public or(): this {
-    this._filter.operator = ZLogicOperator.Or;
+    this._filter.operator = ZOperatorLogic.Or;
     return this;
   }
 
@@ -95,7 +95,7 @@ export class ZLogicFilterBuilder {
    * @returns
    *        The logic filter
    */
-  public build(): IZLogicFilter {
+  public build(): IZFilterLogic {
     return { ...this._filter };
   }
 }

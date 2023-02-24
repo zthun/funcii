@@ -3,7 +3,7 @@ import { IZFilterSubject } from './filter-subject';
 /**
  * Operators for a unary filter.
  */
-export enum ZUnaryOperator {
+export enum ZOperatorUnary {
   /**
    * Is null.
    */
@@ -17,15 +17,15 @@ export enum ZUnaryOperator {
 /**
  * Represents a yes/no style filter.
  */
-export interface IZUnaryFilter<TSubject = string> extends IZFilterSubject<ZUnaryOperator, TSubject> {}
+export interface IZFilterUnary<TSubject = string> extends IZFilterSubject<ZOperatorUnary, TSubject> {}
 
 /**
  * Represents a builder for a UnaryFilter object.
  */
-export class ZUnaryFilterBuilder<TSubject = string> {
+export class ZFilterUnaryBuilder<TSubject = string> {
   public static readonly Type = 'unary';
 
-  private _filter: IZUnaryFilter<TSubject>;
+  private _filter: IZFilterUnary<TSubject>;
 
   /**
    * Initializes a new instance of this object.
@@ -33,7 +33,7 @@ export class ZUnaryFilterBuilder<TSubject = string> {
   public constructor() {
     this._filter = {
       subject: null as any,
-      operator: ZUnaryOperator.IsNull,
+      operator: ZOperatorUnary.IsNull,
       __type__: 'unary'
     };
   }
@@ -59,7 +59,7 @@ export class ZUnaryFilterBuilder<TSubject = string> {
    *        This object.
    */
   public isNull(): this {
-    this._filter.operator = ZUnaryOperator.IsNull;
+    this._filter.operator = ZOperatorUnary.IsNull;
     return this;
   }
 
@@ -70,7 +70,7 @@ export class ZUnaryFilterBuilder<TSubject = string> {
    *        This object.
    */
   public isNotNull(): this {
-    this._filter.operator = ZUnaryOperator.IsNotNull;
+    this._filter.operator = ZOperatorUnary.IsNotNull;
     return this;
   }
 
@@ -80,7 +80,7 @@ export class ZUnaryFilterBuilder<TSubject = string> {
    * @returns
    *        A copy of the current filter.
    */
-  public build(): IZUnaryFilter<TSubject> {
+  public build(): IZFilterUnary<TSubject> {
     return { ...this._filter };
   }
 }

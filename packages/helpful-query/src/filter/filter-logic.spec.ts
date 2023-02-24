@@ -1,9 +1,9 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import { IZFilter } from './filter';
 import { ZFilterBinaryBuilder } from './filter-binary';
-import { ZCollectionFilterBuilder } from './filter-collection';
-import { ZLogicFilterBuilder, ZLogicOperator } from './filter-logic';
-import { ZUnaryFilterBuilder } from './filter-unary';
+import { ZFilterCollectionBuilder } from './filter-collection';
+import { ZFilterLogicBuilder, ZOperatorLogic } from './filter-logic';
+import { ZFilterUnaryBuilder } from './filter-unary';
 
 describe('LogicFilterBuilder', () => {
   let clauseA: IZFilter;
@@ -12,14 +12,14 @@ describe('LogicFilterBuilder', () => {
   let clauseD: IZFilter;
 
   function createTestTarget() {
-    return new ZLogicFilterBuilder();
+    return new ZFilterLogicBuilder();
   }
 
   beforeEach(() => {
     clauseA = new ZFilterBinaryBuilder().subject('age').greaterThan().value(2).build();
     clauseB = new ZFilterBinaryBuilder().subject('age').lessThan().value(10).build();
-    clauseC = new ZUnaryFilterBuilder().subject('collection').isNull().build();
-    clauseD = new ZCollectionFilterBuilder().subject('state').in().value('Texas').value('Arizona').build();
+    clauseC = new ZFilterUnaryBuilder().subject('collection').isNull().build();
+    clauseD = new ZFilterCollectionBuilder().subject('state').in().value('Texas').value('Arizona').build();
   });
 
   it('sets the clauses.', () => {
@@ -34,10 +34,10 @@ describe('LogicFilterBuilder', () => {
   });
 
   it('sets the operator to and.', () => {
-    expect(createTestTarget().and().clause(clauseA).clause(clauseB).build().operator).toEqual(ZLogicOperator.And);
+    expect(createTestTarget().and().clause(clauseA).clause(clauseB).build().operator).toEqual(ZOperatorLogic.And);
   });
 
   it('sets the operator to or.', () => {
-    expect(createTestTarget().or().clause(clauseA).clause(clauseB).build().operator).toEqual(ZLogicOperator.Or);
+    expect(createTestTarget().or().clause(clauseA).clause(clauseB).build().operator).toEqual(ZOperatorLogic.Or);
   });
 });

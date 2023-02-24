@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { ZUnaryFilterBuilder, ZUnaryOperator } from './filter-unary';
+import { ZFilterUnaryBuilder, ZOperatorUnary } from './filter-unary';
 
 describe('UnaryFilterBuilder', () => {
   function createTestTarget() {
-    return new ZUnaryFilterBuilder();
+    return new ZFilterUnaryBuilder();
   }
 
   it('sets the field.', () => {
@@ -12,10 +12,10 @@ describe('UnaryFilterBuilder', () => {
   });
 
   it('sets the operator to is null.', () => {
-    expect(createTestTarget().subject('a').isNull().build().operator).toEqual(ZUnaryOperator.IsNull);
+    expect(createTestTarget().subject('a').isNull().build().operator).toEqual(ZOperatorUnary.IsNull);
   });
 
   it('sets the operator to is not null.', () => {
-    expect(createTestTarget().subject('a').isNotNull().build().operator).toEqual(ZUnaryOperator.IsNotNull);
+    expect(createTestTarget().subject('a').isNotNull().build().operator).toEqual(ZOperatorUnary.IsNotNull);
   });
 });
