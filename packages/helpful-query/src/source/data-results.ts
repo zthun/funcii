@@ -1,6 +1,7 @@
-import { chunk } from 'lodash';
+import { chunk, get } from 'lodash';
 import { IZDataMatch } from '../match/data-match';
 import { ZDataMatchOptional } from '../match/data-match-optional';
+import { IZSort, ZSortDirection } from '../sort/sort';
 
 /**
  * Takes a list of data and paginates it in memory.
@@ -49,4 +50,54 @@ export function paginate<T>(data: T[], page: number, size: number) {
 export function filter<T, F>(data: T[], filter: F | undefined | null, match: IZDataMatch<T, F>) {
   const _match = new ZDataMatchOptional<T, F>(match);
   return data.filter((data) => _match.match(data, filter));
+}
+
+/**
+ * Sorts the data.
+ *
+ * @param data -
+ *        The data to sort.
+ * @param sort -
+ *        The sort criteria.
+ *
+ * @returns
+ *        The data sorted to the sort criteria.
+ */
+export function sort<T>(data: T[], sorts: IZSort[] | undefined): T[] {
+  const _data = data.slice();
+
+  if (!sorts?.length) {
+    return _data;
+  }
+
+  _data.sort((x: T | null, y: T | null) => {
+    for (let i = 0; i < sorts.length; ++i) {
+      const s = sorts[i];
+      const m = s.direction === ZSortDirection.Ascending ? 1 : -1;
+      const xV: any = s.subject ? get(x, s.subject, null) : x;
+      const yV: any = s.subject ? get(y, s.subject, null) : y;
+
+      if (xV == null && yV == null) {
+        continue;
+      }
+
+      if (xV == null && yV != null) {
+        return -1 * m;
+      }
+
+      if (xV != null && yV == null) {
+        return m;
+      }
+
+      if (xV === yV) {
+        continue;
+      }
+
+      return m * (xV < yV ? -1 : 1);
+    }
+
+    return 0;
+  });
+
+  return _data;
 }
