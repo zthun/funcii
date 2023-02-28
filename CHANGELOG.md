@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.0](https://github.com/zthun/helpful/compare/v0.2.0...v0.3.0) (2023-02-28)
+
+
+### Features
+
+* added support to create GUIDs ([3d08fce](https://github.com/zthun/helpful/commit/3d08fce79ef53795c35bcd799d6750d81d9a8f03))
+
+
+
 ## [0.2.0](https://github.com/zthun/helpful/compare/v0.1.0...v0.2.0) (2023-02-24)
 
 
