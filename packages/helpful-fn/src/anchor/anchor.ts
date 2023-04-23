@@ -38,3 +38,12 @@ export enum ZHorizontalAnchor {
  * resizing.
  */
 export type ZAnchor = [ZVerticalAnchor, ZHorizontalAnchor];
+
+/**
+ * Represents a special type of anchor that excludes the center points.
+ */
+export type ZSideAnchor =
+  | ZVerticalAnchor.Top
+  | ZVerticalAnchor.Bottom
+  | ZHorizontalAnchor.Left
+  | ZHorizontalAnchor.Right;
