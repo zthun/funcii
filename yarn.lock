@@ -3680,7 +3680,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zthun/helpful-fn@^0.3.0, @zthun/helpful-fn@workspace:packages/helpful-fn":
+"@zthun/helpful-fn@^0.4.0, @zthun/helpful-fn@workspace:packages/helpful-fn":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-fn@workspace:packages/helpful-fn"
   dependencies:
@@ -3718,7 +3718,7 @@ __metadata:
   dependencies:
     "@zthun/cirque": ^4.2.0
     "@zthun/cirque-du-react": ^4.2.0
-    "@zthun/helpful-fn": ^0.3.0
+    "@zthun/helpful-fn": ^0.4.0
     lodash: ^4.17.21
     microbundle: ^0.15.1
     react: ^18.2.0
