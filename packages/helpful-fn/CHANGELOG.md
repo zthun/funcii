@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.0](https://github.com/zthun/helpful/compare/v0.3.0...v0.4.0) (2023-04-23)
+
+
+### Features
+
+* added an anchor enum ([ef0caf8](https://github.com/zthun/helpful/commit/ef0caf8af58aec4a91ccbe058ba35cc7245ea409))
+* added an orientation enum ([b162132](https://github.com/zthun/helpful/commit/b162132ac975a5fd20b9adb982054d5acea5efa5))
+
+
+
 ## [0.3.0](https://github.com/zthun/helpful/compare/v0.2.0...v0.3.0) (2023-02-28)
 
 
