@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/zthun/helpful/compare/v0.4.0...v0.4.1) (2023-04-23)
+
+
+### Bug Fixes
+
+* export orientation and anchor ([3df0fd0](https://github.com/zthun/helpful/commit/3df0fd0e7bf405a0e865a541391ef8778f8bffaf))
+
+
+
 ## [0.4.0](https://github.com/zthun/helpful/compare/v0.3.0...v0.4.0) (2023-04-23)
 
 
