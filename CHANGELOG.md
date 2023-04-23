@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.0](https://github.com/zthun/helpful/compare/v0.4.1...v0.5.0) (2023-04-23)
+
+
+### Features
+
+* added side anchor ([0e3bebc](https://github.com/zthun/helpful/commit/0e3bebc410db86be5d12f82b74e4dfb72f17863e))
+
+
+
 ## [0.4.1](https://github.com/zthun/helpful/compare/v0.4.0...v0.4.1) (2023-04-23)
 
 
