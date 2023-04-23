@@ -4,7 +4,10 @@
     "baseUrl": "packages",
     "target": "esnext",
     "paths": {
-      "@zthun/helpful-fn": ["helpful-fn/src/index"]
+      "@zthun/helpful-fn": ["helpful-fn/src/index"],
+      "@zthun/helpful-obligation": ["helpful-obligation/src/index"],
+      "@zthun/helpful-query": ["helpful-query/src/index"],
+      "@zthun/helpful-react": ["helpful-react/src/index"]
     }
   },
   "include": ["**/*.ts"],
