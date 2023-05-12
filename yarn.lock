@@ -3680,6 +3680,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@zthun/helpful-brands@workspace:packages/helpful-brands":
+  version: 0.0.0-use.local
+  resolution: "@zthun/helpful-brands@workspace:packages/helpful-brands"
+  dependencies:
+    lodash: ^4.17.21
+    microbundle: ^0.15.1
+    vite: ^4.3.1
+    vitest: ^0.30.1
+  languageName: unknown
+  linkType: soft
+
 "@zthun/helpful-fn@^0.5.0, @zthun/helpful-fn@workspace:packages/helpful-fn":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-fn@workspace:packages/helpful-fn"

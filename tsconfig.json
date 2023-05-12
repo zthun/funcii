@@ -4,6 +4,7 @@
     "baseUrl": "packages",
     "target": "esnext",
     "paths": {
+      "@zthun/helpful-brands": ["helpful-brands/src/index"],
       "@zthun/helpful-fn": ["helpful-fn/src/index"],
       "@zthun/helpful-obligation": ["helpful-obligation/src/index"],
       "@zthun/helpful-query": ["helpful-query/src/index"],
