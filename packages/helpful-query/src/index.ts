@@ -13,3 +13,4 @@ export * from './sort/sort';
 export * from './source/data-request';
 export * from './source/data-source';
 export * from './source/data-source-static';
+export * from './source/data-source-static-options';
