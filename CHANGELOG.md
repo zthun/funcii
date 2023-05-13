@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.0](https://github.com/zthun/helpful/compare/v0.6.0...v0.7.0) (2023-05-13)
+
+
+### Features
+
+* count buckets calculates the number of buckets you would need to store x items ([d9fd9dc](https://github.com/zthun/helpful/commit/d9fd9dc9b8f1c85fc2ce745fe2ae618e699e6f75))
+
+
+
 ## [0.6.0](https://github.com/zthun/helpful/compare/v0.5.0...v0.6.0) (2023-05-13)
 
 
