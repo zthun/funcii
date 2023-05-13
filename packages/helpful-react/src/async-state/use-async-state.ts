@@ -47,6 +47,7 @@ export function useAsyncState<T>(load: () => Promise<T>, deps: DependencyList = 
     }
 
     try {
+      setCurrent(ZAsyncLoading);
       const next = await load();
       setCurrent(next);
     } catch (err) {
