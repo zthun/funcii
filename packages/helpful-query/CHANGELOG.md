@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.0](https://github.com/zthun/helpful/compare/v0.7.0...v0.8.0) (2023-05-13)
+
+
+### Features
+
+* added support for delays in the static source ([082d892](https://github.com/zthun/helpful/commit/082d892df54bb678339e8a535e542b257ebafe5e))
+
+
+
 ## [0.7.0](https://github.com/zthun/helpful/compare/v0.6.0...v0.7.0) (2023-05-13)
 
 **Note:** Version bump only for package @zthun/helpful-query
