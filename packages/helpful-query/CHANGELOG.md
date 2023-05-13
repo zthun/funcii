@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://github.com/zthun/helpful/compare/v0.8.0...v0.8.1) (2023-05-13)
+
+
+### Bug Fixes
+
+* export the new options object ([811f6c1](https://github.com/zthun/helpful/commit/811f6c15e193bfc5cf42e452c9ccb738303145fc))
+
+
+
 ## [0.8.0](https://github.com/zthun/helpful/compare/v0.7.0...v0.8.0) (2023-05-13)
 
 
