@@ -1,10 +1,7 @@
-import { ZDataFilterFields } from '../filter/data-filter-fields';
-import { IZFilter } from '../filter/filter';
-import { IZDataMatch } from '../match/data-match';
-import { ZDataMatchAlways } from '../match/data-match-always';
 import { IZDataRequest } from './data-request';
 import { filter, paginate, sort } from './data-results';
 import { IZDataSource } from './data-source';
+import { IZDataSourceStaticOptions, ZDataSourceStaticOptionsBuilder } from './data-source-static-options';
 
 /**
  * Represents an in memory data source.
@@ -23,26 +20,26 @@ export class ZDataSourceStatic<T> implements IZDataSource<T> {
    *        all data will match.
    */
   public constructor(
-    private _data: T[],
-    private _search: IZDataMatch<T, string> = new ZDataMatchAlways(),
-    private _filter: IZDataMatch<T, IZFilter> = new ZDataFilterFields()
+    private _data: T[] | Promise<T[]>,
+    private _options: IZDataSourceStaticOptions<T> = new ZDataSourceStaticOptionsBuilder().build()
   ) {}
 
-  public count(request: IZDataRequest): Promise<number> {
+  public async count(request: IZDataRequest): Promise<number> {
     const { search: _search, filter: _filter } = request;
-    let data = this._data;
-    data = filter(data, _search, this._search);
-    data = filter(data, _filter, this._filter);
+    let data = await this._data;
+    data = filter(data, _search, this._options.search);
+    data = filter(data, _filter, this._options.filter);
     return Promise.resolve(data.length);
   }
 
-  public retrieve(request: IZDataRequest): Promise<T[]> {
+  public async retrieve(request: IZDataRequest): Promise<T[]> {
     const { page = 1, size = Infinity, search: _search, filter: _filter, sort: _sort } = request;
-    let data = this._data;
-    data = filter(data, _search, this._search);
-    data = filter(data, _filter, this._filter);
+    let data = await this._data;
+    data = filter(data, _search, this._options.search);
+    data = filter(data, _filter, this._options.filter);
     data = sort(data, _sort);
     data = paginate(data, page, size);
-    return Promise.resolve(data);
+
+    return new Promise((resolve) => setTimeout(() => resolve(data), this._options.delay));
   }
 }

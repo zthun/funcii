@@ -6,26 +6,23 @@ import { ZFilterBinaryBuilder } from '../filter/filter-binary';
 import { ZFilterCollectionBuilder } from '../filter/filter-collection';
 import { ZFilterLogicBuilder } from '../filter/filter-logic';
 import { ZFilterUnaryBuilder } from '../filter/filter-unary';
-import { IZDataMatch } from '../match/data-match';
 import { ZDataSearchFields } from '../search/data-search-fields';
 import { ZDataSearchText } from '../search/data-search-text';
 import { ZSortBuilder } from '../sort/sort';
 import { IZDataRequest, ZDataRequestBuilder } from './data-request';
 import { ZDataSourceStatic } from './data-source-static';
+import { IZDataSourceStaticOptions, ZDataSourceStaticOptionsBuilder } from './data-source-static-options';
 
 describe('ZDataSourceStatic', () => {
-  let data: any[];
-  let search: IZDataMatch<any, string> | undefined;
-  let filter: IZDataMatch<any, IZFilter> | undefined;
+  let data: any[] | Promise<any[]>;
+  let options: IZDataSourceStaticOptions<any> | undefined;
 
   function createTestTarget() {
-    return new ZDataSourceStatic(data, search, filter);
+    return new ZDataSourceStatic(data, options);
   }
 
   beforeEach(() => {
-    search = undefined;
-    filter = undefined;
-
+    options = undefined;
     data = range(1, 1101);
   });
 
@@ -34,15 +31,16 @@ describe('ZDataSourceStatic', () => {
       // Arrange
       const target = createTestTarget();
       const request = new ZDataRequestBuilder().page(2).size(5).build();
+      const expected = await data;
       // Act
       const result = await target.count(request);
       // Assert
-      expect(result).toEqual(data.length);
+      expect(result).toEqual(expected.length);
     });
 
     it('should return the total count of the data after a search', async () => {
       // Arrange
-      search = new ZDataSearchText();
+      options = new ZDataSourceStaticOptionsBuilder().search(new ZDataSearchText()).build();
       data = ['Batman', 'Superman', 'Flash', 'Wonder Woman', 'Green Lantern', 'John Constantine'];
       const target = createTestTarget();
       const request = new ZDataRequestBuilder().search('man').build();
@@ -54,7 +52,7 @@ describe('ZDataSourceStatic', () => {
 
     it('should return the total count of the data after a filter', async () => {
       // Arrange
-      filter = new ZDataFilterFields();
+      options = new ZDataSourceStaticOptionsBuilder().filter(new ZDataFilterFields()).build();
       data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
       const target = createTestTarget();
       const request = new ZDataRequestBuilder()
@@ -76,6 +74,12 @@ describe('ZDataSourceStatic', () => {
       expect(result).toEqual(expected);
     }
 
+    it('should return a page after a delay.', async () => {
+      options = new ZDataSourceStaticOptionsBuilder().delay(100).build();
+      const request = new ZDataRequestBuilder().page(1000).size(1000).build();
+      await shouldResultInPage([], request);
+    });
+
     it('should return an empty page if the page size goes beyond the final page', async () => {
       const request = new ZDataRequestBuilder().page(1000).size(1000).build();
       await shouldResultInPage([], request);
@@ -83,7 +87,7 @@ describe('ZDataSourceStatic', () => {
 
     it('should return the entire data set if the size is infinite and the page is equal to 1', async () => {
       const request = new ZDataRequestBuilder().build();
-      await shouldResultInPage(data, request);
+      await shouldResultInPage(await data, request);
     });
 
     it('should return an empty page if size is infinite, but page is greater than 1', async () => {
@@ -103,8 +107,12 @@ describe('ZDataSourceStatic', () => {
 
     it('should only return the data that matches a search', async () => {
       // Arrange
-      search = new ZDataSearchText();
-      data = ['Batman', 'Superman', 'Flash', 'Wonder Woman', 'Green Lantern', 'John Constantine'];
+      options = new ZDataSourceStaticOptionsBuilder()
+        .search(new ZDataSearchText())
+        .filter(undefined)
+        .delay(undefined)
+        .build();
+      data = Promise.resolve(['Batman', 'Superman', 'Flash', 'Wonder Woman', 'Green Lantern', 'John Constantine']);
       const target = createTestTarget();
       const request = new ZDataRequestBuilder().search('man').page(2).size(2).build();
       const expected = ['Wonder Woman'];
@@ -116,7 +124,11 @@ describe('ZDataSourceStatic', () => {
 
     it('should only return data that matches a filter', async () => {
       // Arrange
-      filter = new ZDataFilterFields();
+      options = new ZDataSourceStaticOptionsBuilder()
+        .filter(new ZDataFilterFields())
+        .search(undefined)
+        .delay(undefined)
+        .build();
       data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
       const target = createTestTarget();
       const _filter = new ZFilterBinaryBuilder().greaterThan().value(4).build();
@@ -167,7 +179,7 @@ describe('ZDataSourceStatic', () => {
       describe('Not Equals', () => {
         it('should match data when the value is different [path]', async () => {
           await assertMatchesData(
-            data.filter((d, i) => i !== 10),
+            (await data).filter((d, i) => i !== 10),
             new ZFilterBinaryBuilder().subject('person.id').notEqual().value(10).build()
           );
         });
@@ -184,7 +196,7 @@ describe('ZDataSourceStatic', () => {
       describe('Greater Than', () => {
         it('should match data when the value greater than [path]', async () => {
           await assertMatchesData(
-            data.filter((d, i) => i > 10),
+            (await data).filter((d, i) => i > 10),
             new ZFilterBinaryBuilder().subject('person.id').greaterThan().value(10).build()
           );
         });
@@ -201,7 +213,7 @@ describe('ZDataSourceStatic', () => {
       describe('Greater Than Equal To', () => {
         it('should match data when the value greater/equal than [path]', async () => {
           await assertMatchesData(
-            data.filter((d, i) => i >= 10),
+            (await data).filter((d, i) => i >= 10),
             new ZFilterBinaryBuilder().subject('person.id').greaterThanEqualTo().value(10).build()
           );
         });
@@ -218,7 +230,7 @@ describe('ZDataSourceStatic', () => {
       describe('Less Than', () => {
         it('should match data when the value less than [path]', async () => {
           await assertMatchesData(
-            data.filter((_, i) => i < 10),
+            (await data).filter((_, i) => i < 10),
             new ZFilterBinaryBuilder().subject('person.id').lessThan().value(10).build()
           );
         });
@@ -235,7 +247,7 @@ describe('ZDataSourceStatic', () => {
       describe('Less Than Equal To', () => {
         it('should match data when the value less than [path]', async () => {
           await assertMatchesData(
-            data.filter((_, i) => i <= 10),
+            (await data).filter((_, i) => i <= 10),
             new ZFilterBinaryBuilder().subject('person.id').lessThanEqualTo().value(10).build()
           );
         });
@@ -382,13 +394,13 @@ describe('ZDataSourceStatic', () => {
       johnConstantine = { id: 'constantine', name: 'John Constantine', alias: 'John Constantine' };
       greenLantern = { id: 'green-lantern', name: 'Hal Jordan', alias: 'Green Lantern' };
 
-      search = new ZDataSearchFields();
+      options = new ZDataSourceStaticOptionsBuilder().search(new ZDataSearchFields()).build();
       data = [batman, superman, wonderWoman, johnConstantine, greenLantern];
     });
 
     it('should default to always return data', async () => {
       // Arrange.
-      search = undefined;
+      options = undefined;
       const target = createTestTarget();
       const request = new ZDataRequestBuilder().search('man').build();
       // Act.
@@ -410,7 +422,7 @@ describe('ZDataSourceStatic', () => {
 
     it('should only find the objects which match just the specified fields', async () => {
       // Arrange.
-      search = new ZDataSearchFields(['name', 'noise']);
+      options = new ZDataSourceStaticOptionsBuilder().search(new ZDataSearchFields(['name', 'noise'])).build();
       const target = createTestTarget();
       const request = new ZDataRequestBuilder().search('An').build();
       const expected = [wonderWoman, johnConstantine, greenLantern];
@@ -422,7 +434,7 @@ describe('ZDataSourceStatic', () => {
 
     it('should not match fields that are not in the field list', async () => {
       // Arrange.
-      search = new ZDataSearchFields(['id']);
+      options = new ZDataSourceStaticOptionsBuilder().search(new ZDataSearchFields(['id'])).build();
       const target = createTestTarget();
       const request = new ZDataRequestBuilder().search('john').build();
       // Act.

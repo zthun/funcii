@@ -12,5 +12,4 @@ export * from './search/data-search-text';
 export * from './sort/sort';
 export * from './source/data-request';
 export * from './source/data-source';
-export * from './source/data-source-async';
 export * from './source/data-source-static';
