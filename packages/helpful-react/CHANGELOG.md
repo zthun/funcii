@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.0](https://github.com/zthun/helpful/compare/v0.8.2...v0.9.0) (2023-05-15)
+
+
+### Features
+
+* keyboard-activate hook helps with performing onclick events with the keyboard ([8c9b980](https://github.com/zthun/helpful/commit/8c9b9801386613783c5cc91bc5e6a531d8828585))
+
+
+
 ## [0.8.2](https://github.com/zthun/helpful/compare/v0.8.1...v0.8.2) (2023-05-13)
 
 
