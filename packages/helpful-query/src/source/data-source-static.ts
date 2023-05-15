@@ -29,7 +29,7 @@ export class ZDataSourceStatic<T> implements IZDataSource<T> {
     let data = await this._data;
     data = filter(data, _search, this._options.search);
     data = filter(data, _filter, this._options.filter);
-    return Promise.resolve(data.length);
+    return new Promise((resolve) => setTimeout(() => resolve(data.length), this._options.delay));
   }
 
   public async retrieve(request: IZDataRequest): Promise<T[]> {
