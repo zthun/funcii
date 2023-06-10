@@ -7,6 +7,7 @@ export * from './filter/filter-unary';
 export * from './match/data-match';
 export * from './match/data-match-always';
 export * from './match/data-match-optional';
+export * from './metadata/metadata';
 export * from './search/data-search-fields';
 export * from './search/data-search-text';
 export * from './sort/sort';
