@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.0](https://github.com/zthun/helpful/compare/v0.11.1...v0.12.0) (2023-06-10)
+
+
+### Features
+
+* added person information ([0a159da](https://github.com/zthun/helpful/commit/0a159dac5229b4a829e7b0772f88069e48c8cfd4))
+
+
+
 ## [0.11.1](https://github.com/zthun/helpful/compare/v0.11.0...v0.11.1) (2023-06-10)
 
 

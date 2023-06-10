@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.0](https://github.com/zthun/helpful/compare/v0.11.1...v0.12.0) (2023-06-10)
+
+
+### Features
+
+* well known classes give icon classes for common features ([a1cfac4](https://github.com/zthun/helpful/commit/a1cfac4a8c28ebf61aca4c91ee5d7dc285b304b0))
+
+
+
 ## [0.11.1](https://github.com/zthun/helpful/compare/v0.11.0...v0.11.1) (2023-06-10)
 
 **Note:** Version bump only for package @zthun/helpful-query
