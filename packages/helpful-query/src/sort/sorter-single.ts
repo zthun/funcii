@@ -17,15 +17,15 @@ export class ZSorterSingle implements IZSorter {
     [this._sorted] = initial;
   }
 
-  public index(subject: string): number {
+  public index(subject?: string): number {
     return this._sorted?.subject === subject ? 1 : -1;
   }
 
-  public sorted(subject: string): ZSortDirection | undefined {
-    return this._sorted?.subject === subject ? this._sorted.direction : undefined;
+  public sorted(subject?: string): ZSortDirection | undefined {
+    return this._sorted && this._sorted?.subject === subject ? this._sorted.direction : undefined;
   }
 
-  public sort(subject: string): IZSort[] {
+  public sort(subject?: string): IZSort[] {
     this._sorted = this._sorted?.subject === subject ? this._sorted : undefined;
 
     if (!this._sorted) {
