@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.1](https://github.com/zthun/helpful/compare/v0.11.0...v0.11.1) (2023-06-10)
+
+
+### Bug Fixes
+
+* paths for gender and sex ([8490a7f](https://github.com/zthun/helpful/commit/8490a7f3cf761d38fbfaf459fae6d860a4c4bfe2))
+
+
+
 ## [0.11.0](https://github.com/zthun/helpful/compare/v0.10.0...v0.11.0) (2023-06-10)
 
 **Note:** Version bump only for package @zthun/helpful-people
