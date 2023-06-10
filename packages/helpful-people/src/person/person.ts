@@ -1,53 +1,21 @@
 import { fakerEN as faker } from '@faker-js/faker';
 import { createGuid } from '@zthun/helpful-fn';
 import { IZMetadata, ZMetadataBuilder } from '@zthun/helpful-query';
-import { sample } from 'lodash';
-
-/**
- * The sex of the person.
- *
- * This is not gender.  Use gender for the persons
- * actual gender.
- */
-export type ZSex = 'male' | 'female';
 
 /**
  * Represents an individual.
  */
 export interface IZPerson {
-  /**
-   * The id of the person.
-   *
-   * This should be a UUID.
-   */
   id: string;
-
-  /**
-   * The persons first name.
-   */
+  prefix: string;
   firstName: string;
-
-  /**
-   * The persons last name.
-   */
+  middleName: string;
   lastName: string;
-
-  /**
-   * The persons birthday as a date string in UTC.
-   */
+  job: string;
+  suffix: string;
+  bio: string;
   birthday: string;
-
-  /**
-   * The persons gender.
-   *
-   * See https://en.wikipedia.org/wiki/List_of_gender_identities for possible values.
-   */
   gender: string;
-
-  /**
-   * The persons sex.
-   */
-  sex: ZSex;
 }
 
 export class ZPersonBuilder {
@@ -60,16 +28,19 @@ export class ZPersonBuilder {
    *        A random person.
    */
   private static random(): IZPerson {
-    const sex: ZSex = sample<ZSex>(['male', 'female'])!;
+    const sex = faker.person.sexType();
 
     return {
       id: createGuid(),
+      prefix: faker.person.prefix(sex),
+      suffix: faker.person.suffix(),
       firstName: faker.person.firstName(sex),
+      middleName: faker.person.middleName(sex),
       lastName: faker.person.lastName(sex),
+      bio: faker.person.bio(),
+      job: faker.person.jobTitle(),
       birthday: faker.date.birthdate({ min: 1, max: 100, mode: 'age' }).toJSON(),
-      gender: faker.person.gender(),
-
-      sex
+      gender: faker.person.gender()
     };
   }
 
@@ -93,8 +64,7 @@ export class ZPersonBuilder {
         .date()
         .format('L')
         .build(),
-      new ZMetadataBuilder().id('gender').name('Gender').path('gender').sortable().editable().text().build(),
-      new ZMetadataBuilder().id('sex').name('Sex').path('sex').sortable().text().build()
+      new ZMetadataBuilder().id('gender').name('Gender').path('gender').sortable().editable().text().build()
     ];
   }
 

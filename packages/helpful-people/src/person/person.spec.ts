@@ -20,10 +20,6 @@ describe('ZPersonBuilder', () => {
     it('should generate the gender', () => {
       expect(createTestTarget().random().build().gender).toBeTruthy();
     });
-
-    it('should generate the sex', () => {
-      expect(createTestTarget().random().build().sex).toBeTruthy();
-    });
   });
 
   describe('Metadata', () => {
