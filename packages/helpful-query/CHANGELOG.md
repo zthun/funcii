@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.0](https://github.com/zthun/helpful/compare/v0.10.0...v0.11.0) (2023-06-10)
+
+
+### Features
+
+* single sort initial can now be undefined ([8895606](https://github.com/zthun/helpful/commit/8895606e1d69a9690e71b6bc12e17def9c29db42))
+* sorter subjects can be undefined ([9a79ebb](https://github.com/zthun/helpful/commit/9a79ebb4ea08e4b2dc7c68c2d5cfe1f626f4d70c))
+* the none sorter turns off sorting ([ea14053](https://github.com/zthun/helpful/commit/ea14053c0dab14d8ad1f6c8b9ac197052aa4cd09))
+
+
+
 ## [0.10.0](https://github.com/zthun/helpful/compare/v0.9.0...v0.10.0) (2023-06-10)
 
 
