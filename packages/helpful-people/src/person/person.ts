@@ -93,8 +93,8 @@ export class ZPersonBuilder {
         .date()
         .format('L')
         .build(),
-      new ZMetadataBuilder().id('gender').name('Gender').sortable().editable().text().build(),
-      new ZMetadataBuilder().id('sex').name('Sex').sortable().text().build()
+      new ZMetadataBuilder().id('gender').name('Gender').path('gender').sortable().editable().text().build(),
+      new ZMetadataBuilder().id('sex').name('Sex').path('sex').sortable().text().build()
     ];
   }
 
