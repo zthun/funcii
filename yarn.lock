@@ -3644,6 +3644,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@zthun/helpful-fn@npm:^0.8.2":
+  version: 0.8.2
+  resolution: "@zthun/helpful-fn@npm:0.8.2"
+  checksum: 66af044c787244fe454a58513f72d8c9563cfc5cd9bd78e7a2aa0c7874830e56188617ec0b5b09e91d0cdbfa26b49f5444169ad01fd9a9fdcdbb8106d2aa25b6
+  languageName: node
+  linkType: hard
+
 "@zthun/helpful-obligation@workspace:packages/helpful-obligation":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-obligation@workspace:packages/helpful-obligation"
@@ -3668,7 +3675,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@zthun/helpful-query@^0.8.2, @zthun/helpful-query@workspace:packages/helpful-query":
+"@zthun/helpful-query@npm:^0.8.2":
+  version: 0.8.2
+  resolution: "@zthun/helpful-query@npm:0.8.2"
+  dependencies:
+    lodash: ^4.17.21
+  checksum: aad9dc94ad00bede051be14d4ae7513ebee8eb9d63d43f0aaa791432c1fd4058eeaa241a9ccabaa272e3c8267c4902eb491c954ccedd2d522bcae24fe2cdfb68
+  languageName: node
+  linkType: hard
+
+"@zthun/helpful-query@workspace:packages/helpful-query":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-query@workspace:packages/helpful-query"
   dependencies:
