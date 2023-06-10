@@ -1,9 +1,15 @@
-import { describe, expect, it } from 'vitest';
-import { ZSortDirection } from './sort';
+import { beforeEach, describe, expect, it } from 'vitest';
+import { IZSort, ZSortBuilder, ZSortDirection } from './sort';
 import { ZSorterSingle } from './sorter-single';
 
 describe('ZSorterSingle', () => {
-  const createTestTarget = () => new ZSorterSingle([]);
+  let initial: IZSort[] | undefined;
+
+  const createTestTarget = () => new ZSorterSingle(initial);
+
+  beforeEach(() => {
+    initial = undefined;
+  });
 
   it('should sort in ascending order if the subject was never sorted', () => {
     // Arrange.
@@ -19,9 +25,9 @@ describe('ZSorterSingle', () => {
   it('should sort in descending order if the metadata is sorted in ascending order', () => {
     // Arrange.
     const subject = 'name';
+    initial = new ZSortBuilder().ascending(subject).build();
     const target = createTestTarget();
     // Act.
-    target.sort(subject);
     target.sort(subject);
     // Assert.
     expect(target.index(subject)).toEqual(1);
@@ -31,10 +37,9 @@ describe('ZSorterSingle', () => {
   it('should remove the sort if the sort order is descending', () => {
     // Arrange.
     const subject = 'name';
+    initial = new ZSortBuilder().descending(subject).build();
     const target = createTestTarget();
     // Act.
-    target.sort(subject);
-    target.sort(subject);
     target.sort(subject);
     // Assert.
     expect(target.index(subject)).toEqual(-1);

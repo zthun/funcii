@@ -13,7 +13,7 @@ export class ZSorterSingle implements IZSorter {
    * @param initial -
    *        The initial sort list.
    */
-  public constructor(initial: IZSort[]) {
+  public constructor(initial: IZSort[] = []) {
     [this._sorted] = initial;
   }
 
