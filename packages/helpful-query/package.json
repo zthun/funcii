@@ -19,7 +19,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@zthun/helpful-fn": "^0.8.2",
+    "@zthun/helpful-fn": "^0.9.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
