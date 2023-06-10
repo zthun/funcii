@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.0](https://github.com/zthun/helpful/compare/v0.8.2...v0.9.0) (2023-05-15)
+
+
+### Features
+
+* brands exports all available brands in an array ([84e8a25](https://github.com/zthun/helpful/commit/84e8a25a63e5d865b4587b8878bdb1c59202e8e3))
+* keyboard-activate hook helps with performing onclick events with the keyboard ([8c9b980](https://github.com/zthun/helpful/commit/8c9b9801386613783c5cc91bc5e6a531d8828585))
+
+
+### Bug Fixes
+
+* count on the static data source should now respect the delay ([accbbf1](https://github.com/zthun/helpful/commit/accbbf1d31bca9d54140cc175bac7e5223b69725))
+
+
+
 ## [0.8.2](https://github.com/zthun/helpful/compare/v0.8.1...v0.8.2) (2023-05-13)
 
 
