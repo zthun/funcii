@@ -1,6 +1,6 @@
 {
   "name": "@zthun/helpful-obligation",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "Helpful functions and classes that help assert needed requirements.",
   "author": "Anthony Bonta",
   "license": "MIT",

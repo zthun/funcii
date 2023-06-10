@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.0](https://github.com/zthun/helpful/compare/v0.9.0...v0.10.0) (2023-06-10)
+
+
+### Features
+
+* added a sorter to perform a sort order algorithm when constructing sorts ([ffd784c](https://github.com/zthun/helpful/commit/ffd784c274bc5b6ddd9283ca3678c4bbf05da6ef))
+* metadata describes information about the data ([e0321f5](https://github.com/zthun/helpful/commit/e0321f52656b2996f3924c83e9e1dfb6ad7677d6))
+
+
+
 ## [0.9.0](https://github.com/zthun/helpful/compare/v0.8.2...v0.9.0) (2023-05-15)
 
 
