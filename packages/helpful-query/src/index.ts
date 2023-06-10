@@ -11,6 +11,8 @@ export * from './metadata/metadata';
 export * from './search/data-search-fields';
 export * from './search/data-search-text';
 export * from './sort/sort';
+export * from './sort/sorter';
+export * from './sort/sorter-single';
 export * from './source/data-request';
 export * from './source/data-source';
 export * from './source/data-source-static';
