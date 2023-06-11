@@ -54,7 +54,17 @@ export class ZPersonBuilder {
     return [
       new ZMetadataBuilder().id('id').name('Id').path('id').sortable().text().build(),
       new ZMetadataBuilder().id('first-name').name('First Name').path('firstName').sortable().editable().text().build(),
+      new ZMetadataBuilder()
+        .id('middle-name')
+        .name('Middle Name')
+        .path('middleName')
+        .sortable()
+        .editable()
+        .text()
+        .build(),
       new ZMetadataBuilder().id('last-name').name('Last Name').path('lastName').sortable().editable().text().build(),
+      new ZMetadataBuilder().id('prefix').name('Prefix').path('prefix').sortable().editable().text().build(),
+      new ZMetadataBuilder().id('suffix').name('Suffix').path('suffix').sortable().editable().text().build(),
       new ZMetadataBuilder()
         .id('birthday')
         .name('Birthday')
@@ -64,6 +74,7 @@ export class ZPersonBuilder {
         .date()
         .format('L')
         .build(),
+      new ZMetadataBuilder().id('job').name('Job').path('job').sortable().editable().text().build(),
       new ZMetadataBuilder().id('gender').name('Gender').path('gender').sortable().editable().text().build()
     ];
   }
