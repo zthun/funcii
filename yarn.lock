@@ -3748,7 +3748,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@zthun/helpful-fn@^0.11.1, @zthun/helpful-fn@workspace:packages/helpful-fn":
+"@zthun/helpful-fn@^0.12.0, @zthun/helpful-fn@workspace:packages/helpful-fn":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-fn@workspace:packages/helpful-fn"
   dependencies:
@@ -3774,8 +3774,8 @@ __metadata:
   resolution: "@zthun/helpful-people@workspace:packages/helpful-people"
   dependencies:
     "@faker-js/faker": ^8.0.2
-    "@zthun/helpful-fn": ^0.11.1
-    "@zthun/helpful-query": ^0.11.1
+    "@zthun/helpful-fn": ^0.12.0
+    "@zthun/helpful-query": ^0.12.0
     lodash: ^4.17.21
     microbundle: ^0.15.1
     vite: ^4.3.9
@@ -3783,11 +3783,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@zthun/helpful-query@^0.11.1, @zthun/helpful-query@workspace:packages/helpful-query":
+"@zthun/helpful-query@^0.12.0, @zthun/helpful-query@workspace:packages/helpful-query":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-query@workspace:packages/helpful-query"
   dependencies:
-    "@zthun/helpful-fn": ^0.11.1
+    "@zthun/helpful-fn": ^0.12.0
     lodash: ^4.17.21
     microbundle: ^0.15.1
     vite: ^4.3.9
@@ -3801,7 +3801,7 @@ __metadata:
   dependencies:
     "@zthun/cirque": ^4.3.0
     "@zthun/cirque-du-react": ^4.3.0
-    "@zthun/helpful-fn": ^0.11.1
+    "@zthun/helpful-fn": ^0.12.0
     lodash: ^4.17.21
     microbundle: ^0.15.1
     react: ^18.2.0
