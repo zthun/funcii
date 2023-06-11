@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.0](https://github.com/zthun/helpful/compare/v0.12.0...v0.13.0) (2023-06-11)
+
+
+### Features
+
+* support fallbacks for asStateData ([ca77d75](https://github.com/zthun/helpful/commit/ca77d75a62b11593513a054d0fc510588e6c140c))
+
+
+
 ## [0.12.0](https://github.com/zthun/helpful/compare/v0.11.1...v0.12.0) (2023-06-10)
 
 **Note:** Version bump only for package @zthun/helpful-react
