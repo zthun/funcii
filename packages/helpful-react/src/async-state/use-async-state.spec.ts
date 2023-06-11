@@ -63,6 +63,18 @@ describe('useAsyncState', () => {
       expect(asStateData(actual)).toBeUndefined();
     });
 
+    it('should return fallback data if the data has failed to load.', async () => {
+      // Arrange.
+      mockErrorData('Something went wrong');
+      const target = await createTestTarget();
+      const expected = 'Fallback';
+      // Acct.
+      const [actual] = await target.rerender();
+      // Assert.
+      expect(isStateLoaded(actual)).toBeFalsy();
+      expect(asStateData(actual, expected)).toEqual(expected);
+    });
+
     it('should not return data that is loading.', async () => {
       // Arrange.
       mockLoadingData();

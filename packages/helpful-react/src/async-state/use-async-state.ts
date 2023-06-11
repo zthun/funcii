@@ -111,8 +111,34 @@ export function isStateErrored<T>(data: ZAsyncDataState<T>): data is Error {
  *        This method returns data if it is loaded, or undefined
  *        if it is not.
  */
-export function asStateData<T>(data: ZAsyncDataState<T>): T | undefined {
-  return isStateLoaded(data) ? data : undefined;
+export function asStateData<T>(data: ZAsyncDataState<T>): T | undefined;
+/**
+ * Returns the loaded data.
+ *
+ * @param data -
+ *        The data to retrieve.
+ * @param fallback -
+ *        The fallback to return in the case that data has not yet been loaded.
+ *
+ * @returns
+ *        This method returns data if it is loaded, or fallback
+ *        if it is not.
+ */
+export function asStateData<T>(data: ZAsyncDataState<T>, fallback: T): T;
+/**
+ * Returns the loaded data.
+ *
+ * @param data -
+ *        The data to retrieve.
+ * @param fallback -
+ *        The fallback to return in the case that data has not yet been loaded.
+ *
+ * @returns
+ *        This method returns data if it is loaded, or fallback
+ *        if it is not.
+ */
+export function asStateData<T>(data: ZAsyncDataState<T>, fallback?: T): T | undefined {
+  return isStateLoaded(data) ? data : fallback;
 }
 
 /**
