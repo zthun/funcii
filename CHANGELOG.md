@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.0](https://github.com/zthun/helpful/compare/v0.13.0...v0.14.0) (2023-06-11)
+
+
+### Features
+
+* additional people metadata ([bf6d4e2](https://github.com/zthun/helpful/commit/bf6d4e23a2387038d65963e9b7f889d0a8db906b))
+* people data source now supports options ([493136d](https://github.com/zthun/helpful/commit/493136df6b3fb27beb6d37a08e979a816cd3aff9))
+
+
+
 ## [0.13.0](https://github.com/zthun/helpful/compare/v0.12.0...v0.13.0) (2023-06-11)
 
 
