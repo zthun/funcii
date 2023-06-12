@@ -2,7 +2,7 @@
 
 import { IZCircusReactHook, ZCircusSetupHook } from '@zthun/cirque-du-react';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { useAmbassadorState } from './use-ambassador-state';
+import { ZAmbassadorReducer, useAmbassadorState } from './use-ambassador-state';
 
 describe('useAmbassadorState', () => {
   let current: string | undefined;
@@ -20,8 +20,8 @@ describe('useAmbassadorState', () => {
   });
 
   async function setValueAndRerender(
-    expected: string,
-    target: IZCircusReactHook<[string | undefined, (val: string) => void], any>
+    expected: string | ZAmbassadorReducer<string>,
+    target: IZCircusReactHook<[string | undefined, (val: string | ZAmbassadorReducer<string>) => void], any>
   ) {
     const [, setVal] = await target.current();
     setVal(expected);
@@ -53,6 +53,17 @@ describe('useAmbassadorState', () => {
       const expected = 'value-to-set';
       // Act.
       await setValueAndRerender(expected, target);
+      // Assert.
+      expect(current).toEqual(expected);
+    });
+
+    it('should set the prop value based on the current value.', async () => {
+      // Arrange.
+      const expected = '11';
+      current = '1';
+      const target = await createTestTarget();
+      // Act.
+      await setValueAndRerender((c) => c + '1', target);
       // Assert.
       expect(current).toEqual(expected);
     });

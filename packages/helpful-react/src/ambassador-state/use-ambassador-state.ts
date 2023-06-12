@@ -1,7 +1,14 @@
 import { useState } from 'react';
 
-type Reducer<T> = (current: T | undefined) => T;
-type SetCurrent<T> = ((val: T | Reducer<T>) => void) | undefined;
+/**
+ * A reducer function for the setter.
+ */
+export type ZAmbassadorReducer<T> = (current: T | undefined) => T;
+
+/**
+ * The type for setting the current value.
+ */
+export type ZAmbassadorSetCurrent<T> = ((val: T | ZAmbassadorReducer<T>) => void) | undefined;
 
 /**
  * A type of state where the value is used from the props in the case of them being set.
@@ -24,8 +31,8 @@ type SetCurrent<T> = ((val: T | Reducer<T>) => void) | undefined;
  */
 export function useAmbassadorState<T>(
   current: T | undefined,
-  setCurrent: SetCurrent<T>
-): [T | undefined, (val: T) => void];
+  setCurrent: ZAmbassadorSetCurrent<T>
+): [T | undefined, (val: T | ZAmbassadorReducer<T>) => void];
 
 /**
  * A type of state where the value is used from the props in the case of them being set.
@@ -50,9 +57,9 @@ export function useAmbassadorState<T>(
  */
 export function useAmbassadorState<T>(
   current: T | undefined,
-  setCurrent: SetCurrent<T>,
+  setCurrent: ZAmbassadorSetCurrent<T>,
   initial: T
-): [T, (val: T) => void];
+): [T, (val: T | ZAmbassadorReducer<T>) => void];
 
 /**
  * A type of state where the value is used from the props in the case of them being set.
@@ -77,18 +84,24 @@ export function useAmbassadorState<T>(
  */
 export function useAmbassadorState<T>(
   current: T | undefined,
-  setCurrent: SetCurrent<T>,
+  setCurrent: ZAmbassadorSetCurrent<T>,
   initial?: T
-): [T | undefined, (val: T) => void] {
+): [T | undefined, (val: T | ZAmbassadorReducer<T>) => void] {
   const [localCurrent, setLocalCurrent] = useState<T | undefined>(current || initial);
 
   const _current = current === undefined ? localCurrent : current;
 
-  const _setCurrent = (val: T | Reducer<T>) => {
+  const _setCurrent = (val: T | ZAmbassadorReducer<T>) => {
     setLocalCurrent(val);
 
+    const isReducer = (v: T | ZAmbassadorReducer<T>): v is ZAmbassadorReducer<T> => typeof v === 'function';
+
     if (setCurrent) {
-      setCurrent(val);
+      // There's no guarantee that this comes from a set state.
+      // A simple event function may be passed, so if the actual val is a reducer, we'll go ahead
+      // and expand here.
+      const next = isReducer(val) ? val(_current) : val;
+      setCurrent(next);
     }
   };
 
