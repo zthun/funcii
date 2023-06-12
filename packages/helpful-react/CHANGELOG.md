@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.1](https://github.com/zthun/helpful/compare/v0.14.0...v0.14.1) (2023-06-12)
+
+
+### Bug Fixes
+
+* return type of async state should now include the reducer ([d0fb77a](https://github.com/zthun/helpful/commit/d0fb77a4163c4680164ca8fbb4eab5fa855aec28))
+* the ambassador state should now respect the reducer function ([9071eb3](https://github.com/zthun/helpful/commit/9071eb37236205474ac13d3509a51d06d2cc4d66))
+
+
+
 ## [0.14.0](https://github.com/zthun/helpful/compare/v0.13.0...v0.14.0) (2023-06-11)
 
 **Note:** Version bump only for package @zthun/helpful-react
