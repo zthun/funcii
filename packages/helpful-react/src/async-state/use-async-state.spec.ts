@@ -184,5 +184,18 @@ describe('useAsyncState', () => {
       expect(load).not.toHaveBeenCalled();
       expect(actual).toEqual(expected);
     });
+
+    it('should reload the data based on the previous data.', async () => {
+      // Arrange.
+      const expected = '11';
+      mockLoadedData('1');
+      const target = await createTestTarget();
+      const [, setData] = await target.current();
+      // Act.
+      await setData((curr) => curr + '1');
+      const [actual] = await target.rerender();
+      // Assert.
+      expect(actual).toEqual(expected);
+    });
   });
 });

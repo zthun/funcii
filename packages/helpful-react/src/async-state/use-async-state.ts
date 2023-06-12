@@ -15,6 +15,8 @@ export const ZAsyncLoading = Symbol('loading');
  */
 export type ZAsyncDataState<T> = T | Symbol | Error;
 
+export type ZAsyncUseData<T> = T | ((current: T) => T);
+
 /**
  * A tuple where the first item is the current state of the data and the
  * 2nd item is a refresh function.
@@ -22,7 +24,7 @@ export type ZAsyncDataState<T> = T | Symbol | Error;
  * The refresh function also acts as a setter function to force the
  * use of the data.
  */
-export type ZAsyncDataTuple<T> = [ZAsyncDataState<T>, (val?: T) => Promise<any>];
+export type ZAsyncDataTuple<T> = [ZAsyncDataState<T>, (val?: ZAsyncUseData<T>) => Promise<any>];
 
 /**
  * Represents a hook to use async data.
