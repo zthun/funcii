@@ -3,6 +3,11 @@ import { useState } from 'react';
 /**
  * A reducer function for the setter.
  */
+export type ZAmbassadorReducerRequired<T> = (current: T) => T;
+
+/**
+ * A reducer function for the setter.
+ */
 export type ZAmbassadorReducer<T> = (current: T | undefined) => T;
 
 /**
@@ -59,7 +64,7 @@ export function useAmbassadorState<T>(
   current: T | undefined,
   setCurrent: ZAmbassadorSetCurrent<T>,
   initial: T
-): [T, (val: T | ZAmbassadorReducer<T>) => void];
+): [T, (val: T | ZAmbassadorReducerRequired<T>) => void];
 
 /**
  * A type of state where the value is used from the props in the case of them being set.
