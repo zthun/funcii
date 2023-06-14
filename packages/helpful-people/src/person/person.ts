@@ -1,6 +1,7 @@
 import { fakerEN as faker } from '@faker-js/faker';
 import { createGuid } from '@zthun/helpful-fn';
-import { IZMetadata, ZMetadataBuilder } from '@zthun/helpful-query';
+import { IZMetadata, ZMetadataBuilder, ZWellKnownIconClasses } from '@zthun/helpful-query';
+import { sample } from 'lodash';
 
 /**
  * Represents an individual.
@@ -16,6 +17,7 @@ export interface IZPerson {
   bio: string;
   birthday: string;
   gender: string;
+  consolePreference: string;
 }
 
 export class ZPersonBuilder {
@@ -29,6 +31,8 @@ export class ZPersonBuilder {
    */
   private static random(): IZPerson {
     const sex = faker.person.sexType();
+    const gender = sample(['Male', 'Female', 'Transgender', 'Agender'])!;
+    const consolePreference = sample(['xbox', 'playstation'])!;
 
     return {
       id: createGuid(),
@@ -40,7 +44,8 @@ export class ZPersonBuilder {
       bio: faker.person.bio(),
       job: faker.person.jobTitle(),
       birthday: faker.date.birthdate({ min: 1, max: 100, mode: 'age' }).toJSON(),
-      gender: faker.person.gender()
+      gender,
+      consolePreference
     };
   }
 
@@ -75,7 +80,24 @@ export class ZPersonBuilder {
         .format('L')
         .build(),
       new ZMetadataBuilder().id('job').name('Job').path('job').sortable().editable().text().build(),
-      new ZMetadataBuilder().id('gender').name('Gender').path('gender').sortable().editable().text().build()
+      new ZMetadataBuilder()
+        .id('gender')
+        .name('Gender')
+        .path('gender')
+        .sortable()
+        .editable()
+        .icon()
+        .cls(ZWellKnownIconClasses.Material)
+        .build(),
+      new ZMetadataBuilder()
+        .id('console-preference')
+        .name('Console Preference')
+        .path('consolePreference')
+        .sortable()
+        .editable()
+        .icon()
+        .cls(ZWellKnownIconClasses.FontAwesome)
+        .build()
     ];
   }
 
