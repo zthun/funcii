@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.1](https://github.com/zthun/helpful/compare/v0.15.0...v0.15.1) (2023-06-14)
+
+
+### Bug Fixes
+
+* agender is not a material icon ([7f3a2ba](https://github.com/zthun/helpful/commit/7f3a2ba3f0df605a3d181bd05842814b5c343e12))
+
+
+
 ## [0.15.0](https://github.com/zthun/helpful/compare/v0.14.2...v0.15.0) (2023-06-14)
 
 
