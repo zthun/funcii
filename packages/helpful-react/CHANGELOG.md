@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.2](https://github.com/zthun/helpful/compare/v0.14.1...v0.14.2) (2023-06-12)
+
+
+### Bug Fixes
+
+* ambassador state with initial now has a guarantee for the reducer value ([fee8298](https://github.com/zthun/helpful/commit/fee8298ce89f8cb6fc0d6dcefc3833f2a6e2909a))
+
+
+
 ## [0.14.1](https://github.com/zthun/helpful/compare/v0.14.0...v0.14.1) (2023-06-12)
 
 
