@@ -3,11 +3,20 @@
  */
 export abstract class ZWellKnownIconClasses {
   /**
-   * Font awesome.
-   *
-   * See https://fontawesome.com
+   * Font Awesome Classic.
    */
   public static readonly FontAwesome = 'https://fontawesome.com';
+
+  /**
+   * Font Awesome Brands.
+   */
+  public static readonly FontAwesomeBrands = 'https://fontawesome.com/search?o=r&f=brands';
+
+  /**
+   * Font Awesome Sharp.
+   */
+  public static readonly FontAwesomeSharp = 'https://fontawesome.com/search?o=r&f=sharp';
+
   /**
    * Material design.
    *
