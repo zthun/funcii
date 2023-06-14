@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.0](https://github.com/zthun/helpful/compare/v0.14.2...v0.15.0) (2023-06-14)
+
+
+### Features
+
+* person now has a console preference ([d5c159e](https://github.com/zthun/helpful/commit/d5c159e6c811b972d8e93ffbac3c6d3ad653d8df))
+
+
+
 ## [0.14.2](https://github.com/zthun/helpful/compare/v0.14.1...v0.14.2) (2023-06-12)
 
 
