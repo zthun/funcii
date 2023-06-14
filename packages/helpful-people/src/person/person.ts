@@ -31,7 +31,7 @@ export class ZPersonBuilder {
    */
   private static random(): IZPerson {
     const sex = faker.person.sexType();
-    const gender = sample(['Male', 'Female', 'Transgender', 'Agender'])!;
+    const gender = sample(['male', 'female', 'transgender'])!;
     const consolePreference = sample(['xbox', 'playstation'])!;
 
     return {
@@ -96,7 +96,7 @@ export class ZPersonBuilder {
         .sortable()
         .editable()
         .icon()
-        .cls(ZWellKnownIconClasses.FontAwesome)
+        .cls(ZWellKnownIconClasses.FontAwesomeBrands)
         .build()
     ];
   }
