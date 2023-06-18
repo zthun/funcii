@@ -9,4 +9,9 @@ describe('Sleep', () => {
   it('should resolve after some time.', async () => {
     await expect(sleep(10)).resolves.toBeUndefined();
   });
+
+  it('should resolve with the given value.', async () => {
+    const expected = 'value';
+    await expect(sleep(1, expected)).resolves.toEqual(expected);
+  });
 });
