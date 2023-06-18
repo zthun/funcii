@@ -20,26 +20,38 @@ export class ZDataSourceStatic<T> implements IZDataSource<T> {
    *        all data will match.
    */
   public constructor(
-    private _data: T[] | Promise<T[]>,
+    private _data: T[] | Promise<T[]> | Error | Promise<Error>,
     private _options: IZDataSourceStaticOptions<T> = new ZDataSourceStaticOptionsBuilder().build()
   ) {}
 
   public async count(request: IZDataRequest): Promise<number> {
     const { search: _search, filter: _filter } = request;
-    let data = await this._data;
-    data = filter(data, _search, this._options.search);
-    data = filter(data, _filter, this._options.filter);
-    return new Promise((resolve) => setTimeout(() => resolve(data.length), this._options.delay));
+    const data = await this._data;
+
+    if (data instanceof Error) {
+      return Promise.reject(data);
+    }
+
+    let arr: T[] = data;
+    arr = filter(arr, _search, this._options.search);
+    arr = filter(arr, _filter, this._options.filter);
+    return new Promise((resolve) => setTimeout(() => resolve(arr.length), this._options.delay));
   }
 
   public async retrieve(request: IZDataRequest): Promise<T[]> {
     const { page = 1, size = Infinity, search: _search, filter: _filter, sort: _sort } = request;
-    let data = await this._data;
-    data = filter(data, _search, this._options.search);
-    data = filter(data, _filter, this._options.filter);
-    data = sort(data, _sort);
-    data = paginate(data, page, size);
+    const data = await this._data;
 
-    return new Promise((resolve) => setTimeout(() => resolve(data), this._options.delay));
+    if (data instanceof Error) {
+      return Promise.reject(data);
+    }
+
+    let arr: T[] = data;
+    arr = filter(arr, _search, this._options.search);
+    arr = filter(arr, _filter, this._options.filter);
+    arr = sort(arr, _sort);
+    arr = paginate(arr, page, size);
+
+    return new Promise((resolve) => setTimeout(() => resolve(arr), this._options.delay));
   }
 }
