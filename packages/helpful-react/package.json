@@ -20,7 +20,8 @@
   },
   "dependencies": {
     "@zthun/helpful-fn": "^0.16.1",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "rxjs": "^7.8.1"
   },
   "devDependencies": {
     "@zthun/cirque": "^4.3.0",
@@ -33,7 +34,13 @@
   },
   "peerDependencies": {
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "rxjs": "^7.8.1"
+  },
+  "peerDependenciesMeta": {
+    "rxjs": {
+      "optional": true
+    }
   },
   "files": [
     "dist"

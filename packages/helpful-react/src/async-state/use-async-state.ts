@@ -1,4 +1,5 @@
-import { DependencyList, useEffect, useState } from 'react';
+import { DependencyList, useEffect, useRef, useState } from 'react';
+import { Subscription, defer, from } from 'rxjs';
 
 /**
  * The value that will be set on an ZAsyncDataState when the data is being loaded.
@@ -41,6 +42,18 @@ export type ZAsyncDataTuple<T> = [ZAsyncDataState<T>, (val?: ZAsyncUseData<T>) =
  */
 export function useAsyncState<T>(load: () => Promise<T>, deps: DependencyList = []): ZAsyncDataTuple<T> {
   const [current, setCurrent] = useState<ZAsyncDataState<T>>(ZAsyncLoading);
+  const subscription = useRef<Subscription>();
+
+  const _refresh = () => {
+    subscription.current?.unsubscribe();
+    subscription.current = defer(() => {
+      setCurrent(ZAsyncLoading);
+      return from(load());
+    }).subscribe({
+      next: (v) => setCurrent(v),
+      error: (e) => setCurrent(e instanceof Error ? e : new Error(e.toString()))
+    });
+  };
 
   const refresh = async (useThisData?: T) => {
     if (useThisData !== undefined) {
@@ -48,18 +61,12 @@ export function useAsyncState<T>(load: () => Promise<T>, deps: DependencyList = 
       return;
     }
 
-    try {
-      setCurrent(ZAsyncLoading);
-      const next = await load();
-      setCurrent(next);
-    } catch (err) {
-      const error = err instanceof Error ? err : new Error(err.toString());
-      setCurrent(error);
-    }
+    return _refresh();
   };
 
   useEffect(() => {
-    refresh();
+    _refresh();
+    return () => subscription.current?.unsubscribe();
   }, deps);
 
   return [current, refresh];

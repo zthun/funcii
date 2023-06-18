@@ -54,6 +54,36 @@ describe('useAsyncState', () => {
       expect(asStateData(actual)).toEqual(expected);
     });
 
+    it('should set the correct value in the case the component is unloaded and reloaded', async () => {
+      // Arrange.
+      const expected = 'good';
+      load.mockImplementationOnce(() => sleep(300, 'bad')).mockImplementationOnce(() => sleep(0, expected));
+      const target = await createTestTarget();
+      // Act.
+      await target.rerender();
+      await sleep(500);
+      const [actual] = await target.current();
+      // Assert.
+      expect(actual).toEqual(expected);
+    });
+
+    it('should set the correct value in the case that a later refresh is invoked', async () => {
+      // Arrange.
+      const expected = 'good';
+      load
+        .mockImplementationOnce(() => sleep(300, 'bad'))
+        .mockImplementationOnce(() => sleep(100, 'bad'))
+        .mockImplementationOnce(() => sleep(0, expected));
+      const target = await createTestTarget();
+      // Act.
+      const [, refresh] = await target.rerender();
+      await refresh();
+      await sleep(500);
+      const [actual] = await target.current();
+      // Assert.
+      expect(actual).toEqual(expected);
+    });
+
     it('should not return data that has failed to load.', async () => {
       // Arrange.
       mockErrorData('Something went wrong');
