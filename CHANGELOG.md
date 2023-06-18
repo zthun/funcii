@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.0](https://github.com/zthun/helpful/compare/v0.15.1...v0.16.0) (2023-06-18)
+
+
+### Features
+
+* data source can now have an error state ([b00eecd](https://github.com/zthun/helpful/commit/b00eecdbf799aed3feae542c3cef5624c33fd363))
+
+
+
 ## [0.15.1](https://github.com/zthun/helpful/compare/v0.15.0...v0.15.1) (2023-06-14)
 
 
