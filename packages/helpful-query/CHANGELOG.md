@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.2](https://github.com/zthun/helpful/compare/v0.16.1...v0.16.2) (2023-06-18)
+
+
+### Bug Fixes
+
+* static errors reject after the delay ([6e3336e](https://github.com/zthun/helpful/commit/6e3336e1510d2f58da3bb8f9d69cee8022fa6cea))
+
+
+
 ## [0.16.1](https://github.com/zthun/helpful/compare/v0.16.0...v0.16.1) (2023-06-18)
 
 **Note:** Version bump only for package @zthun/helpful-query
