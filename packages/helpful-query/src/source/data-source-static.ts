@@ -29,7 +29,7 @@ export class ZDataSourceStatic<T> implements IZDataSource<T> {
     const data = await this._data;
 
     if (data instanceof Error) {
-      return Promise.reject(data);
+      return new Promise((_, reject) => setTimeout(() => reject(data), this._options.delay));
     }
 
     let arr: T[] = data;
@@ -43,7 +43,7 @@ export class ZDataSourceStatic<T> implements IZDataSource<T> {
     const data = await this._data;
 
     if (data instanceof Error) {
-      return Promise.reject(data);
+      return new Promise((_, reject) => setTimeout(() => reject(data), this._options.delay));
     }
 
     let arr: T[] = data;
