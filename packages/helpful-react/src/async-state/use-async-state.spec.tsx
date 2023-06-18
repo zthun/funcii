@@ -2,23 +2,25 @@
 
 import { ZCircusSetupHook } from '@zthun/cirque-du-react';
 import { sleep } from '@zthun/helpful-fn';
-import { noop } from 'lodash';
-import { beforeEach, describe, expect, it, Mock, vi } from 'vitest';
+import { get, noop } from 'lodash';
+import React, { StrictMode } from 'react';
+import { Mock, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
+  ZAsyncLoading,
   asStateData,
   asStateError,
   isStateErrored,
   isStateLoaded,
   isStateLoading,
-  useAsyncState,
-  ZAsyncLoading
+  useAsyncState
 } from './use-async-state';
 
 describe('useAsyncState', () => {
   let load: Mock;
 
   async function createTestTarget() {
-    const target = await new ZCircusSetupHook(() => useAsyncState<string>(load)).setup();
+    const wrapper = ({ children }) => <StrictMode>{children}</StrictMode>;
+    const target = await new ZCircusSetupHook(() => useAsyncState<string>(load), { wrapper }).setup();
     await sleep(5);
     return target;
   }
@@ -27,8 +29,8 @@ describe('useAsyncState', () => {
     load.mockResolvedValue(data);
   }
 
-  function mockErrorData(message: string) {
-    load.mockRejectedValue(new Error(message));
+  function mockErrorData(message: string | Error) {
+    load.mockRejectedValue(message);
   }
 
   function mockLoadingData() {
@@ -97,7 +99,19 @@ describe('useAsyncState', () => {
       const [actual] = await target.rerender();
       // Assert
       expect(isStateErrored(actual)).toBeTruthy();
-      expect(asStateError(actual)?.message).toContain(expected);
+      expect(asStateError(actual)?.message).toEqual(expected);
+    });
+
+    it('should keep the error in the case that an error is already provided.', async () => {
+      // Arrange.
+      const expected = 'Something went wrong';
+      mockErrorData(new Error(expected));
+      const target = await createTestTarget();
+      // Act.
+      const [value] = await target.rerender();
+      const actual = get(value, 'message');
+      // Assert.
+      expect(actual).toEqual(expected);
     });
 
     it('should not return errors on loaded data.', async () => {

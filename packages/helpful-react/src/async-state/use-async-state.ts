@@ -53,7 +53,8 @@ export function useAsyncState<T>(load: () => Promise<T>, deps: DependencyList = 
       const next = await load();
       setCurrent(next);
     } catch (err) {
-      setCurrent(new Error(err.toString()));
+      const error = err instanceof Error ? err : new Error(err.toString());
+      setCurrent(error);
     }
   };
 
