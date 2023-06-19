@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.0](https://github.com/zthun/helpful/compare/v0.16.2...v0.17.0) (2023-06-19)
+
+
+### Bug Fixes
+
+* last refresh is the source of truth ([3212729](https://github.com/zthun/helpful/commit/3212729e6c0d79ed51c46314214e490c461c519c))
+* use original error if error is Error ([06107c6](https://github.com/zthun/helpful/commit/06107c63f3ee0f36e82ff4bd7837219be0f3ecd3))
+
+
+
 ## [0.16.2](https://github.com/zthun/helpful/compare/v0.16.1...v0.16.2) (2023-06-18)
 
 **Note:** Version bump only for package @zthun/helpful-react
