@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.0](https://github.com/zthun/helpful/compare/v0.17.1...v0.18.0) (2023-07-15)
+
+
+### Features
+
+* useStateAsArray helps with single to array casting ([1ee08bb](https://github.com/zthun/helpful/commit/1ee08bb451e94f7eadeced77d730e5b2f05a75ee))
+
+
+
 ## [0.17.1](https://github.com/zthun/helpful/compare/v0.17.0...v0.17.1) (2023-07-15)
 
 **Note:** Version bump only for package @zthun/helpful-react
