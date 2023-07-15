@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.0](https://github.com/zthun/helpful/compare/v0.16.2...v0.17.0) (2023-06-19)
+
+
+### Features
+
+* sleep can resolve with a value ([6653306](https://github.com/zthun/helpful/commit/665330654b8630e0b8152e9039226528e7a16db0))
+
+
+
 ## [0.16.2](https://github.com/zthun/helpful/compare/v0.16.1...v0.16.2) (2023-06-18)
 
 **Note:** Version bump only for package @zthun/helpful-fn
