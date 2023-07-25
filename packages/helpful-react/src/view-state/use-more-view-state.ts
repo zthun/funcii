@@ -57,10 +57,14 @@ export function useMoreViewState<T = any>(source: IZDataSource<T>, template: IZD
       });
   };
 
-  useEffect(() => {
+  const reset = () => {
     nextRequest.current = new ZDataRequestBuilder().copy(template).page(1).build();
     setView([]);
     _loadMore(0);
+  };
+
+  useEffect(() => {
+    reset();
     return () => subscription.current?.unsubscribe();
   }, [source, template.filter, template.size, template.sort, template.search]);
 
@@ -69,6 +73,7 @@ export function useMoreViewState<T = any>(source: IZDataSource<T>, template: IZD
     last,
     page: nextRequest.current.page!,
     size: nextRequest.current.size || Infinity,
-    more: () => _loadMore(view.length)
+    more: () => _loadMore(view.length),
+    reset
   };
 }

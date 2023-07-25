@@ -78,6 +78,22 @@ describe('useMoreViewState', () => {
       expect(actual).toEqual(expected);
     });
 
+    it('should reload the first page', async () => {
+      // Arrange.
+      const expected = data.slice(0, 20);
+      const target = await createTestTarget();
+      const { more } = await target.current();
+      more();
+      await rerender(target);
+      // Act.
+      const { reset } = await target.current();
+      reset();
+      await rerender(target);
+      const { view: actual } = await target.current();
+      // Assert.
+      expect(actual).toEqual(expected);
+    });
+
     it('should append to the current view', async () => {
       // Arrange.
       const expected = data.slice(0, 60);
