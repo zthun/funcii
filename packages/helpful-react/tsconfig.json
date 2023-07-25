@@ -4,7 +4,8 @@
     "baseUrl": ".",
     "declarationDir": "dist/types",
     "paths": {
-      "@zthun/helpful-fn": ["../helpful-fn/src/index"]
+      "@zthun/helpful-fn": ["../helpful-fn/src/index"],
+      "@zthun/helpful-query": ["../helpful-query/src/index"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"]
