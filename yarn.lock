@@ -3969,8 +3969,10 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     rxjs: ^7.8.1
+    typescript: ^5.1.6
     vite: ^4.4.4
     vitest: ^0.33.0
+    vitest-mock-extended: ^1.1.4
   peerDependencies:
     react: ^18.1.0
     react-dom: ^18.1.0
@@ -12842,6 +12844,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ts-essentials@npm:^9.3.2":
+  version: 9.3.2
+  resolution: "ts-essentials@npm:9.3.2"
+  peerDependencies:
+    typescript: ">=4.1.0"
+  checksum: 88726b3f9bdc8f59f9a998bb925c989268d7e2f24d29ac13545e457d3ac8ee5472c78990eaa415b4c58244d55b989985a999345d6845055f5a58bb0f098c6f44
+  languageName: node
+  linkType: hard
+
 "ts-node@npm:^10.8.1, ts-node@npm:^10.9.1":
   version: 10.9.1
   resolution: "ts-node@npm:10.9.1"
@@ -13460,6 +13471,18 @@ __metadata:
   bin:
     vite: bin/vite.js
   checksum: 51c208e53680fa46f7166e49b037625ae43d507f85f1fd3da7e290263bccb77d5f8c466fe82746285927620afeeff949ac3b8e1b6a7b4fe7bfe11419729256b4
+  languageName: node
+  linkType: hard
+
+"vitest-mock-extended@npm:^1.1.4":
+  version: 1.1.4
+  resolution: "vitest-mock-extended@npm:1.1.4"
+  dependencies:
+    ts-essentials: ^9.3.2
+  peerDependencies:
+    typescript: 3.x || 4.x || 5.x
+    vitest: ">=0.31.1"
+  checksum: f37f45eedcf033d3fb5727192b3c833927044acd7bad2fb7c1db7ef612e4ac80cebcc2fd3aa20196d00abb4c9bd4daf6e01c9ded061f9ebb8ac1e943f36045ed
   languageName: node
   linkType: hard
 
