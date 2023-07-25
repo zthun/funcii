@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 
 import { ZCircusSetupHook } from '@zthun/cirque-du-react';
+import { sleep } from '@zthun/helpful-fn';
 import {
   IZDataRequest,
   IZDataSource,
@@ -17,8 +18,11 @@ describe('usePageViewState', () => {
   let source: IZDataSource<number>;
   let request: IZDataRequest;
 
-  const createTestTarget = () => {
-    return new ZCircusSetupHook(() => usePageViewState(source, request)).setup();
+  const createTestTarget = async () => {
+    const target = await new ZCircusSetupHook(() => usePageViewState(source, request)).setup();
+    await sleep(100);
+    await target.rerender();
+    return target;
   };
 
   beforeEach(() => {
@@ -27,7 +31,7 @@ describe('usePageViewState', () => {
 
   describe('Loading', () => {
     beforeEach(() => {
-      source = new ZDataSourceStatic<number>([], new ZDataSourceStaticOptionsBuilder().delay(100).build());
+      source = new ZDataSourceStatic<number>([], new ZDataSourceStaticOptionsBuilder().delay(500).build());
     });
 
     it('should start loading the view', async () => {
@@ -63,7 +67,6 @@ describe('usePageViewState', () => {
       // Arrange.
       const expected = data.slice(20, 40);
       const target = await createTestTarget();
-      await target.rerender();
       // Act.
       const { view: actual } = await target.current();
       // Assert.
@@ -74,7 +77,6 @@ describe('usePageViewState', () => {
       // Arrange.
       request = new ZDataRequestBuilder().build();
       const target = await createTestTarget();
-      await target.rerender();
       // Act.
       const { view: actual } = await target.current();
       // Assert.
@@ -84,7 +86,6 @@ describe('usePageViewState', () => {
     it('should return the given count', async () => {
       // Arrange.
       const target = await createTestTarget();
-      await target.rerender();
       // Act.
       const { count: actual } = await target.current();
       // Assert.
@@ -95,7 +96,6 @@ describe('usePageViewState', () => {
       // Arrange.
       const expected = 6;
       const target = await createTestTarget();
-      await target.rerender();
       // Act.
       const { pages: actual } = await target.current();
       // Assert.
@@ -111,7 +111,6 @@ describe('usePageViewState', () => {
     it('should set an error for the view', async () => {
       // Arrange.
       const target = await createTestTarget();
-      await target.rerender();
       // Act.
       const { view: actual } = await target.current();
       // Assert.
@@ -121,7 +120,6 @@ describe('usePageViewState', () => {
     it('should set an error for the count', async () => {
       // Arrange.
       const target = await createTestTarget();
-      await target.rerender();
       // Act.
       const { count: actual } = await target.current();
       // Assert.
@@ -131,7 +129,6 @@ describe('usePageViewState', () => {
     it('should set the total number of pages to 1', async () => {
       // Arrange.
       const target = await createTestTarget();
-      await target.rerender();
       // Act.
       const { pages: actual } = await target.current();
       // Assert.
