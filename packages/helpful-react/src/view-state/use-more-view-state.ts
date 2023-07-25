@@ -1,6 +1,6 @@
 import { IZDataRequest, IZDataSource, ZDataRequestBuilder } from '@zthun/helpful-query';
 import { useEffect, useRef, useState } from 'react';
-import { EMPTY, Subscription, defer, from, mergeMap } from 'rxjs';
+import { Subscription, defer, from } from 'rxjs';
 import { ZAsyncDataState, ZAsyncLoading } from '../async-state/use-async-state';
 
 /**
@@ -25,42 +25,46 @@ import { ZAsyncDataState, ZAsyncLoading } from '../async-state/use-async-state';
 export function useMoreViewState<T = any>(source: IZDataSource<T>, template: IZDataRequest) {
   const [view, setView] = useState<T[]>([]);
   const [last, setLast] = useState<ZAsyncDataState<T>>(ZAsyncLoading);
+  const [complete, setComplete] = useState(false);
   const nextRequest = useRef(new ZDataRequestBuilder().copy(template).page(1).build());
   const _count = useRef<Promise<number> | null>(null);
   const subscription = useRef<Subscription>();
 
-  const _loadMore = (loaded: number) => {
+  const _loadMore = (loaded: number, complete: boolean) => {
     subscription.current?.unsubscribe();
+    subscription.current = undefined;
+
+    if (complete) {
+      return;
+    }
+
     subscription.current = defer(() => {
       _count.current = _count.current || source.count(nextRequest.current);
       setLast(ZAsyncLoading);
-      return from(_count.current);
-    })
-      .pipe(
-        mergeMap((count) => {
-          return count === loaded ? EMPTY : from(source.retrieve(nextRequest.current));
-        })
-      )
-      .subscribe({
-        next: (page) => {
-          nextRequest.current = new ZDataRequestBuilder()
-            .copy(nextRequest.current)
-            .page(nextRequest.current.page! + 1)
-            .build();
+      return from(Promise.all([_count.current, source.retrieve(nextRequest.current)]));
+    }).subscribe({
+      next: ([count, page]) => {
+        nextRequest.current = new ZDataRequestBuilder()
+          .copy(nextRequest.current)
+          .page(nextRequest.current.page! + 1)
+          .build();
 
-          setView((v) => v.concat(page));
-        },
-        error: (e) => {
-          _count.current = null;
-          setLast(e instanceof Error ? e : new Error(e));
-        }
-      });
+        setComplete(page.length + view.length >= count);
+        setView((v) => v.concat(page));
+      },
+      error: (e) => {
+        _count.current = null;
+        setComplete(false);
+        setLast(e instanceof Error ? e : new Error(e));
+      }
+    });
   };
 
   const reset = () => {
     nextRequest.current = new ZDataRequestBuilder().copy(template).page(1).build();
     setView([]);
-    _loadMore(0);
+    setComplete(false);
+    _loadMore(0, false);
   };
 
   useEffect(() => {
@@ -71,9 +75,10 @@ export function useMoreViewState<T = any>(source: IZDataSource<T>, template: IZD
   return {
     view,
     last,
+    complete,
     page: nextRequest.current.page!,
     size: nextRequest.current.size || Infinity,
-    more: () => _loadMore(view.length),
+    more: () => _loadMore(view.length, complete),
     reset
   };
 }

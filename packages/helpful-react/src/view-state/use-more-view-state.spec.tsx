@@ -118,6 +118,39 @@ describe('useMoreViewState', () => {
       // Assert.
       expect(actual).toEqual(data);
     });
+
+    it('should return false for complete if there is more data to load', async () => {
+      // Arrange.
+      template = new ZDataRequestBuilder().size(data.length / 2).build();
+      const target = await createTestTarget();
+      // Act.
+      const { complete } = await target.current();
+      // Assert.
+      expect(complete).toBeFalsy();
+    });
+
+    it('should return true for complete if there is no more data to load.', async () => {
+      // Arrange.
+      template = new ZDataRequestBuilder().build();
+      const target = await createTestTarget();
+      // Act.
+      const { complete } = await target.current();
+      // Assert.
+      expect(complete).toBeTruthy();
+    });
+
+    it('should not load any more data when complete', async () => {
+      // Arrange.
+      template = new ZDataRequestBuilder().build();
+      const target = await createTestTarget();
+      // Act.
+      const { more } = await target.current();
+      more();
+      await rerender(target);
+      const { view: actual } = await target.current();
+      // Assert.
+      expect(actual).toEqual(data);
+    });
   });
 
   describe('Error', () => {
