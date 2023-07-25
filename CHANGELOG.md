@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.0](https://github.com/zthun/helpful/compare/v0.18.0...v0.19.0) (2023-07-25)
+
+
+### Features
+
+* useMoreState hook helps with building infinite scroll views ([ed184a6](https://github.com/zthun/helpful/commit/ed184a65e7dce98b2366a84a582eaa050d7c78e8))
+* usePageViewState gives implementation for single page views ([11573e3](https://github.com/zthun/helpful/commit/11573e38a2293ccb279a9663d427fc58757525f3))
+
+
+
 ## [0.18.0](https://github.com/zthun/helpful/compare/v0.17.1...v0.18.0) (2023-07-15)
 
 
