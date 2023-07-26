@@ -109,6 +109,19 @@ describe('useMoreViewState', () => {
       expect(actual).toEqual(expected);
     });
 
+    it('should set the last page loaded', async () => {
+      // Arrange.
+      const expected = data.slice(20, 40);
+      const target = await createTestTarget();
+      // Act.
+      const { more } = await target.current();
+      more();
+      await rerender(target);
+      const { last: actual } = await target.current();
+      // Assert.
+      expect(actual).toEqual(expected);
+    });
+
     it('should load everything in one big invocation if there is no page size', async () => {
       // Arrange.
       template = new ZDataRequestBuilder().build();

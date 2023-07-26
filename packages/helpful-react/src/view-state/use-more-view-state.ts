@@ -24,7 +24,7 @@ import { ZAsyncDataState, ZAsyncLoading } from '../async-state/use-async-state';
  */
 export function useMoreViewState<T = any>(source: IZDataSource<T>, template: IZDataRequest) {
   const [view, setView] = useState<T[]>([]);
-  const [last, setLast] = useState<ZAsyncDataState<T>>(ZAsyncLoading);
+  const [last, setLast] = useState<ZAsyncDataState<T[]>>(ZAsyncLoading);
   const [complete, setComplete] = useState(false);
   const nextRequest = useRef(new ZDataRequestBuilder().copy(template).page(1).build());
   const _count = useRef<Promise<number> | null>(null);
@@ -51,6 +51,7 @@ export function useMoreViewState<T = any>(source: IZDataSource<T>, template: IZD
 
         setComplete(page.length + view.length >= count);
         setView((v) => v.concat(page));
+        setLast(page);
       },
       error: (e) => {
         _count.current = null;
