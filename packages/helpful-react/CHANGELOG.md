@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.0](https://github.com/zthun/helpful/compare/v0.19.0...v0.20.0) (2023-07-25)
+
+
+### Features
+
+* add support for complete state in useMoreViewState ([da62c7f](https://github.com/zthun/helpful/commit/da62c7fd77ce75ea54635f9d3330c9d334172016))
+* useMoreViewState now supports a reset ([13e3d8e](https://github.com/zthun/helpful/commit/13e3d8e5708c8a20cffb6e35cceb4abf54f57cfb))
+
+
+
 ## [0.19.0](https://github.com/zthun/helpful/compare/v0.18.0...v0.19.0) (2023-07-25)
 
 
