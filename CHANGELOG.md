@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.1](https://github.com/zthun/helpful/compare/v0.20.0...v0.20.1) (2023-07-26)
+
+
+### Bug Fixes
+
+* last should now be set in useMoreViewState ([194189f](https://github.com/zthun/helpful/commit/194189f6c290053842b28d370a18c1d2d9060023))
+
+
+
 ## [0.20.0](https://github.com/zthun/helpful/compare/v0.19.0...v0.20.0) (2023-07-25)
 
 
