@@ -1,4 +1,4 @@
-import { fakerEN as faker } from '@faker-js/faker';
+import { faker } from '@faker-js/faker/locale/en';
 import { createGuid } from '@zthun/helpful-fn';
 import { IZMetadata, ZMetadataBuilder, ZWellKnownIconClasses } from '@zthun/helpful-query';
 import { sample } from 'lodash';
