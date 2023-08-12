@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.1](https://github.com/zthun/helpful/compare/v0.21.0...v0.21.1) (2023-08-12)
+
+
+### Bug Fixes
+
+* export file select ([dc29181](https://github.com/zthun/helpful/commit/dc2918171a62b21ee7cb604f78f36b776641a030))
+
+
+
 ## [0.21.0](https://github.com/zthun/helpful/compare/v0.20.1...v0.21.0) (2023-08-12)
 
 
