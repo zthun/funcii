@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.4](https://github.com/zthun/helpful/compare/v0.21.3...v0.21.4) (2023-08-12)
+
+
+### Bug Fixes
+
+* global declaration for node and browser ([65dba83](https://github.com/zthun/helpful/commit/65dba83afd69f314113ba96849ace5f8105452f8))
+
+
+
 ## [0.21.3](https://github.com/zthun/helpful/compare/v0.21.2...v0.21.3) (2023-08-12)
 
 **Note:** Version bump only for package @zthun/helpful-react
