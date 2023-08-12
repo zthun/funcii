@@ -6,7 +6,7 @@ const __global$ = <any>window || <any>global;
 /**
  * Represents the window context.
  */
-export const ZWindowServiceContext = createContext(__global$);
+export const ZWindowServiceContext = createContext<typeof globalThis>(__global$);
 
 /**
  * Gets the current window object.
