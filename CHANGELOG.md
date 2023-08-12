@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.2](https://github.com/zthun/helpful/compare/v0.21.1...v0.21.2) (2023-08-12)
+
+
+### Bug Fixes
+
+* fully qualify document object ([fc7e1d4](https://github.com/zthun/helpful/commit/fc7e1d465f56b2a637f3bc45e3c5c23a99d0aaa4))
+
+
+
 ## [0.21.1](https://github.com/zthun/helpful/compare/v0.21.0...v0.21.1) (2023-08-12)
 
 
