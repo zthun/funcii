@@ -3920,6 +3920,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@zthun/helpful-internet@workspace:packages/helpful-internet":
+  version: 0.0.0-use.local
+  resolution: "@zthun/helpful-internet@workspace:packages/helpful-internet"
+  dependencies:
+    "@zthun/helpful-fn": ^0.20.1
+    microbundle: ^0.15.1
+    vite: ^4.4.7
+    vitest: ^0.33.0
+  languageName: unknown
+  linkType: soft
+
 "@zthun/helpful-obligation@workspace:packages/helpful-obligation":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-obligation@workspace:packages/helpful-obligation"
