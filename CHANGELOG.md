@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.0](https://github.com/zthun/helpful/compare/v0.20.1...v0.21.0) (2023-08-12)
+
+
+### Features
+
+* file select allows users to select files from the file system ([8c97914](https://github.com/zthun/helpful/commit/8c979142fccab5afb9fa7b989035a41d7401125f))
+* helpful internet has object builders for internet related entities ([068e0c8](https://github.com/zthun/helpful/commit/068e0c814f091c86dca742ccddd042dc9acb3dcf))
+* window service give a dependency injectable global object ([ab1d77f](https://github.com/zthun/helpful/commit/ab1d77fd43c4fc6d8abe9d4b938055a3dc258a97))
+
+
+
 ## [0.20.1](https://github.com/zthun/helpful/compare/v0.20.0...v0.20.1) (2023-07-26)
 
 
