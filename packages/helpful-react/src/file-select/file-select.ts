@@ -36,16 +36,12 @@ export class ZFileSelect implements IZFileSelect {
   private _input: HTMLInputElement;
   private _cb: (file: File) => void;
 
-  /**
-   * Initializes a new instance of this object.
-   *
-   * @param doc -
-   *        The root document that can be used to create the file dialog.
-   * @param container -
-   *        The container to house the input element.
-   */
-  public constructor(doc: Document = global.document, container: HTMLElement = doc.body) {
-    this._input = doc.createElement('input');
+  private get $input() {
+    if (this._input != null) {
+      return this._input;
+    }
+
+    this._input = this._doc.createElement('input');
     this._input.type = 'file';
     this._input.style.position = 'absolute';
     this._input.style.visibility = 'hidden';
@@ -62,8 +58,20 @@ export class ZFileSelect implements IZFileSelect {
         this._cb(file);
       }
     };
-    container.appendChild(this._input);
+
+    this._container.appendChild(this._input);
+    return this._input;
   }
+
+  /**
+   * Initializes a new instance of this object.
+   *
+   * @param doc -
+   *        The root document that can be used to create the file dialog.
+   * @param container -
+   *        The container to house the input element.
+   */
+  public constructor(private _doc: Document = global.document, private _container: HTMLElement = _doc?.body) {}
 
   /**
    * Opens the file dialog.
@@ -80,9 +88,9 @@ export class ZFileSelect implements IZFileSelect {
    *        The callback for when the user selects a file.
    */
   public open(accept: string, cb: (file: File) => void) {
-    this._input.accept = accept;
+    this.$input.accept = accept;
     this._cb = cb;
-    this._input.click();
+    this.$input.click();
   }
 }
 
