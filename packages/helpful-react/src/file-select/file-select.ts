@@ -44,7 +44,7 @@ export class ZFileSelect implements IZFileSelect {
    * @param container -
    *        The container to house the input element.
    */
-  public constructor(doc: Document = document, container: HTMLElement = doc.body) {
+  public constructor(doc: Document = global.document, container: HTMLElement = doc.body) {
     this._input = doc.createElement('input');
     this._input.type = 'file';
     this._input.style.position = 'absolute';
