@@ -3557,9 +3557,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zthun/eslint-config@npm:^14.3.0":
-  version: 14.3.0
-  resolution: "@zthun/eslint-config@npm:14.3.0"
+"@zthun/eslint-config@npm:^14.3.1":
+  version: 14.3.1
+  resolution: "@zthun/eslint-config@npm:14.3.1"
   dependencies:
     "@typescript-eslint/eslint-plugin": ^6.4.0
     "@typescript-eslint/parser": ^6.4.0
@@ -3567,19 +3567,19 @@ __metadata:
     eslint-plugin-tsdoc: ^0.2.17
   peerDependencies:
     eslint: ^8.5.0
-  checksum: 04a94bd9c9bc0d37f80a286b5ffd8e45d3a021a0d40584d14a8339a054ae4784de74b7d53262507b94c8a2d641f24d468d7aea7bd2ecb45eb6ef53ae7d6ab8d3
+  checksum: 8a1d14952971e5eb2159409cc9fae03ed23a3324ac52e46cc70678a6fc444c142003c1aa918a81c196016dc418eac5327c0daa9ec5b5e977fa948501c3fcc326
   languageName: node
   linkType: hard
 
-"@zthun/eslint-react-config@npm:^14.3.0":
-  version: 14.3.0
-  resolution: "@zthun/eslint-react-config@npm:14.3.0"
+"@zthun/eslint-react-config@npm:^14.3.1":
+  version: 14.3.1
+  resolution: "@zthun/eslint-react-config@npm:14.3.1"
   dependencies:
-    "@zthun/eslint-config": ^14.3.0
+    "@zthun/eslint-config": ^14.3.1
     eslint-plugin-react: ^7.33.1
   peerDependencies:
     eslint: ^8.5.0
-  checksum: 08a141532ccfab283b99131d2a00c1be2d2db2c0ad45a40fa896a6696bc5dc5f6e2782c6fe0de0f3a0ca5b0ab0942c5a2f4fac19df19bc40ab22d1578b28dbc1
+  checksum: 63099772f3c86f9561226474f4c4489ff055d8372c19bbfbfa29efabb4a3f5f3d2c9c5e394c83a84a16ca219d6198622e705caec2c1434f59d9eab09c8c369be
   languageName: node
   linkType: hard
 
@@ -3691,8 +3691,8 @@ __metadata:
     "@types/react": ^18.2.20
     "@types/uuid": ^9.0.2
     "@vitest/coverage-istanbul": ^0.34.1
-    "@zthun/lint-janitor": ^14.3.0
-    "@zthun/lint-janitor-config": ^14.3.0
+    "@zthun/lint-janitor": ^14.3.1
+    "@zthun/lint-janitor-config": ^14.3.1
     husky: ^8.0.3
     jsdom: ^22.1.0
     lerna: ^7.1.5
@@ -3714,16 +3714,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zthun/lint-janitor-config@npm:^14.3.0":
-  version: 14.3.0
-  resolution: "@zthun/lint-janitor-config@npm:14.3.0"
+"@zthun/lint-janitor-config@npm:^14.3.1":
+  version: 14.3.1
+  resolution: "@zthun/lint-janitor-config@npm:14.3.1"
   dependencies:
-    "@zthun/eslint-config": ^14.3.0
-    "@zthun/eslint-react-config": ^14.3.0
+    "@zthun/eslint-config": ^14.3.1
+    "@zthun/eslint-react-config": ^14.3.1
     "@zthun/htmlhint-config": ^14.1.0
-    "@zthun/markdownlint-config": ^14.2.0
-    "@zthun/prettier-config": ^14.1.0
-    "@zthun/stylelint-config": ^14.3.0
+    "@zthun/markdownlint-config": ^14.3.1
+    "@zthun/prettier-config": ^14.3.1
+    "@zthun/stylelint-config": ^14.3.1
     eslint: ^8.47.0
     htmlhint: ^1.1.4
     markdownlint: ~0.30.0
@@ -3731,13 +3731,13 @@ __metadata:
     stylelint: ^15.10.2
   peerDependencies:
     "@zthun/lint-janitor": ^14.0.0
-  checksum: f8cd534ac27ef47b63286c3d1c400340f8b43fdcc5a94d46a79d39cea5878b924939917af815f1ea8993e09e19cab14616804b017b13c96ea9ed4acd8623e3ec
+  checksum: 45ad932097d78b262a95b3110d709aeabb250efc17719dcf539f9342cf30c6ab4f5fcd32d8d99fe5c5cd61b6ebabfb30de920a2ea1b9afa5ef9cc7a61e66fcdb
   languageName: node
   linkType: hard
 
-"@zthun/lint-janitor@npm:^14.3.0":
-  version: 14.3.0
-  resolution: "@zthun/lint-janitor@npm:14.3.0"
+"@zthun/lint-janitor@npm:^14.3.1":
+  version: 14.3.1
+  resolution: "@zthun/lint-janitor@npm:14.3.1"
   dependencies:
     acorn: ^8.10.0
     chalk: ^4.1.2
@@ -3754,36 +3754,36 @@ __metadata:
     yargs: ^17.7.2
   bin:
     lint-janitor: dist/cli.js
-  checksum: a0b935e7f0db54f0f87ef342c7fc514d449f7a16be5b87905f85986fb19a8fd55955686301d0d59704197c0aa9aa8df6b7e33611d4d59c10fd7121af30e1fafe
+  checksum: 391ddc76e60d099ec0b46b13e5617b6758f4c64fdb01e449c9cf8e778bc5121f2f8c6c7b7d941127122b23b5e29033c21e029999d0404a6cee154a8be61a41cc
   languageName: node
   linkType: hard
 
-"@zthun/markdownlint-config@npm:^14.2.0":
-  version: 14.2.0
-  resolution: "@zthun/markdownlint-config@npm:14.2.0"
+"@zthun/markdownlint-config@npm:^14.3.1":
+  version: 14.3.1
+  resolution: "@zthun/markdownlint-config@npm:14.3.1"
   peerDependencies:
-    markdownlint: ~0.29.0
-  checksum: 8b1acbc966f690c8152169f42b5b8d5a76119ea647cfd89f77145c5b16287677b9fba37880673d04ef971068252237ca5f1c57cebcccce7101845465ebc2b2ef
+    markdownlint: ~0.30.0
+  checksum: 8821ec404a20afe4ed41b071215a635ebe7b771455f9c7e7cd0bcc389cad2e5006d66ba20203bc1d163f9277f1dbff71cd485d5feca69ed9bc1f68a278b0fe6c
   languageName: node
   linkType: hard
 
-"@zthun/prettier-config@npm:^14.1.0":
-  version: 14.1.0
-  resolution: "@zthun/prettier-config@npm:14.1.0"
+"@zthun/prettier-config@npm:^14.3.1":
+  version: 14.3.1
+  resolution: "@zthun/prettier-config@npm:14.3.1"
   peerDependencies:
-    prettier: ^2.2.0
-  checksum: ebd9f0d5ab7d367c7d936ff68c03c4e6d2ebc1cf6d953ed92b23452972d322c60d4f7499a59c59771ef543ba0d3966c1129e1cb868ff91d5bbcb4fbfc34caae9
+    prettier: ^3.0.2
+  checksum: b42dd62e2dcc3eefa72737817859fb7d4794598982540ab3c5e5d71a14081e8a2673d84708a830753ffa2f8bd8f153faf791bda0e8707070194ad623e3587294
   languageName: node
   linkType: hard
 
-"@zthun/stylelint-config@npm:^14.3.0":
-  version: 14.3.0
-  resolution: "@zthun/stylelint-config@npm:14.3.0"
+"@zthun/stylelint-config@npm:^14.3.1":
+  version: 14.3.1
+  resolution: "@zthun/stylelint-config@npm:14.3.1"
   dependencies:
     stylelint-config-standard: ^34.0.0
   peerDependencies:
     stylelint: ^15.7.0
-  checksum: 801ea202faf335f42f962687d578daa5963bac6ebae34e6981ad280bf6e2b43fc9c0ec93848f4c2e68b82ac6bbc55c6d9f0d4712f75f2cf99db0e57fc39a11e3
+  checksum: 54d5d2132ef018015b83be42a40fcf01afac6c9c7acf7c3b8b72a759ece1bc7c0aeb6747841f6889280014d07db034c89c3c14d95022d08358344678ca479894
   languageName: node
   linkType: hard
 
