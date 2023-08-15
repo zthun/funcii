@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.6](https://github.com/zthun/helpful/compare/v0.21.5...v0.21.6) (2023-08-15)
+
+
+### Bug Fixes
+
+* should no longer bundle @zthun/helpful-fn ([0a051fe](https://github.com/zthun/helpful/commit/0a051fed0f8896a12eb3e0fd8b3d6b4eef67fd9e))
+* should no longer bundle uuid ([abcae97](https://github.com/zthun/helpful/commit/abcae97ab85b8096b5159020ffe635686bde49f0))
+
+
+
 ## [0.21.5](https://github.com/zthun/helpful/compare/v0.21.4...v0.21.5) (2023-08-12)
 
 
