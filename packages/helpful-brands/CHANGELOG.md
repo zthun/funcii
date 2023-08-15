@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0](https://github.com/zthun/helpful/compare/v0.21.6...v2.0.0) (2023-08-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* stable release
+
+### Features
+
+* stable release ([cd0a160](https://github.com/zthun/helpful/commit/cd0a160385a131e2c8fc5bebe9a7e4ff25e00abf))
+
+
+
 ## [0.21.5](https://github.com/zthun/helpful/compare/v0.21.4...v0.21.5) (2023-08-12)
 
 **Note:** Version bump only for package @zthun/helpful-brands
