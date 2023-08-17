@@ -9,6 +9,7 @@ export * from './match/data-match-always';
 export * from './match/data-match-optional';
 export * from './metadata/metadata';
 export * from './metadata/well-known-icon-classes';
+export * from './page/page';
 export * from './search/data-search-fields';
 export * from './search/data-search-text';
 export * from './sort/sort';
