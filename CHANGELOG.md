@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.0](https://github.com/zthun/helpful/compare/v2.0.0...v2.1.0) (2023-08-17)
+
+
+### Features
+
+* data request can be built from query params ([908dedd](https://github.com/zthun/helpful/commit/908dedd21493efaf97df68dbc007122de5731d35))
+* page builder allows a representation of a page in an api ([b83feaf](https://github.com/zthun/helpful/commit/b83feaf4e26d38b7b9deb3231b883ee5471a9075))
+* pieces of a request are removable ([4282a5b](https://github.com/zthun/helpful/commit/4282a5b750c5d82261ad483be24297bd68a7b8a0))
+
+
+
 ## [2.0.0](https://github.com/zthun/helpful/compare/v0.21.6...v2.0.0) (2023-08-15)
 
 
