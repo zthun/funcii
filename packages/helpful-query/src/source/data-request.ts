@@ -2,6 +2,32 @@ import { IZFilter } from '../filter/filter';
 import { IZSort } from '../sort/sort';
 
 /**
+ * Describes a request as if it was placed an a url in the query params.
+ */
+export interface IZDataRequestQuery {
+  /**
+   * Page number.
+   */
+  page?: string;
+  /**
+   * Page size.
+   */
+  size?: string;
+  /**
+   * Search criterion.
+   */
+  search?: string;
+  /**
+   * Filter criterion.
+   */
+  filter?: string;
+  /**
+   * Sort criterion.
+   */
+  sort?: string;
+}
+
+/**
  * Describes a request for a given set of data.
  */
 export interface IZDataRequest {
@@ -72,7 +98,11 @@ export class ZDataRequestBuilder {
    *        A reference to this object.
    */
   public page(page?: number): this {
-    this._request.page = page;
+    if (page != null) {
+      this._request.page = Math.max(page, 1);
+    } else {
+      delete this._request.page;
+    }
     return this;
   }
 
@@ -86,7 +116,11 @@ export class ZDataRequestBuilder {
    *        A reference to this object.
    */
   public size(size?: number): this {
-    this._request.size = size;
+    if (size != null) {
+      this._request.size = Math.max(size, 0);
+    } else {
+      delete this._request.size;
+    }
     return this;
   }
 
@@ -143,6 +177,37 @@ export class ZDataRequestBuilder {
    */
   public copy(other: IZDataRequest) {
     this._request = JSON.parse(JSON.stringify(other));
+    return this;
+  }
+
+  /**
+   * Constructs the data from a request query.
+   *
+   * This is useful for putting request parameters on a url.
+   *
+   * @param query -
+   *        The query that was requested.
+   *
+   * @returns
+   *        This object.
+   */
+  public query(query: IZDataRequestQuery) {
+    // TODO: Filter and Sort parse - what language should be used?
+
+    if (query.page != null) {
+      const page = +query.page;
+      this.page(isNaN(page) ? this._request.page : page);
+    }
+
+    if (query.size != null) {
+      const size = +query.size;
+      this.size(isNaN(size) ? this._request.size : size);
+    }
+
+    if (query.search != null) {
+      this.search(query.search);
+    }
+
     return this;
   }
 
