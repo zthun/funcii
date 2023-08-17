@@ -102,6 +102,16 @@ describe('ZDataSourceStatic', () => {
       await shouldResultInPage([], request);
     });
 
+    it('should remove the page number', async () => {
+      const request = new ZDataRequestBuilder().page(2).page().build();
+      await shouldResultInPage(await arr, request);
+    });
+
+    it('should remove the page size', async () => {
+      const request = new ZDataRequestBuilder().size(1).size().build();
+      await shouldResultInPage(await arr, request);
+    });
+
     it('should return the entire data set if the size is infinite and the page is equal to 1', async () => {
       const request = new ZDataRequestBuilder().build();
       await shouldResultInPage(await arr, request);
@@ -179,15 +189,20 @@ describe('ZDataSourceStatic', () => {
       data = objects;
     });
 
-    async function assertMatchesData(expected: any[], filter: IZFilter) {
+    async function assertMatchesData(expected: any[], filter?: IZFilter) {
       // Arrange.
       const target = createTestTarget();
-      const request = new ZDataRequestBuilder().filter(filter).build();
+      const garbage = new ZFilterUnaryBuilder().subject('person.id').isNull().build();
+      const request = new ZDataRequestBuilder().filter(garbage).filter(filter).build();
       // Act.
       const actual = await target.retrieve(request);
       // Assert.
       expect(actual).toEqual(expected);
     }
+
+    it('should remove the filter', async () => {
+      await assertMatchesData(objects, undefined);
+    });
 
     describe('Binary', () => {
       describe('Equals', () => {
@@ -426,6 +441,16 @@ describe('ZDataSourceStatic', () => {
       data = [batman, superman, wonderWoman, johnConstantine, greenLantern];
     });
 
+    it('should remove the search', async () => {
+      // Arrange.
+      const target = createTestTarget();
+      const request = new ZDataRequestBuilder().search('man').search().build();
+      // Act.
+      const actual = await target.retrieve(request);
+      // Assert.
+      expect(actual).toEqual(data);
+    });
+
     it('should default to always return data', async () => {
       // Arrange.
       options = undefined;
@@ -473,6 +498,17 @@ describe('ZDataSourceStatic', () => {
   });
 
   describe('Sort', () => {
+    it('should remove the sort', async () => {
+      // Arrange.
+      data = [null, 1, 3, 5, 7, null, 2, 4, 8, 6, null];
+      const target = createTestTarget();
+      const request = new ZDataRequestBuilder().sort(new ZSortBuilder().ascending().build()).sort().build();
+      // Act.
+      const actual = await target.retrieve(request);
+      // Assert.
+      expect(actual).toEqual(data);
+    });
+
     it('should sort the data', async () => {
       // Arrange.
       data = [null, 1, 3, 5, 7, null, 2, 4, 8, 6, null];

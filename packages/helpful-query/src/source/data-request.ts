@@ -71,7 +71,7 @@ export class ZDataRequestBuilder {
    * @returns
    *        A reference to this object.
    */
-  public page(page: number): this {
+  public page(page?: number): this {
     this._request.page = page;
     return this;
   }
@@ -85,7 +85,7 @@ export class ZDataRequestBuilder {
    * @returns
    *        A reference to this object.
    */
-  public size(size: number): this {
+  public size(size?: number): this {
     this._request.size = size;
     return this;
   }
@@ -99,7 +99,7 @@ export class ZDataRequestBuilder {
    * @returns
    *        A reference to this object.
    */
-  public search(search: string): this {
+  public search(search?: string): this {
     this._request.search = search;
     return this;
   }
@@ -113,7 +113,7 @@ export class ZDataRequestBuilder {
    * @returns
    *        A reference to this object.
    */
-  public filter(filter: IZFilter): this {
+  public filter(filter?: IZFilter): this {
     this._request.filter = filter;
     return this;
   }
@@ -127,7 +127,7 @@ export class ZDataRequestBuilder {
    * @returns
    *        A reference to this object.
    */
-  public sort(sort: IZSort[]): this {
+  public sort(sort?: IZSort[]): this {
     this._request.sort = sort;
     return this;
   }
