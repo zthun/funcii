@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.1](https://github.com/zthun/helpful/compare/v2.2.0...v2.2.1) (2023-08-19)
+
+
+### Bug Fixes
+
+* create error should now respect data as well ([bbc7ae5](https://github.com/zthun/helpful/commit/bbc7ae5f9664cb6cb8234f1e452e5993ebf41a84))
+
+
+
 ## [2.2.0](https://github.com/zthun/helpful/compare/v2.1.0...v2.2.0) (2023-08-19)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@zthun/helpful-internet",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Helpful objects that represents internet base entities",
   "author": "Anthony Bonta",
   "license": "MIT",
@@ -19,7 +19,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@zthun/helpful-fn": "^2.2.0"
+    "@zthun/helpful-fn": "^2.2.1"
   },
   "devDependencies": {
     "microbundle": "^0.15.1",
