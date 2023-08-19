@@ -24,10 +24,10 @@
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
     "@types/lodash": "^4.14.197",
-    "@types/node": "^20.5.0",
+    "@types/node": "^20.5.1",
     "@types/react": "^18.2.20",
     "@types/uuid": "^9.0.2",
-    "@vitest/coverage-istanbul": "^0.34.1",
+    "@vitest/coverage-istanbul": "^0.34.2",
     "@zthun/lint-janitor": "^14.3.1",
     "@zthun/lint-janitor-config": "^14.3.1",
     "husky": "^8.0.3",
@@ -38,7 +38,7 @@
     "typescript": "^5.1.6",
     "vite": "^4.4.9",
     "vite-tsconfig-paths": "^4.2.0",
-    "vitest": "^0.34.1"
+    "vitest": "^0.34.2"
   },
   "packageManager": "yarn@3.3.1"
 }
