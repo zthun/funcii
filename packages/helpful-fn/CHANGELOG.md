@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.0](https://github.com/zthun/helpful/compare/v2.1.0...v2.2.0) (2023-08-19)
+
+
+### Features
+
+* create-error extracts error information from objects ([357d95a](https://github.com/zthun/helpful/commit/357d95a761c7fac8b01de47446a7b398c2c9503b))
+
+
+
 ## [2.1.0](https://github.com/zthun/helpful/compare/v2.0.0...v2.1.0) (2023-08-17)
 
 **Note:** Version bump only for package @zthun/helpful-fn
