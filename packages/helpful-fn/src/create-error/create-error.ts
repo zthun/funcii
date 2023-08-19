@@ -14,7 +14,7 @@
  * @returns
  *        An error object that is the best evaluation of what the problem actually is.
  */
-export function createError(problem: any, schema = ['message', 'error', 'exception']): Error {
+export function createError(problem: any, schema = ['message', 'error', 'exception', 'data']): Error {
   if (problem instanceof Error) {
     return problem;
   }

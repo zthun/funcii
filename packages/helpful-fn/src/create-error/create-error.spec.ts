@@ -17,7 +17,7 @@ describe('Create Error', () => {
 
   it('should recursively retrieve the error message', () => {
     const expected = 'This should be the actual error';
-    const input = { error: { exception: { message: expected } } };
+    const input = { data: { error: { exception: { message: expected } } } };
     expect(createError(input).message).toBe(expected);
   });
 
