@@ -1,3 +1,4 @@
+import { createError } from '@zthun/helpful-fn';
 import { IZDataRequest, IZDataSource, ZDataRequestBuilder } from '@zthun/helpful-query';
 import { useEffect, useRef, useState } from 'react';
 import { Subscription, defer, from } from 'rxjs';
@@ -30,7 +31,7 @@ export function useMoreViewState<T = any>(source: IZDataSource<T>, template: IZD
   const _count = useRef<Promise<number> | null>(null);
   const subscription = useRef<Subscription>();
 
-  const _loadMore = (loaded: number, complete: boolean) => {
+  const _loadMore = (complete: boolean) => {
     subscription.current?.unsubscribe();
     subscription.current = undefined;
 
@@ -56,7 +57,7 @@ export function useMoreViewState<T = any>(source: IZDataSource<T>, template: IZD
       error: (e) => {
         _count.current = null;
         setComplete(false);
-        setLast(e instanceof Error ? e : new Error(e));
+        setLast(createError(e));
       }
     });
   };
@@ -65,7 +66,7 @@ export function useMoreViewState<T = any>(source: IZDataSource<T>, template: IZD
     nextRequest.current = new ZDataRequestBuilder().copy(template).page(1).build();
     setView([]);
     setComplete(false);
-    _loadMore(0, false);
+    _loadMore(false);
   };
 
   useEffect(() => {
@@ -79,7 +80,7 @@ export function useMoreViewState<T = any>(source: IZDataSource<T>, template: IZD
     complete,
     page: nextRequest.current.page!,
     size: nextRequest.current.size || Infinity,
-    more: () => _loadMore(view.length, complete),
+    more: () => _loadMore(complete),
     reset
   };
 }
