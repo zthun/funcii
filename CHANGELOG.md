@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.0](https://github.com/zthun/helpful/compare/v2.1.0...v2.2.0) (2023-08-19)
+
+
+### Features
+
+* create-error extracts error information from objects ([357d95a](https://github.com/zthun/helpful/commit/357d95a761c7fac8b01de47446a7b398c2c9503b))
+
+
+### Bug Fixes
+
+* error from useMoreViewState should have better extraction ([8b8d47c](https://github.com/zthun/helpful/commit/8b8d47cd3ffd4d33f62c730d35b8ae4567d273ad))
+* error message from useAsyncState should now have better extraction ([f9a765e](https://github.com/zthun/helpful/commit/f9a765ea5e174c102550665844918cfed2bf544c))
+
+
+
 ## [2.1.0](https://github.com/zthun/helpful/compare/v2.0.0...v2.1.0) (2023-08-17)
 
 
