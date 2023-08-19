@@ -1,3 +1,4 @@
+import { createError } from '@zthun/helpful-fn';
 import { DependencyList, useEffect, useRef, useState } from 'react';
 import { Subscription, defer, from } from 'rxjs';
 
@@ -51,7 +52,7 @@ export function useAsyncState<T>(load: () => Promise<T>, deps: DependencyList = 
       return from(load());
     }).subscribe({
       next: (v) => setCurrent(v),
-      error: (e) => setCurrent(e instanceof Error ? e : new Error(e.toString()))
+      error: (e) => setCurrent(createError(e))
     });
   };
 

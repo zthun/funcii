@@ -29,7 +29,7 @@ describe('useAsyncState', () => {
     load.mockResolvedValue(data);
   }
 
-  function mockErrorData(message: string | Error) {
+  function mockErrorData(message: string | Error | { message: string }) {
     load.mockRejectedValue(message);
   }
 
@@ -122,14 +122,14 @@ describe('useAsyncState', () => {
   describe('Error', () => {
     it('should return an error object.', async () => {
       // Arrange.
-      const expected = 'Something went wrong';
+      const expected = { message: 'Something went wrong' };
       mockErrorData(expected);
       const target = await createTestTarget();
       // Act.
       const [actual] = await target.rerender();
       // Assert
       expect(isStateErrored(actual)).toBeTruthy();
-      expect(asStateError(actual)?.message).toEqual(expected);
+      expect(asStateError(actual)?.message).toEqual(expected.message);
     });
 
     it('should keep the error in the case that an error is already provided.', async () => {
