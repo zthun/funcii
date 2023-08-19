@@ -1,5 +1,6 @@
 export * from './anchor/anchor';
 export * from './count-buckets/count-buckets';
+export * from './create-error/create-error';
 export * from './create-guid/create-guid';
 export * from './first-defined/first-defined';
 export * from './join-defined/join-defined';
