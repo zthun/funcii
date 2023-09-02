@@ -1,6 +1,6 @@
 {
   "name": "@zthun/helpful-people",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "Helpful people useful for large static data for demos of front end components and backend services.",
   "author": "Anthony Bonta",
   "license": "MIT",
@@ -20,8 +20,8 @@
   },
   "dependencies": {
     "@faker-js/faker": "^8.0.2",
-    "@zthun/helpful-fn": "^2.2.1",
-    "@zthun/helpful-query": "^2.2.1",
+    "@zthun/helpful-fn": "^2.3.0",
+    "@zthun/helpful-query": "^2.3.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
