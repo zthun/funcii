@@ -9,7 +9,8 @@
       "@zthun/helpful-internet": ["helpful-internet/src/index"],
       "@zthun/helpful-obligation": ["helpful-obligation/src/index"],
       "@zthun/helpful-query": ["helpful-query/src/index"],
-      "@zthun/helpful-react": ["helpful-react/src/index"]
+      "@zthun/helpful-react": ["helpful-react/src/index"],
+      "@zthun/helpful-validation": ["helpful-validation/src/index"]
     }
   },
   "include": ["**/*.ts"],
