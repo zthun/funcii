@@ -27,3 +27,8 @@ RUN --mount=type=secret,id=GIT_CREDENTIALS,dst=/root/.git-credentials npx lerna 
     git push && \
     git push --tags
 RUN --mount=type=secret,id=NPM_CREDENTIALS,dst=/root/.npmrc npx lerna publish from-package --yes
+
+FROM node:lts-bullseye-slim as helpful-api
+RUN npm install -g @zthun/helpful-api
+EXPOSE 3000
+CMD ["helpful-api"]
