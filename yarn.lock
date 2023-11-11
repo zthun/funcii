@@ -2488,10 +2488,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@faker-js/faker@npm:^8.0.2":
-  version: 8.0.2
-  resolution: "@faker-js/faker@npm:8.0.2"
-  checksum: cf73daf9a50397eb0b3f04a7ef3fbb6f54acc026b167707136a7e58a517fd805a46c9e8c5f017f3022f104a4ff984765daaeee2cb98b3c34646db05c2acad441
+"@faker-js/faker@npm:^8.2.0":
+  version: 8.2.0
+  resolution: "@faker-js/faker@npm:8.2.0"
+  checksum: febc17018acfb841a348591bfe415e815ea981bf7fa0a12670ac2b449479ad7e9e7b130c42878ec30210da964c13a620a3303dc00d63cb13ded00c6fc701e2be
   languageName: node
   linkType: hard
 
@@ -3930,7 +3930,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-people@workspace:packages/helpful-people"
   dependencies:
-    "@faker-js/faker": ^8.0.2
+    "@faker-js/faker": ^8.2.0
     "@zthun/helpful-fn": ^2.3.0
     "@zthun/helpful-query": ^2.3.0
     lodash: ^4.17.21
