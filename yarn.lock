@@ -4151,6 +4151,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@zthun/helpful-proxy@workspace:packages/helpful-proxy":
+  version: 0.0.0-use.local
+  resolution: "@zthun/helpful-proxy@workspace:packages/helpful-proxy"
+  dependencies:
+    nodemon: ^3.0.1
+    typescript: ^5.1.6
+    vitest: ^0.34.2
+    vitest-mock-extended: ^1.2.0
+  bin:
+    helpful-proxy: ./bin/main.js
+  languageName: unknown
+  linkType: soft
+
 "@zthun/helpful-query@^2.4.0, @zthun/helpful-query@workspace:packages/helpful-query":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-query@workspace:packages/helpful-query"
