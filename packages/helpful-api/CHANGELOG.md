@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.5.0](https://github.com/zthun/helpful/compare/v2.4.0...v2.5.0) (2023-11-13)
+
+
+### Bug Fixes
+
+* include the bin folder in the package ([ff020c8](https://github.com/zthun/helpful/commit/ff020c8af41e18e86c45a9625e63288449502900))
+
+
+
 ## [2.4.0](https://github.com/zthun/helpful/compare/v2.3.0...v2.4.0) (2023-11-11)
 
 
