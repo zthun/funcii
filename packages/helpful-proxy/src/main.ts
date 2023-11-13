@@ -5,8 +5,7 @@ import {
   LetsEncryptSelfSignedOptions,
   LetsEncryptUsingSelfSigned,
   Logger,
-  RouteRegistrationOptions,
-  SimpleHttpServer
+  RouteRegistrationOptions
 } from 'http-reverse-proxy-ts';
 import { join } from 'path';
 import { cwd } from 'process';
@@ -15,8 +14,6 @@ import { ZProxyConfigSearch } from './proxy-config/proxy-config-search';
 (async function main() {
   const log = new Logger();
   log.info(null, `Current working directory: ${cwd()}`);
-
-  new SimpleHttpServer(1, 8080).start();
 
   const explorer = new ZProxyConfigSearch();
   const config = await explorer.search();
