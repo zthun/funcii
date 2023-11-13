@@ -1,6 +1,6 @@
 {
   "name": "@zthun/helpful-api",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "description": "A rest microservice to construct basic things without needing migrations to other languages.",
   "author": "Anthony Bonta",
   "license": "MIT",
