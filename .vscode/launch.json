@@ -5,12 +5,15 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug e2e Tests",
+      "name": "Launch Helpful Proxy",
       "type": "node",
       "request": "launch",
-      "console": "integratedTerminal",
-      "program": "${workspaceRoot}/node_modules/@cucumber/cucumber/bin/cucumber-js",
-      "args": ["--tags", "@debug"]
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["--nolazy", "-r", "ts-node/register/transpile-only"],
+      "args": ["src/main.ts"],
+      "cwd": "${workspaceFolder}/packages/helpful-proxy",
+      "internalConsoleOptions": "openOnSessionStart",
+      "skipFiles": ["<node_internals>/**", "node_modules/**"]
     }
   ]
 }
