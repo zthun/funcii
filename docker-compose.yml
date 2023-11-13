@@ -1,0 +1,33 @@
+services:
+  helpful-services-proxy:
+    image: node:lts
+    ports:
+      - 80:80
+      - 443:443
+      - 9230:9229
+    volumes:
+      - .:/usr/dev
+    working_dir: /usr/dev
+    command: npm --workspace @zthun/helpful-proxy run debug
+    depends_on:
+      - helpful-services-api
+      - helpful-mongo-admin
+      - helpful-email
+  helpful-services-api:
+    image: node:lts
+    ports:
+      - 9229:9229
+    volumes:
+      - .:/usr/dev
+    working_dir: /usr/dev
+    command: npm --workspace @zthun/helpful-api run debug
+  helpful-mongo:
+    image: mongo:5.0.5
+  helpful-mongo-admin:
+    image: mongo-express:0.54.0
+    depends_on:
+      - helpful-mongo
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=helpful-mongo
+  helpful-email:
+    image: rnwood/smtp4dev:v3.1
