@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.1](https://github.com/zthun/helpful/compare/v2.7.0...v2.7.1) (2023-11-17)
+
+
+### Bug Fixes
+
+* walk starts at the current working directory ([16c68f8](https://github.com/zthun/helpful/commit/16c68f84b2e1da4162d9aafbe57e07f949b0d81c))
+
+
+
 ## [2.7.0](https://github.com/zthun/helpful/compare/v2.6.0...v2.7.0) (2023-11-17)
 
 
