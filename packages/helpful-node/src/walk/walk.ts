@@ -1,5 +1,6 @@
 import { access } from 'fs';
 import { dirname, isAbsolute, resolve } from 'path';
+import { cwd } from 'process';
 import { promisify } from 'util';
 
 /**
@@ -9,7 +10,7 @@ export interface ZWalkOptions {
   /**
    * The starting directory.
    *
-   * The default is __dirname
+   * The default is the current working directory
    */
   start?: string;
 
@@ -43,7 +44,7 @@ export interface ZWalkOptions {
  *        specified.  Returns null if no such directory exists.
  */
 export async function walk(search: string, options?: ZWalkOptions): Promise<string | null> {
-  const start = options?.start || __dirname;
+  const start = options?.start || cwd();
   const stop = options?.stop || '/';
   const mode = options?.mode;
 

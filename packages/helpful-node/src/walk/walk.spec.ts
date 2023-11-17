@@ -8,12 +8,12 @@ const assets = 'assets';
 const testJson = `${assets}/test.json`;
 
 describe('Walk', () => {
-  it('should find a path from the given __dirname', async () => {
+  it('should find a path from the given cwd', async () => {
     // Arrange.
     // Act.
-    const actual = await walk(testJson);
+    const actual = await walk('node_modules');
     // Assert.
-    expect(actual).toMatch(testJson);
+    expect(actual).toMatch('node_modules');
   });
 
   it('should find a path if the path is __dirname', async () => {
@@ -35,7 +35,7 @@ describe('Walk', () => {
   it('should match the path of the current file', async () => {
     // Arrange.
     // Act
-    const actual = await walk(currentFile);
+    const actual = await walk(currentFile, { start: __dirname });
     // Assert
     expect(actual).toEqual(__filename);
   });
@@ -70,7 +70,7 @@ describe('Walk', () => {
   it('should stop at the given stop directory', async () => {
     // Arrange.
     // Act.
-    const actual = await walk(testJson, { stop: dirname(__dirname) });
+    const actual = await walk(testJson, { start: __dirname, stop: __dirname });
     // Assert.
     expect(actual).toBeNull();
   });
