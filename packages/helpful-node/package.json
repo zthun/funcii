@@ -7,7 +7,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/zthun/helpful",
-    "directory": "packages/helpful-fn"
+    "directory": "packages/helpful-node"
   },
   "main": "./dist/lib/index.js",
   "module": "./dist/lib/index.esm.js",
