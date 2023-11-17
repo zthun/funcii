@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.7.0](https://github.com/zthun/helpful/compare/v2.6.0...v2.7.0) (2023-11-17)
+
+
+### Features
+
+* helpful-node adds extended methods that extend the current node api ([10ab9b7](https://github.com/zthun/helpful/commit/10ab9b75c0b152e4cf1e3628801c0542a1d14e7d))
+* walk finds a file or folder up the directory tree ([ee252b5](https://github.com/zthun/helpful/commit/ee252b52105873c9adacfe18ccce26017896e5eb))
+
+
+
 ## [2.6.0](https://github.com/zthun/helpful/compare/v2.5.0...v2.6.0) (2023-11-13)
 
 
