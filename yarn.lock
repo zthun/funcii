@@ -4129,6 +4129,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@zthun/helpful-node@workspace:packages/helpful-node":
+  version: 0.0.0-use.local
+  resolution: "@zthun/helpful-node@workspace:packages/helpful-node"
+  dependencies:
+    "@zthun/helpful-fn": ^2.4.0
+    microbundle: ^0.15.1
+    vitest: ^0.34.6
+  languageName: unknown
+  linkType: soft
+
 "@zthun/helpful-obligation@workspace:packages/helpful-obligation":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-obligation@workspace:packages/helpful-obligation"

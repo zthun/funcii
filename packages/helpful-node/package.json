@@ -1,0 +1,35 @@
+{
+  "name": "@zthun/helpful-node",
+  "version": "2.4.0",
+  "description": "Helpful extended methods to node that aren't found in the base api.",
+  "author": "Anthony Bonta",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zthun/helpful",
+    "directory": "packages/helpful-fn"
+  },
+  "main": "./dist/lib/index.js",
+  "module": "./dist/lib/index.esm.js",
+  "types": "./dist/types/index.d.ts",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "build": "microbundle --format esm,cjs --tsconfig tsconfig.prod.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@zthun/helpful-fn": "^2.4.0"
+  },
+  "devDependencies": {
+    "microbundle": "^0.15.1",
+    "vitest": "^0.34.6"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false
+}
