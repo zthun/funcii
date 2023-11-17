@@ -1,0 +1,6 @@
+{
+  "id": "helpful",
+  "name": "Helpful",
+  "technology": "node",
+  "kind": "library"
+}
