@@ -196,18 +196,18 @@ describe('useMoreViewState', () => {
       expect(actual?.message).toEqual(expected);
     });
 
-    it('should reset on a more call', async () => {
+    it('should reset the count when an error occurs', async () => {
       // Arrange.
-      vi.spyOn(source, 'count');
       const target = await createTestTarget();
       // Act.
       const { more } = await target.current();
+      vi.spyOn(source, 'count');
       more();
-      await rerender(target);
+      await sleep(501);
       more();
-      await rerender(target);
+      await sleep(501);
       // Assert
-      expect(source.count).toHaveBeenCalledTimes(3);
+      expect(source.count).toHaveBeenCalledTimes(2);
     });
   });
 });

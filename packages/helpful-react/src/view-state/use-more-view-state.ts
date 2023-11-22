@@ -1,7 +1,7 @@
 import { createError } from '@zthun/helpful-fn';
 import { IZDataRequest, IZDataSource, ZDataRequestBuilder } from '@zthun/helpful-query';
 import { useEffect, useRef, useState } from 'react';
-import { Subscription, defer, from } from 'rxjs';
+import { Subscription, defer } from 'rxjs';
 import { ZAsyncDataState, ZAsyncLoading } from '../async-state/use-async-state';
 
 /**
@@ -42,7 +42,7 @@ export function useMoreViewState<T = any>(source: IZDataSource<T>, template: IZD
     subscription.current = defer(() => {
       _count.current = _count.current || source.count(nextRequest.current);
       setLast(ZAsyncLoading);
-      return from(Promise.all([_count.current, source.retrieve(nextRequest.current)]));
+      return Promise.all([_count.current, source.retrieve(nextRequest.current)]);
     }).subscribe({
       next: ([count, page]) => {
         nextRequest.current = new ZDataRequestBuilder()
@@ -64,6 +64,7 @@ export function useMoreViewState<T = any>(source: IZDataSource<T>, template: IZD
 
   const reset = () => {
     nextRequest.current = new ZDataRequestBuilder().copy(template).page(1).build();
+    _count.current = null;
     setView([]);
     setComplete(false);
     _loadMore(false);
