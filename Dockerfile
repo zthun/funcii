@@ -38,3 +38,9 @@ RUN npm install -g @zthun/helpful-proxy
 EXPOSE 80
 EXPOSE 443
 CMD ["helpful-proxy"]
+
+FROM node:lts-alpine as helpful-web-install
+RUN npm install -g @zthun/helpful-web
+
+FROM nginx:stable-alpine as helpful-web
+COPY --from=helpful-web-install /usr/local/lib/node_modules/@zthun/helpful-web/dist/. /usr/share/nginx/html/
