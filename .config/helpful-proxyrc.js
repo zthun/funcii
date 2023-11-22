@@ -15,7 +15,7 @@ const apps = {
 
 const top = 'local.helpful.zthunworks.com';
 
-export default {
+module.exports = {
   domains: [
     {
       name: top,
