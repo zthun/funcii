@@ -12,5 +12,14 @@ import { v4 } from 'uuid';
  *
  * @returns
  *        A new generated globally unique identifier based on random bytes.
+ *
+ * @example
+ *
+ * ```ts
+ * // Will get a value similar to 53e33fb6-d05a-4fa9-8dc0-b78e4feaa702
+ * const guidA = createGuid();
+ * // Will most likely not ever be equal to guidA
+ * const guidB = createGuid();
+ * ```
  */
 export const createGuid: () => string = v4;
