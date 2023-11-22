@@ -1,39 +1,15 @@
-const apps = {
-  api: {
-    host: 'helpful-services-api',
-    port: 3000
-  },
-  mongo: {
-    host: 'helpful-mongo-admin',
-    port: 8081
-  },
-  email: {
-    host: 'helpful-email',
-    port: 80
-  }
-};
-
-const top = 'local.helpful.zthunworks.com';
-
 module.exports = {
   domains: [
     {
-      name: top,
+      name: `database.local.zthunworks.com`,
       paths: {
-        '/': `${apps.api.host}:${apps.api.port}`,
-        '/v2': `${apps.api.host}:${apps.api.port}`
+        '/': 'helpful-mongo-admin:8081'
       }
     },
     {
-      name: `mongo.${top}`,
+      name: `email.local.zthunworks.com`,
       paths: {
-        '/': `${apps.mongo.host}:${apps.mongo.port}`
-      }
-    },
-    {
-      name: `email.${top}`,
-      paths: {
-        '/': `${apps.email.host}:${apps.email.port}`
+        '/': 'helpful-email'
       }
     }
   ]
