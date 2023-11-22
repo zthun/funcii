@@ -1,9 +1,11 @@
 /**
- * Represents a vertical anchor.
+ * Represents a targeted point along a y axis.
  */
 export enum ZVerticalAnchor {
   /**
    * Top boundary.
+   *
+   * In vertical device space, this would equate to y = 0.
    */
   Top = 'top',
   /**
@@ -12,13 +14,20 @@ export enum ZVerticalAnchor {
   Middle = 'middle',
   /**
    * Bottom boundary.
+   *
+   * In vertical device space, this would equate to y = Infinity.
    */
   Bottom = 'bottom'
 }
 
+/**
+ * Represents a targeted point along an x axis.
+ */
 export enum ZHorizontalAnchor {
   /**
    * Left boundary.
+   *
+   * In horizontal device space, this would equate to x = 0.
    */
   Left = 'left',
   /**
@@ -27,15 +36,27 @@ export enum ZHorizontalAnchor {
   Center = 'center',
   /**
    * Right boundary.
+   *
+   * In horizontal device space, this would equate to x = Infinity.
    */
   Right = 'right'
 }
 
 /**
- * Represents an anchor point.
+ * Represents an anchor point in 2d space.
  *
- * An anchor point is a point that stays constant while things are
- * resizing.
+ * An anchor array is defined by [vertical, horizontal]
+ * and is read as such.
+ *
+ * @example
+ *
+ * ```ts
+ * const topCenter = [ZVerticalAnchor.Top, ZHorizontalAnchor.Center];
+ * const bottomRight = [ZVerticalAnchor.Bottom, ZHorizontalAnchor.Right];
+ * ```
+ *
+ * @see {@link ZVerticalAnchor} For more information.
+ * @see {@link ZHorizontalAnchor} For more information.
  */
 export type ZAnchor = [ZVerticalAnchor, ZHorizontalAnchor];
 
