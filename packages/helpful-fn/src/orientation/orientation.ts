@@ -3,7 +3,7 @@
  */
 export enum ZOrientation {
   /**
-   * Row orientation.
+   * Horizontal orientation.
    *
    * This type of orientation is a row
    * style orientation or flex-row orientation.
