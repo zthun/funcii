@@ -3,6 +3,7 @@ export * from './filter/filter';
 export * from './filter/filter-binary';
 export * from './filter/filter-collection';
 export * from './filter/filter-logic';
+export * from './filter/filter-subject';
 export * from './filter/filter-unary';
 export * from './match/data-match';
 export * from './match/data-match-always';
