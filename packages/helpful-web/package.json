@@ -1,0 +1,27 @@
+{
+  "name": "@zthun/helpful-web",
+  "version": "2.7.1",
+  "description": "A documentation website for showing helpful.",
+  "author": "Anthony Bonta",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zthun/helpful",
+    "directory": "packages/helpful-web"
+  },
+  "main": "./dist/main.js",
+  "scripts": {
+    "build": "typedoc"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "typedoc": "^0.25.3",
+    "typescript": "^5.3.2"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false
+}

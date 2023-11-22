@@ -1,0 +1,10 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "out": "./dist",
+  "categorizeByGroup": true,
+  "entryPointStrategy": "packages",
+  "entryPoints": ["../*"],
+  "exclude": ["./", "../helpful-api"],
+  "excludeNotDocumented": true,
+  "name": "Helpful"
+}
