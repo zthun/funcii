@@ -2,10 +2,14 @@ import { ZBrandBuilder } from './brand';
 
 /**
  * All brands in one constant array.
+ *
+ * This array is immutable and frozen.  If you need
+ * to have a mutable list of brands, use the
+ * {@link Array.slice} method to create one.
  */
 export const ZBrands = Object.freeze([
   new ZBrandBuilder().facebook().build(),
-  new ZBrandBuilder().twitter().build(),
+  new ZBrandBuilder().x().build(),
   new ZBrandBuilder().instagram().build(),
   new ZBrandBuilder().tiktok().build(),
   new ZBrandBuilder().linkedin().build(),

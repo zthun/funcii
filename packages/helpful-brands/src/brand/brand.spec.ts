@@ -9,9 +9,9 @@ describe('ZBrandBuilder', () => {
     it('should set the name.', () => expect(createTestTarget().facebook().build().name).toEqual('Facebook'));
   });
 
-  describe('Twitter', () => {
-    it('should set the id.', () => expect(createTestTarget().twitter().build().id).toEqual('twitter'));
-    it('should set the name.', () => expect(createTestTarget().twitter().build().name).toEqual('Twitter'));
+  describe('Twitter (Aka X)', () => {
+    it('should set the id.', () => expect(createTestTarget().twitter().build().id).toEqual('x-twitter'));
+    it('should set the name.', () => expect(createTestTarget().twitter().build().name).toEqual('X'));
   });
 
   describe('Instagram', () => {
