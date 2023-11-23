@@ -1,5 +1,18 @@
 /**
  * Represents an object that can be used to build a list of assertions.
+ *
+ * @example
+ *
+ * ```ts
+ * import { ZAssert, createError } from '@zthun/helpful-fn';
+ *
+ * const user = readUser();
+ *
+ * ZAssert
+ *  .claim(user.name != null, 'User name is required')
+ *  .claim(user.email != null, 'User email is required')
+ *  .assert((m) => createError(m));
+ * ```
  */
 export class ZAssert {
   /**

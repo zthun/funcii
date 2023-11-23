@@ -1,5 +1,8 @@
 /**
  * A specific set of possible values that need to be checked for requirements.
+ *
+ * @param T -
+ *        The type of value that is being checked.
  */
 export type ZObligatedValue<T> = T | null | undefined | Promise<T | null | undefined>;
 
@@ -10,6 +13,8 @@ export type ZObligatedValue<T> = T | null | undefined | Promise<T | null | undef
  *        The value to require.  This can be a promise
  *        that can return null or undefined in addition to the
  *        value.
+ * @param T -
+ *        The type of value that is being checked.
  *
  * @returns
  *        This method returns val if it is not null
@@ -42,6 +47,8 @@ export async function required<T>(val: ZObligatedValue<T>): Promise<T> {
  * @param fallback -
  *        The fallback value in the case that val is
  *        null or undefined.
+ * @param T -
+ *        The type of value that is being checked.
  *
  * @returns
  *        This method returns val if it is not null
@@ -58,6 +65,8 @@ export function optional<T>(val: ZObligatedValue<T>, fallback: T): Promise<T>;
  *        The value to check.  This can be a promise
  *        that can return null or undefined in addition to the
  *        value.
+ * @param T -
+ *        The type of value that is being checked.
  *
  * @returns
  *        This method returns val if it is not null
@@ -77,6 +86,8 @@ export function optional<T>(val: ZObligatedValue<T>): Promise<T | null>;
  * @param fallback -
  *        The fallback value in the case that val is
  *        null or undefined.
+ * @param T -
+ *        The type of value that is being checked.
  *
  * @returns
  *        This method returns val if it is not null
