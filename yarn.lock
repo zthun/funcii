@@ -3909,7 +3909,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zthun/helpful-brands@workspace:packages/helpful-brands":
+"@zthun/helpful-brands@^3.0.0, @zthun/helpful-brands@workspace:packages/helpful-brands":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-brands@workspace:packages/helpful-brands"
   dependencies:
@@ -3929,7 +3929,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@zthun/helpful-internet@workspace:packages/helpful-internet":
+"@zthun/helpful-internet@^3.0.0, @zthun/helpful-internet@workspace:packages/helpful-internet":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-internet@workspace:packages/helpful-internet"
   dependencies:
@@ -3939,7 +3939,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@zthun/helpful-node@workspace:packages/helpful-node":
+"@zthun/helpful-node@^3.0.0, @zthun/helpful-node@workspace:packages/helpful-node":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-node@workspace:packages/helpful-node"
   dependencies:
@@ -3949,7 +3949,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@zthun/helpful-proxy@workspace:packages/helpful-proxy":
+"@zthun/helpful-proxy@^3.0.0, @zthun/helpful-proxy@workspace:packages/helpful-proxy":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-proxy@workspace:packages/helpful-proxy"
   dependencies:
@@ -3975,7 +3975,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@zthun/helpful-react@workspace:packages/helpful-react":
+"@zthun/helpful-react@^3.0.0, @zthun/helpful-react@workspace:packages/helpful-react":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-react@workspace:packages/helpful-react"
   dependencies:
@@ -4001,7 +4001,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@zthun/helpful-validation@workspace:packages/helpful-validation":
+"@zthun/helpful-validation@^3.0.0, @zthun/helpful-validation@workspace:packages/helpful-validation":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-validation@workspace:packages/helpful-validation"
   dependencies:
@@ -4016,6 +4016,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-web@workspace:packages/helpful-web"
   dependencies:
+    "@zthun/helpful-brands": ^3.0.0
+    "@zthun/helpful-fn": ^3.0.0
+    "@zthun/helpful-internet": ^3.0.0
+    "@zthun/helpful-node": ^3.0.0
+    "@zthun/helpful-proxy": ^3.0.0
+    "@zthun/helpful-query": ^3.0.0
+    "@zthun/helpful-react": ^3.0.0
+    "@zthun/helpful-validation": ^3.0.0
     typedoc: ^0.25.3
     typescript: ^5.3.2
   languageName: unknown
