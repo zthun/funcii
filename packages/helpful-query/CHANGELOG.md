@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.0](https://github.com/zthun/helpful/compare/v2.7.1...v3.0.0) (2023-11-24)
+
+
+### Bug Fixes
+
+* filter subject is now exported ([cfc97fd](https://github.com/zthun/helpful/commit/cfc97fdef705695a96f39b08cc44e4d70aac29af))
+
+
+
 ## [2.4.0](https://github.com/zthun/helpful/compare/v2.3.0...v2.4.0) (2023-11-11)
 
 **Note:** Version bump only for package @zthun/helpful-query

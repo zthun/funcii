@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.0](https://github.com/zthun/helpful/compare/v2.7.1...v3.0.0) (2023-11-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* removed isDataUriType
+* remove helpful-people
+* helpful-obligation has been merged into helpful-fn
+* remove helpful-api
+
+### Features
+
+* helpful-obligation has been merged into helpful-fn ([656b4f2](https://github.com/zthun/helpful/commit/656b4f295ecbe0fcb747cd1fe000782cca79c00d))
+* helpful-web generates the typedoc website for helpful ([65bf17f](https://github.com/zthun/helpful/commit/65bf17fc58e9dec88f963c35e6c398cbd48ade23))
+* remove helpful-people ([ae089fa](https://github.com/zthun/helpful/commit/ae089fa926f936377c437d3f21ea4675eb0758fa))
+* removed isDataUriType ([a2f6fc1](https://github.com/zthun/helpful/commit/a2f6fc108919c8000e9160433943bb506330eee4))
+
+
+### Bug Fixes
+
+* count is refreshed when the scope changes ([b198f44](https://github.com/zthun/helpful/commit/b198f44e8f0a4bf726c76f6e90582af519265422))
+* filter subject is now exported ([cfc97fd](https://github.com/zthun/helpful/commit/cfc97fdef705695a96f39b08cc44e4d70aac29af))
+
+
+### Code Refactoring
+
+* remove helpful-api ([22afcf2](https://github.com/zthun/helpful/commit/22afcf25d4b58cf9fd7b33d28d41d7f5e06f21ac))
+
+
+
 ## [2.7.1](https://github.com/zthun/helpful/compare/v2.7.0...v2.7.1) (2023-11-17)
 
 

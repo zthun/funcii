@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.0](https://github.com/zthun/helpful/compare/v2.7.1...v3.0.0) (2023-11-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* helpful-obligation has been merged into helpful-fn
+
+### Features
+
+* helpful-obligation has been merged into helpful-fn ([656b4f2](https://github.com/zthun/helpful/commit/656b4f295ecbe0fcb747cd1fe000782cca79c00d))
+
+
+
 ## [2.4.0](https://github.com/zthun/helpful/compare/v2.3.0...v2.4.0) (2023-11-11)
 
 **Note:** Version bump only for package @zthun/helpful-fn

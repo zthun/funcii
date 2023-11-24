@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.0](https://github.com/zthun/helpful/compare/v2.7.1...v3.0.0) (2023-11-24)
+
+
+### Bug Fixes
+
+* count is refreshed when the scope changes ([b198f44](https://github.com/zthun/helpful/commit/b198f44e8f0a4bf726c76f6e90582af519265422))
+
+
+
 ## [2.4.0](https://github.com/zthun/helpful/compare/v2.3.0...v2.4.0) (2023-11-11)
 
 **Note:** Version bump only for package @zthun/helpful-react
