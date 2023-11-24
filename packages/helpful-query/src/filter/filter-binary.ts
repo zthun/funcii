@@ -1,7 +1,7 @@
 import { IZFilterMetadata, IZFilterSubject } from './filter-subject';
 
 /**
- * Represents the available operators for a binary filter.
+ * The operators for a {@link IZFilterBinary} filter.
  */
 export enum ZOperatorBinary {
   /**
@@ -35,7 +35,7 @@ export enum ZOperatorBinary {
 }
 
 /**
- * Represents a standard comparison filter between a field and a wanted value.
+ * Represents a standard comparison filter between a subject field and a wanted value.
  */
 export interface IZFilterBinary extends IZFilterSubject<ZOperatorBinary> {
   /**
@@ -48,6 +48,9 @@ export interface IZFilterBinary extends IZFilterSubject<ZOperatorBinary> {
  * Represents an object that can build up a binary filter.
  */
 export class ZFilterBinaryBuilder {
+  /**
+   * The __type__ identifier for an {@link IZFilterBinary} object.
+   */
   public static readonly Type = 'binary';
 
   private _filter: IZFilterBinary;

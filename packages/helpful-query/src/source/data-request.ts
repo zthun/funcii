@@ -50,8 +50,11 @@ export interface IZDataRequest {
    * Search query.
    *
    * How the search is performed is done
-   * through the consumer.  You can use an
-   * @see IZDataMatch for an example implementation.
+   * through the consumer.
+   *
+   * @see
+   *        {@link ZDataSearchFields} for a basic
+   *        implementation.
    */
   search?: string;
 
@@ -59,18 +62,23 @@ export interface IZDataRequest {
    * The filter query.
    *
    * How the filter is applied is done through
-   * the consumer.  You can use an
-   * @see IZDataMatch for an example implementation.
+   * the consumer.
+   *
+   * @see
+   *        {@link ZDataFilterFields} for a basic
+   *        implementation.
    */
   filter?: IZFilter;
 
   /**
    * The sort order.
    *
-   * How the sort is applied is done through the consumer.
-   * You can use an
+   * How the sort is applied is done through
+   * the consumer.
    *
-   * @see IZDataCompare for an example implementation.
+   * @see
+   *        {@link ZSorterSingle} for a basic
+   *        implementation.
    */
   sort?: IZSort[];
 }

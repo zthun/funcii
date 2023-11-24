@@ -2,7 +2,7 @@ import { IZFilter } from './filter';
 import { IZFilterMetadata, IZFilterOperator } from './filter-subject';
 
 /**
- * Represents the connector for a logic filter.
+ * The connectors for an {@link IZFilterLogic} filter.
  */
 export enum ZOperatorLogic {
   /**
@@ -17,6 +17,10 @@ export enum ZOperatorLogic {
 
 /**
  * Represents a composite logical filter.
+ *
+ * Logical filters do not have associated subjects and values. Instead
+ * they relate a conjunction of child filters with {@link ZOperatorLogic.And} / {@link ZOperatorLogic.Or}
+ * operators.
  */
 export interface IZFilterLogic extends IZFilterOperator<ZOperatorLogic> {
   /**
@@ -29,6 +33,9 @@ export interface IZFilterLogic extends IZFilterOperator<ZOperatorLogic> {
  * Represents a builder for a logic filter.
  */
 export class ZFilterLogicBuilder {
+  /**
+   * The __type__ identifier for an {@link IZFilterLogic} object.
+   */
   public static readonly Type = 'logic';
 
   private _filter: IZFilterLogic;

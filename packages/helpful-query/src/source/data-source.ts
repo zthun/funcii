@@ -1,8 +1,10 @@
 import { IZDataRequest } from './data-request';
 
 /**
- * A representation of how to retrieve data from a given system
- * or location.
+ * A representation of how to retrieve data from a given system or location.
+ *
+ * @param T -
+ *        The type of data that the system will return.
  */
 export interface IZDataSource<T> {
   /**

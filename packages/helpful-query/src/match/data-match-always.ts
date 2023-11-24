@@ -1,9 +1,15 @@
 import { IZDataMatch } from './data-match';
 
 /**
- * A data match that always matches.
+ * An implementation of an IZDataMatch that always returns true on match.
  */
 export class ZDataMatchAlways implements IZDataMatch<any, any> {
+  /**
+   * Returns true.
+   *
+   * @returns
+   *        true
+   */
   public match() {
     return true;
   }

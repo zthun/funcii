@@ -7,6 +7,8 @@ export interface IZSorter {
   /**
    * Gets the current sort index for the subject or -1 if it is not sorted.
    *
+   * This should be 1 based.
+   *
    * @param subject -
    *        The subject to sort.  If this is undefined, the subject
    *        should be considered the empty string (the object itself).

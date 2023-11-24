@@ -1,8 +1,10 @@
 import { IZDataMatch } from '../match/data-match';
 
 /**
- * Represents a data match where the data qualifies
- * if it's text representation matches the search string.
+ * Represents a data match for text strings.
+ *
+ * The data should match when it's text
+ * representation matches the filter string.
  */
 export class ZDataSearchText implements IZDataMatch<any, string> {
   public match(data: any, filter: string): boolean {

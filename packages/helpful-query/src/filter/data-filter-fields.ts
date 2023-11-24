@@ -3,54 +3,26 @@ import { IZDataMatch } from '../match/data-match';
 import { IZFilter } from './filter';
 import { BinaryComparators } from './filter-binary';
 import { CollectionComparators, isCollectionFilter } from './filter-collection';
-import { isLogicFilter, IZFilterLogic, ZOperatorLogic } from './filter-logic';
+import { IZFilterLogic, ZOperatorLogic, isLogicFilter } from './filter-logic';
 import { IZFilterSubject } from './filter-subject';
-import { isUnaryFilter, UnaryComparators } from './filter-unary';
+import { UnaryComparators, isUnaryFilter } from './filter-unary';
 
 /**
  * Represents a data match object that applies a filter.
+ *
+ * This implementation of a data match will search against fields on the given target
+ * object where the filter subject matches a property on said object.
+ *
+ * @param TData -
+ *        The type of data being filtered.
  */
 export class ZDataFilterFields<TData> implements IZDataMatch<TData, IZFilter> {
-  /**
-   * Matches a logic filter.
-   *
-   * @param data -
-   *        The data to match.
-   * @param filter -
-   *        The filter to apply.
-   *
-   * @returns
-   *        True if data matches all or some of the clauses in filter
-   *        depending on the filters logic operator.
-   */
   private _matchLogicFilter(data: TData, filter: IZFilterLogic): boolean {
     return filter.operator === ZOperatorLogic.And
       ? filter.clauses.every((f) => this.match(data, f))
       : filter.clauses.some((f) => this.match(data, f));
   }
 
-  /**
-   * Matches an operator filter by it's comparators.
-   *
-   * The subject of the filter will apply against the data and
-   * will map as a path to a property in the data object.  If the
-   * subject itself is empty or null, then the data itself is
-   * compared.
-   *
-   * @param data -
-   *        The data to compare with.
-   * @param filter -
-   *        The filter to apply.
-   * @param comparators -
-   *        The comparator map that maps from the filter operator to the
-   *        function that applies the match compare.
-   * @param value -
-   *        The optional value to compare against.
-   *
-   * @returns
-   *        The result from the mapped comparator given the data and
-   *        optional value.
-   */
   private _matchSubjectFilter<T extends string, F extends IZFilterSubject<T>>(
     data: TData,
     filter: F,

@@ -1,5 +1,10 @@
 /**
  * Represents an object which can match data to a filter query.
+ *
+ * @param TData -
+ *        The type of data being matched.
+ * @param TFilter -
+ *        The type of filter that helps relate to the data.
  */
 export interface IZDataMatch<TData, TFilter> {
   /**

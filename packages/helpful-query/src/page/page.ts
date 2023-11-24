@@ -1,5 +1,8 @@
 /**
  * Represents a page of data.
+ *
+ * @param T -
+ *        The type of data on the page.
  */
 export interface IZPage<T> {
   /**

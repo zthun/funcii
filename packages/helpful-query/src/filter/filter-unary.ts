@@ -1,7 +1,7 @@
 import { IZFilterMetadata, IZFilterSubject } from './filter-subject';
 
 /**
- * Operators for a unary filter.
+ * The operators for an {@link IZFilterUnary} filter.
  */
 export enum ZOperatorUnary {
   /**
@@ -23,6 +23,9 @@ export interface IZFilterUnary extends IZFilterSubject<ZOperatorUnary> {}
  * Represents a builder for a UnaryFilter object.
  */
 export class ZFilterUnaryBuilder {
+  /**
+   * The __type__ identifier for an {@link IZFilterUnary} object.
+   */
   public static readonly Type = 'unary';
 
   private _filter: IZFilterUnary;

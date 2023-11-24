@@ -1,7 +1,7 @@
 import { IZFilterMetadata, IZFilterSubject } from './filter-subject';
 
 /**
- * Represents an operator that compares collections.
+ * The operators for the {@link IZFilterCollection} filter.
  */
 export enum ZOperatorCollection {
   /**
@@ -28,6 +28,9 @@ export interface IZFilterCollection extends IZFilterSubject<ZOperatorCollection>
  * Represents a builder for a collection filter.
  */
 export class ZFilterCollectionBuilder {
+  /**
+   * The __type__ identifier for an {@link IZFilterCollection} object.
+   */
   public static readonly Type = 'collection';
 
   private _filter: IZFilterCollection;
