@@ -4,7 +4,7 @@
   "categorizeByGroup": true,
   "entryPointStrategy": "packages",
   "entryPoints": ["../*"],
-  "exclude": ["./", "../helpful-api"],
+  "exclude": ["./"],
   "excludeNotDocumented": true,
   "name": "Helpful"
 }
