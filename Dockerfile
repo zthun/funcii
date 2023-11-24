@@ -28,11 +28,6 @@ RUN --mount=type=secret,id=GIT_CREDENTIALS,dst=/root/.git-credentials npx lerna 
     git push --tags
 RUN --mount=type=secret,id=NPM_CREDENTIALS,dst=/root/.npmrc npx lerna publish from-package --yes
 
-FROM node:lts as helpful-api
-RUN npm install -g @zthun/helpful-api
-EXPOSE 3000
-CMD ["helpful-api"]
-
 FROM node:lts as helpful-proxy
 RUN npm install -g @zthun/helpful-proxy
 EXPOSE 80
