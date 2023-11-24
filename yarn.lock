@@ -4025,6 +4025,7 @@ __metadata:
     "@zthun/helpful-react": ^3.0.0
     "@zthun/helpful-validation": ^3.0.0
     typedoc: ^0.25.3
+    typedoc-plugin-extras: ^3.0.0
     typescript: ^5.3.2
   languageName: unknown
   linkType: soft
@@ -13830,6 +13831,15 @@ __metadata:
   version: 0.0.6
   resolution: "typedarray@npm:0.0.6"
   checksum: 33b39f3d0e8463985eeaeeacc3cb2e28bc3dfaf2a5ed219628c0b629d5d7b810b0eb2165f9f607c34871d5daa92ba1dc69f49051cf7d578b4cbd26c340b9d1b1
+  languageName: node
+  linkType: hard
+
+"typedoc-plugin-extras@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "typedoc-plugin-extras@npm:3.0.0"
+  peerDependencies:
+    typedoc: 0.25.x
+  checksum: 5daaf73f5a48d504c66bee45f62cb230419f369f0d368fc3d1a26f2e16f41b4b0d49f08a3ec271c1cc77bf6197d2759fce8c93d912119af0c59baacc22a3de23
   languageName: node
   linkType: hard
 

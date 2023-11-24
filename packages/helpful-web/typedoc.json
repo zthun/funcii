@@ -6,5 +6,7 @@
   "entryPoints": ["../*"],
   "exclude": ["./"],
   "excludeNotDocumented": true,
-  "name": "Helpful"
+  "name": "Helpful",
+  "plugin": ["typedoc-plugin-extras"],
+  "favicon": "public/images/svg/helpful.svg"
 }
