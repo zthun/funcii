@@ -72,7 +72,10 @@ export class ZFileSelect implements IZFileSelect {
    * @param container -
    *        The container to house the input element.
    */
-  public constructor(private _doc: Document = $global.document, private _container: HTMLElement = _doc?.body) {}
+  public constructor(
+    private readonly _doc: Document = $global.document,
+    private readonly _container: HTMLElement = _doc?.body
+  ) {}
 
   /**
    * Opens the file dialog.

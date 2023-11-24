@@ -2,6 +2,9 @@ import { KeyboardEvent, KeyboardEventHandler, useMemo } from 'react';
 
 /**
  * A set of keyboard interactions that should be set on an element.
+ *
+ * @param T -
+ *        The type of Element that the KeyboardEvent will receive.
  */
 export interface IZKeyboardInteraction<T = Element> {
   /**

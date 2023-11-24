@@ -13,11 +13,12 @@ import { ZAsyncDataState, ZAsyncLoading } from '../async-state/use-async-state';
  *
  * @param source -
  *        The data source to load from.
- *
  * @param template -
  *        The template request.  The page size will be used as
  *        the batch size.  The page to load will be ignored and
  *        will instead be controlled by this hook.
+ * @param T -
+ *        The type of data that the source will return.
  *
  * @returns
  *        The current view, last result, page number, and batch size.

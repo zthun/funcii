@@ -17,6 +17,9 @@ export const ZAsyncLoading = Symbol('loading');
  */
 export type ZAsyncDataState<T> = T | Symbol | Error;
 
+/**
+ * A refresh / setter function for a state of data.
+ */
 export type ZAsyncUseData<T> = T | ((current: T) => T);
 
 /**
@@ -35,11 +38,12 @@ export type ZAsyncDataTuple<T> = [ZAsyncDataState<T>, (val?: ZAsyncUseData<T>) =
  *        The load method for the data.
  * @param deps -
  *        The dependencies to force a refresh of the data.
+ * @param T -
+ *        The type of data that will eventually be given.
  *
  * @returns
  *        A tuple where the first item is the current state of the data and
  *        the 2nd argument is a refresh function to refresh the data.
- *
  */
 export function useAsyncState<T>(load: () => Promise<T>, deps: DependencyList = []): ZAsyncDataTuple<T> {
   const [current, setCurrent] = useState<ZAsyncDataState<T>>(ZAsyncLoading);
@@ -78,6 +82,8 @@ export function useAsyncState<T>(load: () => Promise<T>, deps: DependencyList = 
  *
  * @param data -
  *        The data to check.
+ * @param T -
+ *        The type of data of the loaded state.
  *
  * @returns
  *        True if the data is in a loading state.
@@ -91,6 +97,8 @@ export function isStateLoading<T>(data: ZAsyncDataState<T>): data is Symbol {
  *
  * @param data -
  *        The data to check.
+ * @param T -
+ *        The type of data of the loaded state.
  *
  * @returns
  *        True if the data is loaded.
@@ -104,6 +112,8 @@ export function isStateLoaded<T>(data: ZAsyncDataState<T>): data is T {
  *
  * @param data -
  *        The data to check.
+ * @param T -
+ *        The type of data of the loaded state.
  *
  * @returns
  *        True if the data is in an error state.
@@ -117,6 +127,8 @@ export function isStateErrored<T>(data: ZAsyncDataState<T>): data is Error {
  *
  * @param data -
  *        The data to retrieve.
+ * @param T -
+ *        The type of data of the loaded state.
  *
  * @returns
  *        This method returns data if it is loaded, or undefined
@@ -130,6 +142,8 @@ export function asStateData<T>(data: ZAsyncDataState<T>): T | undefined;
  *        The data to retrieve.
  * @param fallback -
  *        The fallback to return in the case that data has not yet been loaded.
+ * @param T -
+ *        The type of data of the loaded state.
  *
  * @returns
  *        This method returns data if it is loaded, or fallback
@@ -143,6 +157,8 @@ export function asStateData<T>(data: ZAsyncDataState<T>, fallback: T): T;
  *        The data to retrieve.
  * @param fallback -
  *        The fallback to return in the case that data has not yet been loaded.
+ * @param T -
+ *        The type of data of the loaded state.
  *
  * @returns
  *        This method returns data if it is loaded, or fallback
@@ -157,6 +173,8 @@ export function asStateData<T>(data: ZAsyncDataState<T>, fallback?: T): T | unde
  *
  * @param data -
  *        The data that has possibly errored.
+ * @param T -
+ *        The type of data of the loaded state.
  *
  * @returns
  *        The error that occurred or undefined if the data is

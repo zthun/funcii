@@ -13,6 +13,8 @@ import { asStateData, useAsyncState } from '../async-state/use-async-state';
  *        The data source to retrieve the page information.
  * @param request -
  *        The current request that represents the page of data.
+ * @param T -
+ *        The type of data the source will return.
  *
  * @returns
  *        The view, count, size, page number, and page count.

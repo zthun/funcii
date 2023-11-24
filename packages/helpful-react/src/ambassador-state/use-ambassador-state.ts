@@ -29,6 +29,8 @@ export type ZAmbassadorSetCurrent<T> = ((val: T | ZAmbassadorReducer<T>) => void
  *        The mutator method to set the current value.  This can
  *        be undefined, but if it is set, both the internal value and
  *        the prop value are set.
+ * @param T -
+ *        The type of data for the state.
  *
  * @returns
  *        A tuple where the first item is the current state and the 2nd item is a mutator
@@ -82,6 +84,8 @@ export function useAmbassadorState<T>(
  *        the prop value are set.
  * @param initial -
  *        The initial value to set if current is undefined.
+ * @param T -
+ *        The type of data for the state.
  *
  * @returns
  *        A tuple where the first item is the current state and the 2nd item is a mutator
