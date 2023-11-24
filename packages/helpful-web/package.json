@@ -17,6 +17,14 @@
     "access": "public"
   },
   "devDependencies": {
+    "@zthun/helpful-brands": "^3.0.0",
+    "@zthun/helpful-fn": "^3.0.0",
+    "@zthun/helpful-internet": "^3.0.0",
+    "@zthun/helpful-node": "^3.0.0",
+    "@zthun/helpful-proxy": "^3.0.0",
+    "@zthun/helpful-query": "^3.0.0",
+    "@zthun/helpful-react": "^3.0.0",
+    "@zthun/helpful-validation": "^3.0.0",
     "typedoc": "^0.25.3",
     "typescript": "^5.3.2"
   },
