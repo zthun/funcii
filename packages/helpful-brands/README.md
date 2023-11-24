@@ -22,7 +22,12 @@ Usage of this library mostly revolves around the brand interface and the builder
 import { IZBrand, ZBrandBuilder } from '@zthun/helpful-brands';
 
 // Constructs a new brand with a given id and name.
-const brand: IZBrand = new ZBrandBuilder().id('facebook').name('Facebook').founded(2004).owner('Meta Platforms');
+const brand: IZBrand = new ZBrandBuilder()
+  .id('facebook')
+  .name('Facebook')
+  .founded(2004)
+  .owner('Meta Platforms')
+  .build();
 
 // Some brands are automatically supported out of box.
 const facebook = new ZBrandBuilder().facebook().build();
