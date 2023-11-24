@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.0](https://github.com/zthun/helpful/compare/v3.0.0...v3.1.0) (2023-11-24)
+
+
+### Features
+
+* website now has a favicon ([c7d5067](https://github.com/zthun/helpful/commit/c7d506713dc967ebccab57469cf2c7e2abbe5a47))
+
+
+
 ## [3.0.0](https://github.com/zthun/helpful/compare/v2.7.1...v3.0.0) (2023-11-24)
 
 
