@@ -13,5 +13,5 @@
       "@zthun/helpful-validation": ["helpful-validation/src/index"]
     }
   },
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts", "**/*.mts"]
 }
