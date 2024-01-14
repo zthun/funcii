@@ -5,7 +5,7 @@ import {
   ValidatorConstraint,
   ValidatorConstraintInterface
 } from 'class-validator';
-import { get } from 'lodash';
+import { get } from 'lodash-es';
 
 /**
  * Represents a constraint that requires another property to be set as well.

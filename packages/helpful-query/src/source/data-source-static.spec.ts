@@ -1,4 +1,4 @@
-import { range } from 'lodash';
+import { range } from 'lodash-es';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { ZDataFilterFields } from '../filter/data-filter-fields';
 import { IZFilter } from '../filter/filter';

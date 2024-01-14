@@ -1,4 +1,4 @@
-import { castArray } from 'lodash';
+import { castArray } from 'lodash-es';
 import { useState } from 'react';
 
 export type ZStateAsArrayReducer<T> = (val: T[]) => T | T[];

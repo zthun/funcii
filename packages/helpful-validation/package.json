@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "class-validator": "~0.14.1",
-    "lodash": "^4.17.21"
+    "lodash-es": "^4.17.21"
   },
   "devDependencies": {
     "microbundle": "^0.15.1",

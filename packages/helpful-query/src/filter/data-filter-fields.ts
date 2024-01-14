@@ -1,4 +1,4 @@
-import { get } from 'lodash';
+import { get } from 'lodash-es';
 import { IZDataMatch } from '../match/data-match';
 import { IZFilter } from './filter';
 import { BinaryComparators } from './filter-binary';

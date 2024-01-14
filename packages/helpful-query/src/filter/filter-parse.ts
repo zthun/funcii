@@ -1,5 +1,5 @@
 import { peel, peelBetween } from '@zthun/helpful-fn';
-import { trim, trimStart } from 'lodash';
+import { trim, trimStart } from 'lodash-es';
 import { IZFilter, ZOperatorFilter, ZOperatorsFilter } from './filter';
 import { IZFilterBinary, ZFilterBinaryBuilder, ZOperatorBinary, isBinaryOperator } from './filter-binary';
 import {

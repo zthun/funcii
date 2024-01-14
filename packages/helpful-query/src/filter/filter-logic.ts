@@ -1,4 +1,4 @@
-import { keyBy } from 'lodash';
+import { keyBy } from 'lodash-es';
 import { IZFilter } from './filter';
 import { IZFilterMetadata, IZFilterOperator } from './filter-subject';
 

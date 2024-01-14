@@ -5,7 +5,7 @@ import {
   ValidatorConstraint,
   ValidatorConstraintInterface
 } from 'class-validator';
-import { get } from 'lodash';
+import { get } from 'lodash-es';
 
 /**
  * Represents a constraint that forces a property on an object to equal another property on the same object.

@@ -2,7 +2,7 @@
 
 import { ZCircusSetupHook } from '@zthun/cirque-du-react';
 import { sleep } from '@zthun/helpful-fn';
-import { get, noop } from 'lodash';
+import { get, noop } from 'lodash-es';
 import React, { StrictMode } from 'react';
 import { Mock, beforeEach, describe, expect, it, vi } from 'vitest';
 import {

@@ -4,7 +4,7 @@ import {
   ValidatorConstraint,
   ValidatorConstraintInterface
 } from 'class-validator';
-import { trim } from 'lodash';
+import { trim } from 'lodash-es';
 
 /**
  * Represents a constraint that a string property is not pure white space.
