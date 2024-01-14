@@ -22,7 +22,7 @@ describe('ZFilterParser', () => {
     expect(actual).toBeTruthy();
   };
 
-  const assertParsesFilterOperator = <T>(expected: T, filter: string) => {
+  const assertParsesFilterOperator = (expected: string, filter: string) => {
     // Arrange.
     const target = createTestTarget();
     // Act.
@@ -45,7 +45,7 @@ describe('ZFilterParser', () => {
   const assertThrowsError = (filter: string) => {
     // Arrange.
     const target = createTestTarget();
-    // Act
+    // Act.
     const actual = () => target.parse(filter);
     // Assert.
     expect(actual).toThrowError();
