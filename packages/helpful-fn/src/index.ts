@@ -7,5 +7,6 @@ export * from './first-defined/first-defined';
 export * from './join-defined/join-defined';
 export * from './obligation/obligation';
 export * from './orientation/orientation';
+export * from './peel/peel';
 export * from './set-first/set-first';
 export * from './sleep/sleep';
