@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { IZFilterBinary, ZOperatorBinary, isBinaryFilter } from './filter-binary';
+import { IZFilterCollection, ZOperatorCollection, isCollectionFilter } from './filter-collection';
 import { ZFilterParser } from './filter-parse';
 import { IZFilterMetadata, IZFilterSubject } from './filter-subject';
 import { ZFilterUnaryBuilder, ZOperatorUnary, isUnaryFilter } from './filter-unary';
@@ -73,16 +74,6 @@ describe('ZFilterParser', () => {
   });
 
   describe('Binary', () => {
-    const assertParsesFilterValue = (expected: string, filter: string) => {
-      // Arrange.
-      const target = createTestTarget();
-      // Act.
-      const f = target.parse(filter) as IZFilterBinary;
-      const actual = f.value;
-      // Assert.
-      expect(actual).toEqual(expected);
-    };
-
     it('should throw an Error if the argument list is not closed', () => {
       assertThrowsError('eq(subject, (value)');
     });
@@ -103,16 +94,19 @@ describe('ZFilterParser', () => {
       assertThrowsError('lteq(subject, value, lol-wut)');
     });
 
-    it('sets correct value with encoding', () => {
-      assertParsesFilterValue('sentence value', 'gteq(subject, sentence%20value)');
-    });
-
     it('sets correct subject', () => {
       assertParsesFilterSubject('subject', 'like(subject, value)');
     });
 
     it('sets correct value', () => {
-      assertParsesFilterValue('value', 'like(subject, value)');
+      // Arrange.
+      const target = createTestTarget();
+      const expected = 'sentence value';
+      // Act.
+      const f = target.parse(`eq(subject, ${encodeURIComponent(expected)})`) as IZFilterBinary;
+      const actual = f.value;
+      // Assert.
+      expect(actual).toEqual(expected);
     });
 
     describe('Equals', () => {
@@ -251,6 +245,65 @@ describe('ZFilterParser', () => {
 
       it('should parse filter type', () => {
         assertParsesFilterType(isUnaryFilter, filter);
+      });
+
+      it('sets correct operator', () => {
+        assertParsesFilterOperator(operator, filter);
+      });
+    });
+  });
+
+  describe('Collection', () => {
+    it('should throw an Error if the argument list is not closed', () => {
+      assertThrowsError('in(subject, 1, 2, 3, 4');
+    });
+
+    it('should throw an Error if the argument list is not opened', () => {
+      assertThrowsError('not-in[subject, 1, 2)');
+    });
+
+    it('should throw an Error if there is orphaned characters at the end of the filter', () => {
+      assertThrowsError('in(subject, 1) lol-wut');
+    });
+
+    it('should throw an Error if there are not enough arguments', () => {
+      assertThrowsError('in()');
+    });
+
+    it('sets correct subject', () => {
+      assertParsesFilterSubject('subject', 'not-in(subject, 1, 2, 3, 4)');
+    });
+
+    it('sets correct value list', () => {
+      // Arrange.
+      const target = createTestTarget();
+      const expected = ['1', '2', '3', '4'];
+      // Act.
+      const f = target.parse(`in(subject, ${expected.join(', ')})`) as IZFilterCollection;
+      const actual = f.values;
+      // Assert.
+      expect(actual).toEqual(expected);
+    });
+
+    describe('In', () => {
+      const operator = ZOperatorCollection.In;
+      const filter = `${operator}(subject)`;
+
+      it('should parse filter type', () => {
+        assertParsesFilterType(isCollectionFilter, filter);
+      });
+
+      it('sets correct operator', () => {
+        assertParsesFilterOperator(operator, filter);
+      });
+    });
+
+    describe('Not In', () => {
+      const operator = ZOperatorCollection.NotIn;
+      const filter = `${operator}(subject)`;
+
+      it('should parse filter type', () => {
+        assertParsesFilterType(isCollectionFilter, filter);
       });
 
       it('sets correct operator', () => {

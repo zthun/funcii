@@ -2,7 +2,13 @@ import { peel, peelBetween } from '@zthun/helpful-fn';
 import { trim } from 'lodash';
 import { IZFilter, ZOperatorFilter, ZOperatorsFilter } from './filter';
 import { IZFilterBinary, ZFilterBinaryBuilder, ZOperatorBinary, isBinaryOperator } from './filter-binary';
-import { ZFilterCollectionBuilder } from './filter-collection';
+import {
+  IZFilterCollection,
+  ZFilterCollectionBuilder,
+  ZOperatorCollection,
+  isCollectionOperator
+} from './filter-collection';
+import { ZFilterLogicBuilder } from './filter-logic';
 import { IZFilterUnary, ZFilterUnaryBuilder, ZOperatorUnary, isUnaryOperator } from './filter-unary';
 
 export class ZFilterParser {
@@ -21,7 +27,11 @@ export class ZFilterParser {
       return this._parseBinaryFilter(operator, rest);
     }
 
-    return new ZFilterCollectionBuilder().build();
+    if (isCollectionOperator(operator)) {
+      return this._parseCollectionFilter(operator, rest);
+    }
+
+    return new ZFilterLogicBuilder().build();
   }
 
   public tryParse(filter: string): IZFilter | undefined;
@@ -60,6 +70,14 @@ export class ZFilterParser {
     }
 
     return splitArgs;
+  }
+
+  private _parseCollectionFilter(operator: ZOperatorCollection, args: string): IZFilterCollection {
+    const argList = this._splitArgs(operator, args, 1, Infinity);
+    let [subject] = argList;
+    subject = decodeURIComponent(subject);
+    const values = argList.slice(1).map((a) => decodeURIComponent(trim(a)));
+    return new ZFilterCollectionBuilder().operator(operator).subject(subject).values(values).build();
   }
 
   private _parseUnaryFilter(operator: ZOperatorUnary, args: string): IZFilterUnary {
