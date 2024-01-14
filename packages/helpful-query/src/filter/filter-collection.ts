@@ -1,3 +1,4 @@
+import { keyBy } from 'lodash';
 import { IZFilterMetadata, IZFilterSubject } from './filter-subject';
 
 /**
@@ -90,15 +91,26 @@ export class ZFilterCollectionBuilder {
   }
 
   /**
+   * Sets the operator.
+   *
+   * @param val -
+   *        The value to set.
+   *
+   * @returns
+   *        This object.
+   */
+  public operator(val: ZOperatorCollection) {
+    this._filter.operator = val;
+    return this;
+  }
+
+  /**
    * Constructs an in filter.
    *
    * @returns
    *        This object.
    */
-  public in(): this {
-    this._filter.operator = ZOperatorCollection.In;
-    return this;
-  }
+  public in = this.operator.bind(this, ZOperatorCollection.In);
 
   /**
    * Constructs a not in filter.
@@ -106,10 +118,7 @@ export class ZFilterCollectionBuilder {
    * @returns
    *        This object.
    */
-  public notIn(): this {
-    this._filter.operator = ZOperatorCollection.NotIn;
-    return this;
-  }
+  public notIn = this.operator.bind(this, ZOperatorCollection.NotIn);
 
   /**
    * Returns a copy of the constructed filter.
@@ -149,6 +158,18 @@ export const ZCollectionComparators: Record<ZOperatorCollection, (data: any, val
 export const ZOperatorsCollection: ZOperatorCollection[] = Object.keys(ZOperatorCollection).map(
   (o) => ZOperatorCollection[o]
 );
+const _ZOperatorsCollectionLookup = keyBy(ZOperatorsCollection);
+
+/**
+ * Gets whether a candidate string represents a collection operator.
+ *
+ * @returns
+ *        Type guard true if candidate is a collection operator, false
+ *        otherwise.
+ */
+export function isCollectionOperator(candidate: string): candidate is ZOperatorCollection {
+  return Object.prototype.hasOwnProperty.call(_ZOperatorsCollectionLookup, candidate);
+}
 
 /**
  * @deprecated Use {@link ZCollectionComparators} instead.
