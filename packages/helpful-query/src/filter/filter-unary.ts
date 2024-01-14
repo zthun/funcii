@@ -1,3 +1,4 @@
+import { keyBy } from 'lodash';
 import { IZFilterMetadata, IZFilterSubject } from './filter-subject';
 
 /**
@@ -56,13 +57,16 @@ export class ZFilterUnaryBuilder {
   }
 
   /**
-   * Sets the operator to is null.
+   * Sets the operator.
+   *
+   * @param val -
+   *        The operator to set.
    *
    * @returns
    *        This object.
    */
-  public isNull(): this {
-    this._filter.operator = ZOperatorUnary.IsNull;
+  public operator(val: ZOperatorUnary): this {
+    this._filter.operator = val;
     return this;
   }
 
@@ -72,10 +76,15 @@ export class ZFilterUnaryBuilder {
    * @returns
    *        This object.
    */
-  public isNotNull(): this {
-    this._filter.operator = ZOperatorUnary.IsNotNull;
-    return this;
-  }
+  public isNull = this.operator.bind(this, ZOperatorUnary.IsNull);
+
+  /**
+   * Sets the operator to is null.
+   *
+   * @returns
+   *        This object.
+   */
+  public isNotNull = this.operator.bind(this, ZOperatorUnary.IsNotNull);
 
   /**
    * Returns a copy of the built filter.
@@ -105,6 +114,18 @@ export function isUnaryFilter(filter: IZFilterMetadata): filter is IZFilterUnary
  * A list of all unary operators.
  */
 export const ZOperatorsUnary: ZOperatorUnary[] = Object.keys(ZOperatorUnary).map((o) => ZOperatorUnary[o]);
+const _ZOperatorsUnaryLookup = keyBy(ZOperatorsUnary);
+
+/**
+ * Gets whether a candidate string represents a unary operator.
+ *
+ * @returns
+ *        Type guard true if candidate is a unary operator, false
+ *        otherwise.
+ */
+export function isUnaryOperator(candidate: string): candidate is ZOperatorUnary {
+  return Object.prototype.hasOwnProperty.call(_ZOperatorsUnaryLookup, candidate);
+}
 
 /**
  * Comparators for unary operators.

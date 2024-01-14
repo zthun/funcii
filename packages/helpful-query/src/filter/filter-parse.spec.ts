@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { IZFilterBinary, ZOperatorBinary, isBinaryFilter } from './filter-binary';
 import { ZFilterParser } from './filter-parse';
-import { IZFilterMetadata } from './filter-subject';
-import { ZFilterUnaryBuilder } from './filter-unary';
+import { IZFilterMetadata, IZFilterSubject } from './filter-subject';
+import { ZFilterUnaryBuilder, ZOperatorUnary, isUnaryFilter } from './filter-unary';
 
 describe('ZFilterParser', () => {
   const createTestTarget = () => new ZFilterParser();
@@ -26,6 +26,16 @@ describe('ZFilterParser', () => {
     // Act.
     const f = target.parse(filter);
     const actual = f.operator;
+    // Assert.
+    expect(actual).toEqual(expected);
+  };
+
+  const assertParsesFilterSubject = (expected: string, filter: string) => {
+    // Arrange.
+    const target = createTestTarget();
+    // Act.
+    const f = target.parse(filter) as IZFilterSubject<any>;
+    const actual = f.subject;
     // Assert.
     expect(actual).toEqual(expected);
   };
@@ -63,16 +73,6 @@ describe('ZFilterParser', () => {
   });
 
   describe('Binary', () => {
-    const assertParsesFilterSubject = (expected: string, filter: string) => {
-      // Arrange.
-      const target = createTestTarget();
-      // Act.
-      const f = target.parse(filter) as IZFilterBinary;
-      const actual = f.subject;
-      // Assert.
-      expect(actual).toEqual(expected);
-    };
-
     const assertParsesFilterValue = (expected: string, filter: string) => {
       // Arrange.
       const target = createTestTarget();
@@ -199,6 +199,58 @@ describe('ZFilterParser', () => {
 
       it('should parse filter type', () => {
         assertParsesFilterType(isBinaryFilter, filter);
+      });
+
+      it('sets correct operator', () => {
+        assertParsesFilterOperator(operator, filter);
+      });
+    });
+  });
+
+  describe('Unary', () => {
+    it('should throw an Error if the argument list is not closed', () => {
+      assertThrowsError('null(subject, (value)');
+    });
+
+    it('should throw an Error if the argument list is not opened', () => {
+      assertThrowsError('is-not-null[subject)');
+    });
+
+    it('should throw an Error if there is orphaned characters at the end of the filter', () => {
+      assertThrowsError('null(subject) lol-wut');
+    });
+
+    it('should throw an Error if there are not enough arguments', () => {
+      assertThrowsError('is-not-null()');
+    });
+
+    it('should throw an Error if there are too many arguments', () => {
+      assertThrowsError('null(subject, lol-wut)');
+    });
+
+    it('sets correct subject', () => {
+      assertParsesFilterSubject('subject', 'null(subject)');
+    });
+
+    describe('IsNull', () => {
+      const operator = ZOperatorUnary.IsNull;
+      const filter = `${operator}(subject)`;
+
+      it('should parse filter type', () => {
+        assertParsesFilterType(isUnaryFilter, filter);
+      });
+
+      it('sets correct operator', () => {
+        assertParsesFilterOperator(operator, filter);
+      });
+    });
+
+    describe('IsNotNull', () => {
+      const operator = ZOperatorUnary.IsNotNull;
+      const filter = `${operator}(subject)`;
+
+      it('should parse filter type', () => {
+        assertParsesFilterType(isUnaryFilter, filter);
       });
 
       it('sets correct operator', () => {
