@@ -1,3 +1,4 @@
+import { keyBy } from 'lodash';
 import { IZFilterMetadata, IZFilterSubject } from './filter-subject';
 
 /**
@@ -73,7 +74,8 @@ export class ZFilterBinaryBuilder {
    * @param val -
    *        The value to set.
    *
-   * @returns This object.
+   * @returns
+   *        This object.
    */
   public subject(val: string): this {
     this._filter.subject = val;
@@ -86,10 +88,25 @@ export class ZFilterBinaryBuilder {
    * @param val -
    *        The value to set.
    *
-   * @returns This object.
+   * @returns
+   *        This object.
    */
   public value(val: any): this {
     this._filter.value = val;
+    return this;
+  }
+
+  /**
+   * Sets the operator.
+   *
+   * @param val -
+   *        The value to set.
+   *
+   * @returns
+   *        This object.
+   */
+  public operator(val: ZOperatorBinary) {
+    this._filter.operator = val;
     return this;
   }
 
@@ -99,10 +116,7 @@ export class ZFilterBinaryBuilder {
    * @returns
    *        This object
    */
-  public equal(): this {
-    this._filter.operator = ZOperatorBinary.Equal;
-    return this;
-  }
+  public equal = this.operator.bind(this, ZOperatorBinary.Equal);
 
   /**
    * Constructs a not equal filter.
@@ -110,10 +124,7 @@ export class ZFilterBinaryBuilder {
    * @returns
    *        This object
    */
-  public notEqual(): this {
-    this._filter.operator = ZOperatorBinary.NotEqual;
-    return this;
-  }
+  public notEqual = this.operator.bind(this, ZOperatorBinary.NotEqual);
 
   /**
    * Constructs a less than filter.
@@ -121,10 +132,7 @@ export class ZFilterBinaryBuilder {
    * @returns
    *        This object
    */
-  public lessThan(): this {
-    this._filter.operator = ZOperatorBinary.LessThan;
-    return this;
-  }
+  public lessThan = this.operator.bind(this, ZOperatorBinary.LessThan);
 
   /**
    * Constructs a greater than filter.
@@ -132,10 +140,7 @@ export class ZFilterBinaryBuilder {
    * @returns
    *        This object.
    */
-  public greaterThan(): this {
-    this._filter.operator = ZOperatorBinary.GreaterThan;
-    return this;
-  }
+  public greaterThan = this.operator.bind(this, ZOperatorBinary.GreaterThan);
 
   /**
    * Constructs a less than or equal to filter.
@@ -143,10 +148,7 @@ export class ZFilterBinaryBuilder {
    * @returns
    *        This object.
    */
-  public lessThanEqualTo(): this {
-    this._filter.operator = ZOperatorBinary.LessThanEqualTo;
-    return this;
-  }
+  public lessThanEqualTo = this.operator.bind(this, ZOperatorBinary.LessThanEqualTo);
 
   /**
    * Constructs a greater than or equal to filter.
@@ -154,21 +156,14 @@ export class ZFilterBinaryBuilder {
    * @returns
    *        A new filter builder object.
    */
-  public greaterThanEqualTo(): this {
-    this._filter.operator = ZOperatorBinary.GreaterThanEqualTo;
-    return this;
-  }
-
+  public greaterThanEqualTo = this.operator.bind(this, ZOperatorBinary.GreaterThanEqualTo);
   /**
    * Constructs a like filter.
    *
    * @returns
    *        A new filter builder object.
    */
-  public like(): this {
-    this._filter.operator = ZOperatorBinary.Like;
-    return this;
-  }
+  public like = this.operator.bind(this, ZOperatorBinary.Like);
 
   /**
    * Returns a copy of the currently built filter.
@@ -195,9 +190,27 @@ export function isBinaryFilter(filter: IZFilterMetadata): filter is IZFilterBina
 }
 
 /**
+ * The possible operators as a constant list.
+ */
+export const ZOperatorsBinary: ZOperatorBinary[] = Object.keys(ZOperatorBinary).map((o) => ZOperatorBinary[o]);
+
+const _ZOperatorsBinaryLookup = keyBy(ZOperatorsBinary);
+
+/**
+ * Gets whether a candidate string represents a binary operator.
+ *
+ * @returns
+ *        Type guard true if candidate is a binary operator, false
+ *        otherwise.
+ */
+export function isBinaryOperator(candidate: string): candidate is ZOperatorBinary {
+  return Object.prototype.hasOwnProperty.call(_ZOperatorsBinaryLookup, candidate);
+}
+
+/**
  * A mapping of comparators that relates a data to a value.
  */
-export const BinaryComparators: Record<ZOperatorBinary, (data: any, value: any) => boolean> = {
+export const ZBinaryComparators: Record<ZOperatorBinary, (data: any, value: any) => boolean> = {
   [ZOperatorBinary.Equal]: (d, v) => d === v,
   [ZOperatorBinary.NotEqual]: (d, v) => d !== v,
   [ZOperatorBinary.GreaterThan]: (d, v) => d > v,
@@ -206,3 +219,8 @@ export const BinaryComparators: Record<ZOperatorBinary, (data: any, value: any) 
   [ZOperatorBinary.LessThanEqualTo]: (d, v) => d <= v,
   [ZOperatorBinary.Like]: (d, v) => `${d}`.indexOf(`${v}`) >= 0
 };
+
+/**
+ * @deprecated Use {@link ZBinaryComparators} instead.
+ */
+export const BinaryComparators = ZBinaryComparators;
