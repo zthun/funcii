@@ -124,3 +124,8 @@ export class ZFilterLogicBuilder {
 export function isLogicFilter(filter: IZFilterMetadata): filter is IZFilterLogic {
   return filter.__type__ === ZFilterLogicBuilder.Type;
 }
+
+/**
+ * A list of all logic operators.
+ */
+export const ZOperatorsLogic: ZOperatorLogic[] = Object.keys(ZOperatorLogic).map((o) => ZOperatorLogic[o]);

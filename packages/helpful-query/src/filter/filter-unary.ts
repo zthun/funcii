@@ -102,9 +102,19 @@ export function isUnaryFilter(filter: IZFilterMetadata): filter is IZFilterUnary
 }
 
 /**
+ * A list of all unary operators.
+ */
+export const ZOperatorsUnary: ZOperatorUnary[] = Object.keys(ZOperatorUnary).map((o) => ZOperatorUnary[o]);
+
+/**
  * Comparators for unary operators.
  */
-export const UnaryComparators: Record<ZOperatorUnary, (data: any) => boolean> = {
+export const ZUnaryComparators: Record<ZOperatorUnary, (data: any) => boolean> = {
   [ZOperatorUnary.IsNull]: (data: any) => data == null,
   [ZOperatorUnary.IsNotNull]: (data: any) => data != null
 };
+
+/**
+ * @deprecated Use {@link ZUnaryComparators} instead.
+ */
+export const UnaryComparators = ZUnaryComparators;

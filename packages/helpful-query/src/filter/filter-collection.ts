@@ -138,7 +138,19 @@ export function isCollectionFilter(filter: IZFilterMetadata): filter is IZFilter
 /**
  * A mapping of comparators that determine if data exists or does not exist within a data set.
  */
-export const CollectionComparators: Record<ZOperatorCollection, (data: any, values: any[]) => boolean> = {
+export const ZCollectionComparators: Record<ZOperatorCollection, (data: any, values: any[]) => boolean> = {
   [ZOperatorCollection.In]: (d, v) => v.indexOf(d) >= 0,
   [ZOperatorCollection.NotIn]: (d, v) => v.indexOf(d) < 0
 };
+
+/**
+ * A list of all collection operators.
+ */
+export const ZOperatorsCollection: ZOperatorCollection[] = Object.keys(ZOperatorCollection).map(
+  (o) => ZOperatorCollection[o]
+);
+
+/**
+ * @deprecated Use {@link ZCollectionComparators} instead.
+ */
+export const CollectionComparators = ZCollectionComparators;
