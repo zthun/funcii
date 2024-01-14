@@ -1,3 +1,4 @@
+import { keyBy } from 'lodash';
 import { IZFilter } from './filter';
 import { IZFilterMetadata, IZFilterOperator } from './filter-subject';
 
@@ -52,15 +53,26 @@ export class ZFilterLogicBuilder {
   }
 
   /**
+   * Sets the operator.
+   *
+   * @param val -
+   *        The value to set.
+   *
+   * @returns
+   *        This object.
+   */
+  public operator(val: ZOperatorLogic) {
+    this._filter.operator = val;
+    return this;
+  }
+
+  /**
    * Sets the operator to and.
    *
    * @returns
    *        This object.
    */
-  public and(): this {
-    this._filter.operator = ZOperatorLogic.And;
-    return this;
-  }
+  public and = this.operator.bind(this, ZOperatorLogic.And);
 
   /**
    * Sets the operator to or.
@@ -68,10 +80,7 @@ export class ZFilterLogicBuilder {
    * @returns
    *        This object.
    */
-  public or(): this {
-    this._filter.operator = ZOperatorLogic.Or;
-    return this;
-  }
+  public or = this.operator.bind(this, ZOperatorLogic.Or);
 
   /**
    * Adds another clause.
@@ -129,3 +138,15 @@ export function isLogicFilter(filter: IZFilterMetadata): filter is IZFilterLogic
  * A list of all logic operators.
  */
 export const ZOperatorsLogic: ZOperatorLogic[] = Object.keys(ZOperatorLogic).map((o) => ZOperatorLogic[o]);
+const _ZOperatorsLogicLookup = keyBy(ZOperatorsLogic);
+
+/**
+ * Gets whether a candidate string represents a logic operator.
+ *
+ * @returns
+ *        Type guard true if candidate is a logic operator, false
+ *        otherwise.
+ */
+export function isLogicOperator(candidate: string | null | undefined): candidate is ZOperatorLogic {
+  return candidate != null && Object.prototype.hasOwnProperty.call(_ZOperatorsLogicLookup, candidate);
+}
