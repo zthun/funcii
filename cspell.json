@@ -10,6 +10,7 @@
     "broadcasthost",
     "BUILDKIT",
     "buildx",
+    "choco",
     "codepen",
     "commitlint",
     "conventionalcommits",
