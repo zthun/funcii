@@ -14,21 +14,21 @@ export enum ZOperatorBinary {
    */
   NotEqual = 'neq',
   /**
-   * Less than.
-   */
-  LessThan = 'lt',
-  /**
-   * Greater than.
-   */
-  GreaterThan = 'gt',
-  /**
    * Less than or equal to.
    */
   LessThanEqualTo = 'lteq',
   /**
+   * Less than.
+   */
+  LessThan = 'lt',
+  /**
    * Greater than or equal to.
    */
   GreaterThanEqualTo = 'gteq',
+  /**
+   * Greater than.
+   */
+  GreaterThan = 'gt',
   /**
    * Like (Contains)
    */
