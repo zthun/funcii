@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { IZFilterBinary, ZOperatorBinary, isBinaryFilter } from './filter-binary';
+import { IZFilterBinary, ZFilterBinaryBuilder, ZOperatorBinary, isBinaryFilter } from './filter-binary';
 import { IZFilterCollection, ZOperatorCollection, isCollectionFilter } from './filter-collection';
+import { IZFilterLogic, ZFilterLogicBuilder, ZOperatorLogic, isLogicFilter } from './filter-logic';
 import { ZFilterParser } from './filter-parse';
 import { IZFilterMetadata, IZFilterSubject } from './filter-subject';
 import { ZFilterUnaryBuilder, ZOperatorUnary, isUnaryFilter } from './filter-unary';
@@ -304,6 +305,65 @@ describe('ZFilterParser', () => {
 
       it('should parse filter type', () => {
         assertParsesFilterType(isCollectionFilter, filter);
+      });
+
+      it('sets correct operator', () => {
+        assertParsesFilterOperator(operator, filter);
+      });
+    });
+  });
+
+  describe('Logic', () => {
+    it('should throw an Error if the argument list is not closed', () => {
+      assertThrowsError('and(eq(subject, 1), eq(age, 4)');
+    });
+
+    it('should throw an Error if the argument list is not opened', () => {
+      assertThrowsError('or[in(subject, 1, 2, 3, 4)]');
+    });
+
+    it('should throw an Error if there is orphaned characters at the end of the filter', () => {
+      assertThrowsError('or(in(subject, 1), not-in(subject, 3, 4)) lol-wut');
+    });
+
+    it('sets correct clause list', () => {
+      // Arrange.
+      const target = createTestTarget();
+      const expected = [
+        new ZFilterUnaryBuilder().isNotNull().subject('subject').build(),
+        new ZFilterLogicBuilder()
+          .or()
+          .clause(new ZFilterUnaryBuilder().isNotNull().subject('other-subject').build())
+          .clause(new ZFilterBinaryBuilder().subject('another-subject').equal().value('2').build())
+          .build()
+      ];
+      const filter = `and(is-not-null(subject), or(is-not-null(other-subject), eq(another-subject, 2)))`;
+      // Act.
+      const f = target.parse(filter) as IZFilterLogic;
+      const actual = f.clauses;
+      // Assert.
+      expect(actual).toEqual(expected);
+    });
+
+    describe('And', () => {
+      const operator = ZOperatorLogic.And;
+      const filter = `${operator}(is-not-null(subject), is-not-null(other-subject))`;
+
+      it('should parse filter type', () => {
+        assertParsesFilterType(isLogicFilter, filter);
+      });
+
+      it('sets correct operator', () => {
+        assertParsesFilterOperator(operator, filter);
+      });
+    });
+
+    describe('Or', () => {
+      const operator = ZOperatorLogic.Or;
+      const filter = `${operator}(is-not-null(subject), is-not-null(other-subject))`;
+
+      it('should parse filter type', () => {
+        assertParsesFilterType(isLogicFilter, filter);
       });
 
       it('sets correct operator', () => {
