@@ -3905,7 +3905,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-validation@workspace:packages/helpful-validation"
   dependencies:
-    class-validator: "npm:~0.14.0"
+    class-validator: "npm:~0.14.1"
     lodash: "npm:^4.17.21"
     microbundle: "npm:^0.15.1"
     vitest: "npm:^1.2.0"
@@ -5049,7 +5049,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"class-validator@npm:~0.14.0":
+"class-validator@npm:~0.14.1":
   version: 0.14.1
   resolution: "class-validator@npm:0.14.1"
   dependencies:
