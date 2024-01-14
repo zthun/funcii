@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ZBrandBuilder } from './brand';
+import { ZBrandBuilder } from './brand.mjs';
 
 describe('ZBrandBuilder', () => {
   const createTestTarget = () => new ZBrandBuilder();

@@ -1,4 +1,4 @@
-import { ZBrandBuilder } from './brand';
+import { ZBrandBuilder } from './brand.mjs';
 
 /**
  * All brands in one constant array.

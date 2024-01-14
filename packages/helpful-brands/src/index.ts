@@ -1,2 +1,2 @@
-export * from './brand/brand';
-export * from './brand/brands';
+export * from './brand/brand.mjs';
+export * from './brand/brands.mjs';
