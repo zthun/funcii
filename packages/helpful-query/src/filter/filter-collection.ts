@@ -167,8 +167,8 @@ const _ZOperatorsCollectionLookup = keyBy(ZOperatorsCollection);
  *        Type guard true if candidate is a collection operator, false
  *        otherwise.
  */
-export function isCollectionOperator(candidate: string): candidate is ZOperatorCollection {
-  return Object.prototype.hasOwnProperty.call(_ZOperatorsCollectionLookup, candidate);
+export function isCollectionOperator(candidate: string | null | undefined): candidate is ZOperatorCollection {
+  return candidate != null && Object.prototype.hasOwnProperty.call(_ZOperatorsCollectionLookup, candidate);
 }
 
 /**

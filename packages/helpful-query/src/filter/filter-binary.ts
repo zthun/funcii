@@ -203,8 +203,8 @@ const _ZOperatorsBinaryLookup = keyBy(ZOperatorsBinary);
  *        Type guard true if candidate is a binary operator, false
  *        otherwise.
  */
-export function isBinaryOperator(candidate: string): candidate is ZOperatorBinary {
-  return Object.prototype.hasOwnProperty.call(_ZOperatorsBinaryLookup, candidate);
+export function isBinaryOperator(candidate: string | null | undefined): candidate is ZOperatorBinary {
+  return candidate != null && Object.prototype.hasOwnProperty.call(_ZOperatorsBinaryLookup, candidate);
 }
 
 /**

@@ -8,16 +8,11 @@ import {
   ZOperatorCollection,
   isCollectionOperator
 } from './filter-collection';
-import { ZFilterLogicBuilder } from './filter-logic';
 import { IZFilterUnary, ZFilterUnaryBuilder, ZOperatorUnary, isUnaryOperator } from './filter-unary';
 
 export class ZFilterParser {
   public parse(filter: string): IZFilter {
     const [operator, rest] = peel(trim(filter), ZOperatorsFilter);
-
-    if (operator == null) {
-      throw new Error(`Cannot determine filter operator at ${filter}.`);
-    }
 
     if (isUnaryOperator(operator)) {
       return this._parseUnaryFilter(operator, rest);
@@ -31,7 +26,7 @@ export class ZFilterParser {
       return this._parseCollectionFilter(operator, rest);
     }
 
-    return new ZFilterLogicBuilder().build();
+    throw new Error(`Cannot determine filter operator at ${filter}.`);
   }
 
   public tryParse(filter: string): IZFilter | undefined;

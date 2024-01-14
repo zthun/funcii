@@ -123,8 +123,8 @@ const _ZOperatorsUnaryLookup = keyBy(ZOperatorsUnary);
  *        Type guard true if candidate is a unary operator, false
  *        otherwise.
  */
-export function isUnaryOperator(candidate: string): candidate is ZOperatorUnary {
-  return Object.prototype.hasOwnProperty.call(_ZOperatorsUnaryLookup, candidate);
+export function isUnaryOperator(candidate: string | null | undefined): candidate is ZOperatorUnary {
+  return candidate != null && Object.prototype.hasOwnProperty.call(_ZOperatorsUnaryLookup, candidate);
 }
 
 /**
