@@ -1,4 +1,5 @@
 import { IZFilter } from '../filter/filter';
+import { ZFilterParser } from '../filter/filter-parse';
 import { IZSort } from '../sort/sort';
 
 /**
@@ -150,13 +151,20 @@ export class ZDataRequestBuilder {
    * Sets the filter criteria.
    *
    * @param filter -
-   *        The filter criteria.
+   *        The filter criteria.  If this is a string,
+   *        then it will be parsed according to the filter
+   *        criteria.
    *
    * @returns
    *        A reference to this object.
    */
-  public filter(filter?: IZFilter): this {
-    this._request.filter = filter;
+  public filter(filter?: IZFilter | string): this {
+    if (filter == null) {
+      delete this._request.filter;
+      return this;
+    }
+
+    this._request.filter = typeof filter === 'object' ? filter : new ZFilterParser().tryParse(filter);
     return this;
   }
 
@@ -200,7 +208,11 @@ export class ZDataRequestBuilder {
    *        This object.
    */
   public query(query: IZDataRequestQuery) {
-    // TODO: Filter and Sort parse - what language should be used?
+    if (query.filter != null) {
+      this.filter(query.filter);
+    }
+
+    // TODO: add sort
 
     if (query.page != null) {
       const page = +query.page;

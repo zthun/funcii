@@ -1,10 +1,38 @@
+import { createGuid } from '@zthun/helpful-fn';
 import { describe, expect, it } from 'vitest';
+import { ZFilterBinaryBuilder } from '../filter/filter-binary';
+import { ZSortBuilder } from '../sort/sort';
 import { ZDataRequestBuilder } from './data-request';
 
 describe('ZDataRequestBuilder', () => {
   const createTestTarget = () => new ZDataRequestBuilder();
 
   describe('Query', () => {
+    describe('Filter', () => {
+      it('should be set', () => {
+        const expected = new ZFilterBinaryBuilder().subject('id').equal().value(createGuid()).build();
+        expect(createTestTarget().filter(expected).build().filter).toEqual(expected);
+      });
+
+      it('should remove the filter', () => {
+        const filter = new ZFilterBinaryBuilder().subject('id').equal().value(createGuid()).build();
+        expect(createTestTarget().filter(filter).filter().build().filter).toBeUndefined();
+      });
+
+      it('should set by filter string', () => {
+        const expected = new ZFilterBinaryBuilder().subject('id').equal().value(createGuid()).build();
+        const filter = `${expected.operator}(${expected.subject}, ${expected.value})`;
+        expect(createTestTarget().query({ filter }).build().filter).toEqual(expected);
+      });
+    });
+
+    describe('Sort', () => {
+      it('should be set', () => {
+        const expected = new ZSortBuilder().ascending('pop').build();
+        expect(createTestTarget().sort(expected).build().sort).toEqual(expected);
+      });
+    });
+
     describe('Page', () => {
       it('should be set', () => {
         expect(createTestTarget().query({ page: '4' }).build().page).toEqual(4);
