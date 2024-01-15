@@ -1,5 +1,6 @@
 import { ZFilterParser } from '../filter/filter-parser.mjs';
 import { IZFilter } from '../filter/filter.mjs';
+import { ZSortParser } from '../sort/sort-parser.mjs';
 import { IZSort } from '../sort/sort.mjs';
 
 /**
@@ -176,11 +177,11 @@ export class ZDataRequestBuilder {
    * @returns
    *        A reference to this object.
    */
-  public sort(sort?: IZSort[]): this {
+  public sort(sort?: IZSort[] | string): this {
     if (sort == null) {
       delete this._request.sort;
     } else {
-      this._request.sort = sort;
+      this._request.sort = typeof sort === 'string' ? new ZSortParser().tryParse(sort) : sort;
     }
     return this;
   }
@@ -215,7 +216,9 @@ export class ZDataRequestBuilder {
       this.filter(query.filter);
     }
 
-    // TODO: add sort
+    if (query.sort != null) {
+      this.sort(query.sort);
+    }
 
     if (query.page != null) {
       const page = +query.page;
