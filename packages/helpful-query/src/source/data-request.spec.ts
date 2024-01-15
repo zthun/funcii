@@ -31,6 +31,10 @@ describe('ZDataRequestBuilder', () => {
         const expected = new ZSortBuilder().ascending('pop').build();
         expect(createTestTarget().sort(expected).build().sort).toEqual(expected);
       });
+
+      it('should remove the sort', () => {
+        expect(createTestTarget().sort(new ZSortBuilder().build()).sort().build().sort).toBeUndefined();
+      });
     });
 
     describe('Page', () => {

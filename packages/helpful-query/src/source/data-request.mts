@@ -161,10 +161,9 @@ export class ZDataRequestBuilder {
   public filter(filter?: IZFilter | string): this {
     if (filter == null) {
       delete this._request.filter;
-      return this;
+    } else {
+      this._request.filter = typeof filter === 'object' ? filter : new ZFilterParser().tryParse(filter);
     }
-
-    this._request.filter = typeof filter === 'object' ? filter : new ZFilterParser().tryParse(filter);
     return this;
   }
 
@@ -178,7 +177,11 @@ export class ZDataRequestBuilder {
    *        A reference to this object.
    */
   public sort(sort?: IZSort[]): this {
-    this._request.sort = sort;
+    if (sort == null) {
+      delete this._request.sort;
+    } else {
+      this._request.sort = sort;
+    }
     return this;
   }
 
