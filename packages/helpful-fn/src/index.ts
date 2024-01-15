@@ -10,3 +10,4 @@ export * from './orientation/orientation.mjs';
 export * from './peel/peel.mjs';
 export * from './set-first/set-first.mjs';
 export * from './sleep/sleep.mjs';
+export * from './try-fallback/try-fallback.mjs';
