@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.0](https://github.com/zthun/helpful/compare/v3.1.0...v3.2.0) (2024-01-15)
+
+
+### Features
+
+* a sort parser is used to parse a sort ([1f296f3](https://github.com/zthun/helpful/commit/1f296f336ade07445ada1238e7b9a7418e2800df))
+* filter parse supports unary filters ([0e215ba](https://github.com/zthun/helpful/commit/0e215ba8b1a93786d81221d44f7b089fabb21448))
+* filter parser parses collection filters ([0530a71](https://github.com/zthun/helpful/commit/0530a71ff8890916d08dfda55e125a2d2a07d5e6))
+* filter parser supports logic filters ([bf32fab](https://github.com/zthun/helpful/commit/bf32fab1206cb484ecb676678d436187a50e1dce))
+* logic operators can now be set dynamically ([f9b3901](https://github.com/zthun/helpful/commit/f9b390188282b2b0b2cfa9277fbec310de7e3233))
+* peel allows to split strings based on token rules ([9926a5e](https://github.com/zthun/helpful/commit/9926a5eea8c9f058a76126927bd12296d9ee62c2))
+* sort builder can now set all sorts at once ([cab5a3e](https://github.com/zthun/helpful/commit/cab5a3e4d836f0f56a7a510c1d01198f16b2836c))
+* the filter parser can parse a binary filter from a string ([fb4b29a](https://github.com/zthun/helpful/commit/fb4b29af0d3064a4ce4742b031978e252aeac923))
+* the query method now supports the sort query argument ([0b153b4](https://github.com/zthun/helpful/commit/0b153b4ab76b60d0de70c22252168473d88d3c79))
+* try fallback let's you try a function and then recover with a fallback value ([799e304](https://github.com/zthun/helpful/commit/799e3040dd3553a2069ca65c239340dc11112e1c))
+* you can now pass a string for a filter request ([068f145](https://github.com/zthun/helpful/commit/068f145e4615c560f018af44c262c5dc7973d874))
+* you can now retrieve operators in a list ([bb601b0](https://github.com/zthun/helpful/commit/bb601b08179d3c2ac136335025f09f0fdfd3ab8f))
+* you can now set the operator dynamically ([dd87361](https://github.com/zthun/helpful/commit/dd87361f41e92b71b7951079dc1269f6df7f6ea1))
+* you can now set the operator dynamically for a collection filter ([4a22edf](https://github.com/zthun/helpful/commit/4a22edfb4fde34099a713af9fe69322819d01e46))
+
+
+
 ## [3.1.0](https://github.com/zthun/helpful/compare/v3.0.0...v3.1.0) (2023-11-24)
 
 

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.0](https://github.com/zthun/helpful/compare/v3.1.0...v3.2.0) (2024-01-15)
+
+
+### Features
+
+* peel allows to split strings based on token rules ([9926a5e](https://github.com/zthun/helpful/commit/9926a5eea8c9f058a76126927bd12296d9ee62c2))
+* try fallback let's you try a function and then recover with a fallback value ([799e304](https://github.com/zthun/helpful/commit/799e3040dd3553a2069ca65c239340dc11112e1c))
+
+
+
 ## [3.0.0](https://github.com/zthun/helpful/compare/v2.7.1...v3.0.0) (2023-11-24)
 
 
