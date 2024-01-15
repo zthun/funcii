@@ -114,9 +114,6 @@ export class ZCookieBuilder {
   /**
    * Sets the cookie expiration date to one day from the moment this is invoked.
    *
-   * @param val -
-   *        The value to set.
-   *
    * @returns
    *        This object.
    */
