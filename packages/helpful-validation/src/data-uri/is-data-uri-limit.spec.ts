@@ -1,6 +1,6 @@
 import { registerDecorator, ValidationArguments } from 'class-validator';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { IsDataURILimit, IsDataURILimitValidator } from './is-data-uri-limit';
+import { IsDataURILimit, IsDataURILimitValidator } from './is-data-uri-limit.mjs';
 
 vi.mock('class-validator');
 

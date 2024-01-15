@@ -1,6 +1,6 @@
 import { registerDecorator, ValidationArguments } from 'class-validator';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { RequiresOtherProperty, RequiresOtherPropertyValidator } from './requires-other-property';
+import { RequiresOtherProperty, RequiresOtherPropertyValidator } from './requires-other-property.mjs';
 
 vi.mock('class-validator');
 

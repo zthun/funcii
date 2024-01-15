@@ -1,6 +1,6 @@
 import { registerDecorator } from 'class-validator';
 import { describe, expect, it, vi } from 'vitest';
-import { IsNotWhiteSpace, IsNotWhiteSpaceValidator } from './is-not-white-space';
+import { IsNotWhiteSpace, IsNotWhiteSpaceValidator } from './is-not-white-space.mjs';
 
 vi.mock('class-validator');
 
