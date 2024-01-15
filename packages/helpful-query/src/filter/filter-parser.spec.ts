@@ -55,25 +55,6 @@ describe('ZFilterParser', () => {
     assertThrowsError('wut()');
   });
 
-  it('should return the fallback if a filter tries to parse but fails', () => {
-    // Arrange.
-    const target = createTestTarget();
-    const expected = new ZFilterUnaryBuilder().build();
-    // Act.
-    const actual = target.tryParse('wut?', expected);
-    // Assert.
-    expect(actual).toEqual(expected);
-  });
-
-  it('should return undefined if a filter tries to parse but fails with no fallback', () => {
-    // Arrange.
-    const target = createTestTarget();
-    // Act.
-    const actual = target.tryParse('wut?');
-    // Assert.
-    expect(actual).toBeUndefined();
-  });
-
   describe('Binary', () => {
     it('should throw an Error if the argument list is not closed', () => {
       assertThrowsError('eq(subject, (value)');

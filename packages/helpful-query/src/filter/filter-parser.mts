@@ -22,16 +22,6 @@ export class ZFilterParser {
     return filter;
   }
 
-  public tryParse(filter: string): IZFilter | undefined;
-  public tryParse(filter: string, fallback: IZFilter): IZFilter;
-  public tryParse(filter: string, fallback?: IZFilter): IZFilter | undefined {
-    try {
-      return this.parse(filter);
-    } catch {
-      return fallback;
-    }
-  }
-
   private _peelBetweenParens(args: string): [string, string] {
     const [argList, rest] = peelBetween(args, '(', ')');
 

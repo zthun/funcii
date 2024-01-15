@@ -69,23 +69,4 @@ describe('ZSortParser', () => {
     // Assert.
     expect(actual).toEqual(expected);
   });
-
-  it('should return the fallback if a sort tries to parse but fails', () => {
-    // Arrange.
-    const target = createTestTarget();
-    const expected = new ZSortBuilder().build();
-    // Act.
-    const actual = target.tryParse('(wut(subject))', expected);
-    // Assert.
-    expect(actual).toEqual(expected);
-  });
-
-  it('should return undefined if a sort tries to parse but fails with no fallback', () => {
-    // Arrange.
-    const target = createTestTarget();
-    // Act.
-    const actual = target.tryParse('wut?');
-    // Assert.
-    expect(actual).toBeUndefined();
-  });
 });

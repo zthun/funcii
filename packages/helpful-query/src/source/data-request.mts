@@ -1,3 +1,4 @@
+import { tryFallback } from '@zthun/helpful-fn';
 import { ZFilterParser } from '../filter/filter-parser.mjs';
 import { IZFilter } from '../filter/filter.mjs';
 import { ZSortParser } from '../sort/sort-parser.mjs';
@@ -163,7 +164,7 @@ export class ZDataRequestBuilder {
     if (filter == null) {
       delete this._request.filter;
     } else {
-      this._request.filter = typeof filter === 'object' ? filter : new ZFilterParser().tryParse(filter);
+      this._request.filter = typeof filter === 'object' ? filter : tryFallback(() => new ZFilterParser().parse(filter));
     }
     return this;
   }
@@ -181,7 +182,7 @@ export class ZDataRequestBuilder {
     if (sort == null) {
       delete this._request.sort;
     } else {
-      this._request.sort = typeof sort === 'string' ? new ZSortParser().tryParse(sort) : sort;
+      this._request.sort = typeof sort === 'string' ? tryFallback(() => new ZSortParser().parse(sort)) : sort;
     }
     return this;
   }

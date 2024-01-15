@@ -2,6 +2,9 @@ import { peel, peelBetween } from '@zthun/helpful-fn';
 import { trim, trimStart } from 'lodash-es';
 import { IZSort, ZSortBuilder, ZSortDirections } from './sort.mjs';
 
+/**
+ * A parser for a sort string.
+ */
 export class ZSortParser {
   public parse(candidate: string): IZSort[] {
     // A sort candidate can be fully between parens to allow for multi sort
@@ -21,16 +24,6 @@ export class ZSortParser {
     }
 
     return builder.build();
-  }
-
-  public tryParse(candidate: string): IZSort[] | undefined;
-  public tryParse(candidate: string, fallback: IZSort[]): IZSort[];
-  public tryParse(candidate: string, fallback?: IZSort[]): IZSort[] | undefined {
-    try {
-      return this.parse(candidate);
-    } catch {
-      return fallback;
-    }
   }
 
   private _parseSort(candidate: string): [IZSort, string] {
