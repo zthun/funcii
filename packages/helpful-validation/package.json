@@ -9,11 +9,17 @@
     "url": "https://github.com/zthun/helpful",
     "directory": "packages/helpful-validation"
   },
-  "main": "./dist/lib/index.js",
-  "module": "./dist/lib/index.esm.js",
-  "types": "./dist/types/index.d.ts",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "require": "./dist/index.cjs",
+    "import": "./dist/index.js",
+    "types": "./dist/index.d.ts"
+  },
   "scripts": {
-    "build": "microbundle --format esm,cjs --tsconfig tsconfig.prod.json"
+    "build": "vite build"
   },
   "publishConfig": {
     "access": "public"
@@ -23,7 +29,7 @@
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
-    "microbundle": "^0.15.1",
+    "vite": "^5.0.11",
     "vitest": "^1.2.0"
   },
   "files": [
