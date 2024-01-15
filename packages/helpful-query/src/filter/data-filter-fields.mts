@@ -1,11 +1,11 @@
 import { get } from 'lodash-es';
-import { IZDataMatch } from '../match/data-match';
-import { IZFilter } from './filter';
-import { BinaryComparators } from './filter-binary';
-import { CollectionComparators, isCollectionFilter } from './filter-collection';
-import { IZFilterLogic, ZOperatorLogic, isLogicFilter } from './filter-logic';
-import { IZFilterSubject } from './filter-subject';
-import { UnaryComparators, isUnaryFilter } from './filter-unary';
+import { IZDataMatch } from '../match/data-match.mjs';
+import { ZBinaryComparators } from './filter-binary.mjs';
+import { ZCollectionComparators, isCollectionFilter } from './filter-collection.mjs';
+import { IZFilterLogic, ZOperatorLogic, isLogicFilter } from './filter-logic.mjs';
+import { IZFilterSubject } from './filter-subject.mjs';
+import { ZUnaryComparators, isUnaryFilter } from './filter-unary.mjs';
+import { IZFilter } from './filter.mjs';
 
 /**
  * Represents a data match object that applies a filter.
@@ -40,13 +40,13 @@ export class ZDataFilterFields<TData> implements IZDataMatch<TData, IZFilter> {
     }
 
     if (isCollectionFilter(filter)) {
-      return this._matchSubjectFilter(data, filter, CollectionComparators, filter.values);
+      return this._matchSubjectFilter(data, filter, ZCollectionComparators, filter.values);
     }
 
     if (isUnaryFilter(filter)) {
-      return this._matchSubjectFilter(data, filter, UnaryComparators);
+      return this._matchSubjectFilter(data, filter, ZUnaryComparators);
     }
 
-    return this._matchSubjectFilter(data, filter, BinaryComparators, filter.value);
+    return this._matchSubjectFilter(data, filter, ZBinaryComparators, filter.value);
   }
 }

@@ -1,6 +1,6 @@
-import { IZFilter } from '../filter/filter';
-import { ZFilterParser } from '../filter/filter-parse';
-import { IZSort } from '../sort/sort';
+import { ZFilterParser } from '../filter/filter-parse.mjs';
+import { IZFilter } from '../filter/filter.mjs';
+import { IZSort } from '../sort/sort.mjs';
 
 /**
  * Describes a request as if it was placed an a url in the query params.

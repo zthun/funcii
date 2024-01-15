@@ -1,6 +1,6 @@
 import { keyBy } from 'lodash-es';
-import { IZFilter } from './filter';
-import { IZFilterMetadata, IZFilterOperator } from './filter-subject';
+import { IZFilterMetadata, IZFilterOperator } from './filter-subject.mjs';
+import { IZFilter } from './filter.mjs';
 
 /**
  * The connectors for an {@link IZFilterLogic} filter.

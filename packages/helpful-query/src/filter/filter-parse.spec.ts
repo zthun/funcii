@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { IZFilterBinary, ZFilterBinaryBuilder, ZOperatorBinary, isBinaryFilter } from './filter-binary';
-import { IZFilterCollection, ZOperatorCollection, isCollectionFilter } from './filter-collection';
-import { IZFilterLogic, ZFilterLogicBuilder, ZOperatorLogic, isLogicFilter } from './filter-logic';
-import { ZFilterParser } from './filter-parse';
-import { IZFilterMetadata, IZFilterSubject } from './filter-subject';
-import { ZFilterUnaryBuilder, ZOperatorUnary, isUnaryFilter } from './filter-unary';
+import { IZFilterBinary, ZFilterBinaryBuilder, ZOperatorBinary, isBinaryFilter } from './filter-binary.mjs';
+import { IZFilterCollection, ZOperatorCollection, isCollectionFilter } from './filter-collection.mjs';
+import { IZFilterLogic, ZFilterLogicBuilder, ZOperatorLogic, isLogicFilter } from './filter-logic.mjs';
+import { ZFilterParser } from './filter-parse.mjs';
+import { IZFilterMetadata, IZFilterSubject } from './filter-subject.mjs';
+import { ZFilterUnaryBuilder, ZOperatorUnary, isUnaryFilter } from './filter-unary.mjs';
 
 describe('ZFilterParser', () => {
   const createTestTarget = () => new ZFilterParser();

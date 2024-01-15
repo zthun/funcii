@@ -1,7 +1,7 @@
-import { ZDataFilterFields } from '../filter/data-filter-fields';
-import { IZFilter } from '../filter/filter';
-import { IZDataMatch } from '../match/data-match';
-import { ZDataMatchAlways } from '../match/data-match-always';
+import { ZDataFilterFields } from '../filter/data-filter-fields.mjs';
+import { IZFilter } from '../filter/filter.mjs';
+import { ZDataMatchAlways } from '../match/data-match-always.mjs';
+import { IZDataMatch } from '../match/data-match.mjs';
 
 /**
  * Options for an {@link ZDataSourceStatic} object.

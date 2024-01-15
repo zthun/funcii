@@ -1,17 +1,17 @@
 import { range } from 'lodash-es';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { ZDataFilterFields } from '../filter/data-filter-fields';
-import { IZFilter } from '../filter/filter';
-import { ZFilterBinaryBuilder } from '../filter/filter-binary';
-import { ZFilterCollectionBuilder } from '../filter/filter-collection';
-import { ZFilterLogicBuilder } from '../filter/filter-logic';
-import { ZFilterUnaryBuilder } from '../filter/filter-unary';
-import { ZDataSearchFields } from '../search/data-search-fields';
-import { ZDataSearchText } from '../search/data-search-text';
-import { ZSortBuilder } from '../sort/sort';
-import { IZDataRequest, ZDataRequestBuilder } from './data-request';
-import { ZDataSourceStatic } from './data-source-static';
-import { IZDataSourceStaticOptions, ZDataSourceStaticOptionsBuilder } from './data-source-static-options';
+import { ZDataFilterFields } from '../filter/data-filter-fields.mjs';
+import { ZFilterBinaryBuilder } from '../filter/filter-binary.mjs';
+import { ZFilterCollectionBuilder } from '../filter/filter-collection.mjs';
+import { ZFilterLogicBuilder } from '../filter/filter-logic.mjs';
+import { ZFilterUnaryBuilder } from '../filter/filter-unary.mjs';
+import { IZFilter } from '../filter/filter.mjs';
+import { ZDataSearchFields } from '../search/data-search-fields.mjs';
+import { ZDataSearchText } from '../search/data-search-text.mjs';
+import { ZSortBuilder } from '../sort/sort.mjs';
+import { IZDataRequest, ZDataRequestBuilder } from './data-request.mjs';
+import { IZDataSourceStaticOptions, ZDataSourceStaticOptionsBuilder } from './data-source-static-options.mjs';
+import { ZDataSourceStatic } from './data-source-static.mjs';
 
 describe('ZDataSourceStatic', () => {
   let arr: any[] | Promise<any[]>;

@@ -1,15 +1,15 @@
 import { peel, peelBetween } from '@zthun/helpful-fn';
 import { trim, trimStart } from 'lodash-es';
-import { IZFilter, ZOperatorFilter, ZOperatorsFilter } from './filter';
-import { IZFilterBinary, ZFilterBinaryBuilder, ZOperatorBinary, isBinaryOperator } from './filter-binary';
+import { IZFilterBinary, ZFilterBinaryBuilder, ZOperatorBinary, isBinaryOperator } from './filter-binary.mjs';
 import {
   IZFilterCollection,
   ZFilterCollectionBuilder,
   ZOperatorCollection,
   isCollectionOperator
-} from './filter-collection';
-import { IZFilterLogic, ZFilterLogicBuilder, ZOperatorLogic, isLogicOperator } from './filter-logic';
-import { IZFilterUnary, ZFilterUnaryBuilder, ZOperatorUnary, isUnaryOperator } from './filter-unary';
+} from './filter-collection.mjs';
+import { IZFilterLogic, ZFilterLogicBuilder, ZOperatorLogic, isLogicOperator } from './filter-logic.mjs';
+import { IZFilterUnary, ZFilterUnaryBuilder, ZOperatorUnary, isUnaryOperator } from './filter-unary.mjs';
+import { IZFilter, ZOperatorFilter, ZOperatorsFilter } from './filter.mjs';
 
 export class ZFilterParser {
   public parse(candidate: string): IZFilter {

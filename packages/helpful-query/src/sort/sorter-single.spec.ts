@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { IZSort, ZSortBuilder, ZSortDirection } from './sort';
-import { ZSorterSingle } from './sorter-single';
+import { IZSort, ZSortBuilder, ZSortDirection } from './sort.mjs';
+import { ZSorterSingle } from './sorter-single.mjs';
 
 describe('ZSorterSingle', () => {
   let initial: IZSort[] | undefined;

@@ -1,7 +1,7 @@
 import { chunk, get } from 'lodash-es';
-import { IZDataMatch } from '../match/data-match';
-import { ZDataMatchOptional } from '../match/data-match-optional';
-import { IZSort, ZSortDirection } from '../sort/sort';
+import { ZDataMatchOptional } from '../match/data-match-optional.mjs';
+import { IZDataMatch } from '../match/data-match.mjs';
+import { IZSort, ZSortDirection } from '../sort/sort.mjs';
 
 /**
  * Takes a list of data and paginates it in memory.

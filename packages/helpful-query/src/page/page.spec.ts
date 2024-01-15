@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ZPageBuilder } from './page';
+import { ZPageBuilder } from './page.mjs';
 
 describe('ZPage', () => {
   const createTestTarget = () => new ZPageBuilder<number>();

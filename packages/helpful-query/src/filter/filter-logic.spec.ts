@@ -1,9 +1,9 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { IZFilter } from './filter';
-import { ZFilterBinaryBuilder } from './filter-binary';
-import { ZFilterCollectionBuilder } from './filter-collection';
-import { ZFilterLogicBuilder, ZOperatorLogic } from './filter-logic';
-import { ZFilterUnaryBuilder } from './filter-unary';
+import { ZFilterBinaryBuilder } from './filter-binary.mjs';
+import { ZFilterCollectionBuilder } from './filter-collection.mjs';
+import { ZFilterLogicBuilder, ZOperatorLogic } from './filter-logic.mjs';
+import { ZFilterUnaryBuilder } from './filter-unary.mjs';
+import { IZFilter } from './filter.mjs';
 
 describe('Logic Filter', () => {
   let clauseA: IZFilter;

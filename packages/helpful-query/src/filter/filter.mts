@@ -1,7 +1,7 @@
-import { IZFilterBinary, ZOperatorBinary, ZOperatorsBinary } from './filter-binary';
-import { IZFilterCollection, ZOperatorCollection, ZOperatorsCollection } from './filter-collection';
-import { IZFilterLogic, ZOperatorLogic, ZOperatorsLogic } from './filter-logic';
-import { IZFilterUnary, ZOperatorUnary, ZOperatorsUnary } from './filter-unary';
+import { IZFilterBinary, ZOperatorBinary, ZOperatorsBinary } from './filter-binary.mjs';
+import { IZFilterCollection, ZOperatorCollection, ZOperatorsCollection } from './filter-collection.mjs';
+import { IZFilterLogic, ZOperatorLogic, ZOperatorsLogic } from './filter-logic.mjs';
+import { IZFilterUnary, ZOperatorUnary, ZOperatorsUnary } from './filter-unary.mjs';
 
 /**
  * Represents one of the filter types.
@@ -16,7 +16,7 @@ export type ZOperatorFilter = ZOperatorBinary | ZOperatorCollection | ZOperatorL
 /**
  * A list of all possible filter operators in one collection.
  */
-export const ZOperatorsFilter = (<ZOperatorFilter[]>[])
+export const ZOperatorsFilter = ([] as ZOperatorFilter[])
   .concat(ZOperatorsBinary)
   .concat(ZOperatorsCollection)
   .concat(ZOperatorsLogic)

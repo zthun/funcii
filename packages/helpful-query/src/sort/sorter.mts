@@ -1,4 +1,4 @@
-import { IZSort, ZSortDirection } from './sort';
+import { IZSort, ZSortDirection } from './sort.mjs';
 
 /**
  * Represents a sorter algorithm that can help with building sorts based on common techniques.
