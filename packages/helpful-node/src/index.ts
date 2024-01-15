@@ -1,1 +1,1 @@
-export * from './walk/walk';
+export * from './walk/walk.mjs';

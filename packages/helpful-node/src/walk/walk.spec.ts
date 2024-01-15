@@ -1,7 +1,7 @@
 import { createGuid } from '@zthun/helpful-fn';
 import { basename, dirname } from 'path';
 import { describe, expect, it } from 'vitest';
-import { walk } from './walk';
+import { walk } from './walk.mjs';
 
 const currentFile = basename(__filename);
 const assets = 'assets';
