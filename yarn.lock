@@ -4020,7 +4020,7 @@ __metadata:
   resolution: "@zthun/helpful-internet@workspace:packages/helpful-internet"
   dependencies:
     "@zthun/helpful-fn": "npm:^3.0.0"
-    microbundle: "npm:^0.15.1"
+    vite: "npm:^5.0.11"
     vitest: "npm:^1.2.0"
   languageName: unknown
   linkType: soft
@@ -4030,7 +4030,7 @@ __metadata:
   resolution: "@zthun/helpful-node@workspace:packages/helpful-node"
   dependencies:
     "@zthun/helpful-fn": "npm:^3.0.0"
-    microbundle: "npm:^0.15.1"
+    vite: "npm:^5.0.11"
     vitest: "npm:^1.2.0"
   languageName: unknown
   linkType: soft
@@ -4136,6 +4136,7 @@ __metadata:
     rimraf: "npm:^5.0.5"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.3.3"
+    vite: "npm:^5.0.11"
     vite-plugin-dts: "npm:^3.7.0"
     vite-plugin-externalize-deps: "npm:^0.8.0"
     vite-tsconfig-paths: "npm:^4.2.3"
