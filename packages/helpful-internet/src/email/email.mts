@@ -1,4 +1,4 @@
-import { IZEmailEnvelope, ZEmailEnvelopeBuilder } from './email-envelope';
+import { IZEmailEnvelope, ZEmailEnvelopeBuilder } from './email-envelope.mjs';
 
 /**
  * Represents an email message.

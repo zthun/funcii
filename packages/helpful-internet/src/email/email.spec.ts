@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 
-import { ZEmailBuilder } from './email';
-import { IZEmailEnvelope, ZEmailEnvelopeBuilder } from './email-envelope';
+import { IZEmailEnvelope, ZEmailEnvelopeBuilder } from './email-envelope.mjs';
+import { ZEmailBuilder } from './email.mjs';
 
 describe('ZEmailBuilder.', () => {
   let envelope: IZEmailEnvelope;

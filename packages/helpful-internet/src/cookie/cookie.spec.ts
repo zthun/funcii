@@ -1,6 +1,6 @@
 import { createGuid } from '@zthun/helpful-fn';
 import { describe, expect, it } from 'vitest';
-import { ZCookieBuilder } from './cookie';
+import { ZCookieBuilder } from './cookie.mjs';
 
 describe('ZCookieBuilder', () => {
   function createTestTarget() {

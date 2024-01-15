@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 
-import { IZEmailContact, ZEmailContactBuilder } from './email-contact';
-import { ZEmailContactAddressBuilder } from './email-contact-address';
+import { ZEmailContactAddressBuilder } from './email-contact-address.mjs';
+import { IZEmailContact, ZEmailContactBuilder } from './email-contact.mjs';
 
 describe('ZEmailContactAddressBuilder', () => {
   let gambit: string;

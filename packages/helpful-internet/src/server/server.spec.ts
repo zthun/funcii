@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ZServerBuilder } from './server';
+import { ZServerBuilder } from './server.mjs';
 
 describe('ZServerBuilder.', () => {
   function createTestTarget() {
