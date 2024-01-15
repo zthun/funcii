@@ -1,4 +1,4 @@
-import { keyBy } from 'lodash-es';
+import { keyBy, values } from 'lodash-es';
 import { IZFilterMetadata, IZFilterSubject } from './filter-subject.mjs';
 
 /**
@@ -192,7 +192,7 @@ export function isBinaryFilter(filter: IZFilterMetadata): filter is IZFilterBina
 /**
  * The possible operators as a constant list.
  */
-export const ZOperatorsBinary: ZOperatorBinary[] = Object.keys(ZOperatorBinary).map((o) => ZOperatorBinary[o]);
+export const ZOperatorsBinary = values(ZOperatorBinary);
 
 const _ZOperatorsBinaryLookup = keyBy(ZOperatorsBinary);
 

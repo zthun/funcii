@@ -1,4 +1,4 @@
-import { keyBy } from 'lodash-es';
+import { keyBy, values } from 'lodash-es';
 import { IZFilterMetadata, IZFilterOperator } from './filter-subject.mjs';
 import { IZFilter } from './filter.mjs';
 
@@ -137,7 +137,7 @@ export function isLogicFilter(filter: IZFilterMetadata): filter is IZFilterLogic
 /**
  * A list of all logic operators.
  */
-export const ZOperatorsLogic: ZOperatorLogic[] = Object.keys(ZOperatorLogic).map((o) => ZOperatorLogic[o]);
+export const ZOperatorsLogic = values(ZOperatorLogic);
 const _ZOperatorsLogicLookup = keyBy(ZOperatorsLogic);
 
 /**

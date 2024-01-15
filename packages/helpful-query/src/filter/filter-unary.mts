@@ -1,4 +1,4 @@
-import { keyBy } from 'lodash-es';
+import { keyBy, values } from 'lodash-es';
 import { IZFilterMetadata, IZFilterSubject } from './filter-subject.mjs';
 
 /**
@@ -113,7 +113,7 @@ export function isUnaryFilter(filter: IZFilterMetadata): filter is IZFilterUnary
 /**
  * A list of all unary operators.
  */
-export const ZOperatorsUnary: ZOperatorUnary[] = Object.keys(ZOperatorUnary).map((o) => ZOperatorUnary[o]);
+export const ZOperatorsUnary = values(ZOperatorUnary);
 const _ZOperatorsUnaryLookup = keyBy(ZOperatorsUnary);
 
 /**

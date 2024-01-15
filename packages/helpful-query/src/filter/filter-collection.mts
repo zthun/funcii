@@ -1,4 +1,4 @@
-import { keyBy } from 'lodash-es';
+import { keyBy, values } from 'lodash-es';
 import { IZFilterMetadata, IZFilterSubject } from './filter-subject.mjs';
 
 /**
@@ -155,9 +155,7 @@ export const ZCollectionComparators: Record<ZOperatorCollection, (data: any, val
 /**
  * A list of all collection operators.
  */
-export const ZOperatorsCollection: ZOperatorCollection[] = Object.keys(ZOperatorCollection).map(
-  (o) => ZOperatorCollection[o]
-);
+export const ZOperatorsCollection = values(ZOperatorCollection);
 const _ZOperatorsCollectionLookup = keyBy(ZOperatorsCollection);
 
 /**
