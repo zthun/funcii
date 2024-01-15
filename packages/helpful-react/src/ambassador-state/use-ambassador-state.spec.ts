@@ -2,7 +2,7 @@
 
 import { IZCircusReactHook, ZCircusSetupHook } from '@zthun/cirque-du-react';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { ZAmbassadorReducer, useAmbassadorState } from './use-ambassador-state';
+import { ZAmbassadorReducer, useAmbassadorState } from './use-ambassador-state.mjs';
 
 describe('useAmbassadorState', () => {
   let current: string | undefined;

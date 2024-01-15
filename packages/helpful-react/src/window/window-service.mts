@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import { $global } from '../global/global';
+import { $global } from '../global/global.mjs';
 
 /**
  * Represents the window context.

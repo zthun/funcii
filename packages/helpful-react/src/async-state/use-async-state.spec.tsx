@@ -13,7 +13,7 @@ import {
   isStateLoaded,
   isStateLoading,
   useAsyncState
-} from './use-async-state';
+} from './use-async-state.mjs';
 
 describe('useAsyncState', () => {
   let load: Mock;

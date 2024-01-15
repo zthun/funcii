@@ -2,7 +2,7 @@
 
 import { ZCircusSetupHook } from '@zthun/cirque-du-react';
 import { describe, expect, it } from 'vitest';
-import { useWindowService } from './window-service';
+import { useWindowService } from './window-service.mjs';
 
 describe('useWindowService', () => {
   function createTestTarget() {

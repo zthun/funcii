@@ -2,7 +2,7 @@
 
 import { ZCircusSetupHook } from '@zthun/cirque-du-react';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { useStateAsArray } from './use-state-as-array';
+import { useStateAsArray } from './use-state-as-array.mjs';
 
 describe('useStateAsArray', () => {
   const batman = 'batman';

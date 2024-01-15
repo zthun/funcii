@@ -11,8 +11,8 @@ import {
 } from '@zthun/helpful-query';
 import { range } from 'lodash-es';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { isStateLoading } from '../async-state/use-async-state';
-import { usePageViewState } from './use-page-view-state';
+import { isStateLoading } from '../async-state/use-async-state.mjs';
+import { usePageViewState } from './use-page-view-state.mjs';
 
 describe('usePageViewState', () => {
   let source: IZDataSource<number>;

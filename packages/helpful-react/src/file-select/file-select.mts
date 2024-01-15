@@ -8,7 +8,7 @@
  */
 
 import { createContext, useContext } from 'react';
-import { $global } from '../global/global';
+import { $global } from '../global/global.mjs';
 
 /**
  * A service that allows the user to open a file.
@@ -67,9 +67,9 @@ export class ZFileSelect implements IZFileSelect {
   /**
    * Initializes a new instance of this object.
    *
-   * @param doc -
+   * @param _doc -
    *        The root document that can be used to create the file dialog.
-   * @param container -
+   * @param _container -
    *        The container to house the input element.
    */
   public constructor(

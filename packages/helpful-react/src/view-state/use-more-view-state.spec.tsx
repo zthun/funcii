@@ -13,8 +13,8 @@ import { range } from 'lodash-es';
 import React, { StrictMode } from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { mock } from 'vitest-mock-extended';
-import { asStateError, isStateLoading } from '../async-state/use-async-state';
-import { useMoreViewState } from './use-more-view-state';
+import { asStateError, isStateLoading } from '../async-state/use-async-state.mjs';
+import { useMoreViewState } from './use-more-view-state.mjs';
 
 describe('useMoreViewState', () => {
   let source: IZDataSource<number>;

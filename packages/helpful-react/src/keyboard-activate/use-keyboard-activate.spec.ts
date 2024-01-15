@@ -4,7 +4,7 @@ import { ZCircusKeyboardQwerty } from '@zthun/cirque';
 import { ZCircusSetupHook } from '@zthun/cirque-du-react';
 import { KeyboardEvent } from 'react';
 import { Mock, beforeEach, describe, expect, it, vi } from 'vitest';
-import { useKeyboardActivate } from './use-keyboard-activate';
+import { useKeyboardActivate } from './use-keyboard-activate.mjs';
 
 describe('useKeyboardActivate', () => {
   let callback: Mock | undefined;

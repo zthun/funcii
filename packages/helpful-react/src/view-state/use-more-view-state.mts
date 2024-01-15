@@ -2,7 +2,7 @@ import { createError } from '@zthun/helpful-fn';
 import { IZDataRequest, IZDataSource, ZDataRequestBuilder } from '@zthun/helpful-query';
 import { useEffect, useRef, useState } from 'react';
 import { Subscription, defer } from 'rxjs';
-import { ZAsyncDataState, ZAsyncLoading } from '../async-state/use-async-state';
+import { ZAsyncDataState, ZAsyncLoading } from '../async-state/use-async-state.mjs';
 
 /**
  * A type of view that loads the next set of data in batches.
