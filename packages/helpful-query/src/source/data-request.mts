@@ -1,4 +1,4 @@
-import { ZFilterParser } from '../filter/filter-parse.mjs';
+import { ZFilterParser } from '../filter/filter-parser.mjs';
 import { IZFilter } from '../filter/filter.mjs';
 import { IZSort } from '../sort/sort.mjs';
 
