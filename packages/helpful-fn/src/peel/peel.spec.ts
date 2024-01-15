@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { peel, peelBetween } from './peel';
+import { peel, peelBetween } from './peel.mjs';
 
 describe('Peel', () => {
   it('should peel a candidate from the start of the string', () => {

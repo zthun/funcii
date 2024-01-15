@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createGuid } from './create-guid';
+import { createGuid } from './create-guid.mjs';
 
 describe('createGuid', () => {
   it('should return a new guid', () => {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { firstDefined } from './first-defined';
+import { firstDefined } from './first-defined.mjs';
 
 describe('FirstDefined', () => {
   it('should return the first value if it is defined.', () => {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ZAssert } from './assert';
+import { ZAssert } from './assert.mjs';
 
 describe('ZAssert', () => {
   function createTestTarget() {

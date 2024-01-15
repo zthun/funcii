@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { commaJoinDefined, cssJoinDefined, JoinListInputParameter, spaceJoinDefined } from './join-defined';
+import { JoinListInputParameter, commaJoinDefined, cssJoinDefined, spaceJoinDefined } from './join-defined.mjs';
 
 describe('join list', () => {
   function assertProducesList<T>(

@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, Mock, vi } from 'vitest';
-import { setFirst } from './set-first';
+import { setFirst } from './set-first.mjs';
 
 describe('SetFirstOrDefault', () => {
   let setValue: Mock;

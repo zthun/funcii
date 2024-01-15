@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { sleep } from './sleep';
+import { sleep } from './sleep.mjs';
 
 describe('Sleep', () => {
   it('should resolve almost immediately.', async () => {

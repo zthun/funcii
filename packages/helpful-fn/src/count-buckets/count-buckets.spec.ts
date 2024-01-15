@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { countBuckets } from './count-buckets';
+import { countBuckets } from './count-buckets.mjs';
 
 describe('countBuckets', () => {
   it('should return Infinity if infinite items are provided', () => {

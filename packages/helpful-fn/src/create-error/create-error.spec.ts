@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createError } from './create-error';
+import { createError } from './create-error.mjs';
 
 describe('Create Error', () => {
   it('should return an the same Error if the object is an instance of an Error', () => {
