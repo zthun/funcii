@@ -3,9 +3,20 @@ import { trim, trimStart } from 'lodash-es';
 import { IZSort, ZSortBuilder, ZSortDirections } from './sort.mjs';
 
 /**
- * A parser for a sort string.
+ * A parser object that can parse an {@link IZSort} list from a string.
  */
 export class ZSortParser {
+  /**
+   * Attempts to parse a list of {@link IZSort} objects from the candidate string.
+   *
+   * @param candidate -
+   *        The string to parse.
+   *
+   * @returns
+   *        A sort list that was parsed from the candidate string.
+   * @throws
+   *        Error if there is a syntax error while parsing a sort.
+   */
   public parse(candidate: string): IZSort[] {
     // A sort candidate can be fully between parens to allow for multi sort
     // or can just be a single sort.

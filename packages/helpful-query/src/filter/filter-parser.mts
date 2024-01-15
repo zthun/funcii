@@ -11,7 +11,21 @@ import { IZFilterLogic, ZFilterLogicBuilder, ZOperatorLogic, isLogicOperator } f
 import { IZFilterUnary, ZFilterUnaryBuilder, ZOperatorUnary, isUnaryOperator } from './filter-unary.mjs';
 import { IZFilter, ZOperatorFilter, ZOperatorsFilter } from './filter.mjs';
 
+/**
+ * Represents a parser object that can parse an {@link IZFilter} from a string.
+ */
 export class ZFilterParser {
+  /**
+   * Attempts to parse an {@link IZFilter} from the candidate string.
+   *
+   * @param candidate -
+   *        The candidate string to parse.
+   *
+   * @returns
+   *        The filter parsed from the candidate.
+   * @throws
+   *        If there is a syntax error in candidate.
+   */
   public parse(candidate: string): IZFilter {
     const [filter, rest] = this._parseFilter(candidate);
 
