@@ -1,3 +1,5 @@
+import { castArray } from 'lodash-es';
+
 /**
  * A sorting direction.
  */
@@ -41,6 +43,34 @@ export class ZSortBuilder {
   }
 
   /**
+   * Sets all sorts.
+   *
+   * @param val -
+   *        The value to set.
+   *
+   * @returns
+   *        This object.
+   */
+  public sorts(val: IZSort[]): this {
+    this._sort = val;
+    return this;
+  }
+
+  /**
+   * Adds 1 or more sorts.
+   *
+   * @param val -
+   *        The value to concat to the sorts.
+   *
+   * @returns
+   *        This object.
+   */
+  public sort(val: IZSort | IZSort[]): this {
+    const _sorts = castArray(val);
+    return this.sorts(this._sort.concat(_sorts));
+  }
+
+  /**
    * Adds an ascending order clause.
    *
    * @param subject -
@@ -50,8 +80,7 @@ export class ZSortBuilder {
    *        This object
    */
   public ascending(subject?: string): this {
-    this._sort.push({ subject, direction: ZSortDirection.Ascending });
-    return this;
+    return this.sort({ subject, direction: ZSortDirection.Ascending });
   }
 
   /**
@@ -64,8 +93,7 @@ export class ZSortBuilder {
    *        This object
    */
   public descending(subject?: string): this {
-    this._sort.push({ subject: subject, direction: ZSortDirection.Descending });
-    return this;
+    return this.sort({ subject, direction: ZSortDirection.Descending });
   }
 
   /**
