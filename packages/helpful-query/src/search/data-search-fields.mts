@@ -8,7 +8,7 @@ export class ZDataSearchFields<TData extends object> implements IZDataMatch<TDat
   /**
    * Initializes a new instance of this object.
    *
-   * @param fields -
+   * @param _fields -
    *        The fields to match.
    */
   public constructor(private _fields?: string[]) {}

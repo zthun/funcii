@@ -15,9 +15,8 @@ export class ZDataSourceStatic<T> implements IZDataSource<T> {
    *
    * @param _data -
    *        The static data to search, sort, filter, and paginate.
-   * @param _search -
-   *        The search matching strategy.  If this is undefined, then
-   *        all data will match.
+   * @param _options -
+   *        The options for the static source.
    */
   public constructor(
     private _data: T[] | Promise<T[]> | Error | Promise<Error>,
