@@ -1,4 +1,4 @@
-import { castArray } from 'lodash-es';
+import { castArray, values } from 'lodash-es';
 
 /**
  * A sorting direction.
@@ -106,3 +106,8 @@ export class ZSortBuilder {
     return JSON.parse(JSON.stringify(this._sort));
   }
 }
+
+/**
+ * A list of all sort directions.
+ */
+export const ZSortDirections = values(ZSortDirection);
