@@ -1,2 +1,2 @@
 /* istanbul ignore next -- @preserve */
-export const $global = (window as any) || (global as any);
+export const $global = typeof window === 'undefined' ? global : window;
