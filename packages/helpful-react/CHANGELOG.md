@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.1](https://github.com/zthun/helpful/compare/v3.2.0...v3.2.1) (2024-02-06)
+
+
+### Bug Fixes
+
+* undefined window should no longer fail builds on typescript apps ([b127a4c](https://github.com/zthun/helpful/commit/b127a4c9e9914d282a237c223635373d3bb816e3))
+
+
+
 ## [3.2.0](https://github.com/zthun/helpful/compare/v3.1.0...v3.2.0) (2024-01-15)
 
 **Note:** Version bump only for package @zthun/helpful-react
