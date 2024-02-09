@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.1](https://github.com/zthun/helpful/compare/v3.3.0...v3.3.1) (2024-02-09)
+
+
+### Bug Fixes
+
+* exported serializer and deserializer ([dfd742c](https://github.com/zthun/helpful/commit/dfd742ccc68d0bec27f90b50d229d22f1a7fb2c4))
+
+
+
 ## [3.3.0](https://github.com/zthun/helpful/compare/v3.2.1...v3.3.0) (2024-02-09)
 
 
