@@ -31,23 +31,23 @@ describe('ZDataSourceStatic', () => {
   });
 
   describe('Mutation', () => {
-    const shouldBeImmutableOnTheOriginalTarget = async <T>(perform: (t: ZDataSourceStatic<T>) => Promise<any>) => {
+    const shouldBeImmutableOnTheOriginalTarget = async (p: (t: ZDataSourceStatic<any>) => Promise<any>) => {
       // Arrange.
       const expected = await arr;
       const target = createTestTarget();
       // Act.
-      await perform(target);
+      await p(target);
       const actual = await target.retrieve(new ZDataRequestBuilder().build());
       // Assert.
       expect(actual).toEqual(expected);
     };
 
-    const shouldRejectIfDataIsAnError = async <T>(perform: (t: ZDataSourceStatic<T>) => Promise<any>) => {
+    const shouldRejectIfDataIsAnError = async (p: (t: ZDataSourceStatic<any>) => Promise<any>) => {
       // Arrange.
       data = err;
       const target = createTestTarget();
       // Act.
-      const actual = perform(target);
+      const actual = p(target);
       // Assert.
       await expect(actual).rejects.toEqual(err);
     };
