@@ -23,14 +23,22 @@ export class ZDataSourceStatic<T> implements IZDataSource<T> {
     private _options: IZDataSourceStaticOptions<T> = new ZDataSourceStaticOptionsBuilder().build()
   ) {}
 
-  private async _items(): Promise<T[]> {
+  /**
+   * Gets a copy of the current list of items.
+   *
+   * @returns
+   *      A shallow copy of the current item list.
+   *      Returns a rejected promise if the initial
+   *      data is an error.
+   */
+  public async items(): Promise<T[]> {
     const data = await this._data;
 
     if (data instanceof Error) {
       return Promise.reject(data);
     }
 
-    return data;
+    return data.slice();
   }
 
   /**
@@ -50,11 +58,9 @@ export class ZDataSourceStatic<T> implements IZDataSource<T> {
    *        the new item.
    */
   public async insert(item: T, index = Infinity): Promise<ZDataSourceStatic<T>> {
-    let data = await this._items();
+    const data = await this.items();
     index = Math.max(index, 0);
-    data = data.slice();
     data.splice(index, 0, item);
-
     return new ZDataSourceStatic(data, this._options);
   }
 

@@ -31,6 +31,17 @@ describe('ZDataSourceStatic', () => {
   });
 
   describe('Mutation', () => {
+    const shouldBeImmutableOnTheOriginalTarget = async <T>(perform: (t: ZDataSourceStatic<T>) => Promise<any>) => {
+      // Arrange.
+      data = arr;
+      const target = createTestTarget();
+      // Act.
+      await perform(target);
+      const actual = await target.retrieve(new ZDataRequestBuilder().build());
+      // Assert.
+      expect(actual).toEqual(arr);
+    };
+
     const shouldRejectIfDataIsAnError = async <T>(perform: (t: ZDataSourceStatic<T>) => Promise<any>) => {
       // Arrange.
       data = err;
@@ -82,6 +93,10 @@ describe('ZDataSourceStatic', () => {
       it('should insert the item at the end of the list if the index is greater to the item count', async () => {
         const _arr = await arr;
         await shouldInsertAt(5000, _arr.length, _arr.length + 1);
+      });
+
+      it('should keep the original data source immutable', async () => {
+        await shouldBeImmutableOnTheOriginalTarget((t) => t.insert(5000));
       });
     });
   });
