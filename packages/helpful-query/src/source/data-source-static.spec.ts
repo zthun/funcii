@@ -191,6 +191,51 @@ describe('ZDataSourceStatic', () => {
         await shouldBeImmutableOnTheOriginalTarget((t) => t.removeAt(1));
       });
     });
+
+    describe('Set', () => {
+      it('should return a rejected promise if the data source was constructed with an error', async () => {
+        await shouldRejectIfDataIsAnError((t) => t.set(5000, 0));
+      });
+
+      it('should replace the item at the given index with the updated item', async () => {
+        // Arrange.
+        const target = createTestTarget();
+        const expected = 5000;
+        const index = 2;
+        // Act.
+        const next = await target.set(expected, index);
+        const items = await next.items();
+        const actual = items[index];
+        // Assert.
+        expect(actual).toEqual(expected);
+      });
+
+      it('should not replace anything if the index is less than 0', async () => {
+        // Arrange.
+        const target = createTestTarget();
+        const expected = await arr;
+        // Act.
+        const next = await target.set(5000, -1);
+        const actual = await next.retrieve(new ZDataRequestBuilder().build());
+        // Assert.
+        expect(actual).toEqual(expected);
+      });
+
+      it('should not replace anything if the index is greater equal to the item length', async () => {
+        // Arrange.
+        const target = createTestTarget();
+        const expected = await arr;
+        // Act.
+        const next = await target.set(5000, expected.length);
+        const actual = await next.retrieve(new ZDataRequestBuilder().build());
+        // Assert.
+        expect(actual).toEqual(expected);
+      });
+
+      it('should keep the original data source immutable', async () => {
+        await shouldBeImmutableOnTheOriginalTarget((t) => t.set(5000, 1));
+      });
+    });
   });
 
   describe('Count', () => {

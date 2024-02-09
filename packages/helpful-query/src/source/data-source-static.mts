@@ -108,6 +108,31 @@ export class ZDataSourceStatic<T> implements IZDataSource<T> {
     return new ZDataSourceStatic(items, this._options);
   }
 
+  /**
+   * Updates an item at the given index.
+   *
+   * @param item -
+   *        The item to set.
+   * @param index -
+   *        The index of the item to replace.
+   *
+   * @returns
+   *        A new data source with the item at the given index
+   *        updated, or a direct copy if the index is out
+   *        of range.  Returns a rejected promise if the
+   *        original data is an Error.
+   *
+   */
+  public async set(item: T, index: number): Promise<ZDataSourceStatic<T>> {
+    const items = await this.items();
+
+    if (index >= 0 && index < items.length) {
+      items[index] = item;
+    }
+
+    return new ZDataSourceStatic(items, this._options);
+  }
+
   public async count(request: IZDataRequest): Promise<number> {
     const { search: _search, filter: _filter } = request;
     const data = await this._data;
