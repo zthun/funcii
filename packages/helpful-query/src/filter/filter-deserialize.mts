@@ -1,4 +1,4 @@
-import { peel, peelBetween } from '@zthun/helpful-fn';
+import { IZDeserialize, peel, peelBetween } from '@zthun/helpful-fn';
 import { trim, trimStart } from 'lodash-es';
 import { IZFilterBinary, ZFilterBinaryBuilder, ZOperatorBinary, isBinaryOperator } from './filter-binary.mjs';
 import {
@@ -13,10 +13,8 @@ import { IZFilter, ZOperatorFilter, ZOperatorsFilter } from './filter.mjs';
 
 /**
  * Represents a parser object that can parse an {@link IZFilter} from a string.
- *
- * @deprecated Use {@link ZFilterDeserialize} instead which supports types in the value args.
  */
-export class ZFilterParser {
+export class ZFilterDeserialize implements IZDeserialize<IZFilter> {
   /**
    * Attempts to parse an {@link IZFilter} from the candidate string.
    *
@@ -28,7 +26,7 @@ export class ZFilterParser {
    * @throws
    *        If there is a syntax error in candidate.
    */
-  public parse(candidate: string): IZFilter {
+  public deserialize(candidate: string): IZFilter {
     const [filter, rest] = this._parseFilter(candidate);
 
     if (trim(rest).length > 0) {
@@ -71,23 +69,23 @@ export class ZFilterParser {
   private _parseUnaryFilter(operator: ZOperatorUnary, args: string): [IZFilterUnary, string] {
     const [argList, rest] = this._splitArgs(operator, args, 1);
     let [subject] = argList;
-    subject = decodeURIComponent(subject);
+    subject = trim(subject);
     return [new ZFilterUnaryBuilder().operator(operator).subject(subject).build(), rest];
   }
 
   private _parseBinaryFilter(operator: ZOperatorBinary, args: string): [IZFilterBinary, string] {
     const [argList, rest] = this._splitArgs(operator, args, 2);
     let [subject, value] = argList;
-    subject = decodeURIComponent(trim(subject));
-    value = decodeURIComponent(trim(value));
+    subject = trim(subject);
+    value = JSON.parse(value);
     return [new ZFilterBinaryBuilder().operator(operator).subject(subject).value(value).build(), rest];
   }
 
   private _parseCollectionFilter(operator: ZOperatorCollection, args: string): [IZFilterCollection, string] {
     const [argList, rest] = this._splitArgs(operator, args, 1, Infinity);
     let [subject] = argList;
-    subject = decodeURIComponent(subject);
-    const values = argList.slice(1).map((a) => decodeURIComponent(trim(a)));
+    subject = trim(subject);
+    const values = argList.slice(1).map((a) => JSON.parse(trim(a)));
     return [new ZFilterCollectionBuilder().operator(operator).subject(subject).values(values).build(), rest];
   }
 

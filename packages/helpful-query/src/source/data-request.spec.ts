@@ -21,7 +21,7 @@ describe('ZDataRequestBuilder', () => {
 
       it('should set by filter string', () => {
         const expected = new ZFilterBinaryBuilder().subject('id').equal().value(createGuid()).build();
-        const filter = `${expected.operator}(${expected.subject}, ${expected.value})`;
+        const filter = `${expected.operator}(${expected.subject}, "${expected.value}")`;
         expect(createTestTarget().query({ filter }).build().filter).toEqual(expected);
       });
     });
