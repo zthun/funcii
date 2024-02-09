@@ -30,6 +30,62 @@ describe('ZDataSourceStatic', () => {
     data = arr;
   });
 
+  describe('Mutation', () => {
+    const shouldRejectIfDataIsAnError = async <T>(perform: (t: ZDataSourceStatic<T>) => Promise<any>) => {
+      // Arrange.
+      data = err;
+      const target = createTestTarget();
+      // Act.
+      const actual = perform(target);
+      // Assert.
+      await expect(actual).rejects.toEqual(err);
+    };
+
+    describe('Insert', () => {
+      const shouldInsertAt = async (expected: number, expectedAt: number, index?: number) => {
+        // Arrange.
+        const target = createTestTarget();
+        // Act.
+        const next = await target.insert(expected, index);
+        const items = await next.retrieve(new ZDataRequestBuilder().build());
+        const actual = items[expectedAt];
+        // Assert.
+        expect(actual).toEqual(expected);
+      };
+
+      it('should return a rejected promise if the data source was constructed with an error', async () => {
+        await shouldRejectIfDataIsAnError((t) => t.insert(5000));
+      });
+
+      it('should insert the item at the end of the list by default', async () => {
+        const _arr = await arr;
+        await shouldInsertAt(5000, _arr.length);
+      });
+
+      it('should insert the item at the given index', async () => {
+        await shouldInsertAt(5000, 2, 2);
+      });
+
+      it('should insert the item at the beginning of the list if the index is 0', async () => {
+        await shouldInsertAt(5000, 0, 0);
+      });
+
+      it('should insert the item at the beginning of the list if the index is negative', async () => {
+        await shouldInsertAt(5000, 0, -1);
+      });
+
+      it('should insert the item at the end of the list if the index is equal to the item count', async () => {
+        const _arr = await arr;
+        await shouldInsertAt(5000, _arr.length, _arr.length);
+      });
+
+      it('should insert the item at the end of the list if the index is greater to the item count', async () => {
+        const _arr = await arr;
+        await shouldInsertAt(5000, _arr.length, _arr.length + 1);
+      });
+    });
+  });
+
   describe('Count', () => {
     it('should return the total count of the data unpaginated', async () => {
       // Arrange

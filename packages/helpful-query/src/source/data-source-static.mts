@@ -23,6 +23,41 @@ export class ZDataSourceStatic<T> implements IZDataSource<T> {
     private _options: IZDataSourceStaticOptions<T> = new ZDataSourceStaticOptionsBuilder().build()
   ) {}
 
+  private async _items(): Promise<T[]> {
+    const data = await this._data;
+
+    if (data instanceof Error) {
+      return Promise.reject(data);
+    }
+
+    return data;
+  }
+
+  /**
+   * Inserts an item into the existing data array.
+   *
+   * @param item -
+   *        The item to insert.
+   * @param index -
+   *        The index to insert at.  If this is equal to or less than 0
+   *        Then the item will be inserted at the front of the data list.
+   *        If this is greater than or equal to the maximum number of
+   *        items in the current list, then the item will be inserted
+   *        at the end of the list.
+   *
+   * @returns
+   *        A new data source where the item list has been updated to include
+   *        the new item.
+   */
+  public async insert(item: T, index = Infinity): Promise<ZDataSourceStatic<T>> {
+    let data = await this._items();
+    index = Math.max(index, 0);
+    data = data.slice();
+    data.splice(index, 0, item);
+
+    return new ZDataSourceStatic(data, this._options);
+  }
+
   public async count(request: IZDataRequest): Promise<number> {
     const { search: _search, filter: _filter } = request;
     const data = await this._data;
