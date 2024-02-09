@@ -41,7 +41,7 @@ export class ZSortDeserialize implements IZDeserialize<IZSort[]> {
       throw new Error(`Cannot determine sort subject at ${rest}.`);
     }
 
-    subject = decodeURIComponent(trim(subject));
+    subject = trim(subject);
 
     if (!subject) {
       throw new Error(`Cannot determine sort subject at ${rest}.`);
