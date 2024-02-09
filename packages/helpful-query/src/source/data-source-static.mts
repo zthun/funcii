@@ -26,6 +26,9 @@ export class ZDataSourceStatic<T> implements IZDataSource<T> {
   /**
    * Gets a copy of the current list of items.
    *
+   * This is equivalent to invoking retrieve
+   * with the default data request.
+   *
    * @returns
    *      A shallow copy of the current item list.
    *      Returns a rejected promise if the initial
