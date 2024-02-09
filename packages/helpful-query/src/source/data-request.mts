@@ -1,7 +1,7 @@
 import { tryFallback } from '@zthun/helpful-fn';
-import { ZFilterDeserialize } from 'src/filter/filter-deserialize.mjs';
-import { ZSortDeserialize } from 'src/sort/sort-deserialize.mjs';
+import { ZFilterDeserialize } from '../filter/filter-deserialize.mjs';
 import { IZFilter } from '../filter/filter.mjs';
+import { ZSortDeserialize } from '../sort/sort-deserialize.mjs';
 import { IZSort } from '../sort/sort.mjs';
 
 /**
