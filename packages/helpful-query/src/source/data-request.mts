@@ -1,7 +1,7 @@
 import { tryFallback } from '@zthun/helpful-fn';
+import { ZSortDeserialize } from 'src/sort/sort-deserialize.mjs';
 import { ZFilterParser } from '../filter/filter-parser.mjs';
 import { IZFilter } from '../filter/filter.mjs';
-import { ZSortParser } from '../sort/sort-parser.mjs';
 import { IZSort } from '../sort/sort.mjs';
 
 /**
@@ -182,7 +182,8 @@ export class ZDataRequestBuilder {
     if (sort == null) {
       delete this._request.sort;
     } else {
-      this._request.sort = typeof sort === 'string' ? tryFallback(() => new ZSortParser().parse(sort)) : sort;
+      const s = typeof sort === 'string' ? tryFallback(() => new ZSortDeserialize().deserialize(sort)) : sort;
+      this._request.sort = s;
     }
     return this;
   }
