@@ -33,13 +33,13 @@ describe('ZDataSourceStatic', () => {
   describe('Mutation', () => {
     const shouldBeImmutableOnTheOriginalTarget = async <T>(perform: (t: ZDataSourceStatic<T>) => Promise<any>) => {
       // Arrange.
-      data = arr;
+      const expected = await arr;
       const target = createTestTarget();
       // Act.
       await perform(target);
       const actual = await target.retrieve(new ZDataRequestBuilder().build());
       // Assert.
-      expect(actual).toEqual(arr);
+      expect(actual).toEqual(expected);
     };
 
     const shouldRejectIfDataIsAnError = async <T>(perform: (t: ZDataSourceStatic<T>) => Promise<any>) => {
@@ -97,6 +97,98 @@ describe('ZDataSourceStatic', () => {
 
       it('should keep the original data source immutable', async () => {
         await shouldBeImmutableOnTheOriginalTarget((t) => t.insert(5000));
+      });
+    });
+
+    describe('Remove', () => {
+      it('should return a rejected promise if the data source was constructed with an error', async () => {
+        await shouldRejectIfDataIsAnError((t) => t.remove(5000));
+      });
+
+      it('should remove an exact match of the item', async () => {
+        // Arrange.
+        const target = createTestTarget();
+        const expected = 2;
+        // Act.
+        const next = await target.remove(expected);
+        const items = await next.retrieve(new ZDataRequestBuilder().build());
+        const actual = items.indexOf(expected);
+        // Assert.
+        expect(actual).toBeLessThan(0);
+      });
+
+      it('should not remove anything if no such item is found', async () => {
+        // Arrange.
+        const target = createTestTarget();
+        const expected = await arr;
+        // Act.
+        const next = await target.remove(5000);
+        const items = await next.retrieve(new ZDataRequestBuilder().build());
+        // Assert.
+        expect(items).toEqual(expected);
+      });
+
+      it('should not remove anything if the item is a loose match', async () => {
+        // Arrange.
+        const target = createTestTarget();
+        const expected = await arr;
+        // Act.
+        const next = await target.remove('2');
+        const items = await next.retrieve(new ZDataRequestBuilder().build());
+        // Assert.
+        expect(items).toEqual(expected);
+      });
+
+      it('should keep the original data source immutable', async () => {
+        await shouldBeImmutableOnTheOriginalTarget((t) => t.remove(10));
+      });
+    });
+
+    describe('RemoveAt', () => {
+      it('should return a rejected promise if the data source was constructed with an error', async () => {
+        await shouldRejectIfDataIsAnError((t) => t.removeAt(1));
+      });
+
+      it('should remove an item at the specific index', async () => {
+        // Arrange.
+        const target = createTestTarget();
+        const index = 2;
+        const _arr = await arr;
+        const current = _arr[index];
+        const count = _arr.length;
+        // Act.
+        const next = await target.removeAt(index);
+        const items = await next.retrieve(new ZDataRequestBuilder().build());
+        const actual = items.indexOf(current);
+        // Assert.
+        expect(items.length).toEqual(count - 1);
+        expect(actual).toBeLessThan(0);
+      });
+
+      it('should not remove anything if the index is less than 0', async () => {
+        // Arrange.
+        const expected = await arr;
+        const target = createTestTarget();
+        // Act.
+        const next = await target.removeAt(-1);
+        const items = await next.retrieve(new ZDataRequestBuilder().build());
+        // Assert.
+        expect(items).toEqual(expected);
+      });
+
+      it('should not remove anything if the index is equal to the count', async () => {
+        // Arrange.
+        const target = createTestTarget();
+        const expected = await arr;
+        // Act.
+        const next = await target.removeAt(expected.length);
+        const items = await next.retrieve(new ZDataRequestBuilder().build());
+        // Assert.
+        expect(items).toEqual(expected);
+      });
+
+      it('should keep the original data source immutable', async () => {
+        await shouldBeImmutableOnTheOriginalTarget((t) => t.removeAt(1));
       });
     });
   });

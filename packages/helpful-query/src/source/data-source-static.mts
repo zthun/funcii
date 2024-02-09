@@ -58,10 +58,54 @@ export class ZDataSourceStatic<T> implements IZDataSource<T> {
    *        the new item.
    */
   public async insert(item: T, index = Infinity): Promise<ZDataSourceStatic<T>> {
-    const data = await this.items();
+    const items = await this.items();
     index = Math.max(index, 0);
-    data.splice(index, 0, item);
-    return new ZDataSourceStatic(data, this._options);
+    items.splice(index, 0, item);
+    return new ZDataSourceStatic(items, this._options);
+  }
+
+  /**
+   * Removes a specific matched item in the list.
+   *
+   * @param item -
+   *        The item to remove.  This will be an exact match.
+   *
+   * @returns
+   *        A new data source with the item removed, or a direct
+   *        copy if no such item exists within the list. Returns
+   *        a rejected promise if the original data is an error.
+   */
+  public async remove(item: T): Promise<ZDataSourceStatic<T>> {
+    const items = await this.items();
+    const index = items.indexOf(item);
+
+    if (index >= 0) {
+      items.splice(index, 1);
+    }
+
+    return new ZDataSourceStatic(items, this._options);
+  }
+
+  /**
+   * Removes a specific item at a given index.
+   *
+   * @param index -
+   *        The index of the item to remove.
+   *
+   * @returns
+   *        A new data source with the item at the given index
+   *        removed, or a direct copy if the index is out
+   *        of range.  Returns a rejected promise if the
+   *        original data is an Error.
+   */
+  public async removeAt(index: number): Promise<ZDataSourceStatic<T>> {
+    const items = await this.items();
+
+    if (index >= 0 && index < items.length) {
+      items.splice(index, 1);
+    }
+
+    return new ZDataSourceStatic(items, this._options);
   }
 
   public async count(request: IZDataRequest): Promise<number> {
