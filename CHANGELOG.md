@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.0](https://github.com/zthun/helpful/compare/v3.2.1...v3.3.0) (2024-02-09)
+
+
+### Features
+
+* added serializer and deserializer interfaces ([ee66a02](https://github.com/zthun/helpful/commit/ee66a024a8e2eee1b0c2bc78054379bf6f44a6da))
+* deserialize-json enables schema based json deserialization ([5fb775c](https://github.com/zthun/helpful/commit/5fb775c819611a71f15b90dd17b21460b7a837a8))
+* deserialize-try allows for composite deserialization ([2e2b2d0](https://github.com/zthun/helpful/commit/2e2b2d04e7ff160e56b1aa06fe9d71c654d87685))
+* filter type guards now accept null and undefined as test candidates ([05a9628](https://github.com/zthun/helpful/commit/05a9628121ac3500a0bd3b0c306485279f492556))
+* filter-deserialize will parse a filter from a string ([a5fd78e](https://github.com/zthun/helpful/commit/a5fd78e2c391a2e7fb408cdceab4029534f0002f))
+* filter-serialize converts a filter to a human readable string ([3d0c6eb](https://github.com/zthun/helpful/commit/3d0c6ebf3d5da9aa4b2f6f984cd19f60cfb4609d))
+* serialize json enables pretty printing a json object ([6b277bc](https://github.com/zthun/helpful/commit/6b277bc228554f177514ebfcff2d8acc620c2593))
+* sort lists can now be serialized ([70e9f74](https://github.com/zthun/helpful/commit/70e9f74d1a841fe0d641ac19901389b0d098d934))
+* static data source can now update items at an index ([d2e159e](https://github.com/zthun/helpful/commit/d2e159ed71ade6c4093f6600bedf735fc92dd00d))
+* static data source can remove items ([58b826f](https://github.com/zthun/helpful/commit/58b826f692336a9dc69dd99a3d685e6ac42468ac))
+* you can now insert items in a data source static ([32ce2c1](https://github.com/zthun/helpful/commit/32ce2c190c64ca447db69cca4c8de458acbf2a27))
+
+
+
 ## [3.2.1](https://github.com/zthun/helpful/compare/v3.2.0...v3.2.1) (2024-02-06)
 
 

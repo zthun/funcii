@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.3.0](https://github.com/zthun/helpful/compare/v3.2.1...v3.3.0) (2024-02-09)
+
+
+### Features
+
+* added serializer and deserializer interfaces ([ee66a02](https://github.com/zthun/helpful/commit/ee66a024a8e2eee1b0c2bc78054379bf6f44a6da))
+* deserialize-json enables schema based json deserialization ([5fb775c](https://github.com/zthun/helpful/commit/5fb775c819611a71f15b90dd17b21460b7a837a8))
+* deserialize-try allows for composite deserialization ([2e2b2d0](https://github.com/zthun/helpful/commit/2e2b2d04e7ff160e56b1aa06fe9d71c654d87685))
+* serialize json enables pretty printing a json object ([6b277bc](https://github.com/zthun/helpful/commit/6b277bc228554f177514ebfcff2d8acc620c2593))
+
+
+
 ## [3.2.0](https://github.com/zthun/helpful/compare/v3.1.0...v3.2.0) (2024-01-15)
 
 
