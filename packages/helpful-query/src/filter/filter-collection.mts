@@ -140,8 +140,8 @@ export class ZFilterCollectionBuilder {
  * @returns
  *        True if filters type is a collection filter.  False otherwise.
  */
-export function isCollectionFilter(filter: IZFilterMetadata): filter is IZFilterCollection {
-  return filter.__type__ === ZFilterCollectionBuilder.Type;
+export function isCollectionFilter(filter: IZFilterMetadata | null | undefined): filter is IZFilterCollection {
+  return filter?.__type__ === ZFilterCollectionBuilder.Type;
 }
 
 /**

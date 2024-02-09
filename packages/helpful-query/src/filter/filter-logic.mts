@@ -130,8 +130,8 @@ export class ZFilterLogicBuilder {
  * @returns
  *        True if filters type is a logic filter.  False otherwise.
  */
-export function isLogicFilter(filter: IZFilterMetadata): filter is IZFilterLogic {
-  return filter.__type__ === ZFilterLogicBuilder.Type;
+export function isLogicFilter(filter: IZFilterMetadata | null | undefined): filter is IZFilterLogic {
+  return filter?.__type__ === ZFilterLogicBuilder.Type;
 }
 
 /**

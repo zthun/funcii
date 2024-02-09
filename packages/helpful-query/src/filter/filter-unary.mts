@@ -106,8 +106,8 @@ export class ZFilterUnaryBuilder {
  * @returns
  *        True if filters type is a unary filter.  False otherwise.
  */
-export function isUnaryFilter(filter: IZFilterMetadata): filter is IZFilterUnary {
-  return filter.__type__ === ZFilterUnaryBuilder.Type;
+export function isUnaryFilter(filter: IZFilterMetadata | null | undefined): filter is IZFilterUnary {
+  return filter?.__type__ === ZFilterUnaryBuilder.Type;
 }
 
 /**

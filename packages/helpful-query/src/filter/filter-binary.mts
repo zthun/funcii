@@ -185,8 +185,8 @@ export class ZFilterBinaryBuilder {
  * @returns
  *        True if filters type is a binary filter.  False otherwise.
  */
-export function isBinaryFilter(filter: IZFilterMetadata): filter is IZFilterBinary {
-  return filter.__type__ === ZFilterBinaryBuilder.Type;
+export function isBinaryFilter(filter: IZFilterMetadata | null | undefined): filter is IZFilterBinary {
+  return filter?.__type__ === ZFilterBinaryBuilder.Type;
 }
 
 /**
