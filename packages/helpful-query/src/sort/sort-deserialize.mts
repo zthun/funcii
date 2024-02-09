@@ -1,22 +1,11 @@
-import { peel, peelBetween } from '@zthun/helpful-fn';
+import { IZDeserialize, peel, peelBetween } from '@zthun/helpful-fn';
 import { trim, trimStart } from 'lodash-es';
 import { IZSort, ZSortBuilder, ZSortDirections } from './sort.mjs';
 
 /**
  * A object that can deserialize an {@link IZSort} list from a string.
  */
-export class ZSortDeserialize {
-  /**
-   * Attempts to parse a list of {@link IZSort} objects from the candidate string.
-   *
-   * @param candidate -
-   *        The string to parse.
-   *
-   * @returns
-   *        A sort list that was parsed from the candidate string.
-   * @throws
-   *        Error if there is a syntax error while parsing a sort.
-   */
+export class ZSortDeserialize implements IZDeserialize<IZSort[]> {
   public deserialize(candidate: string): IZSort[] {
     // A sort candidate can be fully between parens to allow for multi sort
     // or can just be a single sort.
