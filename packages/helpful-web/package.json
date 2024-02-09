@@ -1,6 +1,6 @@
 {
   "name": "@zthun/helpful-web",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "A documentation website for showing helpful.",
   "author": "Anthony Bonta",
   "license": "MIT",
@@ -23,7 +23,7 @@
     "@zthun/helpful-node": "^3.2.0",
     "@zthun/helpful-proxy": "^3.2.0",
     "@zthun/helpful-query": "^3.2.0",
-    "@zthun/helpful-react": "^3.2.0",
+    "@zthun/helpful-react": "^3.2.1",
     "@zthun/helpful-validation": "^3.2.0",
     "typedoc": "^0.25.7",
     "typedoc-plugin-extras": "^3.0.0",

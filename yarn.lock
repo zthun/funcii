@@ -2721,7 +2721,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@zthun/helpful-react@npm:^3.2.0, @zthun/helpful-react@workspace:packages/helpful-react":
+"@zthun/helpful-react@npm:^3.2.1, @zthun/helpful-react@workspace:packages/helpful-react":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-react@workspace:packages/helpful-react"
   dependencies:
@@ -2768,7 +2768,7 @@ __metadata:
     "@zthun/helpful-node": "npm:^3.2.0"
     "@zthun/helpful-proxy": "npm:^3.2.0"
     "@zthun/helpful-query": "npm:^3.2.0"
-    "@zthun/helpful-react": "npm:^3.2.0"
+    "@zthun/helpful-react": "npm:^3.2.1"
     "@zthun/helpful-validation": "npm:^3.2.0"
     typedoc: "npm:^0.25.7"
     typedoc-plugin-extras: "npm:^3.0.0"
