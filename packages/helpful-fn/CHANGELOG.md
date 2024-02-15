@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.4.0](https://github.com/zthun/helpful/compare/v3.3.1...v3.4.0) (2024-02-15)
+
+
+### Features
+
+* $global returns the globalThis object ([3674d8f](https://github.com/zthun/helpful/commit/3674d8f02d4cc861857da2f54b6c7106e1e8e17d))
+
+
+
 ## [3.3.0](https://github.com/zthun/helpful/compare/v3.2.1...v3.3.0) (2024-02-09)
 
 
