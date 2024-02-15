@@ -7,8 +7,8 @@
  * service that will not have any unit tests.
  */
 
+import { $global } from '@zthun/helpful-fn';
 import { createContext, useContext } from 'react';
-import { $global } from '../global/global.mjs';
 
 /**
  * A service that allows the user to open a file.
