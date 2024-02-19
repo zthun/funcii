@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.6.0](https://github.com/zthun/helpful/compare/v3.5.0...v3.6.0) (2024-02-19)
+
+
+### Features
+
+* added helpful geometry objects ([28a8913](https://github.com/zthun/helpful/commit/28a8913efa69b82be38fcc9555fec69ae2cc34d6))
+
+
+
 ## [3.5.0](https://github.com/zthun/helpful/compare/v3.4.0...v3.5.0) (2024-02-16)
 
 **Note:** Version bump only for package @zthun/helpful-fn
