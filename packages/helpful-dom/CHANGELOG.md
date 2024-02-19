@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.1](https://github.com/zthun/helpful/compare/v3.7.0...v3.7.1) (2024-02-19)
+
+
+### Bug Fixes
+
+* new functions are now exported ([c9dafda](https://github.com/zthun/helpful/commit/c9dafdaba984d4254490d7c7c009f1f8753fb51a))
+
+
+
 ## [3.7.0](https://github.com/zthun/helpful/compare/v3.6.0...v3.7.0) (2024-02-19)
 
 
