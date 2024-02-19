@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.0](https://github.com/zthun/helpful/compare/v3.6.0...v3.7.0) (2024-02-19)
+
+
+### Features
+
+* css variable allows you to construct a var reference easily without interpolation ([78f43a2](https://github.com/zthun/helpful/commit/78f43a2a76525cf928287adc6cf697fc861aa0c6))
+* mutate attribute either removes an attribute for a null value or sets for a defined value ([26ee3c3](https://github.com/zthun/helpful/commit/26ee3c3a26754bc5b867b93b478f181b84f5f68c))
+* query attribute adds support for getAttribute with a fallback ([1140927](https://github.com/zthun/helpful/commit/114092758d823f7f5a2629bdfe4a942cf1fda10a))
+
+
+
 ## [3.6.0](https://github.com/zthun/helpful/compare/v3.5.0...v3.6.0) (2024-02-19)
 
 
