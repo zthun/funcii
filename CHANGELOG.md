@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.2](https://github.com/zthun/helpful/compare/v3.7.1...v3.7.2) (2024-02-19)
+
+
+### Bug Fixes
+
+* helpful dom should now reference the correct version of helpful-fn ([71ce836](https://github.com/zthun/helpful/commit/71ce836694519e37a66d34d87c49dad28b5f0142))
+
+
+
 ## [3.7.1](https://github.com/zthun/helpful/compare/v3.7.0...v3.7.1) (2024-02-19)
 
 

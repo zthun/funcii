@@ -1,6 +1,6 @@
 {
   "name": "@zthun/helpful-dom",
-  "version": "3.7.1",
+  "version": "3.7.2",
   "description": "Helpful DOM functions that are not found in browsers.",
   "author": "Anthony Bonta",
   "license": "MIT",
