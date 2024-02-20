@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.7.3](https://github.com/zthun/helpful/compare/v3.7.2...v3.7.3) (2024-02-20)
+
+
+### Bug Fixes
+
+* registerCustomElements can now extend build in elements properly ([0328385](https://github.com/zthun/helpful/commit/03283857f509461a3cf4ec2e8f3300ea8d8624bc))
+
+
+
 ## [3.7.2](https://github.com/zthun/helpful/compare/v3.7.1...v3.7.2) (2024-02-19)
 
 
