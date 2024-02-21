@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.8.0](https://github.com/zthun/helpful/compare/v3.7.3...v3.8.0) (2024-02-20)
+
+
+### Features
+
+* property change events help with tracking when properties on a web component change ([3bd79e3](https://github.com/zthun/helpful/commit/3bd79e3e06a44c9c03b6b086562b7380e6035dfd))
+* web component life cycle event interfaces help define the lifecycle events in components ([f70e3d6](https://github.com/zthun/helpful/commit/f70e3d67275f62c66b2ddb4a2bc7e91eca6a4614))
+
+
+
 ## [3.7.3](https://github.com/zthun/helpful/compare/v3.7.2...v3.7.3) (2024-02-20)
 
 
