@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.9.0](https://github.com/zthun/helpful/compare/v3.8.0...v3.9.0) (2024-02-21)
+
+
+### Features
+
+* you can now set an auto data attribute on an Element if you mark the property to do so ([822d961](https://github.com/zthun/helpful/commit/822d961b00f56a3d6201a47a4b90de1988052b86))
+
+
+
 ## [3.8.0](https://github.com/zthun/helpful/compare/v3.7.3...v3.8.0) (2024-02-20)
 
 

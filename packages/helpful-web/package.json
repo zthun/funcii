@@ -1,6 +1,6 @@
 {
   "name": "@zthun/helpful-web",
-  "version": "3.8.0",
+  "version": "3.9.0",
   "description": "A documentation website for showing helpful.",
   "author": "Anthony Bonta",
   "license": "MIT",
@@ -17,14 +17,14 @@
     "access": "public"
   },
   "devDependencies": {
-    "@zthun/helpful-brands": "^3.8.0",
-    "@zthun/helpful-fn": "^3.8.0",
-    "@zthun/helpful-internet": "^3.8.0",
-    "@zthun/helpful-node": "^3.8.0",
-    "@zthun/helpful-proxy": "^3.8.0",
-    "@zthun/helpful-query": "^3.8.0",
-    "@zthun/helpful-react": "^3.8.0",
-    "@zthun/helpful-validation": "^3.8.0",
+    "@zthun/helpful-brands": "^3.9.0",
+    "@zthun/helpful-fn": "^3.9.0",
+    "@zthun/helpful-internet": "^3.9.0",
+    "@zthun/helpful-node": "^3.9.0",
+    "@zthun/helpful-proxy": "^3.9.0",
+    "@zthun/helpful-query": "^3.9.0",
+    "@zthun/helpful-react": "^3.9.0",
+    "@zthun/helpful-validation": "^3.9.0",
     "typedoc": "^0.25.8",
     "typedoc-plugin-extras": "^3.0.0",
     "typescript": "^5.3.3"
