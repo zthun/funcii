@@ -6,26 +6,26 @@ import { registerCustomElement } from '../register-custom-element/register-custo
 import { ZAttribute } from './component-attribute.mjs';
 
 const Batman = 'batman';
-const TowardsInfinity = BigInt('93849384093890483904809384938409384908390483094809384098');
+const TowardsInfinity = BigInt('9394839483984938493849839483984938493849');
 
-class ZTestComponentBackedByAttributes extends HTMLElement {
+class ZWithAttributes extends HTMLElement {
   @ZAttribute()
   public stringAttribute: string;
 
   @ZAttribute({ fallback: Batman })
-  public stringAttributeWithFallback: string;
+  public stringWithFallback: string;
 
   @ZAttribute({ type: 'bigint' })
   public bigIntAttribute: bigint | null;
 
   @ZAttribute({ type: 'bigint', fallback: TowardsInfinity })
-  public bigIntAttributeWithFallback: bigint;
+  public bigIntWithFallback: bigint;
 
   @ZAttribute({ type: 'number' })
   public numberAttribute: number;
 
   @ZAttribute({ type: 'number', fallback: Number.MAX_SAFE_INTEGER })
-  public numberAttributeWithFallback: number;
+  public numberWithFallback: number;
 
   @ZAttribute({ type: 'boolean' })
   public booleanAttribute: boolean;
@@ -41,13 +41,13 @@ class ZTestComponentBackedByAttributes extends HTMLElement {
 }
 
 describe('ZAttribute', () => {
-  const createTestTarget = () => new ZTestComponentBackedByAttributes();
+  const createTestTarget = () => new ZWithAttributes();
 
   beforeAll(() => {
-    registerCustomElement('z-test-component-backed-by-attributes', ZTestComponentBackedByAttributes);
+    registerCustomElement('z-with-attributes', ZWithAttributes);
   });
 
-  const shouldReadTheAttribute = <T>(expected: T, attribute: string) => {
+  function shouldReadTheAttribute<T>(expected: T, attribute: string) {
     // Arrange.
     const target = createTestTarget();
     const kebab = kebabCase(attribute);
@@ -57,9 +57,9 @@ describe('ZAttribute', () => {
     const actual = target[camel];
     // Assert.
     expect(actual).toEqual(expected);
-  };
+  }
 
-  const shouldBeDefaultForMissingValue = <T>(expected: T, attribute: string) => {
+  function shouldBeDefaultForMissingValue<T>(expected: T, attribute: string) {
     // Arrange.
     const target = createTestTarget();
     const kebab = kebabCase(attribute);
@@ -69,9 +69,9 @@ describe('ZAttribute', () => {
     const actual = target[camel];
     // Assert.
     expect(actual).toEqual(expected);
-  };
+  }
 
-  const shouldUpdateTheAttribute = <T>(expected: T, attribute: string) => {
+  function shouldUpdateTheAttribute<T>(expected: T, attribute: string) {
     // Arrange.
     const target = createTestTarget();
     const kebab = kebabCase(attribute);
@@ -81,9 +81,9 @@ describe('ZAttribute', () => {
     const actual = target.getAttribute(kebab);
     // Assert.
     expect(actual).toEqual(String(expected));
-  };
+  }
 
-  const shouldDefaultTheAttribute = <T>(expected: T, attribute: string) => {
+  function shouldDefaultTheAttribute<T>(expected: T, attribute: string) {
     // Arrange.
     const target = createTestTarget();
     const camel = camelCase(attribute);
@@ -92,9 +92,9 @@ describe('ZAttribute', () => {
     const actual = target[camel];
     // Assert.
     expect(actual).toEqual(expected);
-  };
+  }
 
-  const shouldRequireProperty = (attribute: string) => {
+  function shouldRequireProperty(attribute: string) {
     // Arrange.
     const target = createTestTarget();
     const camel = camelCase(attribute);
@@ -102,7 +102,7 @@ describe('ZAttribute', () => {
     const actual = () => (target[camel] = Symbol());
     // Assert.
     expect(actual).toThrowError();
-  };
+  }
 
   describe('String', () => {
     it('should read the attribute', () => {
@@ -122,7 +122,7 @@ describe('ZAttribute', () => {
     });
 
     it('should default the attribute with a fallback', () => {
-      shouldDefaultTheAttribute(Batman, 'string-attribute-with-fallback');
+      shouldDefaultTheAttribute(Batman, 'string-with-fallback');
     });
   });
 
@@ -136,7 +136,7 @@ describe('ZAttribute', () => {
     });
 
     it('should return fallback for a missing attribute with a fallback', () => {
-      shouldBeDefaultForMissingValue(TowardsInfinity, 'big-int-attribute-with-fallback');
+      shouldBeDefaultForMissingValue(TowardsInfinity, 'big-int-with-fallback');
     });
 
     it('should set the attribute', () => {
@@ -162,7 +162,7 @@ describe('ZAttribute', () => {
     });
 
     it('should default the attribute to a fallback', () => {
-      shouldDefaultTheAttribute(Number.MAX_SAFE_INTEGER, 'number-attribute-with-fallback');
+      shouldDefaultTheAttribute(Number.MAX_SAFE_INTEGER, 'number-with-fallback');
     });
   });
 
