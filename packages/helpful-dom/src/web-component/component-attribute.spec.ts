@@ -35,6 +35,9 @@ class ZTestComponentBackedByAttributes extends HTMLElement {
 
   @ZAttribute({ type: 'symbol' })
   public symbolAttribute: symbol;
+
+  @ZAttribute({ type: 'object' })
+  public objectAttribute: object;
 }
 
 describe('ZAttribute', () => {
@@ -160,6 +163,16 @@ describe('ZAttribute', () => {
 
     it('should default the attribute to a fallback', () => {
       shouldDefaultTheAttribute(Number.MAX_SAFE_INTEGER, 'number-attribute-with-fallback');
+    });
+  });
+
+  describe('Object', () => {
+    it('should always return null (not supported)', () => {
+      shouldReadTheAttribute(null, 'object-attribute');
+    });
+
+    it('should throw an error when being set', () => {
+      shouldRequireProperty('object-attribute');
     });
   });
 

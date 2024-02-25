@@ -1,4 +1,4 @@
-import { ZSchemaIntrinsic, firstDefined } from '@zthun/helpful-fn';
+import { ZIntrinsic, firstDefined } from '@zthun/helpful-fn';
 import { kebabCase } from 'lodash-es';
 import { mutateAttribute } from '../mutate-attribute/mutate-attribute.mjs';
 
@@ -25,7 +25,7 @@ export type IZAttributeOptions = {
   /**
    * The property expected type.  If this is falsy, then a string is assumed.
    */
-  type?: ZSchemaIntrinsic;
+  type?: ZIntrinsic;
 };
 
 /**
@@ -48,10 +48,10 @@ export function ZAttribute<V>(options?: IZAttributeOptions): PropertyDecorator {
 
     function attrToIntr(
       value: string | null,
-      type: ZSchemaIntrinsic | null | undefined,
+      type: ZIntrinsic | null | undefined,
       fallback: bigint | number | string | undefined
     ): bigint | number | string | boolean | null {
-      if (type === 'function' || type === 'symbol') {
+      if (type === 'function' || type === 'symbol' || type === 'object') {
         // Not supported for attributes.
         return null;
       }
@@ -71,8 +71,8 @@ export function ZAttribute<V>(options?: IZAttributeOptions): PropertyDecorator {
       return value == null ? firstDefined('', fallback) : value;
     }
 
-    function intrToAttr(value: any | null | undefined, type: ZSchemaIntrinsic | null | undefined): string | null {
-      if (type === 'function' || type === 'symbol') {
+    function intrToAttr(value: any | null | undefined, type: ZIntrinsic | null | undefined): string | null {
+      if (type === 'function' || type === 'symbol' || type === 'object') {
         throw new Error(`Type, ${type}, is not a supported value of an attribute.  Use a property instead.`);
       }
 
