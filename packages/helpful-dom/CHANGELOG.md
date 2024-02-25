@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.10.0](https://github.com/zthun/helpful/compare/v3.9.0...v3.10.0) (2024-02-25)
+
+
+### Features
+
+* component attribute allows web component properties backed by attributes ([14d327e](https://github.com/zthun/helpful/commit/14d327e245677d7842afbd6042a83b3c57626be1))
+
+
+
 ## [3.9.0](https://github.com/zthun/helpful/compare/v3.8.0...v3.9.0) (2024-02-21)
 
 

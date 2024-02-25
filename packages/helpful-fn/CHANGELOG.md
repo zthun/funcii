@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.10.0](https://github.com/zthun/helpful/compare/v3.9.0...v3.10.0) (2024-02-25)
+
+
+### Features
+
+* schema allows defining metadata for an object ([1432df9](https://github.com/zthun/helpful/commit/1432df9e8b4da12735fcb91f655a7574ebc9faa2))
+
+
+
 ## [3.9.0](https://github.com/zthun/helpful/compare/v3.8.0...v3.9.0) (2024-02-21)
 
 **Note:** Version bump only for package @zthun/helpful-fn
