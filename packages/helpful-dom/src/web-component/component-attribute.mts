@@ -16,11 +16,12 @@ export type IZAttributeOptions = {
    * An optional fallback value in the case the an attribute value
    * is non existent.
    *
-   * The default fallback depends on the actual type.  Note that
-   * booleans cannot have a fallback as a null attribute immediately
-   * results in false by its nature.
+   * The default fallback depends on the actual type.
+   *
+   * Boolean's here are a special case in that if a fallback is not specified, then
+   * they will be true if they exist but false if their value is not explicitly false.
    */
-  fallback?: bigint | number | string;
+  fallback?: bigint | number | string | boolean;
 
   /**
    * The property expected type.  If this is falsy, then a string is assumed.
@@ -49,7 +50,7 @@ export function ZAttribute<V>(options?: IZAttributeOptions): PropertyDecorator {
     function attrToIntr(
       value: string | null,
       type: ZIntrinsic | null | undefined,
-      fallback: bigint | number | string | undefined
+      fallback: bigint | number | string | boolean | undefined
     ): bigint | number | string | boolean | null {
       if (type === 'function' || type === 'symbol' || type === 'object') {
         // Not supported for attributes.
@@ -57,7 +58,7 @@ export function ZAttribute<V>(options?: IZAttributeOptions): PropertyDecorator {
       }
 
       if (type === 'boolean') {
-        return value != null && value !== 'false';
+        return value == null ? firstDefined(false, !!fallback) : value !== 'false';
       }
 
       if (type === 'bigint') {

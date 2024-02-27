@@ -30,6 +30,9 @@ class ZWithAttributes extends HTMLElement {
   @ZAttribute({ type: 'boolean' })
   public booleanAttribute: boolean;
 
+  @ZAttribute({ type: 'boolean', fallback: true })
+  public booleanWithFallback: boolean;
+
   @ZAttribute({ type: 'function' })
   public functionAttribute: () => any;
 
@@ -203,6 +206,16 @@ describe('ZAttribute', () => {
       const actual = target.booleanAttribute;
       // Assert.
       expect(actual).toEqual(false);
+    });
+
+    it('should return the fallback if the attribute is not set', () => {
+      // Arrange.
+      const target = createTestTarget();
+      // Act.
+      target.removeAttribute('boolean-with-fallback');
+      const actual = target.booleanWithFallback;
+      // Assert.
+      expect(actual).toEqual(true);
     });
 
     it('should set the attribute', () => {
