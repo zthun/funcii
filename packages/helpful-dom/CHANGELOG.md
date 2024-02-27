@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.10.1](https://github.com/zthun/helpful/compare/v3.10.0...v3.10.1) (2024-02-27)
+
+
+### Bug Fixes
+
+* booleans can now have proper fallbacks in attributes ([25f1336](https://github.com/zthun/helpful/commit/25f13367bcc3120bf146d23705194ee1709cc76e))
+
+
+
 ## [3.10.0](https://github.com/zthun/helpful/compare/v3.9.0...v3.10.0) (2024-02-25)
 
 
