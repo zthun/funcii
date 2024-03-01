@@ -25,19 +25,19 @@ export function stringifyAttribute(name: string, value: boolean | string | numbe
   const t = typeof value;
 
   if (t === 'boolean') {
-    return value ? 'name' : '';
+    return value ? name : '';
   }
 
   if (t === 'number') {
-    return `name="${value}"`;
+    return `${name}="${value}"`;
   }
 
   if (t === 'object') {
-    return `name="${JSON.stringify(value)}"`;
+    return `${name}="${JSON.stringify(value)}"`;
   }
 
   const str = String(value);
-  return str === '' ? '' : `name="${str}"`;
+  return str === '' ? '' : `${name}="${str}"`;
 }
 
 /**

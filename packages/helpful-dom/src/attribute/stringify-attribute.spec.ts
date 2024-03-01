@@ -4,47 +4,47 @@ import { $attr, stringifyAttribute } from './stringify-attribute.mjs';
 describe('stringifyAttribute', () => {
   describe('Null', () => {
     it('should return the empty string', () => {
-      expect($attr('name', null)).toEqual('');
+      expect($attr('attr', null)).toEqual('');
     });
   });
 
   describe('Undefined', () => {
     it('should return the empty string', () => {
-      expect($attr('name', undefined)).toEqual('');
+      expect($attr('attr', undefined)).toEqual('');
     });
   });
 
   describe('String', () => {
     it('should return the empty string for an empty string', () => {
-      expect($attr('name', '')).toEqual('');
+      expect($attr('attr', '')).toEqual('');
     });
 
     it('should return attr="value"', () => {
-      expect($attr('name', 'value')).toEqual('name="value"');
+      expect($attr('attr', 'value')).toEqual('attr="value"');
     });
   });
 
   describe('Boolean', () => {
     it('should return the empty string for false', () => {
-      expect(stringifyAttribute('name', false)).toEqual('');
+      expect(stringifyAttribute('attr', false)).toEqual('');
     });
 
     it('should return the attribute name for true', () => {
-      expect(stringifyAttribute('name', true)).toEqual('name');
+      expect(stringifyAttribute('attr', true)).toEqual('attr');
     });
   });
 
   describe('Number', () => {
     it('should return attr="number"', () => {
-      expect($attr('name', 4)).toEqual('name="4"');
+      expect($attr('attr', 4)).toEqual('attr="4"');
     });
   });
 
   describe('Object', () => {
     it('should return attr="object" where object is JSON', () => {
       const o = { id: 4, name: 'four' };
-      const expected = `name="${JSON.stringify(o)}"`;
-      expect($attr('name', o)).toEqual(expected);
+      const expected = `attr="${JSON.stringify(o)}"`;
+      expect($attr('attr', o)).toEqual(expected);
     });
   });
 });
