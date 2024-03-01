@@ -1,5 +1,6 @@
 export * from './attribute/mutate-attribute.mjs';
 export * from './attribute/query-attribute.mjs';
+export * from './attribute/stringify-attribute.mjs';
 export * from './component/component-attribute.mjs';
 export * from './component/component-lifecycle.mjs';
 export * from './component/component-property.mjs';
