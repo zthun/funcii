@@ -27,7 +27,11 @@ class TestComponentWithMinimumImplementationElement extends HTMLElement implemen
   }
 }
 
-@ZComponentShadow({ name: 'TestComponentWithZealousMembers' })
+@ZComponentShadow({
+  name: 'TestComponentWithZealousMembers',
+  tag: 'zealous-component',
+  className: 'ZealousComponent-root'
+})
 class TestComponentWithZealousMembersElement extends HTMLElement implements IZComponentRender, IZComponentConnected {
   public render(shadow: ShadowRoot) {
     const $html = html` <div>Has Callbacks</div> `;
@@ -58,16 +62,14 @@ describe('ZComponentShadow', () => {
       const div = document.createElement('div');
       div.innerHTML = html`
         <div>
-          <test-component-with-zealous-members> Has Children </test-component-with-zealous-members>
+          <zealous-component> Has Children </zealous-component>
           <test-component-with-minimum-implementation name="test-component">
           </test-component-with-minimum-implementation>
         </div>
       `;
       document.body.appendChild(div);
 
-      const zealous = document.querySelector<TestComponentWithZealousMembersElement>(
-        'test-component-with-zealous-members'
-      )!;
+      const zealous = document.querySelector<TestComponentWithZealousMembersElement>('zealous-component')!;
 
       const minimum = document.querySelector<TestComponentWithMinimumImplementationElement>(
         'test-component-with-minimum-implementation'
@@ -81,6 +83,15 @@ describe('ZComponentShadow', () => {
       const [, target] = createTestTarget();
       // Act.
       const actual = target.classList.contains('TestComponentWithMinimumImplementation-root');
+      // Assert.
+      expect(actual).toBeTruthy();
+    });
+
+    it('should initialize with a custom class', () => {
+      // Arrange.
+      const [target] = createTestTarget();
+      // Act.
+      const actual = target.classList.contains('ZealousComponent-root');
       // Assert.
       expect(actual).toBeTruthy();
     });

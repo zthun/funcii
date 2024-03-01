@@ -1,3 +1,4 @@
+import { firstDefined } from '@zthun/helpful-fn';
 import { kebabCase } from 'lodash-es';
 import { registerCustomElement } from '../register-custom-element/register-custom-element.mjs';
 import { IZComponentAttributeChanged, IZComponentConnected } from './component-lifecycle.mjs';
@@ -26,6 +27,21 @@ export interface IZComponentShadowOptions {
    * <my-button class="MyButton-root"></my-button>
    */
   name: string;
+
+  /**
+   * The tag to use.
+   *
+   * If this is falsy, then the kebab case of the name is used.
+   */
+  tag?: string;
+
+  /**
+   * The class name to set on the host element.
+   *
+   * If this is falsy, then "-root" is appended to the name
+   * and that is used as the class name.
+   */
+  className?: string;
 }
 
 /**
@@ -44,7 +60,10 @@ export interface IZComponentShadowOptions {
  *        and {@link IZComponentPropertyChanged}.
  */
 export function ZComponentShadow(options: IZComponentShadowOptions) {
-  const { name } = options;
+  const { name, className, tag } = options;
+
+  const $className = firstDefined(`${name}-root`, className);
+  const $tag = firstDefined(kebabCase(name), tag);
 
   return function <C extends typeof HTMLElement>(Target: C) {
     // TypeScript is garbage when it comes to decorators and trying to do
@@ -78,7 +97,7 @@ export function ZComponentShadow(options: IZComponentShadowOptions) {
           this.attachShadow?.call(this, { mode: 'open' });
         }
 
-        this.classList?.add(`${name}-root`);
+        this.classList?.add($className);
         this._render();
       }
 
@@ -93,7 +112,7 @@ export function ZComponentShadow(options: IZComponentShadowOptions) {
       }
     };
 
-    registerCustomElement(kebabCase(name), K);
+    registerCustomElement($tag, K);
 
     return K;
   };
