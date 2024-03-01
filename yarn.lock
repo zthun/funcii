@@ -2676,7 +2676,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-brands@workspace:packages/helpful-brands"
   dependencies:
-    vite: "npm:^5.1.3"
+    vite: "npm:^5.1.4"
     vitest: "npm:^1.3.1"
   languageName: unknown
   linkType: soft
@@ -2688,7 +2688,7 @@ __metadata:
     "@zthun/helpful-fn": "npm:^3.12.0"
     lodash-es: "npm:^4.17.21"
     typescript: "npm:^5.3.3"
-    vite: "npm:^5.1.3"
+    vite: "npm:^5.1.4"
     vitest: "npm:^1.3.1"
     vitest-mock-extended: "npm:^1.3.1"
   languageName: unknown
@@ -2700,7 +2700,7 @@ __metadata:
   dependencies:
     typescript: "npm:^5.3.3"
     uuid: "npm:^9.0.1"
-    vite: "npm:^5.1.3"
+    vite: "npm:^5.1.4"
     vitest: "npm:^1.3.1"
     vitest-mock-extended: "npm:^1.3.1"
   languageName: unknown
@@ -2711,7 +2711,7 @@ __metadata:
   resolution: "@zthun/helpful-internet@workspace:packages/helpful-internet"
   dependencies:
     "@zthun/helpful-fn": "npm:^3.12.0"
-    vite: "npm:^5.1.3"
+    vite: "npm:^5.1.4"
     vitest: "npm:^1.3.1"
   languageName: unknown
   linkType: soft
@@ -2721,7 +2721,7 @@ __metadata:
   resolution: "@zthun/helpful-node@workspace:packages/helpful-node"
   dependencies:
     "@zthun/helpful-fn": "npm:^3.12.0"
-    vite: "npm:^5.1.3"
+    vite: "npm:^5.1.4"
     vitest: "npm:^1.3.1"
   languageName: unknown
   linkType: soft
@@ -2747,7 +2747,7 @@ __metadata:
   dependencies:
     "@zthun/helpful-fn": "npm:^3.12.0"
     lodash-es: "npm:^4.17.21"
-    vite: "npm:^5.1.3"
+    vite: "npm:^5.1.4"
     vitest: "npm:^1.3.1"
   languageName: unknown
   linkType: soft
@@ -2765,7 +2765,7 @@ __metadata:
     react-dom: "npm:^18.2.0"
     rxjs: "npm:^7.8.1"
     typescript: "npm:^5.3.3"
-    vite: "npm:^5.1.3"
+    vite: "npm:^5.1.4"
     vitest: "npm:^1.3.1"
     vitest-mock-extended: "npm:^1.3.1"
   peerDependencies:
@@ -2784,7 +2784,7 @@ __metadata:
   dependencies:
     class-validator: "npm:~0.14.1"
     lodash-es: "npm:^4.17.21"
-    vite: "npm:^5.1.3"
+    vite: "npm:^5.1.4"
     vitest: "npm:^1.3.1"
   languageName: unknown
   linkType: soft
@@ -2827,8 +2827,8 @@ __metadata:
     rimraf: "npm:^5.0.5"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.3.3"
-    vite: "npm:^5.1.3"
-    vite-plugin-dts: "npm:^3.7.2"
+    vite: "npm:^5.1.4"
+    vite-plugin-dts: "npm:^3.7.3"
     vite-plugin-externalize-deps: "npm:^0.8.0"
     vite-tsconfig-paths: "npm:^4.3.1"
     vitest: "npm:^1.3.1"
@@ -11680,9 +11680,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-plugin-dts@npm:^3.7.2":
-  version: 3.7.2
-  resolution: "vite-plugin-dts@npm:3.7.2"
+"vite-plugin-dts@npm:^3.7.3":
+  version: 3.7.3
+  resolution: "vite-plugin-dts@npm:3.7.3"
   dependencies:
     "@microsoft/api-extractor": "npm:7.39.0"
     "@rollup/pluginutils": "npm:^5.1.0"
@@ -11696,7 +11696,7 @@ __metadata:
   peerDependenciesMeta:
     vite:
       optional: true
-  checksum: 887a1c806ba5b2807563f172588dc65af56bee3acafc60dad395013f817e399c8a927911443c465fbf5cffc82ce1aff3f5fd5dd9deb60379d1b540bf5ecb7770
+  checksum: da16b971d53758097ca8cccc560cdc5d6d858be2da3d1e24d760651a446d9315fdfb152655913c22b77e14244381e88321b6becd2ec5c86485e1b097dda68572
   languageName: node
   linkType: hard
 
@@ -11765,9 +11765,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.1.3":
-  version: 5.1.3
-  resolution: "vite@npm:5.1.3"
+"vite@npm:^5.1.4":
+  version: 5.1.4
+  resolution: "vite@npm:5.1.4"
   dependencies:
     esbuild: "npm:^0.19.3"
     fsevents: "npm:~2.3.3"
@@ -11801,7 +11801,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: d3b19607d736de60b660f7daf4c0f86589edcbbc1fcb09f8aa36630f99518cc8a063062bb952899b8ccaed62f1314fac22c1df492dd035de3c65998ab27e2d2a
+  checksum: 8f04c8bed33f266bde27f432412456a3b893b51fe1857f0b8cd259100b376c1393a7927db1dd6344a4376baed72ed179ec5b0428aef2ae8508f1f28f95acb908
   languageName: node
   linkType: hard
 
