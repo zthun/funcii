@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.11.1](https://github.com/zthun/helpful/compare/v3.11.0...v3.11.1) (2024-03-01)
+
+
+### Bug Fixes
+
+* actual attribute name should be the passed value, not literal 'name' ([931cf06](https://github.com/zthun/helpful/commit/931cf06af25dbda87754a1f1c0e18ff34a7461ba))
+
+
+
 ## [3.11.0](https://github.com/zthun/helpful/compare/v3.10.1...v3.11.0) (2024-03-01)
 
 
