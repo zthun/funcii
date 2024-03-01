@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.12.0](https://github.com/zthun/helpful/compare/v3.11.1...v3.12.0) (2024-03-01)
+
+
+### Features
+
+* allow a shadow component to specify tag and root class name ([c234df8](https://github.com/zthun/helpful/commit/c234df8b7c46f44b5e233cc880e519fd6f984c7a))
+
+
+
 ## [3.11.1](https://github.com/zthun/helpful/compare/v3.11.0...v3.11.1) (2024-03-01)
 
 
