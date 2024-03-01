@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.11.0](https://github.com/zthun/helpful/compare/v3.10.1...v3.11.0) (2024-03-01)
+
+
+### Features
+
+* component render adds the signature for components built with component shadow ([66dd868](https://github.com/zthun/helpful/commit/66dd868ed2bcc522f3c444513d5be98e988aedfa))
+* easily construct a web component without boilerplate using a the component shadow decorator ([1997273](https://github.com/zthun/helpful/commit/19972731be97daa1e4a40bd7255387cd12943596))
+* stringify attribute makes it easier to convert values to interpolated xml attribute values ([6c63f48](https://github.com/zthun/helpful/commit/6c63f48c39a32aaa51cb078f5946031ce03b9f0b))
+
+
+
 ## [3.10.1](https://github.com/zthun/helpful/compare/v3.10.0...v3.10.1) (2024-02-27)
 
 
