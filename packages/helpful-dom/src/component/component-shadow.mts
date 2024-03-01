@@ -1,5 +1,6 @@
 import { firstDefined } from '@zthun/helpful-fn';
 import { castArray, kebabCase } from 'lodash-es';
+import { includeCustomElement } from 'src/register-custom-element/include-custom-element.mjs';
 import { registerCustomElement } from '../register-custom-element/register-custom-element.mjs';
 import { IZComponentAttributeChanged, IZComponentConnected } from './component-lifecycle.mjs';
 import { IZComponentPropertyChanged } from './component-property.mjs';
@@ -46,6 +47,24 @@ export interface IZComponentShadowOptions {
    * array, then no classes will be added (not recommended).
    */
   className?: string | string[];
+
+  /**
+   * This does nothing.
+   *
+   * The main point of this is if you want to keep all
+   * of your custom web components tree shakable, but
+   * the component you're writing depends on other components
+   * that have to be registered with the custom elements
+   * registry.
+   *
+   * This essentially makes sure that your dependency graph
+   * auto registers those components by forcing an import
+   * where you may not actually need the web component
+   * instance and instead just need to make sure the actual
+   * web component class constructor function is included
+   * with your bundle.
+   */
+  dependencies?: CustomElementConstructor[];
 }
 
 /**
@@ -64,10 +83,12 @@ export interface IZComponentShadowOptions {
  *        and {@link IZComponentPropertyChanged}.
  */
 export function ZComponentShadow(options: IZComponentShadowOptions) {
-  const { name, className, tag } = options;
+  const { name, className, tag, dependencies } = options;
 
   const $className = castArray(firstDefined(`${name}-root`, className));
   const $tag = firstDefined(kebabCase(name), tag);
+
+  dependencies?.forEach((d) => includeCustomElement(d));
 
   return function <C extends typeof HTMLElement>(Target: C) {
     // TypeScript is garbage when it comes to decorators and trying to do

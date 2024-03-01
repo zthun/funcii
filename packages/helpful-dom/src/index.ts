@@ -7,4 +7,5 @@ export * from './component/component-property.mjs';
 export * from './component/component-render.mjs';
 export * from './component/component-shadow.mjs';
 export * from './css-variable/css-variable.mjs';
+export * from './register-custom-element/include-custom-element.mjs';
 export * from './register-custom-element/register-custom-element.mjs';
