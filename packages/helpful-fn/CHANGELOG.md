@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.11.0](https://github.com/zthun/helpful/compare/v3.10.1...v3.11.0) (2024-03-01)
+
+
+### Features
+
+* tag allows for IDE highlighting hints for template strings ([e995f7d](https://github.com/zthun/helpful/commit/e995f7de979bffc3902a7cd4d3d06a48e36b2f2a))
+
+
+
 ## [3.10.0](https://github.com/zthun/helpful/compare/v3.9.0...v3.10.0) (2024-02-25)
 
 
