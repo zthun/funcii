@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.12.2](https://github.com/zthun/helpful/compare/v3.12.1...v3.12.2) (2024-03-01)
+
+
+### Bug Fixes
+
+* added dependencies so custom element dependencies are not removed by tree shaking ([b3b9332](https://github.com/zthun/helpful/commit/b3b9332baf6da79be84ede05331fd01ca092ab91))
+
+
+
 ## [3.12.1](https://github.com/zthun/helpful/compare/v3.12.0...v3.12.1) (2024-03-01)
 
 
