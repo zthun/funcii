@@ -30,7 +30,7 @@ class TestComponentWithMinimumImplementationElement extends HTMLElement implemen
 @ZComponentShadow({
   name: 'TestComponentWithZealousMembers',
   tag: 'zealous-component',
-  className: 'ZealousComponent-root'
+  className: ['ZealousComponent-root', 'Zealous-test-component']
 })
 class TestComponentWithZealousMembersElement extends HTMLElement implements IZComponentRender, IZComponentConnected {
   public render(shadow: ShadowRoot) {

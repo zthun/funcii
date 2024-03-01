@@ -1,5 +1,5 @@
 import { firstDefined } from '@zthun/helpful-fn';
-import { kebabCase } from 'lodash-es';
+import { castArray, kebabCase } from 'lodash-es';
 import { registerCustomElement } from '../register-custom-element/register-custom-element.mjs';
 import { IZComponentAttributeChanged, IZComponentConnected } from './component-lifecycle.mjs';
 import { IZComponentPropertyChanged } from './component-property.mjs';
@@ -40,8 +40,12 @@ export interface IZComponentShadowOptions {
    *
    * If this is falsy, then "-root" is appended to the name
    * and that is used as the class name.
+   *
+   * If you pass an array for this value, then
+   * every class in the array will be added.  If you pass an empty
+   * array, then no classes will be added (not recommended).
    */
-  className?: string;
+  className?: string | string[];
 }
 
 /**
@@ -62,7 +66,7 @@ export interface IZComponentShadowOptions {
 export function ZComponentShadow(options: IZComponentShadowOptions) {
   const { name, className, tag } = options;
 
-  const $className = firstDefined(`${name}-root`, className);
+  const $className = castArray(firstDefined(`${name}-root`, className));
   const $tag = firstDefined(kebabCase(name), tag);
 
   return function <C extends typeof HTMLElement>(Target: C) {
@@ -97,7 +101,7 @@ export function ZComponentShadow(options: IZComponentShadowOptions) {
           this.attachShadow?.call(this, { mode: 'open' });
         }
 
-        this.classList?.add($className);
+        $className.forEach(($class) => this.classList.add($class));
         this._render();
       }
 
