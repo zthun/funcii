@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
-import { registerCustomElement } from 'src/register-custom-element/register-custom-element.mjs';
 import { beforeAll, describe, expect, it, vi } from 'vitest';
+import { registerCustomElement } from '../register-custom-element/register-custom-element.mjs';
 import { IZComponentPropertyChanged, ZProperty, ZPropertyChangedCallbackFunction } from './component-property.mjs';
 
 const initial = 'foo';

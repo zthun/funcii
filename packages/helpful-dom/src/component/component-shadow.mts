@@ -1,6 +1,6 @@
 import { firstDefined } from '@zthun/helpful-fn';
 import { castArray, kebabCase } from 'lodash-es';
-import { includeCustomElement } from 'src/register-custom-element/include-custom-element.mjs';
+import { includeCustomElement } from '../register-custom-element/include-custom-element.mjs';
 import { registerCustomElement } from '../register-custom-element/register-custom-element.mjs';
 import { IZComponentAttributeChanged, IZComponentConnected } from './component-lifecycle.mjs';
 import { IZComponentPropertyChanged } from './component-property.mjs';
