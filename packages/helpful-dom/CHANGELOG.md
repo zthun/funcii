@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.12.1](https://github.com/zthun/helpful/compare/v3.12.0...v3.12.1) (2024-03-01)
+
+
+### Bug Fixes
+
+* className can also be an array to allow multiple classes without spaces ([3efe4b2](https://github.com/zthun/helpful/commit/3efe4b2d83785b100b460c100e1449194b6e675f))
+
+
+
 ## [3.12.0](https://github.com/zthun/helpful/compare/v3.11.1...v3.12.0) (2024-03-01)
 
 
