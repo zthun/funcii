@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.14.0](https://github.com/zthun/helpful/compare/v3.13.0...v3.14.0) (2024-03-02)
+
+
+### Features
+
+* a background component is a component that exists to supply values to a host ([555233c](https://github.com/zthun/helpful/commit/555233c407178e5fac653195238c89a62398d663))
+* nodePaint adds a helper to clear a node and add a style and template node ([106e79f](https://github.com/zthun/helpful/commit/106e79fa380c0b7d962ea81648cd700224849b3c))
+* shadow component now supports listening for events from background components ([0d6c453](https://github.com/zthun/helpful/commit/0d6c453d7b5cffc5b45ae954d627b7cf6041b22c))
+
+
+
 ## [3.13.0](https://github.com/zthun/helpful/compare/v3.12.2...v3.13.0) (2024-03-02)
 
 **Note:** Version bump only for package @zthun/helpful-dom
