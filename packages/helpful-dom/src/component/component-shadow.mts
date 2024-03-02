@@ -1,8 +1,9 @@
 import { firstDefined } from '@zthun/helpful-fn';
 import { castArray, kebabCase } from 'lodash-es';
-import { includeCustomElement } from '../register-custom-element/include-custom-element.mjs';
+import { IZElementListen } from '../element/element-listen.mjs';
+import { nodePaint } from '../node/node-paint.mjs';
 import { registerCustomElement } from '../register-custom-element/register-custom-element.mjs';
-import { IZComponentAttributeChanged, IZComponentConnected } from './component-lifecycle.mjs';
+import { IZComponentAttributeChanged, IZComponentConnected, IZComponentDisconnected } from './component-lifecycle.mjs';
 import { IZComponentPropertyChanged } from './component-property.mjs';
 import { IZComponentRender } from './component-render.mjs';
 
@@ -65,6 +66,14 @@ export interface IZComponentShadowOptions {
    * with your bundle.
    */
   dependencies?: CustomElementConstructor[];
+
+  /**
+   * The list of child selectors to listen on for various events.
+   *
+   * When a shadow component receives these events, it will
+   * invoke a render.
+   */
+  listen?: IZElementListen[];
 }
 
 /**
@@ -83,12 +92,10 @@ export interface IZComponentShadowOptions {
  *        and {@link IZComponentPropertyChanged}.
  */
 export function ZComponentShadow(options: IZComponentShadowOptions) {
-  const { name, className, tag, dependencies } = options;
+  const { className, listen, name, tag } = options;
 
   const $className = castArray(firstDefined(`${name}-root`, className));
   const $tag = firstDefined(kebabCase(name), tag);
-
-  dependencies?.forEach((d) => includeCustomElement(d));
 
   return function <C extends typeof HTMLElement>(Target: C) {
     // TypeScript is garbage when it comes to decorators and trying to do
@@ -99,41 +106,73 @@ export function ZComponentShadow(options: IZComponentShadowOptions) {
 
     const K: any = class
       extends _Target
-      implements IZComponentAttributeChanged, IZComponentConnected, IZComponentPropertyChanged
+      implements
+        IZComponentAttributeChanged,
+        IZComponentConnected,
+        IZComponentDisconnected,
+        IZComponentPropertyChanged,
+        IZComponentRender
     {
-      _render() {
+      public constructor() {
+        super();
+
         if (!this.shadowRoot) {
+          // The parent constructor may have already attached a shadow root,
+          // so we wouldn't have to add our own.  This WILL fail if the
+          // parent adds a closed shadow root.
+          this.attachShadow({ mode: 'open' });
+        }
+      }
+
+      _handleListen = () => {
+        this.render(this.shadowRoot);
+      };
+
+      public render(node: Node) {
+        if (super.render) {
+          // This may seem a bit weird and backwards, but this is the nature of
+          // how decorators work in that they subclass the host prototype.  In this
+          // special instance, if the prototype implements a render method,
+          // we want to use that instead of our default render method.  Normally
+          // this goes the other direction and the parent class implements a render
+          // and the child overrides it.
+          super.render(node);
           return;
         }
 
-        while (this.shadowRoot.firstChild) {
-          this.shadowRoot.firstChild.remove();
-        }
-
-        const that = this as Partial<IZComponentRender>;
-        that.render?.call(this, this.shadowRoot);
+        const $css = this.styles?.call(this);
+        const $html = this.template?.call(this);
+        nodePaint(node, { css: $css, html: $html });
       }
 
       public connectedCallback() {
         super.connectedCallback?.call(this);
-
-        // It's important to attach the shadow root if the parent didn't already add it.
-        if (!this.shadowRoot) {
-          this.attachShadow?.call(this, { mode: 'open' });
-        }
-
         $className.forEach(($class) => this.classList.add($class));
-        this._render();
+
+        listen?.forEach((t) => {
+          const { selector, event = 'change' } = t;
+          const element = this.querySelector(selector);
+          element?.addEventListener(event, this._handleListen);
+        });
+        this.render(this.shadowRoot);
+      }
+
+      public disconnectedCallback() {
+        listen?.forEach((t) => {
+          const { selector, event = 'change' } = t;
+          const element = this.querySelector(selector);
+          element?.removeEventListener(event, this._handleListen);
+        });
       }
 
       public attributeChangedCallback(name: string, oldValue: string, newValue: string): void {
         super.attributeChangedCallback?.call(this, name, oldValue, newValue);
-        this._render();
+        this.render(this.shadowRoot);
       }
 
       public propertyChangedCallback(name: string | symbol, oldValue: any, newValue: any): void {
         super.propertyChangedCallback?.call(this, name, oldValue, newValue);
-        this._render();
+        this.render(this.shadowRoot);
       }
     };
 
