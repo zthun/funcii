@@ -1,7 +1,7 @@
 import { css } from '@zthun/helpful-fn';
 import { kebabCase } from 'lodash-es';
-import { nodePaint } from 'src/node/node-paint.mjs';
-import { registerCustomElement } from 'src/register-custom-element/register-custom-element.mjs';
+import { nodePaint } from '../node/node-paint.mjs';
+import { registerCustomElement } from '../register-custom-element/register-custom-element.mjs';
 import { IZComponentAttributeChanged } from './component-lifecycle.mjs';
 import { IZComponentPropertyChanged } from './component-property.mjs';
 

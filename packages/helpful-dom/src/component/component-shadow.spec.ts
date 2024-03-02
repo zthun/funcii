@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { createGuid, css, html } from '@zthun/helpful-fn';
-import { ZElementListenBuilder } from 'src/element/element-listen.mjs';
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import { ZElementListenBuilder } from '../element/element-listen.mjs';
 import { nodePaint } from '../node/node-paint.mjs';
 import { ZAttribute } from './component-attribute.mjs';
 import { ZComponentBackground } from './component-background.mjs';
