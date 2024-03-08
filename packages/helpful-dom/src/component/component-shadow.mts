@@ -158,6 +158,7 @@ export function ZComponentShadow(options: IZComponentShadowOptions) {
       }
 
       public disconnectedCallback() {
+        super.disconnectedCallback?.call(this);
         listen?.forEach((t) => {
           const { selector, event = 'change' } = t;
           const element = this.querySelector(selector);
