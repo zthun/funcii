@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.15.1](https://github.com/zthun/helpful/compare/v3.15.0...v3.15.1) (2024-03-08)
+
+
+### Bug Fixes
+
+* shadow component now calls the super's disconnectedCallback ([618724f](https://github.com/zthun/helpful/commit/618724f5396d56830e60c777a23e9517462ba10e))
+
+
+
 ## [3.15.0](https://github.com/zthun/helpful/compare/v3.14.0...v3.15.0) (2024-03-08)
 
 
