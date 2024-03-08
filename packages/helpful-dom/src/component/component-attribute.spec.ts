@@ -15,11 +15,17 @@ class ZWithAttributes extends HTMLElement {
   @ZAttribute({ fallback: Batman })
   public stringWithFallback: string;
 
+  @ZAttribute({ nullable: true })
+  public stringNullable: string | null;
+
   @ZAttribute({ type: 'bigint' })
   public bigIntAttribute: bigint | null;
 
   @ZAttribute({ type: 'bigint', fallback: TowardsInfinity })
   public bigIntWithFallback: bigint;
+
+  @ZAttribute({ type: 'bigint', nullable: true })
+  public bigIntNullable: bigint | null;
 
   @ZAttribute({ type: 'number' })
   public numberAttribute: number;
@@ -27,11 +33,17 @@ class ZWithAttributes extends HTMLElement {
   @ZAttribute({ type: 'number', fallback: Number.MAX_SAFE_INTEGER })
   public numberWithFallback: number;
 
+  @ZAttribute({ type: 'number', nullable: true })
+  public numberNullable: number | null;
+
   @ZAttribute({ type: 'boolean' })
   public booleanAttribute: boolean;
 
   @ZAttribute({ type: 'boolean', fallback: true })
   public booleanWithFallback: boolean;
+
+  @ZAttribute({ type: 'boolean', nullable: true })
+  public booleanNullable: boolean | null;
 
   @ZAttribute({ type: 'function' })
   public functionAttribute: () => any;
@@ -72,6 +84,18 @@ describe('ZAttribute', () => {
     const actual = target[camel];
     // Assert.
     expect(actual).toEqual(expected);
+  }
+
+  function shouldBeNullForNullableValue(attribute: string) {
+    // Arrange.
+    const target = createTestTarget();
+    const kebab = kebabCase(attribute);
+    const camel = camelCase(attribute);
+    // Act.
+    target.removeAttribute(kebab);
+    const actual = target[camel];
+    // Assert.
+    expect(actual).toBeNull();
   }
 
   function shouldUpdateTheAttribute<T>(expected: T, attribute: string) {
@@ -124,6 +148,10 @@ describe('ZAttribute', () => {
       shouldDefaultTheAttribute('', 'string-attribute');
     });
 
+    it('should default to null for nullable', () => {
+      shouldBeNullForNullableValue('string-nullable');
+    });
+
     it('should default the attribute with a fallback', () => {
       shouldDefaultTheAttribute(Batman, 'string-with-fallback');
     });
@@ -140,6 +168,10 @@ describe('ZAttribute', () => {
 
     it('should return fallback for a missing attribute with a fallback', () => {
       shouldBeDefaultForMissingValue(TowardsInfinity, 'big-int-with-fallback');
+    });
+
+    it('should default to null for nullable', () => {
+      shouldBeNullForNullableValue('big-int-nullable');
     });
 
     it('should set the attribute', () => {
@@ -162,6 +194,10 @@ describe('ZAttribute', () => {
 
     it('should default the attribute', () => {
       shouldDefaultTheAttribute(NaN, 'number-attribute');
+    });
+
+    it('should default to null for nullable', () => {
+      shouldBeNullForNullableValue('number-nullable');
     });
 
     it('should default the attribute to a fallback', () => {
@@ -206,6 +242,10 @@ describe('ZAttribute', () => {
       const actual = target.booleanAttribute;
       // Assert.
       expect(actual).toEqual(false);
+    });
+
+    it('should default to null for nullable', () => {
+      shouldBeNullForNullableValue('boolean-nullable');
     });
 
     it('should return the fallback if the attribute is not set', () => {

@@ -24,6 +24,14 @@ export type IZAttributeOptions = {
   fallback?: bigint | number | string | boolean;
 
   /**
+   * Let null be a valid value, which will override the intrinsic default type.
+   *
+   * Note that bigint, function, object, and symbol are nullable by default
+   * and their default value is automatically null.
+   */
+  nullable?: boolean;
+
+  /**
    * The property expected type.  If this is falsy, then a string is assumed.
    */
   type?: ZIntrinsic;
@@ -36,7 +44,7 @@ export type IZAttributeOptions = {
  * @param options -
  *        The options for the attribute.
  *
- * @returns -
+ * @returns
  *        A property decorator that turns a single property to be backed by
  *        an HTMLElement attribute.
  */
@@ -44,49 +52,42 @@ export function ZAttribute<V>(options?: IZAttributeOptions): PropertyDecorator {
   return <C extends HTMLElement>(target: C, propertyKey: string | symbol): void => {
     const $default = kebabCase(String(propertyKey));
     const attr = String(firstDefined($default, options?.name));
+    const nullable = options?.nullable;
     const type = options?.type;
     const fallback = options?.fallback;
 
-    function attrToIntr(
-      value: string | null,
-      type: ZIntrinsic | null | undefined,
-      fallback: bigint | number | string | boolean | undefined
-    ): bigint | number | string | boolean | null {
-      if (type === 'function' || type === 'symbol' || type === 'object') {
-        // Not supported for attributes.
-        return null;
-      }
+    const $defaults: Record<ZIntrinsic, any> = {
+      bigint: null,
+      boolean: nullable ? null : false,
+      function: null,
+      number: nullable ? null : NaN,
+      object: null,
+      string: nullable ? null : '',
+      symbol: null
+    };
 
-      if (type === 'boolean') {
-        return value == null ? firstDefined(false, !!fallback) : value !== 'false';
-      }
+    const attrToIntr: Record<ZIntrinsic, (v: string | null) => bigint | number | string | boolean | null> = {
+      bigint: (v) => (v == null ? firstDefined($defaults.bigint, fallback) : BigInt(v)),
+      boolean: (v) => (v == null ? firstDefined($defaults.boolean, fallback) : v !== 'false'),
+      function: () => $defaults.function,
+      number: (v) => (v == null ? firstDefined($defaults.number, fallback) : +v),
+      object: () => $defaults.object,
+      string: (v) => (v == null ? firstDefined($defaults.string, fallback) : v),
+      symbol: () => $defaults.symbol
+    };
 
-      if (type === 'bigint') {
-        return value == null ? firstDefined(null, fallback) : BigInt(value);
-      }
-
-      if (type === 'number') {
-        return value == null ? firstDefined(NaN, fallback) : +value;
-      }
-
-      return value == null ? firstDefined('', fallback) : value;
+    function get(this: C) {
+      const value = this.getAttribute(attr);
+      const _type = type || 'string';
+      return attrToIntr[_type](value);
     }
 
-    function intrToAttr(value: any | null | undefined, type: ZIntrinsic | null | undefined): string | null {
+    function set(this: C, newValue: V | null | undefined) {
       if (type === 'function' || type === 'symbol' || type === 'object') {
         throw new Error(`Type, ${type}, is not a supported value of an attribute.  Use a property instead.`);
       }
 
-      return value == null ? value : String(value);
-    }
-
-    function get(this: C) {
-      const value = this.getAttribute(attr);
-      return attrToIntr(value, type, fallback);
-    }
-
-    function set(this: C, newValue: V) {
-      const asText = intrToAttr(newValue, type);
+      const asText = newValue == null ? null : String(newValue);
       mutateAttribute(this, attr, asText);
     }
 
