@@ -1,6 +1,6 @@
 {
   "name": "@zthun/helpful-dom",
-  "version": "3.14.0",
+  "version": "3.15.0",
   "description": "Helpful DOM functions that are not found in browsers.",
   "author": "Anthony Bonta",
   "license": "MIT",
@@ -25,7 +25,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@zthun/helpful-fn": "^3.13.0",
+    "@zthun/helpful-fn": "^3.15.0",
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {

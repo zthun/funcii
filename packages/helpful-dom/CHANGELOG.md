@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.15.0](https://github.com/zthun/helpful/compare/v3.14.0...v3.15.0) (2024-03-08)
+
+
+### Features
+
+* nullable attribute values are now supported ([8e7fb97](https://github.com/zthun/helpful/commit/8e7fb97e9b0861098fd3fab9a25fba804dd9d88c))
+
+
+
 ## [3.14.0](https://github.com/zthun/helpful/compare/v3.13.0...v3.14.0) (2024-03-02)
 
 
