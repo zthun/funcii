@@ -1,4 +1,4 @@
-import { ZIntrinsic, firstDefined } from '@zthun/helpful-fn';
+import { ZIntrinsic, ZTrilean, firstDefined, trilean } from '@zthun/helpful-fn';
 import { kebabCase } from 'lodash-es';
 import { mutateAttribute } from '../attribute/mutate-attribute.mjs';
 
@@ -20,13 +20,16 @@ export type IZAttributeOptions = {
    *
    * Boolean's here are a special case in that if a fallback is not specified, then
    * they will be true if they exist but false if their value is not explicitly false.
+   *
+   * Trilean values are also special in that the fallback of null will take a higher
+   * precedent over the false default of an intrinsic false value.
    */
-  fallback?: bigint | number | string | boolean;
+  fallback?: bigint | number | string | boolean | trilean;
 
   /**
    * Let null be a valid value, which will override the intrinsic default type.
    *
-   * Note that bigint, function, object, and symbol are nullable by default
+   * Note that bigint, function, object, trilean and symbol are nullable by default
    * and their default value is automatically null.
    */
   nullable?: boolean;
@@ -55,6 +58,7 @@ export function ZAttribute<V>(options?: IZAttributeOptions): PropertyDecorator {
     const nullable = options?.nullable;
     const type = options?.type;
     const fallback = options?.fallback;
+    const _type = type || 'string';
 
     const $defaults: Record<ZIntrinsic, any> = {
       bigint: null,
@@ -63,31 +67,51 @@ export function ZAttribute<V>(options?: IZAttributeOptions): PropertyDecorator {
       number: nullable ? null : NaN,
       object: null,
       string: nullable ? null : '',
-      symbol: null
+      symbol: null,
+      trilean: false
     };
 
-    const attrToIntr: Record<ZIntrinsic, (v: string | null) => bigint | number | string | boolean | null> = {
+    const attrToIntr: Record<ZIntrinsic, (v: string | null) => bigint | number | string | boolean | symbol> = {
       bigint: (v) => (v == null ? firstDefined($defaults.bigint, fallback) : BigInt(v)),
       boolean: (v) => (v == null ? firstDefined($defaults.boolean, fallback) : v !== 'false'),
       function: () => $defaults.function,
       number: (v) => (v == null ? firstDefined($defaults.number, fallback) : +v),
       object: () => $defaults.object,
       string: (v) => (v == null ? firstDefined($defaults.string, fallback) : v),
-      symbol: () => $defaults.symbol
+      symbol: () => $defaults.symbol,
+      trilean: (v) => ZTrilean.parse(v, ZTrilean.convert(fallback))
+    };
+
+    const toString = (v: V | null | undefined): string | null => {
+      return v == null ? null : String(v);
+    };
+
+    const toError = () => {
+      throw new Error(`Type, ${type}, is not a supported value of an attribute.  Use a property instead.`);
+    };
+
+    const toTrilean = (v: V | null | undefined): string => {
+      return ZTrilean.stringify(ZTrilean.convert(v));
+    };
+
+    const intrToAttr: Record<ZIntrinsic, (v: V | null | undefined) => string | null> = {
+      bigint: toString,
+      boolean: toString,
+      function: toError,
+      number: toString,
+      object: toError,
+      string: toString,
+      symbol: toError,
+      trilean: toTrilean
     };
 
     function get(this: C) {
       const value = this.getAttribute(attr);
-      const _type = type || 'string';
       return attrToIntr[_type](value);
     }
 
     function set(this: C, newValue: V | null | undefined) {
-      if (type === 'function' || type === 'symbol' || type === 'object') {
-        throw new Error(`Type, ${type}, is not a supported value of an attribute.  Use a property instead.`);
-      }
-
-      const asText = newValue == null ? null : String(newValue);
+      const asText = intrToAttr[_type](newValue);
       mutateAttribute(this, attr, asText);
     }
 

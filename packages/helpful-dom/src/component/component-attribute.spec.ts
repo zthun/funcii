@@ -1,5 +1,6 @@
 // @vitest-environment jsdom
 
+import { ZTrilean, trilean } from '@zthun/helpful-fn';
 import { camelCase, kebabCase } from 'lodash-es';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { registerCustomElement } from '../register-custom-element/register-custom-element.mjs';
@@ -53,6 +54,12 @@ class ZWithAttributes extends HTMLElement {
 
   @ZAttribute({ type: 'object' })
   public objectAttribute: object;
+
+  @ZAttribute({ type: 'trilean' })
+  public trileanAttribute: trilean;
+
+  @ZAttribute({ type: 'trilean', fallback: true })
+  public trileanWithFallbackTrue: trilean;
 }
 
 describe('ZAttribute', () => {
@@ -284,6 +291,68 @@ describe('ZAttribute', () => {
 
     it('should throw an error when being set', () => {
       shouldRequireProperty('symbol-attribute');
+    });
+  });
+
+  describe('Trilean', () => {
+    it('should return true if the value is true', () => {
+      shouldReadTheAttribute(true, 'trilean-attribute');
+    });
+
+    it('should return false if the value is false', () => {
+      shouldReadTheAttribute(false, 'trilean-attribute');
+    });
+
+    it('should return indeterminate if the value is indeterminate', () => {
+      // Arrange.
+      const target = createTestTarget();
+      // Act.
+      target.setAttribute('trilean-attribute', ZTrilean.stringify(ZTrilean.Indeterminate));
+      const actual = target.trileanAttribute;
+      // Assert.
+      expect(actual).toEqual(ZTrilean.Indeterminate);
+    });
+
+    it('should return false if the value is empty', () => {
+      // Arrange.
+      const target = createTestTarget();
+      // Act.
+      target.setAttribute('trilean-attribute', '');
+      const actual = target.trileanAttribute;
+      // Assert.
+      expect(actual).toEqual(false);
+    });
+
+    it('should return the fallback if the attribute is not set', () => {
+      // Arrange.
+      const target = createTestTarget();
+      // Act.
+      target.removeAttribute('trilean-with-fallback-true');
+      const actual = target.trileanWithFallbackTrue;
+      // Assert.
+      expect(actual).toEqual(true);
+    });
+
+    it('should set the attribute to false', () => {
+      shouldUpdateTheAttribute(false, 'trilean-attribute');
+    });
+
+    it('should set the attribute to true', () => {
+      shouldUpdateTheAttribute(true, 'trilean-attribute');
+    });
+
+    it('should set the attribute to indeterminate', () => {
+      // Arrange.
+      const target = createTestTarget();
+      // Act.
+      target.trileanAttribute = ZTrilean.Indeterminate;
+      const actual = target.getAttribute('trilean-attribute');
+      // Assert.
+      expect(actual).toEqual('indeterminate');
+    });
+
+    it('should default the attribute', () => {
+      shouldDefaultTheAttribute(false, 'trilean-attribute');
     });
   });
 });
