@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.16.0](https://github.com/zthun/helpful/compare/v3.15.1...v3.16.0) (2024-03-09)
+
+
+### Features
+
+* added support for trilean types ([2b4f0f9](https://github.com/zthun/helpful/commit/2b4f0f99307cf36a51b09ba45d931c22526c60bb))
+* trilean type is now a part of an intrinsic type ([671132f](https://github.com/zthun/helpful/commit/671132f87dec1f5f351480831cc3e433c865d3e2))
+* you can now create trilean types for an attribute ([24f56ad](https://github.com/zthun/helpful/commit/24f56adf4cf70bb1e44af548caca85e86adf9222))
+
+
+
 ## [3.15.1](https://github.com/zthun/helpful/compare/v3.15.0...v3.15.1) (2024-03-08)
 
 

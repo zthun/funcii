@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.16.0](https://github.com/zthun/helpful/compare/v3.15.1...v3.16.0) (2024-03-09)
+
+
+### Features
+
+* added support for trilean types ([2b4f0f9](https://github.com/zthun/helpful/commit/2b4f0f99307cf36a51b09ba45d931c22526c60bb))
+* trilean type is now a part of an intrinsic type ([671132f](https://github.com/zthun/helpful/commit/671132f87dec1f5f351480831cc3e433c865d3e2))
+
+
+
 ## [3.15.0](https://github.com/zthun/helpful/compare/v3.14.0...v3.15.0) (2024-03-08)
 
 **Note:** Version bump only for package @zthun/helpful-fn
