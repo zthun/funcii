@@ -2836,7 +2836,7 @@ __metadata:
     "@types/uuid": "npm:^9.0.8"
     "@vitest/coverage-istanbul": "npm:^1.4.0"
     "@zthun/lint-janitor": "npm:^16.0.0"
-    "@zthun/lint-janitor-config": "npm:^16.0.0"
+    "@zthun/lint-janitor-config": "npm:^16.0.1"
     husky: "npm:^9.0.11"
     jsdom: "npm:^24.0.0"
     lerna: "npm:^8.1.2"
@@ -2860,9 +2860,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zthun/lint-janitor-config@npm:^16.0.0":
-  version: 16.0.0
-  resolution: "@zthun/lint-janitor-config@npm:16.0.0"
+"@zthun/lint-janitor-config@npm:^16.0.1":
+  version: 16.0.1
+  resolution: "@zthun/lint-janitor-config@npm:16.0.1"
   dependencies:
     "@zthun/eslint-config": "npm:^16.0.0"
     "@zthun/eslint-react-config": "npm:^16.0.0"
@@ -2878,8 +2878,8 @@ __metadata:
     prettier: "npm:^3.2.5"
     stylelint: "npm:^16.2.1"
   peerDependencies:
-    "@zthun/lint-janitor": ^15.0.0
-  checksum: 1588c7e0c6932dee5e6077e18c393fdd35f76a8fb12afa8c9aee2c805b6c068e1f70e7e36e5d4a56fadf99b893db451c3ee3cac9b1795e862aa1c45cd1abf248
+    "@zthun/lint-janitor": ">=16.0.0"
+  checksum: 555e22271b554d499af8a91e5e8c81d0001388fd3fc866851b25ed5d7f57d1959d7d3fdf2f9987eba3f0d5d77792923e171231dae4e9b84b30edcbc81af1a865
   languageName: node
   linkType: hard
 
