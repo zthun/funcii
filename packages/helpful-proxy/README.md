@@ -112,7 +112,6 @@ C:\\Windows\\System32\\drivers\\etc\\hosts.
 # My Local Apps
 127.0.0.1       local.app.com
 
-255.255.255.255 broadcasthost
 ::1             localhost
 ```
 
