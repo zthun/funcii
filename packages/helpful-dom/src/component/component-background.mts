@@ -52,8 +52,14 @@ export interface IZComponentBackgroundOptions {
  * A background component is a component that is there to supply values to the host.
  *
  * Background components have a closed shadow root, and they are styled so they
- * have display none and do not take up space in the DOM.  Their only purpose
- * is to supply
+ * have no display and do not take up space in the DOM.
+ *
+ * These are useful when you have complex objects that you want to support in raw
+ * html and you want attribute backed intrinsic properties, but you don't want to have
+ * JSON stringify values for the complexity of the object.  These act similar to
+ * the options element of a select tag.  Options don't render in the browser but are
+ * mostly use to show values in a native drop down implemented by the browser window
+ * itself.
  *
  * @param options -
  *        The options to the background component.
