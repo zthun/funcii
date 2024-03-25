@@ -6,6 +6,7 @@ export * from './create-guid/create-guid.mjs';
 export * from './first-where/first-where.mjs';
 export * from './geometry/point.mjs';
 export * from './geometry/quadrilateral.mjs';
+export * from './geometry/rectangle.mjs';
 export * from './global/global.mjs';
 export * from './join-defined/join-defined.mjs';
 export * from './obligation/obligation.mjs';
