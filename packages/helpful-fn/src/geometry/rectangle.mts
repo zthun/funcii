@@ -12,7 +12,7 @@ export class ZRectangle {
    * @param sides -
    *        The numeric sides of a quadrilateral.
    */
-  public constructor(public readonly sides: IZQuadrilateral<number>) {}
+  public constructor(public readonly sides: IZQuadrilateral) {}
 
   /**
    * Calculates the width of the rectangle.
