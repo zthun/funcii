@@ -1,6 +1,6 @@
 {
   "name": "@zthun/helpful-proxy",
-  "version": "3.16.1",
+  "version": "4.0.0",
   "description": "A helpful reverse proxy used for local development.",
   "author": "Anthony Bonta",
   "license": "MIT",

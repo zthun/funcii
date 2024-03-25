@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.0](https://github.com/zthun/helpful/compare/v3.16.1...v4.0.0) (2024-03-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* square and rectangle functions have been removed from quadrilateral
+
+### Features
+
+* a rectangle object helps in calculating rectangular geometry for a quadrilateral ([12d5e5f](https://github.com/zthun/helpful/commit/12d5e5fe4839431cf6a8e78c6c4e20075e94bd07))
+
+
+### Code Refactoring
+
+* square and rectangle functions have been removed from quadrilateral ([9c08f66](https://github.com/zthun/helpful/commit/9c08f66e04ffe8b8bed06789920215961203fe03))
+
+
+
 ## [3.16.1](https://github.com/zthun/helpful/compare/v3.16.0...v3.16.1) (2024-03-19)
 
 **Note:** Version bump only for package @zthun/helpful
