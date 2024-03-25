@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/zthun/helpful/compare/v4.0.0...v4.0.1) (2024-03-25)
+
+
+### Bug Fixes
+
+* export rectangle object ([ab9734f](https://github.com/zthun/helpful/commit/ab9734f04edab7d6497c36e9b8c3211c74dfbe9d))
+
+
+
 ## [4.0.0](https://github.com/zthun/helpful/compare/v3.16.1...v4.0.0) (2024-03-25)
 
 
