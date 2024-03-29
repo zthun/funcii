@@ -23,6 +23,8 @@ export interface IZNodePaintOptions {
  *        The node to paint onto.
  * @param options -
  *        The options for painting.
+ *
+ * @deprecated Use \@zthun/spellcraft instead.
  */
 export function nodePaint(node: Node, options?: IZNodePaintOptions) {
   while (node.firstChild) {

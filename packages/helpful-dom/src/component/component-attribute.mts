@@ -4,6 +4,8 @@ import { mutateAttribute } from '../attribute/mutate-attribute.mjs';
 
 /**
  * Options for an attribute property.
+ *
+ * @deprecated Use \@zthun/spellcraft instead.
  */
 export type IZAttributeOptions = {
   /**
@@ -50,6 +52,8 @@ export type IZAttributeOptions = {
  * @returns
  *        A property decorator that turns a single property to be backed by
  *        an HTMLElement attribute.
+ *
+ * @deprecated Use \@zthun/spellcraft instead.
  */
 export function ZAttribute<V>(options?: IZAttributeOptions): PropertyDecorator {
   return <C extends HTMLElement>(target: C, propertyKey: string | symbol): void => {

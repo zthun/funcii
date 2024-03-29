@@ -8,5 +8,7 @@ import { identity } from 'lodash-es';
  *
  * @param ctor -
  *        The custom element constructor.
+ *
+ * @deprecated You can just use lodash or just make sure to include it somehow.
  */
 export const includeCustomElement: (ctor: CustomElementConstructor) => void = identity;

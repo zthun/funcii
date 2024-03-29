@@ -16,6 +16,8 @@
  *        will be returned.  If an object is passed
  *        then that object is json stringified and put into
  *        the attribute.
+ *
+ * @deprecated Use \@zthun/spellcraft ZAttributes instead.
  */
 export function stringifyAttribute(name: string, value: boolean | string | number | object | null | undefined): string {
   if (value == null) {

@@ -7,6 +7,8 @@
  *        The custom element constructor.
  * @param options -
  *        The custom element options.
+ *
+ * @deprecated Use \@zthun/spellcraft instead.
  */
 export function registerCustomElement(
   name: string,

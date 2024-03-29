@@ -9,6 +9,8 @@ import { IZComponentRender } from './component-render.mjs';
 
 /**
  * Options for a component that renders in the shadow dom.
+ *
+ * @deprecated Use \@zthun/spellcraft instead.
  */
 export interface IZComponentShadowOptions {
   /**
@@ -90,6 +92,8 @@ export interface IZComponentShadowOptions {
  *        A new decorated type that automatically implements
  *        {@link IZComponentAttributeChanged} and {@link IZComponentConnected}
  *        and {@link IZComponentPropertyChanged}.
+ *
+ * @deprecated Use \@zthun/spellcraft instead.
  */
 export function ZComponentShadow(options: IZComponentShadowOptions) {
   const { className, listen, name, tag } = options;

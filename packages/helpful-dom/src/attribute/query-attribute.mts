@@ -13,6 +13,8 @@ import { firstDefined } from '@zthun/helpful-fn';
  * @returns
  *        The value of the attribute, or fallback if there is no
  *        value for the given name.
+ *
+ * @deprecated Use \@zthun/spellcraft ZAttributes instead.
  */
 export function queryAttribute<T extends string = string>(e: Element, name: string, fallback: T): T {
   return firstDefined(fallback, e.getAttribute(name) as T);

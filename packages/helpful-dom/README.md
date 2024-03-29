@@ -6,6 +6,8 @@ This package is ONLY meant to be used by browsers and not node as methods and ex
 potential system access that node does not have, unlike @zthun/helpful-fn, where methods are supported on both node apps
 and browsers.
 
+> This package is going to be deprecated in favor of @zthun/spellcraft
+
 ## Installation
 
 ```sh

@@ -8,6 +8,8 @@
  * @param val -
  *        The value to set.  If this is null or undefined, then the attribute is
  *        removed, otherwise, it is set.
+ *
+ * @deprecated Use \@zthun/spellcraft ZAttributes instead.
  */
 export function mutateAttribute<T extends string = string>(e: Element, name: string, val: T | null | undefined): void {
   val == null ? e.removeAttribute(name) : e.setAttribute(name, val);

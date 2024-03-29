@@ -1,5 +1,7 @@
 /**
  * A web component that contains a render function.
+ *
+ * @deprecated Use \@zthun/spellcraft instead.
  */
 export interface IZComponentRender {
   /**
@@ -13,6 +15,8 @@ export interface IZComponentRender {
 
 /**
  * A web component that has a css factory.
+ *
+ * @deprecated Use \@zthun/spellcraft instead.
  */
 export interface IZComponentStyles {
   /**
@@ -27,6 +31,8 @@ export interface IZComponentStyles {
 
 /**
  * A web component that has an html template factory.
+ *
+ * @deprecated Use \@zthun/spellcraft instead.
  */
 export interface IZComponentTemplate {
   /**

@@ -1,5 +1,7 @@
 /**
  * The lifecycle event for when a component is inserted into the DOM.
+ *
+ * @deprecated Use \@zthun/spellcraft instead.
  */
 export interface IZComponentConnected {
   /**
@@ -10,6 +12,8 @@ export interface IZComponentConnected {
 
 /**
  * The lifecycle event for when a component is removed from the DOM.
+ *
+ * @deprecated Use \@zthun/spellcraft instead.
  */
 export interface IZComponentDisconnected {
   /**
@@ -20,6 +24,8 @@ export interface IZComponentDisconnected {
 
 /**
  * The lifecycle event for when a component's observed attributes have changed.
+ *
+ * @deprecated Use \@zthun/spellcraft instead.
  */
 export interface IZComponentAttributeChanged {
   /**
@@ -37,6 +43,8 @@ export interface IZComponentAttributeChanged {
 
 /**
  * The lifecycle event for when a component is moved to a new document.
+ *
+ * @deprecated Use \@zthun/spellcraft instead.
  */
 export interface IZComponentAdopted {
   /**
