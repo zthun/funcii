@@ -29,7 +29,7 @@ export abstract class ZTrilean {
    *        and indeterminate if x is null.
    */
   public static stringify(x: trilean): string {
-    return ZTrilean.isIndeterminate(x) ? x.description! : String(x);
+    return ZTrilean.isIndeterminate(x) ? 'indeterminate' : String(x);
   }
 
   /**
