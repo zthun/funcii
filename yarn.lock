@@ -2746,7 +2746,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-dom@workspace:packages/helpful-dom"
   dependencies:
-    "@zthun/helpful-fn": "npm:^4.0.3"
+    "@zthun/helpful-fn": "npm:^4.0.4"
     "@zthun/trilean": "npm:^1.1.0"
     lodash-es: "npm:^4.17.21"
     typescript: "npm:~5.4.2"
@@ -2756,7 +2756,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@zthun/helpful-fn@npm:^4.0.3, @zthun/helpful-fn@workspace:packages/helpful-fn":
+"@zthun/helpful-fn@npm:^4.0.4, @zthun/helpful-fn@workspace:packages/helpful-fn":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-fn@workspace:packages/helpful-fn"
   dependencies:
@@ -2768,21 +2768,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@zthun/helpful-internet@npm:^4.0.3, @zthun/helpful-internet@workspace:packages/helpful-internet":
+"@zthun/helpful-internet@npm:^4.0.4, @zthun/helpful-internet@workspace:packages/helpful-internet":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-internet@workspace:packages/helpful-internet"
   dependencies:
-    "@zthun/helpful-fn": "npm:^4.0.3"
+    "@zthun/helpful-fn": "npm:^4.0.4"
     vite: "npm:^5.1.6"
     vitest: "npm:^1.4.0"
   languageName: unknown
   linkType: soft
 
-"@zthun/helpful-node@npm:^4.0.3, @zthun/helpful-node@workspace:packages/helpful-node":
+"@zthun/helpful-node@npm:^4.0.4, @zthun/helpful-node@workspace:packages/helpful-node":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-node@workspace:packages/helpful-node"
   dependencies:
-    "@zthun/helpful-fn": "npm:^4.0.3"
+    "@zthun/helpful-fn": "npm:^4.0.4"
     vite: "npm:^5.1.6"
     vitest: "npm:^1.4.0"
   languageName: unknown
@@ -2803,25 +2803,25 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@zthun/helpful-query@npm:^4.0.3, @zthun/helpful-query@workspace:packages/helpful-query":
+"@zthun/helpful-query@npm:^4.0.4, @zthun/helpful-query@workspace:packages/helpful-query":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-query@workspace:packages/helpful-query"
   dependencies:
-    "@zthun/helpful-fn": "npm:^4.0.3"
+    "@zthun/helpful-fn": "npm:^4.0.4"
     lodash-es: "npm:^4.17.21"
     vite: "npm:^5.1.6"
     vitest: "npm:^1.4.0"
   languageName: unknown
   linkType: soft
 
-"@zthun/helpful-react@npm:^4.0.3, @zthun/helpful-react@workspace:packages/helpful-react":
+"@zthun/helpful-react@npm:^4.0.4, @zthun/helpful-react@workspace:packages/helpful-react":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-react@workspace:packages/helpful-react"
   dependencies:
     "@zthun/cirque": "npm:^5.0.1"
     "@zthun/cirque-du-react": "npm:^5.0.3"
-    "@zthun/helpful-fn": "npm:^4.0.3"
-    "@zthun/helpful-query": "npm:^4.0.3"
+    "@zthun/helpful-fn": "npm:^4.0.4"
+    "@zthun/helpful-query": "npm:^4.0.4"
     lodash-es: "npm:^4.17.21"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
@@ -2856,12 +2856,12 @@ __metadata:
   resolution: "@zthun/helpful-web@workspace:packages/helpful-web"
   dependencies:
     "@zthun/helpful-brands": "npm:^4.0.0"
-    "@zthun/helpful-fn": "npm:^4.0.3"
-    "@zthun/helpful-internet": "npm:^4.0.3"
-    "@zthun/helpful-node": "npm:^4.0.3"
+    "@zthun/helpful-fn": "npm:^4.0.4"
+    "@zthun/helpful-internet": "npm:^4.0.4"
+    "@zthun/helpful-node": "npm:^4.0.4"
     "@zthun/helpful-proxy": "npm:^4.0.0"
-    "@zthun/helpful-query": "npm:^4.0.3"
-    "@zthun/helpful-react": "npm:^4.0.3"
+    "@zthun/helpful-query": "npm:^4.0.4"
+    "@zthun/helpful-react": "npm:^4.0.4"
     "@zthun/helpful-validation": "npm:^4.0.0"
     typedoc: "npm:^0.25.12"
     typedoc-plugin-extras: "npm:^3.0.0"
