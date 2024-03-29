@@ -2,11 +2,15 @@
  * Represents a tri logic state.
  *
  * See {@link ZTrilean.Indeterminate} for what the symbol value should be.
+ *
+ * @deprecated Use the one found in [\@zthun/trilean](https://www.npmjs.com/package/\@zthun/trilean) instead.
  */
 export type trilean = boolean | symbol;
 
 /**
  * A utility class for trilean values.
+ *
+ * @deprecated Use the one found in [\@zthun/trilean](https://www.npmjs.com/package/\@zthun/trilean) instead.
  */
 export abstract class ZTrilean {
   /**
