@@ -16,7 +16,7 @@ export abstract class ZTrilean {
   /**
    * A unique value for the third, indeterminate, state.
    */
-  public static readonly Indeterminate = Symbol('indeterminate');
+  public static readonly Indeterminate = Symbol('helpful-fn-indeterminate');
 
   /**
    * Converts a trilean value to a string.
