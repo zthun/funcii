@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { ZTrilean, trilean } from '@zthun/helpful-fn';
+import { ZTrilean, trilean } from '@zthun/trilean';
 import { camelCase, kebabCase } from 'lodash-es';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { registerCustomElement } from '../register-custom-element/register-custom-element.mjs';

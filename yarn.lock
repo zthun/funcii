@@ -2722,6 +2722,7 @@ __metadata:
   resolution: "@zthun/helpful-dom@workspace:packages/helpful-dom"
   dependencies:
     "@zthun/helpful-fn": "npm:^4.0.2"
+    "@zthun/trilean": "npm:^1.1.0"
     lodash-es: "npm:^4.17.21"
     typescript: "npm:~5.4.2"
     vite: "npm:^5.1.6"
@@ -2976,6 +2977,13 @@ __metadata:
   peerDependencies:
     stylelint: ^16.2.1
   checksum: 69e1ec2296d1769017021fcc4e6e15f462d1b8c6e3b32d8c13d07816f83cac240e938a659af4a566f2751cff37ed1f6fb180add338ff0583a139d849c2de7382
+  languageName: node
+  linkType: hard
+
+"@zthun/trilean@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@zthun/trilean@npm:1.1.0"
+  checksum: 0e4917fc6af4f67b089219149c014eda95101866a6bf68cd3de6629e21c20ca9a60dd8aea31df4d7713b1e039b0560e0f30aa3efe71a03baa95e2545d48b6959
   languageName: node
   linkType: hard
 
