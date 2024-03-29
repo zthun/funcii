@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.4](https://github.com/zthun/helpful/compare/v4.0.3...v4.0.4) (2024-03-29)
+
+
+### Bug Fixes
+
+* import trilean from @zthun/trilean instead of helpful-fn ([4fc25e2](https://github.com/zthun/helpful/commit/4fc25e25a4509349a388afdf7fd4b555302a308c))
+
+
+
 ## [4.0.3](https://github.com/zthun/helpful/compare/v4.0.2...v4.0.3) (2024-03-29)
 
 **Note:** Version bump only for package @zthun/helpful
