@@ -65,6 +65,11 @@ export const css = tag;
  * Some {@link https://marketplace.visualstudio.com/items?itemName=zjcompt.es6-string-javascript | IDE extensions will detect the string}
  * interpolation as javascript when using this tag.
  */
+export const js = tag;
+
+/**
+ * See {@link js}
+ */
 export const javascript = tag;
 
 /**
@@ -92,3 +97,18 @@ export const ts = tag;
  * See {@link ts}
  */
 export const typescript = tag;
+
+/**
+ * An alias for {@link tag}.
+ */
+export const sh = tag;
+
+/**
+ * An alias for {@link tag}.
+ */
+export const bash = tag;
+
+/**
+ * An alias for {@link tag}.
+ */
+export const zsh = tag;
