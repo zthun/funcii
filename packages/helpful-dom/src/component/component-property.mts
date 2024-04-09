@@ -3,11 +3,15 @@ import { mutateAttribute } from '../attribute/mutate-attribute.mjs';
 
 /**
  * The callback function type for an object that supports a PropertyChanged event.
+ *
+ * @deprecated Use \@zthun/spellcraft instead.
  */
 export type ZPropertyChangedCallbackFunction = (name: string | symbol, oldValue: any, newValue: any) => void;
 
 /**
  * An event for when a property changes.
+ *
+ * @deprecated Use \@zthun/spellcraft instead.
  */
 export interface IZComponentPropertyChanged {
   /**
@@ -32,6 +36,8 @@ export interface IZComponentPropertyChanged {
  * @returns
  *        True if x implements the property change callback interface.
  *        False otherwise.
+ *
+ * @deprecated Use \@zthun/spellcraft instead.
  */
 export function implementsPropertyChanged(x: any): x is IZComponentPropertyChanged {
   return typeof x.propertyChangedCallback === 'function';
@@ -45,6 +51,8 @@ export function implementsPropertyChanged(x: any): x is IZComponentPropertyChang
  *
  * @returns
  *        True if x implements a setAttribute method. False otherwise.
+ *
+ * @deprecated Use \@zthun/spellcraft instead.
  */
 export function implementsSetAttribute(x: any): x is Element {
   return typeof x.setAttribute === 'function';
@@ -52,6 +60,8 @@ export function implementsSetAttribute(x: any): x is Element {
 
 /**
  * Options for a web component property.
+ *
+ * @deprecated Use \@zthun/spellcraft instead.
  */
 export interface ZPropertyOptions<V> {
   /**
@@ -79,6 +89,8 @@ export interface ZPropertyOptions<V> {
  * @returns
  *        The property decorator which wraps a property to invoke the
  *        property change event when it changes.
+ *
+ * @deprecated Use \@zthun/spellcraft instead.
  */
 export function ZProperty<V>(options?: ZPropertyOptions<V>): PropertyDecorator {
   return <C extends HTMLElement>(target: C, propertyKey: string | symbol): void => {

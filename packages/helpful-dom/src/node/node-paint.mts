@@ -1,5 +1,7 @@
 /**
  * Options for painting a node.
+ *
+ * @deprecated Use \@zthun/spellcraft instead.
  */
 export interface IZNodePaintOptions {
   /**

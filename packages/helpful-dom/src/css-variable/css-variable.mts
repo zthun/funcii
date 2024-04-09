@@ -20,6 +20,8 @@ import { trimStart } from 'lodash-es';
  *  // outputs "var(--my-variable)""
  *  console.log(output);
  * ```
+ *
+ * @deprecated Will no longer be supported going forward.
  */
 export function cssVariable(property: string): string {
   property = trimStart(property, '-');

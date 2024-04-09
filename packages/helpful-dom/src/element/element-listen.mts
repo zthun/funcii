@@ -1,5 +1,7 @@
 /**
  * Represents a listening state for an event on a child target.
+ *
+ * @deprecated Use \@zthun/spellcraft decorators for refresh on event instead.
  */
 export interface IZElementListen {
   /**
