@@ -12,8 +12,6 @@ export * from './join-defined/join-defined.mjs';
 export * from './obligation/obligation.mjs';
 export * from './orientation/orientation.mjs';
 export * from './peel/peel.mjs';
-export * from './schema/intrinsic.mjs';
-export * from './schema/trilean.mjs';
 export * from './serialize/deserialize-json.mjs';
 export * from './serialize/deserialize-try.mjs';
 export * from './serialize/deserialize.mjs';
