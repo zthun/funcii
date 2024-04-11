@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.2](https://github.com/zthun/helpful/compare/v4.1.1...v4.1.2) (2024-04-11)
+
+
+### Bug Fixes
+
+* deprecate stuff that has been moved to spellcraft ([a8f6776](https://github.com/zthun/helpful/commit/a8f677651273d6e4cba5fa6ec423ffdcad799ed8))
+
+
+
 ## [4.1.1](https://github.com/zthun/helpful/compare/v4.1.0...v4.1.1) (2024-04-09)
 
 **Note:** Version bump only for package @zthun/helpful
