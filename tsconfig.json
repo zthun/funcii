@@ -5,7 +5,6 @@
     "target": "esnext",
     "paths": {
       "@zthun/helpful-brands": ["helpful-brands/src/index"],
-      "@zthun/helpful-dom": ["helpful-dom/src/index"],
       "@zthun/helpful-fn": ["helpful-fn/src/index"],
       "@zthun/helpful-internet": ["helpful-internet/src/index"],
       "@zthun/helpful-node": ["helpful-node/src/index"],
