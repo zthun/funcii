@@ -23,6 +23,8 @@ export interface IZElementListen {
 
 /**
  * A builder that constructs a listen object.
+ *
+ * @deprecated Use \@zthun/spellcraft decorators instead.
  */
 export class ZElementListenBuilder {
   private _listen: IZElementListen;

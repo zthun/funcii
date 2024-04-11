@@ -7,6 +7,8 @@ import { IZComponentPropertyChanged } from './component-property.mjs';
 
 /**
  * Options for a {@link ZComponentBackground} element.
+ *
+ * @deprecated Use \@zthun/spellcraft instead.
  */
 export interface IZComponentBackgroundOptions {
   /**
@@ -67,6 +69,8 @@ export interface IZComponentBackgroundOptions {
  * @returns
  *        A new prototype that extends from the target class and implements
  *        the necessary background functions.
+ *
+ * @deprecated Use \@zthun/spellcraft instead.
  */
 export function ZComponentBackground(options: IZComponentBackgroundOptions) {
   const { name, event } = options;
