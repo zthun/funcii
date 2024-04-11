@@ -134,8 +134,3 @@ export const ZUnaryComparators: Record<ZOperatorUnary, (data: any) => boolean> =
   [ZOperatorUnary.IsNull]: (data: any) => data == null,
   [ZOperatorUnary.IsNotNull]: (data: any) => data != null
 };
-
-/**
- * @deprecated Use {@link ZUnaryComparators} instead.
- */
-export const UnaryComparators = ZUnaryComparators;

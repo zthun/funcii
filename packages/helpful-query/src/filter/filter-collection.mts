@@ -168,8 +168,3 @@ const _ZOperatorsCollectionLookup = keyBy(ZOperatorsCollection);
 export function isCollectionOperator(candidate: string | null | undefined): candidate is ZOperatorCollection {
   return candidate != null && Object.prototype.hasOwnProperty.call(_ZOperatorsCollectionLookup, candidate);
 }
-
-/**
- * @deprecated Use {@link ZCollectionComparators} instead.
- */
-export const CollectionComparators = ZCollectionComparators;

@@ -219,8 +219,3 @@ export const ZBinaryComparators: Record<ZOperatorBinary, (data: any, value: any)
   [ZOperatorBinary.LessThanEqualTo]: (d, v) => d <= v,
   [ZOperatorBinary.Like]: (d, v) => `${d}`.indexOf(`${v}`) >= 0
 };
-
-/**
- * @deprecated Use {@link ZBinaryComparators} instead.
- */
-export const BinaryComparators = ZBinaryComparators;
