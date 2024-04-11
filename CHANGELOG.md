@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.0](https://github.com/zthun/helpful/compare/v4.1.2...v5.0.0) (2024-04-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* removed the sort parser in favor of ZSortDeserialize
+* removed the filter parser in favor of ZFilterDeserialize
+* deprecated comparator alias' have been removed
+* trilean has been removed
+* helpful-dom is removed and no longer maintained
+
+### Features
+
+* deprecated comparator alias' have been removed ([43464bb](https://github.com/zthun/helpful/commit/43464bbb529fa065923149ea24e4a9c070f4d1e7))
+* helpful-dom is removed and no longer maintained ([1bfc545](https://github.com/zthun/helpful/commit/1bfc545c75587a232c0d0002c1d604f6680baa85))
+* removed the filter parser in favor of ZFilterDeserialize ([5a6b8c3](https://github.com/zthun/helpful/commit/5a6b8c38b3c674a2d421995fdb48486ef2593860))
+* removed the sort parser in favor of ZSortDeserialize ([cb86854](https://github.com/zthun/helpful/commit/cb868549665c10e78a8ca3748dfe0f41c47ef65a))
+* trilean has been removed ([629db7a](https://github.com/zthun/helpful/commit/629db7a7deb8ab0fc832a6143b904613cac0911c))
+
+
+
 ## [4.1.2](https://github.com/zthun/helpful/compare/v4.1.1...v4.1.2) (2024-04-11)
 
 

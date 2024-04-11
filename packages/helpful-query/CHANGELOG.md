@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.0](https://github.com/zthun/helpful/compare/v4.1.2...v5.0.0) (2024-04-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* removed the sort parser in favor of ZSortDeserialize
+* removed the filter parser in favor of ZFilterDeserialize
+* deprecated comparator alias' have been removed
+
+### Features
+
+* deprecated comparator alias' have been removed ([43464bb](https://github.com/zthun/helpful/commit/43464bbb529fa065923149ea24e4a9c070f4d1e7))
+* removed the filter parser in favor of ZFilterDeserialize ([5a6b8c3](https://github.com/zthun/helpful/commit/5a6b8c38b3c674a2d421995fdb48486ef2593860))
+* removed the sort parser in favor of ZSortDeserialize ([cb86854](https://github.com/zthun/helpful/commit/cb868549665c10e78a8ca3748dfe0f41c47ef65a))
+
+
+
 ## [4.1.1](https://github.com/zthun/helpful/compare/v4.1.0...v4.1.1) (2024-04-09)
 
 **Note:** Version bump only for package @zthun/helpful-query

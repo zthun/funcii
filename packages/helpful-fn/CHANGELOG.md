@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.0](https://github.com/zthun/helpful/compare/v4.1.2...v5.0.0) (2024-04-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* trilean has been removed
+
+### Features
+
+* trilean has been removed ([629db7a](https://github.com/zthun/helpful/commit/629db7a7deb8ab0fc832a6143b904613cac0911c))
+
+
+
 ## [4.1.1](https://github.com/zthun/helpful/compare/v4.1.0...v4.1.1) (2024-04-09)
 
 **Note:** Version bump only for package @zthun/helpful-fn
