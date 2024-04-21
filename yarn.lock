@@ -2891,7 +2891,6 @@ __metadata:
     "@vitest/coverage-istanbul": "npm:^1.5.0"
     "@zthun/lint-janitor": "npm:^16.1.0"
     "@zthun/lint-janitor-config": "npm:^16.1.0"
-    glob: "npm:^10.3.12"
     husky: "npm:^9.0.11"
     jsdom: "npm:^24.0.0"
     lerna: "npm:^8.1.2"
