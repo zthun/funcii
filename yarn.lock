@@ -2297,16 +2297,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*":
-  version: 20.12.6
-  resolution: "@types/node@npm:20.12.6"
-  dependencies:
-    undici-types: "npm:~5.26.4"
-  checksum: 48ce732162cd6c02656aa5f996f0e695b57fdeb1ae762fbaa966afac2dcdcf52cb56be5ce1efb4babf8f97c2de545889aebc7f43c2e86f033487245c41fa1e6b
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^20.12.7":
+"@types/node@npm:*, @types/node@npm:^20.12.7":
   version: 20.12.7
   resolution: "@types/node@npm:20.12.7"
   dependencies:
@@ -2338,17 +2329,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*":
-  version: 18.2.75
-  resolution: "@types/react@npm:18.2.75"
-  dependencies:
-    "@types/prop-types": "npm:*"
-    csstype: "npm:^3.0.2"
-  checksum: 3c0d035d64007d38cf1b682108de8c5f042452025899280c5d2c040b9f53b1f81482d0d57fd93e6687c2c619f3b605d33a01569b1fbbbdeec7fb3a56c7a72af8
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:^18.2.79":
+"@types/react@npm:*, @types/react@npm:^18.2.79":
   version: 18.2.79
   resolution: "@types/react@npm:18.2.79"
   dependencies:
@@ -2787,7 +2768,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-fn@workspace:packages/helpful-fn"
   dependencies:
-    typescript: "npm:~5.4.4"
+    typescript: "npm:~5.4.5"
     uuid: "npm:^9.0.1"
     vite: "npm:^5.2.10"
     vitest: "npm:^1.5.0"
@@ -2822,7 +2803,7 @@ __metadata:
     cosmiconfig: "npm:^9.0.0"
     http-reverse-proxy-ts: "npm:^1.0.1"
     nodemon: "npm:^3.1.0"
-    typescript: "npm:~5.4.4"
+    typescript: "npm:~5.4.5"
     vitest: "npm:^1.5.0"
     vitest-mock-extended: "npm:^1.3.1"
   bin:
@@ -2853,7 +2834,7 @@ __metadata:
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     rxjs: "npm:^7.8.1"
-    typescript: "npm:~5.4.4"
+    typescript: "npm:~5.4.5"
     vite: "npm:^5.2.10"
     vitest: "npm:^1.5.0"
     vitest-mock-extended: "npm:^1.3.1"
@@ -2892,7 +2873,7 @@ __metadata:
     "@zthun/helpful-validation": "npm:^5.0.0"
     typedoc: "npm:^0.25.13"
     typedoc-plugin-extras: "npm:^3.0.0"
-    typescript: "npm:~5.4.4"
+    typescript: "npm:~5.4.5"
   languageName: unknown
   linkType: soft
 
@@ -2910,12 +2891,13 @@ __metadata:
     "@vitest/coverage-istanbul": "npm:^1.5.0"
     "@zthun/lint-janitor": "npm:^16.1.0"
     "@zthun/lint-janitor-config": "npm:^16.1.0"
+    glob: "npm:^10.3.12"
     husky: "npm:^9.0.11"
     jsdom: "npm:^24.0.0"
     lerna: "npm:^8.1.2"
     rimraf: "npm:^5.0.5"
     ts-node: "npm:^10.9.2"
-    typescript: "npm:~5.4.4"
+    typescript: "npm:~5.4.5"
     vite: "npm:^5.2.10"
     vite-plugin-dts: "npm:^3.8.3"
     vite-plugin-externalize-deps: "npm:^0.8.0"
@@ -11520,13 +11502,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:>=3 < 6, typescript@npm:~5.4.4":
-  version: 5.4.4
-  resolution: "typescript@npm:5.4.4"
+"typescript@npm:>=3 < 6, typescript@npm:~5.4.5":
+  version: 5.4.5
+  resolution: "typescript@npm:5.4.5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 4d8de0291204ed61ca97ad0cba2ce064e09c4988ca1c451c787e4653ba76296ba35177a52694e8a00cf4ef899d0ee83338663b926d8b7d55167ff0ba81549999
+  checksum: 2954022ada340fd3d6a9e2b8e534f65d57c92d5f3989a263754a78aba549f7e6529acc1921913560a4b816c46dce7df4a4d29f9f11a3dc0d4213bb76d043251e
   languageName: node
   linkType: hard
 
@@ -11540,13 +11522,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A>=3 < 6#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A~5.4.4#optional!builtin<compat/typescript>":
-  version: 5.4.4
-  resolution: "typescript@patch:typescript@npm%3A5.4.4#optional!builtin<compat/typescript>::version=5.4.4&hash=e012d7"
+"typescript@patch:typescript@npm%3A>=3 < 6#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A~5.4.5#optional!builtin<compat/typescript>":
+  version: 5.4.5
+  resolution: "typescript@patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=e012d7"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 413a0714a2b554bef8d39a386e5d25df22c625dd677d7260c1a08625016e46ce5f79dae0812641a22ab37c905370b407dc6838e11d4f10845821127d42221876
+  checksum: 9cf4c053893bcf327d101b6c024a55baf05430dc30263f9adb1bf354aeffc11306fe1f23ba2f9a0209674359f16219b5b7d229e923477b94831d07d5a33a4217
   languageName: node
   linkType: hard
 
