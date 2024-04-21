@@ -1,5 +1,3 @@
-// @vitest-environment jsdom
-
 import { IZCircusSetup, ZCircusKeyboardQwerty } from '@zthun/cirque';
 import { IZCircusReactHook, ZCircusSetupHook } from '@zthun/cirque-du-react';
 import { KeyboardEvent } from 'react';

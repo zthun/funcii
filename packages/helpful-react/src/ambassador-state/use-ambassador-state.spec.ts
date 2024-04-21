@@ -1,5 +1,3 @@
-// @vitest-environment jsdom
-
 import { IZCircusSetup } from '@zthun/cirque';
 import { IZCircusReactHook, ZCircusSetupHook } from '@zthun/cirque-du-react';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
