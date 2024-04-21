@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 
-import { ZCircusSetupHook } from '@zthun/cirque-du-react';
+import { IZCircusSetup } from '@zthun/cirque';
+import { IZCircusReactHook, ZCircusSetupHook } from '@zthun/cirque-du-react';
 import { sleep } from '@zthun/helpful-fn';
 import {
   IZDataRequest,
@@ -10,23 +11,31 @@ import {
   ZDataSourceStaticOptionsBuilder
 } from '@zthun/helpful-query';
 import { range } from 'lodash-es';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { isStateLoading } from '../async-state/use-async-state.mjs';
 import { usePageViewState } from './use-page-view-state.mjs';
 
 describe('usePageViewState', () => {
   let source: IZDataSource<number>;
   let request: IZDataRequest;
+  let _hook: IZCircusReactHook<any, any>;
+  let _setup: IZCircusSetup<IZCircusReactHook<any, any>>;
 
   const createTestTarget = async () => {
-    const target = await new ZCircusSetupHook(() => usePageViewState(source, request)).setup();
+    _setup = new ZCircusSetupHook(() => usePageViewState(source, request));
+    _hook = await _setup.setup();
     await sleep(100);
-    await target.rerender();
-    return target;
+    await _hook.rerender();
+    return _hook;
   };
 
   beforeEach(() => {
     request = new ZDataRequestBuilder().page(2).size(20).build();
+  });
+
+  afterEach(async () => {
+    await _hook?.destroy?.call(_hook);
+    await _setup?.destroy?.call(_setup);
   });
 
   describe('Loading', () => {

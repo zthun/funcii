@@ -1,11 +1,13 @@
 // @vitest-environment jsdom
 
-import { ZCircusSetupHook } from '@zthun/cirque-du-react';
+import { IZCircusSetup } from '@zthun/cirque';
+import { IZCircusReactHook, ZCircusSetupHook } from '@zthun/cirque-du-react';
 import { sleep } from '@zthun/helpful-fn';
 import { get, noop } from 'lodash-es';
 import React, { StrictMode } from 'react';
-import { Mock, beforeEach, describe, expect, it, vi } from 'vitest';
+import { Mock, afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
+  ZAsyncDataTuple,
   ZAsyncLoading,
   asStateData,
   asStateError,
@@ -17,12 +19,15 @@ import {
 
 describe('useAsyncState', () => {
   let load: Mock;
+  let _hook: IZCircusReactHook<ZAsyncDataTuple<string>, unknown>;
+  let _setup: IZCircusSetup<IZCircusReactHook<ZAsyncDataTuple<string>, unknown>>;
 
   async function createTestTarget() {
     const wrapper = ({ children }) => <StrictMode>{children}</StrictMode>;
-    const target = await new ZCircusSetupHook(() => useAsyncState<string>(load), { wrapper }).setup();
+    _setup = new ZCircusSetupHook(() => useAsyncState<string>(load), { wrapper });
+    _hook = await _setup.setup();
     await sleep(5);
-    return target;
+    return _hook;
   }
 
   function mockLoadedData(data: string) {
@@ -39,6 +44,11 @@ describe('useAsyncState', () => {
 
   beforeEach(() => {
     load = vi.fn();
+  });
+
+  afterEach(async () => {
+    await _hook?.destroy?.call(_hook);
+    await _setup?.destroy?.call(_setup);
   });
 
   describe('Success', () => {

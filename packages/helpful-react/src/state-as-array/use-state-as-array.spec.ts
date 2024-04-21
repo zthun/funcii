@@ -1,20 +1,30 @@
 // @vitest-environment jsdom
 
-import { ZCircusSetupHook } from '@zthun/cirque-du-react';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { IZCircusSetup } from '@zthun/cirque';
+import { IZCircusReactHook, ZCircusSetupHook } from '@zthun/cirque-du-react';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { useStateAsArray } from './use-state-as-array.mjs';
 
 describe('useStateAsArray', () => {
   const batman = 'batman';
   const superman = 'superman';
   let initial: string | string[] | undefined;
+  let _hook: IZCircusReactHook<any, any>;
+  let _setup: IZCircusSetup<IZCircusReactHook<any, any>>;
 
   const createTestTarget = async () => {
-    return await new ZCircusSetupHook(() => useStateAsArray<string>(initial)).setup();
+    _setup = new ZCircusSetupHook(() => useStateAsArray<string>(initial));
+    _hook = await _setup.setup();
+    return _hook;
   };
 
   beforeEach(() => {
     initial = undefined;
+  });
+
+  afterEach(async () => {
+    await _hook?.destroy?.call(_hook);
+    await _setup?.destroy?.call(_setup);
   });
 
   describe('Initial', () => {

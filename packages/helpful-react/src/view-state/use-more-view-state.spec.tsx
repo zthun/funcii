@@ -1,5 +1,6 @@
 // @vitest-environment jsdom
 
+import { IZCircusSetup } from '@zthun/cirque';
 import { IZCircusReactHook, ZCircusSetupHook } from '@zthun/cirque-du-react';
 import { sleep } from '@zthun/helpful-fn';
 import {
@@ -11,7 +12,7 @@ import {
 } from '@zthun/helpful-query';
 import { range } from 'lodash-es';
 import React, { StrictMode } from 'react';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { mock } from 'vitest-mock-extended';
 import { asStateError, isStateLoading } from '../async-state/use-async-state.mjs';
 import { useMoreViewState } from './use-more-view-state.mjs';
@@ -19,6 +20,8 @@ import { useMoreViewState } from './use-more-view-state.mjs';
 describe('useMoreViewState', () => {
   let source: IZDataSource<number>;
   let template: IZDataRequest;
+  let _hook: IZCircusReactHook<any, any>;
+  let _setup: IZCircusSetup<IZCircusReactHook<any, any>>;
 
   const rerender = async (target: IZCircusReactHook<any, any>) => {
     await sleep(100);
@@ -27,13 +30,19 @@ describe('useMoreViewState', () => {
 
   const createTestTarget = async () => {
     const wrapper = ({ children }) => <StrictMode>{children}</StrictMode>;
-    const target = await new ZCircusSetupHook(() => useMoreViewState(source, template), { wrapper }).setup();
-    await rerender(target);
-    return target;
+    _setup = new ZCircusSetupHook(() => useMoreViewState(source, template), { wrapper });
+    _hook = await _setup.setup();
+    await rerender(_hook);
+    return _hook;
   };
 
   beforeEach(() => {
     template = new ZDataRequestBuilder().size(20).build();
+  });
+
+  afterEach(async () => {
+    await _hook?.destroy?.call(_hook);
+    await _setup?.destroy?.call(_setup);
   });
 
   describe('Loading', () => {

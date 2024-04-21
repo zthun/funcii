@@ -1,22 +1,32 @@
 // @vitest-environment jsdom
 
+import { IZCircusSetup } from '@zthun/cirque';
 import { IZCircusReactHook, ZCircusSetupHook } from '@zthun/cirque-du-react';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { ZAmbassadorReducer, useAmbassadorState } from './use-ambassador-state.mjs';
 
 describe('useAmbassadorState', () => {
   let current: string | undefined;
   let initial: string | undefined;
   let setCurrent: ((val: string) => void) | undefined;
+  let _hook: IZCircusReactHook<any, any>;
+  let _setup: IZCircusSetup<IZCircusReactHook<any, any>>;
 
-  function createTestTarget() {
-    return new ZCircusSetupHook(() => useAmbassadorState(current, setCurrent, initial)).setup();
+  async function createTestTarget() {
+    _setup = new ZCircusSetupHook(() => useAmbassadorState(current, setCurrent, initial));
+    _hook = await _setup.setup();
+    return _hook;
   }
 
   beforeEach(() => {
     current = undefined;
     initial = undefined;
     setCurrent = undefined;
+  });
+
+  afterEach(async () => {
+    await _hook?.destroy?.call(_hook);
+    await _setup?.destroy?.call(_setup);
   });
 
   async function setValueAndRerender(

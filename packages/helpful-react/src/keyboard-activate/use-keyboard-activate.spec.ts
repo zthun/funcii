@@ -1,22 +1,31 @@
 // @vitest-environment jsdom
 
-import { ZCircusKeyboardQwerty } from '@zthun/cirque';
-import { ZCircusSetupHook } from '@zthun/cirque-du-react';
+import { IZCircusSetup, ZCircusKeyboardQwerty } from '@zthun/cirque';
+import { IZCircusReactHook, ZCircusSetupHook } from '@zthun/cirque-du-react';
 import { KeyboardEvent } from 'react';
-import { Mock, beforeEach, describe, expect, it, vi } from 'vitest';
+import { Mock, afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { useKeyboardActivate } from './use-keyboard-activate.mjs';
 
 describe('useKeyboardActivate', () => {
   let callback: Mock | undefined;
   let codes: string[] | undefined;
+  let _hook: IZCircusReactHook<any, any>;
+  let _setup: IZCircusSetup<IZCircusReactHook<any, any>>;
 
   async function createTestTarget() {
-    return await new ZCircusSetupHook(() => useKeyboardActivate(callback, codes)).setup();
+    _setup = new ZCircusSetupHook(() => useKeyboardActivate(callback, codes));
+    _hook = await _setup.setup();
+    return _hook;
   }
 
   beforeEach(() => {
     callback = undefined;
     codes = undefined;
+  });
+
+  afterEach(async () => {
+    await _hook?.destroy?.call(_hook);
+    await _setup?.destroy?.call(_setup);
   });
 
   describe('With', () => {
