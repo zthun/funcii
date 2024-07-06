@@ -27,7 +27,7 @@
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
     "@types/supertest": "^6.0.2",
-    "@types/uuid": "^9.0.8",
+    "@types/uuid": "^10.0.0",
     "@vitest/coverage-istanbul": "^1.6.0",
     "@zthun/lint-janitor": "^16.1.0",
     "@zthun/lint-janitor-config": "^16.1.0",
