@@ -257,11 +257,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/cli@npm:^19.2.2":
-  version: 19.2.2
-  resolution: "@commitlint/cli@npm:19.2.2"
+"@commitlint/cli@npm:^19.3.0":
+  version: 19.3.0
+  resolution: "@commitlint/cli@npm:19.3.0"
   dependencies:
-    "@commitlint/format": "npm:^19.0.3"
+    "@commitlint/format": "npm:^19.3.0"
     "@commitlint/lint": "npm:^19.2.2"
     "@commitlint/load": "npm:^19.2.0"
     "@commitlint/read": "npm:^19.2.1"
@@ -270,7 +270,7 @@ __metadata:
     yargs: "npm:^17.0.0"
   bin:
     commitlint: cli.js
-  checksum: 25f4acaaafd089ceee0d5e1fe670eec85999b5dbcf20eb93cd053d9e42de0bec69d18f4f6c9d68be448fcf8889ef3eca91302d828f8b601fddf00180d7ae6396
+  checksum: 12049b6ccb1fd3939c5713fdc9b2aa9054985f3ced465e9494ce7c23b3c69a9e9ea25c84fffa5ba147b6bb5cd086a29000dfac2218a7592494b007bab592e057
   languageName: node
   linkType: hard
 
@@ -315,13 +315,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/format@npm:^19.0.3":
-  version: 19.0.3
-  resolution: "@commitlint/format@npm:19.0.3"
+"@commitlint/format@npm:^19.3.0":
+  version: 19.3.0
+  resolution: "@commitlint/format@npm:19.3.0"
   dependencies:
     "@commitlint/types": "npm:^19.0.3"
     chalk: "npm:^5.3.0"
-  checksum: 9d8a5b55ca8e35351c6f1dbbec8f749fe3f7c66f01ba0e248574530fa1dac944b87ee5bd63153a14e3748068a2e9b0b8341cec21c768f384bb5a5c8124902a1f
+  checksum: 857a1784481edad9013514cbcc9ec93af33acc8bd491f5d23625c53fb93841566ce110e3004ecaab7f4f89c9331940fe63b83922a4a81f419e67b70e0dc90e41
   languageName: node
   linkType: hard
 
@@ -2297,12 +2297,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.12.7":
-  version: 20.12.7
-  resolution: "@types/node@npm:20.12.7"
+"@types/node@npm:*, @types/node@npm:^20.14.10":
+  version: 20.14.10
+  resolution: "@types/node@npm:20.14.10"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: dce80d63a3b91892b321af823d624995c61e39c6a223cc0ac481a44d337640cc46931d33efb3beeed75f5c85c3bda1d97cef4c5cd4ec333caf5dee59cff6eca0
+  checksum: 0b06cff14365c2d0085dc16cc8cbea5c40ec09cfc1fea966be9eeecf35562760bfde8f88e86de6edfaf394501236e229d9c1084fad04fb4dec472ae245d8ae69
   languageName: node
   linkType: hard
 
@@ -2881,10 +2881,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@zthun/helpful@workspace:."
   dependencies:
-    "@commitlint/cli": "npm:^19.2.2"
+    "@commitlint/cli": "npm:^19.3.0"
     "@commitlint/config-conventional": "npm:^19.2.2"
     "@types/lodash-es": "npm:^4.17.12"
-    "@types/node": "npm:^20.12.7"
+    "@types/node": "npm:^20.14.10"
     "@types/react": "npm:^18.2.79"
     "@types/supertest": "npm:^6.0.2"
     "@types/uuid": "npm:^9.0.8"
