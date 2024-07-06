@@ -44,8 +44,6 @@ export function joinDefined<T>(delimiter: string, ...items: JoinListInputParamet
  *
  * @param items -
  *        The items to join.
- * @param T -
- *        The type of data to join.
  *
  * @returns
  *        A string that joins the items that are defined, separated by space delimiter.
@@ -60,8 +58,6 @@ export const spaceJoinDefined: <T>(...items: JoinListInputParameter<T>[]) => str
  *
  * @param items -
  *        The items to join.
- * @param T -
- *        The type of data to join.
  *
  * @returns
  *        A string that joins the items that are defined, separated by a space delimiter.
@@ -76,8 +72,6 @@ export const cssJoinDefined: <T>(...items: JoinListInputParameter<T>[]) => strin
  *
  * @param items -
  *        The items to join.
- * @param T -
- *        The type of data to join.
  *
  * @returns
  *        A string that joins the items that are defined, separated by a comma delimiter.
@@ -92,8 +86,6 @@ export const commaJoinDefined: <T>(...items: JoinListInputParameter<T>[]) => str
  *
  * @param items -
  *        The items to join.
- * @param T -
- *        The type of data to join.
  *
  * @returns
  *        A string that joins the items that are defined, separated by a semi-colon delimiter.
@@ -108,8 +100,6 @@ export const semiColonJoinDefined: <T>(...items: JoinListInputParameter<T>[]) =>
  *
  * @param items -
  *        The items to join.
- * @param T -
- *        The type of data to join.
  *
  * @returns
  *        A string that joins the items that are defined, separated by a pipe delimiter.

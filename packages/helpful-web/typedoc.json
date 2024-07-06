@@ -1,5 +1,6 @@
 {
   "$schema": "https://typedoc.org/schema.json",
+  "extends": ["../../.config/typedoc.json"],
   "out": "./dist",
   "categorizeByGroup": true,
   "entryPointStrategy": "packages",

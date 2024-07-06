@@ -325,9 +325,6 @@ export class ZMetadataBuilder {
   /**
    * Sets the type as date.
    *
-   * @param format -
-   *        The format for the date.
-   *
    * @returns -
    *        This object.
    */
@@ -335,12 +332,6 @@ export class ZMetadataBuilder {
 
   /**
    * Sets the type as a number.
-   *
-   * @param precision -
-   *        The decimal precision.  Undefined should represent
-   *        infinite precision.
-   * @param format -
-   *        The format for the number.
    *
    * @returns -
    *        This object.
@@ -350,25 +341,13 @@ export class ZMetadataBuilder {
   /**
    * Sets the type as an icon.
    *
-   * @param cls -
-   *        The icon class.
-   * @param width -
-   *        The icon width.
-   * @param height -
-   *        The icon height.
-   *
-   * @returns -
+   * @returns
    *        This object.
    */
   public icon = this.type.bind(this, ZMetadataType.Icon);
 
   /**
    * Sets the type as an image.
-   *
-   * @param width -
-   *        The icon width.
-   * @param height -
-   *        The icon height.
    *
    * @returns -
    *        This object.
