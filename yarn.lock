@@ -2193,9 +2193,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/dom@npm:^10.0.0":
-  version: 10.0.0
-  resolution: "@testing-library/dom@npm:10.0.0"
+"@testing-library/dom@npm:^10.4.0":
+  version: 10.4.0
+  resolution: "@testing-library/dom@npm:10.4.0"
   dependencies:
     "@babel/code-frame": "npm:^7.10.4"
     "@babel/runtime": "npm:^7.12.5"
@@ -2205,21 +2205,27 @@ __metadata:
     dom-accessibility-api: "npm:^0.5.9"
     lz-string: "npm:^1.5.0"
     pretty-format: "npm:^27.0.2"
-  checksum: 10c0/2d12d2a6018a6f1d15e91834180bc068932c699ff1fcbfb80aa21aba519a4f5329c861dfa852e06ee5615bcb92ef2a0f0e755e32684ea3dada63bc34248382ab
+  checksum: 10c0/0352487720ecd433400671e773df0b84b8268fb3fe8e527cdfd7c11b1365b398b4e0eddba6e7e0c85e8d615f48257753283fccec41f6b986fd6c85f15eb5f84f
   languageName: node
   linkType: hard
 
-"@testing-library/react@npm:^15.0.0":
-  version: 15.0.2
-  resolution: "@testing-library/react@npm:15.0.2"
+"@testing-library/react@npm:^16.0.1":
+  version: 16.0.1
+  resolution: "@testing-library/react@npm:16.0.1"
   dependencies:
     "@babel/runtime": "npm:^7.12.5"
-    "@testing-library/dom": "npm:^10.0.0"
-    "@types/react-dom": "npm:^18.0.0"
   peerDependencies:
+    "@testing-library/dom": ^10.0.0
+    "@types/react": ^18.0.0
+    "@types/react-dom": ^18.0.0
     react: ^18.0.0
     react-dom: ^18.0.0
-  checksum: 10c0/8d75e4850f8f749244bf4f30b0f99a5d4aa1156ee5a59eea0772f47971c38535d1fb31d021c4f0f0b816346ae664870dc223d5d997ab399dfb1b6211f0e2acf1
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: 10c0/67d05dec5ad5a2e6f92b6a3234af785435c7bb62bdbf12f3bfc89c9bca0c871a189e88c4ba023ed4cea504704c87c6ac7e86e24a3962df6c521ae89b62f48ff7
   languageName: node
   linkType: hard
 
@@ -2381,22 +2387,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:^18.0.0":
-  version: 18.2.23
-  resolution: "@types/react-dom@npm:18.2.23"
-  dependencies:
-    "@types/react": "npm:*"
-  checksum: 10c0/9348e93558aa67b4b237bd0eab62e72e85f3e17a1c45fde04d874476269730f7c671b3d62390c4fca588da2a026e90cc74148abc349dbfd4ee5535a82ccdf38e
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:*, @types/react@npm:^18.3.3":
-  version: 18.3.3
-  resolution: "@types/react@npm:18.3.3"
+"@types/react@npm:^18.3.5":
+  version: 18.3.5
+  resolution: "@types/react@npm:18.3.5"
   dependencies:
     "@types/prop-types": "npm:*"
     csstype: "npm:^3.0.2"
-  checksum: 10c0/fe455f805c5da13b89964c3d68060cebd43e73ec15001a68b34634604a78140e6fc202f3f61679b9d809dde6d7a7c2cb3ed51e0fd1462557911db09879b55114
+  checksum: 10c0/548b1d3d7c2f0242fbfdbbd658731b4ce69a134be072fa83e6ab516f2840402a3f20e3e7f72e95133b23d4880ef24a6d864050dc8e1f7c68f39fa87ca8445917
   languageName: node
   linkType: hard
 
@@ -2759,40 +2756,40 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zthun/cirque-du-dom@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "@zthun/cirque-du-dom@npm:6.1.0"
+"@zthun/cirque-du-dom@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "@zthun/cirque-du-dom@npm:7.0.1"
   dependencies:
-    "@testing-library/dom": "npm:^10.0.0"
+    "@testing-library/dom": "npm:^10.4.0"
     "@testing-library/user-event": "npm:^14.5.2"
-    "@zthun/cirque": "npm:^6.1.0"
-    lodash: "npm:^4.17.21"
+    "@zthun/cirque": "npm:^7.0.1"
+    lodash-es: "npm:^4.17.21"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
-  checksum: 10c0/c428482727a17857eb70ef66bf2b3099f07f75e860f733d3cdf23afb7a665f27230f57a8bcdb21eeafd023c9b2d519ffc6c9f7b4a1d7418f87bff76914a907c6
+  checksum: 10c0/fdd96101230e7e5aaf45d2c996dc34be48e33691351b2cc53ed6819393eb490cad495ee0bcea1f8e92a24c44eeb9244d0179cbbc39586cb913069f5ec8cc0ff0
   languageName: node
   linkType: hard
 
-"@zthun/cirque-du-react@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "@zthun/cirque-du-react@npm:6.1.0"
+"@zthun/cirque-du-react@npm:^7.0.2":
+  version: 7.0.2
+  resolution: "@zthun/cirque-du-react@npm:7.0.2"
   dependencies:
-    "@testing-library/react": "npm:^15.0.0"
-    "@zthun/cirque": "npm:^6.1.0"
-    "@zthun/cirque-du-dom": "npm:^6.1.0"
-    lodash: "npm:^4.17.21"
+    "@testing-library/dom": "npm:^10.4.0"
+    "@testing-library/react": "npm:^16.0.1"
+    "@zthun/cirque": "npm:^7.0.1"
+    "@zthun/cirque-du-dom": "npm:^7.0.1"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
-  checksum: 10c0/2fec0790eff638c45495bbdc05a4c26b23bab60db51e026a0e76c0a693bfa8e3f06771e75adf730c483ec8bf5cbaae38d18719af216e4017874c58245e320a07
+  checksum: 10c0/3281dc2a8665e17610cd5f7258c98633f41f52e13e463b1a970b37facfb3111bdc0f45ac3e854b348e335dd20699bb98c73dfaff3d678aebab9fdd2a85464303
   languageName: node
   linkType: hard
 
-"@zthun/cirque@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "@zthun/cirque@npm:6.1.0"
-  checksum: 10c0/b9f302d3d22f6d6047b79970ffd0a284afe30115463b8f505ec6a980665cb17d50c8117942ce15311dbebbbd7b6c9758a8062c66b243fab65500650e58898f25
+"@zthun/cirque@npm:^7.0.1":
+  version: 7.0.1
+  resolution: "@zthun/cirque@npm:7.0.1"
+  checksum: 10c0/91ffafca832a9540da101aede613ccc2fde42d754abf5224a255b9e010728d918d29998c83039e4420b89ffa6ee28b59538b174a500385ef08d3c2ecc6bbfc54
   languageName: node
   linkType: hard
 
@@ -2893,8 +2890,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-react@workspace:packages/helpful-react"
   dependencies:
-    "@zthun/cirque": "npm:^6.1.0"
-    "@zthun/cirque-du-react": "npm:^6.1.0"
+    "@zthun/cirque": "npm:^7.0.1"
+    "@zthun/cirque-du-react": "npm:^7.0.2"
     "@zthun/helpful-fn": "npm:^5.0.3"
     "@zthun/helpful-query": "npm:^5.0.3"
     lodash-es: "npm:^4.17.21"
@@ -2952,7 +2949,7 @@ __metadata:
     "@commitlint/config-conventional": "npm:^19.4.1"
     "@types/lodash-es": "npm:^4.17.12"
     "@types/node": "npm:^22.5.2"
-    "@types/react": "npm:^18.3.3"
+    "@types/react": "npm:^18.3.5"
     "@types/supertest": "npm:^6.0.2"
     "@types/uuid": "npm:^10.0.0"
     "@vitest/coverage-istanbul": "npm:^2.0.5"
