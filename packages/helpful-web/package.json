@@ -4,6 +4,7 @@
   "description": "A documentation website for showing helpful.",
   "author": "Anthony Bonta",
   "license": "MIT",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/zthun/helpful",
@@ -25,9 +26,9 @@
     "@zthun/helpful-query": "^5.0.3",
     "@zthun/helpful-react": "^5.0.3",
     "@zthun/helpful-validation": "^5.0.3",
-    "typedoc": "^0.26.4",
+    "typedoc": "^0.26.6",
     "typedoc-plugin-extras": "^3.1.0",
-    "typescript": "~5.5.3"
+    "typescript": "^5.5.4"
   },
   "files": [
     "dist"
