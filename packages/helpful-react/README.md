@@ -1,6 +1,7 @@
 # Helpful React
 
-This package provides useful hooks and functions that help with frontend development using React.
+This package provides useful hooks and functions that help with frontend
+development using React.
 
 ## Installation
 

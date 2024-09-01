@@ -27,7 +27,7 @@ export class ZPageBuilder<T> {
   public constructor() {
     this._page = {
       count: 0,
-      data: []
+      data: [],
     };
   }
 

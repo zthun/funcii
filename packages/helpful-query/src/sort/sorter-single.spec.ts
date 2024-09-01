@@ -1,8 +1,8 @@
-import { beforeEach, describe, expect, it } from 'vitest';
-import { IZSort, ZSortBuilder, ZSortDirection } from './sort.mjs';
-import { ZSorterSingle } from './sorter-single.mjs';
+import { beforeEach, describe, expect, it } from "vitest";
+import { IZSort, ZSortBuilder, ZSortDirection } from "./sort.mjs";
+import { ZSorterSingle } from "./sorter-single.mjs";
 
-describe('ZSorterSingle', () => {
+describe("ZSorterSingle", () => {
   let initial: IZSort[] | undefined;
 
   const createTestTarget = () => new ZSorterSingle(initial);
@@ -11,9 +11,9 @@ describe('ZSorterSingle', () => {
     initial = undefined;
   });
 
-  it('should sort in ascending order if the subject was never sorted', () => {
+  it("should sort in ascending order if the subject was never sorted", () => {
     // Arrange.
-    const subject = 'name';
+    const subject = "name";
     const target = createTestTarget();
     // Act.
     target.sort(subject);
@@ -22,9 +22,9 @@ describe('ZSorterSingle', () => {
     expect(target.sorted(subject)).toEqual(ZSortDirection.Ascending);
   });
 
-  it('should sort in descending order if the metadata is sorted in ascending order', () => {
+  it("should sort in descending order if the metadata is sorted in ascending order", () => {
     // Arrange.
-    const subject = 'name';
+    const subject = "name";
     initial = new ZSortBuilder().ascending(subject).build();
     const target = createTestTarget();
     // Act.
@@ -34,9 +34,9 @@ describe('ZSorterSingle', () => {
     expect(target.sorted(subject)).toEqual(ZSortDirection.Descending);
   });
 
-  it('should remove the sort if the sort order is descending', () => {
+  it("should remove the sort if the sort order is descending", () => {
     // Arrange.
-    const subject = 'name';
+    const subject = "name";
     initial = new ZSortBuilder().descending(subject).build();
     const target = createTestTarget();
     // Act.
@@ -46,10 +46,10 @@ describe('ZSorterSingle', () => {
     expect(target.sorted(subject)).toBeUndefined();
   });
 
-  it('should replace the sort if sorting a different subject', () => {
+  it("should replace the sort if sorting a different subject", () => {
     // Arrange.
-    const subjectA = 'name';
-    const subjectB = 'id';
+    const subjectA = "name";
+    const subjectB = "id";
     const target = createTestTarget();
     // Act.
     target.sort(subjectA);

@@ -1,13 +1,15 @@
-import { describe, expect, it } from 'vitest';
-import { IZProxyConfigTemplate, ZProxyConfigBuilder } from './proxy-config.mjs';
+import { describe, expect, it } from "vitest";
+import { IZProxyConfigTemplate, ZProxyConfigBuilder } from "./proxy-config.mjs";
 
-describe('ZProxyConfig', () => {
+describe("ZProxyConfig", () => {
   const createTestTarget = () => new ZProxyConfigBuilder();
 
-  describe('Assign', () => {
-    it('should assign domains without blowing away security', () => {
+  describe("Assign", () => {
+    it("should assign domains without blowing away security", () => {
       // Arrange.
-      const domains = [{ name: 'zthunworks.com', paths: { '/': 'localhost:8081' } }];
+      const domains = [
+        { name: "zthunworks.com", paths: { "/": "localhost:8081" } },
+      ];
       const partial: IZProxyConfigTemplate = { domains };
       const expected = createTestTarget().build();
       expected.domains = partial.domains!;
@@ -20,10 +22,10 @@ describe('ZProxyConfig', () => {
       expect(actual).toEqual(expected);
     });
 
-    it('should assign security without removing the domains', () => {
+    it("should assign security without removing the domains", () => {
       // Arrange.
-      const organization = 'Foobar';
-      const email = 'foo@bar.com';
+      const organization = "Foobar";
+      const email = "foo@bar.com";
       const security = { organization, email };
       const partial: IZProxyConfigTemplate = { security };
       const expected = createTestTarget().build();

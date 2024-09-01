@@ -32,7 +32,10 @@
  * `
  * ```
  */
-export function tag(strings: TemplateStringsArray, ...expressions: unknown[]): string {
+export function tag(
+  strings: TemplateStringsArray,
+  ...expressions: unknown[]
+): string {
   let [result] = strings;
 
   for (let i = 1, l = strings.length; i < l; i++) {

@@ -1,21 +1,24 @@
-import { IZCircusSetup } from '@zthun/cirque';
-import { IZCircusReactHook, ZCircusSetupHook } from '@zthun/cirque-du-react';
-import { sleep } from '@zthun/helpful-fn';
+import { IZCircusSetup } from "@zthun/cirque";
+import { IZCircusReactHook, ZCircusSetupHook } from "@zthun/cirque-du-react";
+import { sleep } from "@zthun/helpful-fn";
 import {
   IZDataRequest,
   IZDataSource,
   ZDataRequestBuilder,
   ZDataSourceStatic,
-  ZDataSourceStaticOptionsBuilder
-} from '@zthun/helpful-query';
-import { range } from 'lodash-es';
-import React, { StrictMode } from 'react';
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { mock } from 'vitest-mock-extended';
-import { asStateError, isStateLoading } from '../async-state/use-async-state.mjs';
-import { useMoreViewState } from './use-more-view-state.mjs';
+  ZDataSourceStaticOptionsBuilder,
+} from "@zthun/helpful-query";
+import { range } from "lodash-es";
+import React, { StrictMode } from "react";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { mock } from "vitest-mock-extended";
+import {
+  asStateError,
+  isStateLoading,
+} from "../async-state/use-async-state.mjs";
+import { useMoreViewState } from "./use-more-view-state.mjs";
 
-describe('useMoreViewState', () => {
+describe("useMoreViewState", () => {
   let source: IZDataSource<number>;
   let template: IZDataRequest;
   let _hook: IZCircusReactHook<any, any>;
@@ -28,7 +31,9 @@ describe('useMoreViewState', () => {
 
   const createTestTarget = async () => {
     const wrapper = ({ children }) => <StrictMode>{children}</StrictMode>;
-    _setup = new ZCircusSetupHook(() => useMoreViewState(source, template), { wrapper });
+    _setup = new ZCircusSetupHook(() => useMoreViewState(source, template), {
+      wrapper,
+    });
     _hook = await _setup.setup();
     await rerender(_hook);
     return _hook;
@@ -43,12 +48,15 @@ describe('useMoreViewState', () => {
     await _setup?.destroy?.call(_setup);
   });
 
-  describe('Loading', () => {
+  describe("Loading", () => {
     beforeEach(() => {
-      source = new ZDataSourceStatic<number>([], new ZDataSourceStaticOptionsBuilder().delay(500).build());
+      source = new ZDataSourceStatic<number>(
+        [],
+        new ZDataSourceStaticOptionsBuilder().delay(500).build(),
+      );
     });
 
-    it('should begin loading the start page', async () => {
+    it("should begin loading the start page", async () => {
       // Arrange.
       const target = await createTestTarget();
       // Act.
@@ -58,7 +66,7 @@ describe('useMoreViewState', () => {
       expect(actual).toBeTruthy();
     });
 
-    it('should return an empty view', async () => {
+    it("should return an empty view", async () => {
       // Arrange.
       const target = await createTestTarget();
       // Act.
@@ -68,14 +76,14 @@ describe('useMoreViewState', () => {
     });
   });
 
-  describe('Success', () => {
+  describe("Success", () => {
     let data: number[];
     beforeEach(() => {
       data = range(0, 100);
       source = new ZDataSourceStatic(data);
     });
 
-    it('should load the first page', async () => {
+    it("should load the first page", async () => {
       // Arrange.
       const expected = data.slice(0, 20);
       const target = await createTestTarget();
@@ -85,7 +93,7 @@ describe('useMoreViewState', () => {
       expect(actual).toEqual(expected);
     });
 
-    it('should reload the first page', async () => {
+    it("should reload the first page", async () => {
       // Arrange.
       const expected = data.slice(0, 20);
       const target = await createTestTarget();
@@ -101,7 +109,7 @@ describe('useMoreViewState', () => {
       expect(actual).toEqual(expected);
     });
 
-    it('should append to the current view', async () => {
+    it("should append to the current view", async () => {
       // Arrange.
       const expected = data.slice(0, 60);
       const target = await createTestTarget();
@@ -116,7 +124,7 @@ describe('useMoreViewState', () => {
       expect(actual).toEqual(expected);
     });
 
-    it('should set the last page loaded', async () => {
+    it("should set the last page loaded", async () => {
       // Arrange.
       const expected = data.slice(20, 40);
       const target = await createTestTarget();
@@ -129,7 +137,7 @@ describe('useMoreViewState', () => {
       expect(actual).toEqual(expected);
     });
 
-    it('should load everything in one big invocation if there is no page size', async () => {
+    it("should load everything in one big invocation if there is no page size", async () => {
       // Arrange.
       template = new ZDataRequestBuilder().build();
       const target = await createTestTarget();
@@ -139,7 +147,7 @@ describe('useMoreViewState', () => {
       expect(actual).toEqual(data);
     });
 
-    it('should return false for complete if there is more data to load', async () => {
+    it("should return false for complete if there is more data to load", async () => {
       // Arrange.
       template = new ZDataRequestBuilder().size(data.length / 2).build();
       const target = await createTestTarget();
@@ -149,7 +157,7 @@ describe('useMoreViewState', () => {
       expect(complete).toBeFalsy();
     });
 
-    it('should return true for complete if there is no more data to load.', async () => {
+    it("should return true for complete if there is no more data to load.", async () => {
       // Arrange.
       template = new ZDataRequestBuilder().build();
       const target = await createTestTarget();
@@ -159,7 +167,7 @@ describe('useMoreViewState', () => {
       expect(complete).toBeTruthy();
     });
 
-    it('should not load any more data when complete', async () => {
+    it("should not load any more data when complete", async () => {
       // Arrange.
       template = new ZDataRequestBuilder().build();
       const target = await createTestTarget();
@@ -173,12 +181,12 @@ describe('useMoreViewState', () => {
     });
   });
 
-  describe('Error', () => {
+  describe("Error", () => {
     beforeEach(() => {
-      source = new ZDataSourceStatic<number>(new Error('Something went wrong'));
+      source = new ZDataSourceStatic<number>(new Error("Something went wrong"));
     });
 
-    it('should output an error as the last request', async () => {
+    it("should output an error as the last request", async () => {
       // Arrange.
       const target = await createTestTarget();
       // Act.
@@ -187,10 +195,10 @@ describe('useMoreViewState', () => {
       expect(last).toBeInstanceOf(Error);
     });
 
-    it('should output the exact error if a non error is returned', async () => {
+    it("should output the exact error if a non error is returned", async () => {
       // Arrange.
       const _source = mock<IZDataSource<number>>();
-      const expected = 'Non Error Returned';
+      const expected = "Non Error Returned";
       _source.count.mockResolvedValue(10);
       _source.retrieve.mockRejectedValue(expected);
       source = _source;
@@ -203,12 +211,12 @@ describe('useMoreViewState', () => {
       expect(actual?.message).toEqual(expected);
     });
 
-    it('should reset the count when an error occurs', async () => {
+    it("should reset the count when an error occurs", async () => {
       // Arrange.
       const target = await createTestTarget();
       // Act.
       const { more } = await target.current();
-      vi.spyOn(source, 'count');
+      vi.spyOn(source, "count");
       more();
       await sleep(501);
       more();

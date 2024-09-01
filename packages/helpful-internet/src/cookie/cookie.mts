@@ -29,7 +29,7 @@ export interface IZCookie {
   /**
    * A value that determines how the cookie is sent by the browser.
    */
-  sameSite?: 'lax' | 'strict' | 'none';
+  sameSite?: "lax" | "strict" | "none";
 }
 
 /**
@@ -45,8 +45,8 @@ export class ZCookieBuilder {
    */
   public constructor() {
     this._cookie = {
-      name: '',
-      value: ''
+      name: "",
+      value: "",
     };
   }
 
@@ -107,7 +107,7 @@ export class ZCookieBuilder {
       return this;
     }
 
-    this._cookie.expires = typeof val === 'string' ? val : val.toJSON();
+    this._cookie.expires = typeof val === "string" ? val : val.toJSON();
     return this;
   }
 
@@ -118,7 +118,9 @@ export class ZCookieBuilder {
    *        This object.
    */
   public expiresTomorrow(): this {
-    return this.expires(new Date(Date.now() + ZCookieBuilder.MillisecondsOneDay));
+    return this.expires(
+      new Date(Date.now() + ZCookieBuilder.MillisecondsOneDay),
+    );
   }
 
   /**
@@ -152,7 +154,7 @@ export class ZCookieBuilder {
    * @returns
    *        This object.
    */
-  public sameSite(val: 'lax' | 'strict' | 'none'): this {
+  public sameSite(val: "lax" | "strict" | "none"): this {
     this._cookie.sameSite = val;
     return this;
   }
@@ -163,7 +165,7 @@ export class ZCookieBuilder {
    * @returns
    *        This object.
    */
-  public lax = this.sameSite.bind(this, 'lax');
+  public lax = this.sameSite.bind(this, "lax");
 
   /**
    * Sets the same site polity to 'strict'
@@ -171,7 +173,7 @@ export class ZCookieBuilder {
    * @returns
    *        This object.
    */
-  public strict = this.sameSite.bind(this, 'strict');
+  public strict = this.sameSite.bind(this, "strict");
 
   /**
    * Sets the same site policy to 'none' and turns on the secure flag.
@@ -180,7 +182,7 @@ export class ZCookieBuilder {
    *        This object.
    */
   public allowCrossSite(): this {
-    return this.secure().sameSite('none');
+    return this.secure().sameSite("none");
   }
 
   /**
@@ -209,7 +211,10 @@ export class ZCookieBuilder {
    *        This object.
    */
   public authentication(token?: string): this {
-    const builder = this.name('Authentication').expiresTomorrow().secure().httpOnly();
+    const builder = this.name("Authentication")
+      .expiresTomorrow()
+      .secure()
+      .httpOnly();
     return token == null ? builder : builder.value(token);
   }
 

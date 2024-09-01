@@ -1,5 +1,5 @@
-import { keyBy, values } from 'lodash-es';
-import { IZFilterMetadata, IZFilterSubject } from './filter-subject.mjs';
+import { keyBy, values } from "lodash-es";
+import { IZFilterMetadata, IZFilterSubject } from "./filter-subject.mjs";
 
 /**
  * The operators for an {@link IZFilterUnary} filter.
@@ -8,17 +8,17 @@ export enum ZOperatorUnary {
   /**
    * Is null.
    */
-  IsNull = 'null',
+  IsNull = "null",
   /**
    * Is not null.
    */
-  IsNotNull = 'is-not-null'
+  IsNotNull = "is-not-null",
 }
 
 /**
  * Represents a yes/no style filter.
  */
-export interface IZFilterUnary extends IZFilterSubject<ZOperatorUnary> {}
+export type IZFilterUnary = IZFilterSubject<ZOperatorUnary>;
 
 /**
  * Represents a builder for a UnaryFilter object.
@@ -27,7 +27,7 @@ export class ZFilterUnaryBuilder {
   /**
    * The __type__ identifier for an {@link IZFilterUnary} object.
    */
-  public static readonly Type = 'unary';
+  public static readonly Type = "unary";
 
   private _filter: IZFilterUnary;
 
@@ -38,7 +38,7 @@ export class ZFilterUnaryBuilder {
     this._filter = {
       subject: null as any,
       operator: ZOperatorUnary.IsNull,
-      __type__: 'unary'
+      __type__: "unary",
     };
   }
 
@@ -106,7 +106,9 @@ export class ZFilterUnaryBuilder {
  * @returns
  *        True if filters type is a unary filter.  False otherwise.
  */
-export function isUnaryFilter(filter: IZFilterMetadata | null | undefined): filter is IZFilterUnary {
+export function isUnaryFilter(
+  filter: IZFilterMetadata | null | undefined,
+): filter is IZFilterUnary {
   return filter?.__type__ === ZFilterUnaryBuilder.Type;
 }
 
@@ -123,14 +125,20 @@ const _ZOperatorsUnaryLookup = keyBy(ZOperatorsUnary);
  *        Type guard true if candidate is a unary operator, false
  *        otherwise.
  */
-export function isUnaryOperator(candidate: string | null | undefined): candidate is ZOperatorUnary {
-  return candidate != null && Object.prototype.hasOwnProperty.call(_ZOperatorsUnaryLookup, candidate);
+export function isUnaryOperator(
+  candidate: string | null | undefined,
+): candidate is ZOperatorUnary {
+  return (
+    candidate != null &&
+    Object.prototype.hasOwnProperty.call(_ZOperatorsUnaryLookup, candidate)
+  );
 }
 
 /**
  * Comparators for unary operators.
  */
-export const ZUnaryComparators: Record<ZOperatorUnary, (data: any) => boolean> = {
-  [ZOperatorUnary.IsNull]: (data: any) => data == null,
-  [ZOperatorUnary.IsNotNull]: (data: any) => data != null
-};
+export const ZUnaryComparators: Record<ZOperatorUnary, (data: any) => boolean> =
+  {
+    [ZOperatorUnary.IsNull]: (data: any) => data == null,
+    [ZOperatorUnary.IsNotNull]: (data: any) => data != null,
+  };

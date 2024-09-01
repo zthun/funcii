@@ -1,9 +1,12 @@
-import { IZCircusSetup } from '@zthun/cirque';
-import { IZCircusReactHook, ZCircusSetupHook } from '@zthun/cirque-du-react';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { ZAmbassadorReducer, useAmbassadorState } from './use-ambassador-state.mjs';
+import { IZCircusSetup } from "@zthun/cirque";
+import { IZCircusReactHook, ZCircusSetupHook } from "@zthun/cirque-du-react";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import {
+  ZAmbassadorReducer,
+  useAmbassadorState,
+} from "./use-ambassador-state.mjs";
 
-describe('useAmbassadorState', () => {
+describe("useAmbassadorState", () => {
   let current: string | undefined;
   let initial: string | undefined;
   let setCurrent: ((val: string) => void) | undefined;
@@ -11,7 +14,9 @@ describe('useAmbassadorState', () => {
   let _setup: IZCircusSetup<IZCircusReactHook<any, any>>;
 
   async function createTestTarget() {
-    _setup = new ZCircusSetupHook(() => useAmbassadorState(current, setCurrent, initial));
+    _setup = new ZCircusSetupHook(() =>
+      useAmbassadorState(current, setCurrent, initial),
+    );
     _hook = await _setup.setup();
     return _hook;
   }
@@ -29,16 +34,19 @@ describe('useAmbassadorState', () => {
 
   async function setValueAndRerender(
     expected: string | ZAmbassadorReducer<string>,
-    target: IZCircusReactHook<[string | undefined, (val: string | ZAmbassadorReducer<string>) => void], any>
+    target: IZCircusReactHook<
+      [string | undefined, (val: string | ZAmbassadorReducer<string>) => void],
+      any
+    >,
   ) {
     const [, setVal] = await target.current();
     setVal(expected);
     return target.rerender();
   }
 
-  describe('Props', () => {
+  describe("Props", () => {
     beforeEach(() => {
-      current = 'by-props';
+      current = "by-props";
       setCurrent = _setCurrent;
     });
 
@@ -46,7 +54,7 @@ describe('useAmbassadorState', () => {
       current = val;
     }
 
-    it('should return the prop value.', async () => {
+    it("should return the prop value.", async () => {
       // Arrange
       const target = await createTestTarget();
       // Act
@@ -55,32 +63,32 @@ describe('useAmbassadorState', () => {
       expect(val).toEqual(current);
     });
 
-    it('should set the prop value.', async () => {
+    it("should set the prop value.", async () => {
       // Arrange.
       const target = await createTestTarget();
-      const expected = 'value-to-set';
+      const expected = "value-to-set";
       // Act.
       await setValueAndRerender(expected, target);
       // Assert.
       expect(current).toEqual(expected);
     });
 
-    it('should set the prop value based on the current value.', async () => {
+    it("should set the prop value based on the current value.", async () => {
       // Arrange.
-      const expected = '11';
-      current = '1';
+      const expected = "11";
+      current = "1";
       const target = await createTestTarget();
       // Act.
-      await setValueAndRerender((c) => c + '1', target);
+      await setValueAndRerender((c) => c + "1", target);
       // Assert.
       expect(current).toEqual(expected);
     });
   });
 
-  describe('State', () => {
-    it('should set an initial value.', async () => {
+  describe("State", () => {
+    it("should set an initial value.", async () => {
       // Arrange
-      initial = 'initial';
+      initial = "initial";
       const target = await createTestTarget();
       // Act
       const [actual] = await target.current();
@@ -88,10 +96,10 @@ describe('useAmbassadorState', () => {
       expect(actual).toEqual(initial);
     });
 
-    it('should set the internal state if the props are undefined.', async () => {
+    it("should set the internal state if the props are undefined.", async () => {
       // Arrange
       const target = await createTestTarget();
-      const expected = 'updated-value';
+      const expected = "updated-value";
       // Act
       const [actual] = await setValueAndRerender(expected, target);
       // Assert

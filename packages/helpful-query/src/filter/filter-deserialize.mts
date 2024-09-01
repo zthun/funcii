@@ -1,15 +1,30 @@
-import { IZDeserialize, peel, peelBetween } from '@zthun/helpful-fn';
-import { trim, trimStart } from 'lodash-es';
-import { IZFilterBinary, ZFilterBinaryBuilder, ZOperatorBinary, isBinaryOperator } from './filter-binary.mjs';
+import { IZDeserialize, peel, peelBetween } from "@zthun/helpful-fn";
+import { trim, trimStart } from "lodash-es";
+import {
+  IZFilterBinary,
+  ZFilterBinaryBuilder,
+  ZOperatorBinary,
+  isBinaryOperator,
+} from "./filter-binary.mjs";
 import {
   IZFilterCollection,
   ZFilterCollectionBuilder,
   ZOperatorCollection,
-  isCollectionOperator
-} from './filter-collection.mjs';
-import { IZFilterLogic, ZFilterLogicBuilder, ZOperatorLogic, isLogicOperator } from './filter-logic.mjs';
-import { IZFilterUnary, ZFilterUnaryBuilder, ZOperatorUnary, isUnaryOperator } from './filter-unary.mjs';
-import { IZFilter, ZOperatorFilter, ZOperatorsFilter } from './filter.mjs';
+  isCollectionOperator,
+} from "./filter-collection.mjs";
+import {
+  IZFilterLogic,
+  ZFilterLogicBuilder,
+  ZOperatorLogic,
+  isLogicOperator,
+} from "./filter-logic.mjs";
+import {
+  IZFilterUnary,
+  ZFilterUnaryBuilder,
+  ZOperatorUnary,
+  isUnaryOperator,
+} from "./filter-unary.mjs";
+import { IZFilter, ZOperatorFilter, ZOperatorsFilter } from "./filter.mjs";
 
 /**
  * Represents a parser object that can parse an {@link IZFilter} from a string.
@@ -30,26 +45,35 @@ export class ZFilterDeserialize implements IZDeserialize<IZFilter> {
     const [filter, rest] = this._parseFilter(candidate);
 
     if (trim(rest).length > 0) {
-      throw new Error(`Extraneous characters found at the end of the candidate filter: ${rest}`);
+      throw new Error(
+        `Extraneous characters found at the end of the candidate filter: ${rest}`,
+      );
     }
 
     return filter;
   }
 
   private _peelBetweenParens(args: string): [string, string] {
-    const [argList, rest] = peelBetween(args, '(', ')');
+    const [argList, rest] = peelBetween(args, "(", ")");
 
     if (argList == null) {
-      throw new Error(`Unable to find opening and closing parenthesis for ${args}.  Check syntax.`);
+      throw new Error(
+        `Unable to find opening and closing parenthesis for ${args}.  Check syntax.`,
+      );
     }
 
     return [argList, rest];
   }
 
-  private _splitArgs(operator: ZOperatorFilter, args: string, minArgs: number, maxArgs = minArgs): [string[], string] {
+  private _splitArgs(
+    operator: ZOperatorFilter,
+    args: string,
+    minArgs: number,
+    maxArgs = minArgs,
+  ): [string[], string] {
     const [argList, rest] = this._peelBetweenParens(args);
 
-    const splitArgs = argList.split(',').filter((x) => !!x);
+    const splitArgs = argList.split(",").filter((x) => !!x);
 
     if (splitArgs.length < minArgs) {
       const msg = `Not enough arguments for ${operator} filter: ${splitArgs}.`;
@@ -66,30 +90,59 @@ export class ZFilterDeserialize implements IZDeserialize<IZFilter> {
     return [splitArgs, rest];
   }
 
-  private _parseUnaryFilter(operator: ZOperatorUnary, args: string): [IZFilterUnary, string] {
+  private _parseUnaryFilter(
+    operator: ZOperatorUnary,
+    args: string,
+  ): [IZFilterUnary, string] {
     const [argList, rest] = this._splitArgs(operator, args, 1);
     let [subject] = argList;
     subject = trim(subject);
-    return [new ZFilterUnaryBuilder().operator(operator).subject(subject).build(), rest];
+    return [
+      new ZFilterUnaryBuilder().operator(operator).subject(subject).build(),
+      rest,
+    ];
   }
 
-  private _parseBinaryFilter(operator: ZOperatorBinary, args: string): [IZFilterBinary, string] {
+  private _parseBinaryFilter(
+    operator: ZOperatorBinary,
+    args: string,
+  ): [IZFilterBinary, string] {
     const [argList, rest] = this._splitArgs(operator, args, 2);
     let [subject, value] = argList;
     subject = trim(subject);
     value = JSON.parse(value);
-    return [new ZFilterBinaryBuilder().operator(operator).subject(subject).value(value).build(), rest];
+    return [
+      new ZFilterBinaryBuilder()
+        .operator(operator)
+        .subject(subject)
+        .value(value)
+        .build(),
+      rest,
+    ];
   }
 
-  private _parseCollectionFilter(operator: ZOperatorCollection, args: string): [IZFilterCollection, string] {
+  private _parseCollectionFilter(
+    operator: ZOperatorCollection,
+    args: string,
+  ): [IZFilterCollection, string] {
     const [argList, rest] = this._splitArgs(operator, args, 1, Infinity);
     let [subject] = argList;
     subject = trim(subject);
     const values = argList.slice(1).map((a) => JSON.parse(trim(a)));
-    return [new ZFilterCollectionBuilder().operator(operator).subject(subject).values(values).build(), rest];
+    return [
+      new ZFilterCollectionBuilder()
+        .operator(operator)
+        .subject(subject)
+        .values(values)
+        .build(),
+      rest,
+    ];
   }
 
-  private _parseLogicFilter(operator: ZOperatorLogic, args: string): [IZFilterLogic, string] {
+  private _parseLogicFilter(
+    operator: ZOperatorLogic,
+    args: string,
+  ): [IZFilterLogic, string] {
     const argsList = this._peelBetweenParens(trim(args));
     let [remaining] = argsList;
     const [, rest] = argsList;
@@ -100,7 +153,7 @@ export class ZFilterDeserialize implements IZDeserialize<IZFilter> {
       const split = this._parseFilter(remaining);
       const [clause] = split;
       [, remaining] = split;
-      remaining = trimStart(remaining, ' ,');
+      remaining = trimStart(remaining, " ,");
       builder = builder.clause(clause);
     }
 

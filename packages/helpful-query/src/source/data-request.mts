@@ -1,8 +1,8 @@
-import { tryFallback } from '@zthun/helpful-fn';
-import { ZFilterDeserialize } from '../filter/filter-deserialize.mjs';
-import { IZFilter } from '../filter/filter.mjs';
-import { ZSortDeserialize } from '../sort/sort-deserialize.mjs';
-import { IZSort } from '../sort/sort.mjs';
+import { tryFallback } from "@zthun/helpful-fn";
+import { ZFilterDeserialize } from "../filter/filter-deserialize.mjs";
+import { IZFilter } from "../filter/filter.mjs";
+import { ZSortDeserialize } from "../sort/sort-deserialize.mjs";
+import { IZSort } from "../sort/sort.mjs";
 
 /**
  * Describes a request as if it was placed an a url in the query params.
@@ -164,7 +164,10 @@ export class ZDataRequestBuilder {
     if (filter == null) {
       delete this._request.filter;
     } else {
-      const f = typeof filter === 'object' ? filter : tryFallback(() => new ZFilterDeserialize().deserialize(filter));
+      const f =
+        typeof filter === "object"
+          ? filter
+          : tryFallback(() => new ZFilterDeserialize().deserialize(filter));
       this._request.filter = f;
     }
     return this;
@@ -183,7 +186,10 @@ export class ZDataRequestBuilder {
     if (sort == null) {
       delete this._request.sort;
     } else {
-      const s = typeof sort === 'string' ? tryFallback(() => new ZSortDeserialize().deserialize(sort)) : sort;
+      const s =
+        typeof sort === "string"
+          ? tryFallback(() => new ZSortDeserialize().deserialize(sort))
+          : sort;
       this._request.sort = s;
     }
     return this;

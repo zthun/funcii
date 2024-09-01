@@ -28,19 +28,24 @@ export class ZProxyConfigBuilder {
     this._config = {
       domains: [],
       security: {
-        organization: 'Developer Proxy Org',
-        country: 'United States',
-        state: 'California',
-        city: 'Irvine',
-        email: 'admin@dev-proxy.org'
-      }
+        organization: "Developer Proxy Org",
+        country: "United States",
+        state: "California",
+        city: "Irvine",
+        email: "admin@dev-proxy.org",
+      },
     };
   }
 
   public assign(config: IZProxyConfigTemplate) {
     this._config = structuredClone(this._config);
-    this._config.domains = config.domains?.slice() ?? this._config.domains.slice();
-    this._config.security = { ...{}, ...this._config.security, ...config.security };
+    this._config.domains =
+      config.domains?.slice() ?? this._config.domains.slice();
+    this._config.security = {
+      ...{},
+      ...this._config.security,
+      ...config.security,
+    };
     return this;
   }
 

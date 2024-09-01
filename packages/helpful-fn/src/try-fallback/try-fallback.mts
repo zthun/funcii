@@ -34,7 +34,10 @@ export function tryFallback<T>(candidate: () => T, fallback: T): T;
  *        The result from candidate.  Returns fallback if candidate throws an Error.
  *        If no fallback value is provided, then undefined is returned.
  */
-export function tryFallback<T>(candidate: () => T, fallback?: T): T | undefined {
+export function tryFallback<T>(
+  candidate: () => T,
+  fallback?: T,
+): T | undefined {
   try {
     return candidate();
   } catch {
@@ -52,7 +55,9 @@ export function tryFallback<T>(candidate: () => T, fallback?: T): T | undefined 
  *        A promise that resolves with the result from candidate.  Returns undefined
  *        if candidate returns a rejected promise.
  */
-export function tryFallbackAsync<T>(candidate: () => Promise<T>): Promise<T | undefined>;
+export function tryFallbackAsync<T>(
+  candidate: () => Promise<T>,
+): Promise<T | undefined>;
 
 /**
  * Invokes the candidate function and returns undefined if an rejected promise is returned from it.
@@ -66,7 +71,10 @@ export function tryFallbackAsync<T>(candidate: () => Promise<T>): Promise<T | un
  *        A promise that resolves with the result from candidate.  Returns fallback
  *        if candidate returns a rejected promise.
  */
-export function tryFallbackAsync<T>(candidate: () => Promise<T>, fallback: T): Promise<T>;
+export function tryFallbackAsync<T>(
+  candidate: () => Promise<T>,
+  fallback: T,
+): Promise<T>;
 
 /**
  * Invokes the candidate function and returns undefined if an rejected promise is returned from it.
@@ -81,7 +89,10 @@ export function tryFallbackAsync<T>(candidate: () => Promise<T>, fallback: T): P
  *        if candidate returns a rejected promise.  Resolves with undefined
  *        if no fallback is provided.
  */
-export async function tryFallbackAsync<T>(candidate: () => Promise<T>, fallback?: T): Promise<T | undefined> {
+export async function tryFallbackAsync<T>(
+  candidate: () => Promise<T>,
+  fallback?: T,
+): Promise<T | undefined> {
   try {
     return await candidate();
   } catch {

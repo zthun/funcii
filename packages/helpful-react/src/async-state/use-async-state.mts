@@ -1,11 +1,11 @@
-import { createError } from '@zthun/helpful-fn';
-import { DependencyList, useEffect, useRef, useState } from 'react';
-import { Subscription, defer, from } from 'rxjs';
+import { createError } from "@zthun/helpful-fn";
+import { DependencyList, useEffect, useRef, useState } from "react";
+import { Subscription, defer, from } from "rxjs";
 
 /**
  * The value that will be set on an ZAsyncDataState when the data is being loaded.
  */
-export const ZAsyncLoading = Symbol('loading');
+export const ZAsyncLoading = Symbol("loading");
 
 /**
  * An async data state.
@@ -15,7 +15,7 @@ export const ZAsyncLoading = Symbol('loading');
  * 2.  Loading
  * 3.  Error
  */
-export type ZAsyncDataState<T> = T | Symbol | Error;
+export type ZAsyncDataState<T> = T | symbol | Error;
 
 /**
  * A refresh / setter function for a state of data.
@@ -29,7 +29,10 @@ export type ZAsyncUseData<T> = T | ((current: T) => T);
  * The refresh function also acts as a setter function to force the
  * use of the data.
  */
-export type ZAsyncDataTuple<T> = [ZAsyncDataState<T>, (val?: ZAsyncUseData<T>) => Promise<any>];
+export type ZAsyncDataTuple<T> = [
+  ZAsyncDataState<T>,
+  (val?: ZAsyncUseData<T>) => Promise<any>,
+];
 
 /**
  * Represents a hook to use async data.
@@ -45,7 +48,10 @@ export type ZAsyncDataTuple<T> = [ZAsyncDataState<T>, (val?: ZAsyncUseData<T>) =
  *        A tuple where the first item is the current state of the data and
  *        the 2nd argument is a refresh function to refresh the data.
  */
-export function useAsyncState<T>(load: () => Promise<T>, deps: DependencyList = []): ZAsyncDataTuple<T> {
+export function useAsyncState<T>(
+  load: () => Promise<T>,
+  deps: DependencyList = [],
+): ZAsyncDataTuple<T> {
   const [current, setCurrent] = useState<ZAsyncDataState<T>>(ZAsyncLoading);
   const subscription = useRef<Subscription>();
 
@@ -56,7 +62,7 @@ export function useAsyncState<T>(load: () => Promise<T>, deps: DependencyList = 
       return from(load());
     }).subscribe({
       next: (v) => setCurrent(v),
-      error: (e) => setCurrent(createError(e))
+      error: (e) => setCurrent(createError(e)),
     });
   };
 
@@ -88,7 +94,7 @@ export function useAsyncState<T>(load: () => Promise<T>, deps: DependencyList = 
  * @returns
  *        True if the data is in a loading state.
  */
-export function isStateLoading<T>(data: ZAsyncDataState<T>): data is Symbol {
+export function isStateLoading<T>(data: ZAsyncDataState<T>): data is symbol {
   return data === ZAsyncLoading;
 }
 
@@ -164,7 +170,10 @@ export function asStateData<T>(data: ZAsyncDataState<T>, fallback: T): T;
  *        This method returns data if it is loaded, or fallback
  *        if it is not.
  */
-export function asStateData<T>(data: ZAsyncDataState<T>, fallback?: T): T | undefined {
+export function asStateData<T>(
+  data: ZAsyncDataState<T>,
+  fallback?: T,
+): T | undefined {
   return isStateLoaded(data) ? data : fallback;
 }
 

@@ -1,11 +1,11 @@
-import { describe, expect, it } from 'vitest';
-import { css, html } from './tag.mjs';
+import { describe, expect, it } from "vitest";
+import { css, html } from "./tag.mjs";
 
-describe('Tag', () => {
-  describe('CSS', () => {
-    it('should highlight', () => {
+describe("Tag", () => {
+  describe("CSS", () => {
+    it("should highlight", () => {
       // Arrange.
-      const block = 'block';
+      const block = "block";
       const expected = `
         .target {
           display: ${block};
@@ -24,10 +24,10 @@ describe('Tag', () => {
     });
   });
 
-  describe('HTML', () => {
-    it('should highlight', () => {
+  describe("HTML", () => {
+    it("should highlight", () => {
       // Arrange.
-      const block = 'block';
+      const block = "block";
       const expected = `
         <style>
           .target {

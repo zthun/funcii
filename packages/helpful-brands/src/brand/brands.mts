@@ -1,4 +1,4 @@
-import { ZBrandBuilder } from './brand.mjs';
+import { ZBrandBuilder } from "./brand.mjs";
 
 /**
  * All brands in one constant array.
@@ -41,5 +41,5 @@ export const ZBrands = Object.freeze([
   new ZBrandBuilder().intercom().build(),
   new ZBrandBuilder().usps().build(),
   new ZBrandBuilder().wix().build(),
-  new ZBrandBuilder().line().build()
+  new ZBrandBuilder().line().build(),
 ]);

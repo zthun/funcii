@@ -1,11 +1,18 @@
-import { get } from 'lodash-es';
-import { IZDataMatch } from '../match/data-match.mjs';
-import { ZBinaryComparators } from './filter-binary.mjs';
-import { ZCollectionComparators, isCollectionFilter } from './filter-collection.mjs';
-import { IZFilterLogic, ZOperatorLogic, isLogicFilter } from './filter-logic.mjs';
-import { IZFilterSubject } from './filter-subject.mjs';
-import { ZUnaryComparators, isUnaryFilter } from './filter-unary.mjs';
-import { IZFilter } from './filter.mjs';
+import { get } from "lodash-es";
+import { IZDataMatch } from "../match/data-match.mjs";
+import { ZBinaryComparators } from "./filter-binary.mjs";
+import {
+  ZCollectionComparators,
+  isCollectionFilter,
+} from "./filter-collection.mjs";
+import {
+  IZFilterLogic,
+  ZOperatorLogic,
+  isLogicFilter,
+} from "./filter-logic.mjs";
+import { IZFilterSubject } from "./filter-subject.mjs";
+import { ZUnaryComparators, isUnaryFilter } from "./filter-unary.mjs";
+import { IZFilter } from "./filter.mjs";
 
 /**
  * Represents a data match object that applies a filter.
@@ -27,10 +34,12 @@ export class ZDataFilterFields<TData> implements IZDataMatch<TData, IZFilter> {
     data: TData,
     filter: F,
     comparators: Record<T, (d: any, v?: any) => boolean>,
-    value?: any
+    value?: any,
   ) {
     const comparator = comparators[filter.operator];
-    const compareAgainst = filter.subject ? get(data, filter.subject, null) : data;
+    const compareAgainst = filter.subject
+      ? get(data, filter.subject, null)
+      : data;
     return comparator(compareAgainst, value);
   }
 
@@ -40,13 +49,23 @@ export class ZDataFilterFields<TData> implements IZDataMatch<TData, IZFilter> {
     }
 
     if (isCollectionFilter(filter)) {
-      return this._matchSubjectFilter(data, filter, ZCollectionComparators, filter.values);
+      return this._matchSubjectFilter(
+        data,
+        filter,
+        ZCollectionComparators,
+        filter.values,
+      );
     }
 
     if (isUnaryFilter(filter)) {
       return this._matchSubjectFilter(data, filter, ZUnaryComparators);
     }
 
-    return this._matchSubjectFilter(data, filter, ZBinaryComparators, filter.value);
+    return this._matchSubjectFilter(
+      data,
+      filter,
+      ZBinaryComparators,
+      filter.value,
+    );
   }
 }

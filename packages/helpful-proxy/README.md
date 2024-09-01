@@ -1,22 +1,27 @@
 # Helpful Proxy
 
-Doing local development can be challenging when your development environment differs from a production environment. When
-working with websites, users will usually navigate to your domain. Most websites use a bunch of configuration and
-variables to construct an environment, which can be very tricky and prone to error.
+Doing local development can be challenging when your development environment
+differs from a production environment. When working with websites, users will
+usually navigate to your domain. Most websites use a bunch of configuration and
+variables to construct an environment, which can be very tricky and prone to
+error.
 
 > The best configuration is no configuration.
 
-It would be nice if we could mimic our local development environment to look similar to production, with just a simple
-change of adding one subdomain to our domain.
+It would be nice if we could mimic our local development environment to look
+similar to production, with just a simple change of adding one subdomain to our
+domain.
 
-Helpful proxy bridges that gap by providing a docker container which routes artificial DNS addresses to your local
-system and then, along with something like docker compose, you can simulate an experience similar to what a production
-environment does. It also adds support for https with a self signed certificate so you can also add check for how your
-site operates using TLS.
+Helpful proxy bridges that gap by providing a docker container which routes
+artificial DNS addresses to your local system and then, along with something
+like docker compose, you can simulate an experience similar to what a production
+environment does. It also adds support for https with a self signed certificate
+so you can also add check for how your site operates using TLS.
 
 ## Installation
 
-You can install this through NPM or Yarn, but this is meant to be ran through a docker container in a compose setting.
+You can install this through NPM or Yarn, but this is meant to be ran through a
+docker container in a compose setting.
 
 ```sh
 npm install @zthun/helpful-proxy --dev
@@ -25,11 +30,14 @@ yarn add @zthun/helpful-proxy --dev
 
 ## Usage
 
-This is best used in a mono repo that contains your frontend plus your backend, but can be useful whenever you have the
-need for more than one service running for an application to debug, and it includes multiple access points.
+This is best used in a mono repo that contains your frontend plus your backend,
+but can be useful whenever you have the need for more than one service running
+for an application to debug, and it includes multiple access points.
 
-The following is a sample app written in node that has a frontend and a backend all in the same repository. Assume that
-the frontend and backend packages have scripts named debug that run a dev server and a nodemon application respectively.
+The following is a sample app written in node that has a frontend and a backend
+all in the same repository. Assume that the frontend and backend packages have
+scripts named debug that run a dev server and a nodemon application
+respectively.
 
 ```yaml
 services:
@@ -69,10 +77,12 @@ services:
     image: mongo:7
 ```
 
-_Notice the mapping to the .config directory_. We need to actually map the proxy paths.
+_Notice the mapping to the .config directory_. We need to actually map the proxy
+paths.
 
-Inside the .config directory in your repository, create a new file, **helpful-proxyrc.js**. The domain, app.com is just
-a placeholder here. Replace the domain with whatever you want it to be.
+Inside the .config directory in your repository, create a new file,
+**helpful-proxyrc.js**. The domain, app.com is just a placeholder here. Replace
+the domain with whatever you want it to be.
 
 ```js
 // A few assumptions being made here.  Normal http requests to
@@ -94,11 +104,11 @@ module.exports = {
 };
 ```
 
-The final step is to make sure that local.app.com routes to your localhost. We can use our hosts file to make sure our
-operating system fakes this DNS lookup.
+The final step is to make sure that local.app.com routes to your localhost. We
+can use our hosts file to make sure our operating system fakes this DNS lookup.
 
-On mac and linux, the hosts file is located at /ect/hosts and on Windows, it's located on
-C:\\Windows\\System32\\drivers\\etc\\hosts.
+On mac and linux, the hosts file is located at /ect/hosts and on Windows, it's
+located on C:\\Windows\\System32\\drivers\\etc\\hosts.
 
 ```ini
 ##
@@ -121,12 +131,14 @@ Restart your terminal and IDE and run the compose file.
 docker compose up
 ```
 
-Now open your browser and navigate to local.app.com. You should see your application frontend running and it should be
-able to connect to your backend.
+Now open your browser and navigate to local.app.com. You should see your
+application frontend running and it should be able to connect to your backend.
 
 ## Limitations
 
-The proxy, under the hood uses a self signed certificate, and, depending on your browser settings, you may have to allow
-this cert through. In certain versions of different browsers, it may not even let you bypass this. If you encounter
-this, you can simply open the same url in Firefox or Chrome using private browsing and there should be an option to
-white list the self signed certificate for the current session.
+The proxy, under the hood uses a self signed certificate, and, depending on your
+browser settings, you may have to allow this cert through. In certain versions
+of different browsers, it may not even let you bypass this. If you encounter
+this, you can simply open the same url in Firefox or Chrome using private
+browsing and there should be an option to white list the self signed certificate
+for the current session.

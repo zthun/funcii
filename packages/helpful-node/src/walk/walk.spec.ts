@@ -1,22 +1,22 @@
-import { createGuid } from '@zthun/helpful-fn';
-import { basename, dirname } from 'path';
-import { describe, expect, it } from 'vitest';
-import { walk } from './walk.mjs';
+import { createGuid } from "@zthun/helpful-fn";
+import { basename, dirname } from "path";
+import { describe, expect, it } from "vitest";
+import { walk } from "./walk.mjs";
 
 const currentFile = basename(__filename);
-const assets = 'assets';
+const assets = "assets";
 const testJson = `${assets}/test.json`;
 
-describe('Walk', () => {
-  it('should find a path from the given cwd', async () => {
+describe("Walk", () => {
+  it("should find a path from the given cwd", async () => {
     // Arrange.
     // Act.
-    const actual = await walk('node_modules');
+    const actual = await walk("node_modules");
     // Assert.
-    expect(actual).toMatch('node_modules');
+    expect(actual).toMatch("node_modules");
   });
 
-  it('should find a path if the path is __dirname', async () => {
+  it("should find a path if the path is __dirname", async () => {
     // Arrange.
     // Act.
     const actual = await walk(__dirname);
@@ -24,7 +24,7 @@ describe('Walk', () => {
     expect(actual).toMatch(__dirname);
   });
 
-  it('should find a path if the path is __filename', async () => {
+  it("should find a path if the path is __filename", async () => {
     // Arrange.
     // Act.
     const actual = await walk(__filename);
@@ -32,7 +32,7 @@ describe('Walk', () => {
     expect(actual).toMatch(__filename);
   });
 
-  it('should match the path of the current file', async () => {
+  it("should match the path of the current file", async () => {
     // Arrange.
     // Act
     const actual = await walk(currentFile, { start: __dirname });
@@ -40,16 +40,16 @@ describe('Walk', () => {
     expect(actual).toEqual(__filename);
   });
 
-  it('should return null if no absolute path can be found', async () => {
+  it("should return null if no absolute path can be found", async () => {
     // Arrange.
-    const path = '/assets';
+    const path = "/assets";
     // Act.
     const actual = await walk(path);
     // Assert.
     expect(actual).toBeNull();
   });
 
-  it('should return null if no such file exists in the file system', async () => {
+  it("should return null if no such file exists in the file system", async () => {
     // Arrange.
     const path = createGuid();
     // Act.
@@ -58,7 +58,7 @@ describe('Walk', () => {
     expect(actual).toBeNull();
   });
 
-  it('should start at the given start directory', async () => {
+  it("should start at the given start directory", async () => {
     // Arrange.
     const start = dirname(__dirname);
     // Act.
@@ -67,7 +67,7 @@ describe('Walk', () => {
     expect(actual).toBeNull();
   });
 
-  it('should stop at the given stop directory', async () => {
+  it("should stop at the given stop directory", async () => {
     // Arrange.
     // Act.
     const actual = await walk(testJson, { start: __dirname, stop: __dirname });

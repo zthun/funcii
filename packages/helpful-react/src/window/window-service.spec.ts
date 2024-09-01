@@ -1,9 +1,9 @@
-import { IZCircusSetup } from '@zthun/cirque';
-import { IZCircusReactHook, ZCircusSetupHook } from '@zthun/cirque-du-react';
-import { afterEach, describe, expect, it } from 'vitest';
-import { useWindowService } from './window-service.mjs';
+import { IZCircusSetup } from "@zthun/cirque";
+import { IZCircusReactHook, ZCircusSetupHook } from "@zthun/cirque-du-react";
+import { afterEach, describe, expect, it } from "vitest";
+import { useWindowService } from "./window-service.mjs";
 
-describe('useWindowService', () => {
+describe("useWindowService", () => {
   let _hook: IZCircusReactHook<any, any>;
   let _setup: IZCircusSetup<IZCircusReactHook<any, any>>;
 
@@ -18,7 +18,7 @@ describe('useWindowService', () => {
     await _setup?.destroy?.call(_setup);
   });
 
-  it('should return the global object by default', async () => {
+  it("should return the global object by default", async () => {
     // Arrange.
     const target = await createTestTarget();
     // Act.

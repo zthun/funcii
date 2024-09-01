@@ -1,4 +1,4 @@
-import { KeyboardEvent, KeyboardEventHandler, useMemo } from 'react';
+import { KeyboardEvent, KeyboardEventHandler, useMemo } from "react";
 
 /**
  * A set of keyboard interactions that should be set on an element.
@@ -32,7 +32,7 @@ export interface IZKeyboardInteraction<T = Element> {
  * This will normally be 'Enter' and 'Space', but you can override them
  * in {@link useKeyboardActivate}.
  */
-export const DefaultActivateCodes = ['Enter', 'Space'];
+export const DefaultActivateCodes = ["Enter", "Space"];
 
 /**
  * Represents a hook that generates a keyboard event that can
@@ -55,7 +55,7 @@ export const DefaultActivateCodes = ['Enter', 'Space'];
  */
 export function useKeyboardActivate<T = Element>(
   handler?: KeyboardEventHandler<T>,
-  codes: string[] = DefaultActivateCodes
+  codes: string[] = DefaultActivateCodes,
 ): IZKeyboardInteraction<T> {
   const onKey = useMemo(() => {
     if (!handler) {

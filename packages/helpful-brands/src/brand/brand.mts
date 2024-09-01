@@ -44,9 +44,9 @@ export class ZBrandBuilder {
    */
   public constructor() {
     this._brand = {
-      id: '',
-      name: '',
-      founded: NaN
+      id: "",
+      name: "",
+      founded: NaN,
     };
   }
 
@@ -113,7 +113,10 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public facebook(): this {
-    return this.id('facebook').name('Facebook').founded(2004).owner('Meta Platforms');
+    return this.id("facebook")
+      .name("Facebook")
+      .founded(2004)
+      .owner("Meta Platforms");
   }
 
   /**
@@ -123,7 +126,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public x(): this {
-    return this.id('x-twitter').name('X').founded(2006).owner('X Corp.');
+    return this.id("x-twitter").name("X").founded(2006).owner("X Corp.");
   }
 
   /**
@@ -141,7 +144,10 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public instagram(): this {
-    return this.id('instagram').name('Instagram').founded(2010).owner('Meta Platforms');
+    return this.id("instagram")
+      .name("Instagram")
+      .founded(2010)
+      .owner("Meta Platforms");
   }
 
   /**
@@ -151,7 +157,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public tiktok(): this {
-    return this.id('tiktok').name('TikTok').founded(2016);
+    return this.id("tiktok").name("TikTok").founded(2016);
   }
 
   /**
@@ -161,7 +167,10 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public linkedin(): this {
-    return this.id('linkedin').name('LinkedIn').founded(2003).owner('Microsoft');
+    return this.id("linkedin")
+      .name("LinkedIn")
+      .founded(2003)
+      .owner("Microsoft");
   }
 
   /**
@@ -171,7 +180,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public github(): this {
-    return this.id('github').name('GitHub').founded(2008).owner('Microsoft');
+    return this.id("github").name("GitHub").founded(2008).owner("Microsoft");
   }
 
   /**
@@ -181,7 +190,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public discord(): this {
-    return this.id('discord').name('Discord').founded(2015);
+    return this.id("discord").name("Discord").founded(2015);
   }
 
   /**
@@ -191,7 +200,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public youtube(): this {
-    return this.id('youtube').name('YouTube').founded(2005).owner('Google LLC');
+    return this.id("youtube").name("YouTube").founded(2005).owner("Google LLC");
   }
 
   /**
@@ -201,7 +210,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public wordpress(): this {
-    return this.id('wordpress').name('WordPress').founded(2003);
+    return this.id("wordpress").name("WordPress").founded(2003);
   }
 
   /**
@@ -211,7 +220,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public slack(): this {
-    return this.id('slack').name('Slack').founded(2013);
+    return this.id("slack").name("Slack").founded(2013);
   }
 
   /**
@@ -221,7 +230,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public figma(): this {
-    return this.id('figma').name('Figma').founded(2016);
+    return this.id("figma").name("Figma").founded(2016);
   }
 
   /**
@@ -231,7 +240,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public apple(): this {
-    return this.id('apple').name('Apple').founded(1976);
+    return this.id("apple").name("Apple").founded(1976);
   }
 
   /**
@@ -241,7 +250,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public google(): this {
-    return this.id('google').name('Google').founded(1998).owner('Alphabet Inc');
+    return this.id("google").name("Google").founded(1998).owner("Alphabet Inc");
   }
 
   /**
@@ -251,7 +260,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public stripe(): this {
-    return this.id('stripe').name('Stripe').founded(2009);
+    return this.id("stripe").name("Stripe").founded(2009);
   }
 
   /**
@@ -261,7 +270,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public algolia(): this {
-    return this.id('algolia').name('Algolia').founded(2021);
+    return this.id("algolia").name("Algolia").founded(2021);
   }
 
   /**
@@ -271,7 +280,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public docker(): this {
-    return this.id('docker').name('Docker').founded(2013);
+    return this.id("docker").name("Docker").founded(2013);
   }
 
   /**
@@ -281,7 +290,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public windows(): this {
-    return this.id('windows').name('Windows').founded(1985).owner('Microsoft');
+    return this.id("windows").name("Windows").founded(1985).owner("Microsoft");
   }
 
   /**
@@ -291,7 +300,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public paypal(): this {
-    return this.id('paypal').name('PayPal').founded(1998);
+    return this.id("paypal").name("PayPal").founded(1998);
   }
 
   /**
@@ -301,7 +310,10 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public stackOverflow(): this {
-    return this.id('stack-overflow').name('Stack Overflow').founded(2008).owner('Prosus');
+    return this.id("stack-overflow")
+      .name("Stack Overflow")
+      .founded(2008)
+      .owner("Prosus");
   }
 
   /**
@@ -311,7 +323,10 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public kickstarter(): this {
-    return this.id('kickstarter').name('Kickstarter').founded(2008).owner('Prosus');
+    return this.id("kickstarter")
+      .name("Kickstarter")
+      .founded(2008)
+      .owner("Prosus");
   }
 
   /**
@@ -321,7 +336,10 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public dropbox(): this {
-    return this.id('dropbox').name('Dropbox').founded(2008).owner('Dropbox, Inc.');
+    return this.id("dropbox")
+      .name("Dropbox")
+      .founded(2008)
+      .owner("Dropbox, Inc.");
   }
 
   /**
@@ -331,7 +349,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public squarespace(): this {
-    return this.id('squarespace').name('Squarespace').founded(2004);
+    return this.id("squarespace").name("Squarespace").founded(2004);
   }
 
   /**
@@ -341,7 +359,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public android(): this {
-    return this.id('android').name('Android').founded(2008).owner('Google LLC');
+    return this.id("android").name("Android").founded(2008).owner("Google LLC");
   }
 
   /**
@@ -351,7 +369,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public shopify(): this {
-    return this.id('shopify').name('Shopify').founded(2006);
+    return this.id("shopify").name("Shopify").founded(2006);
   }
 
   /**
@@ -361,7 +379,10 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public medium(): this {
-    return this.id('medium').name('Medium').founded(2012).owner('A Medium Corporation');
+    return this.id("medium")
+      .name("Medium")
+      .founded(2012)
+      .owner("A Medium Corporation");
   }
 
   /**
@@ -371,7 +392,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public codepen(): this {
-    return this.id('codepen').name('CodePen').founded(2012);
+    return this.id("codepen").name("CodePen").founded(2012);
   }
 
   /**
@@ -381,7 +402,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public cloudflare(): this {
-    return this.id('cloudflare').name('Cloudflare').founded(2009);
+    return this.id("cloudflare").name("Cloudflare").founded(2009);
   }
 
   /**
@@ -391,7 +412,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public airbnb(): this {
-    return this.id('airbnb').name('Airbnb').founded(2008);
+    return this.id("airbnb").name("Airbnb").founded(2008);
   }
 
   /**
@@ -401,7 +422,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public vimeo(): this {
-    return this.id('vimeo').name('Vimeo').founded(2004);
+    return this.id("vimeo").name("Vimeo").founded(2004);
   }
 
   /**
@@ -411,7 +432,10 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public whatsapp(): this {
-    return this.id('whatsapp').name('WhatsApp').founded(2009).owner('Meta Platforms');
+    return this.id("whatsapp")
+      .name("WhatsApp")
+      .founded(2009)
+      .owner("Meta Platforms");
   }
 
   /**
@@ -421,7 +445,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public intercom(): this {
-    return this.id('intercom').name('Intercom').founded(2011);
+    return this.id("intercom").name("Intercom").founded(2011);
   }
 
   /**
@@ -431,7 +455,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public usps(): this {
-    return this.id('usps').name('United States Postal Service').founded(1971);
+    return this.id("usps").name("United States Postal Service").founded(1971);
   }
 
   /**
@@ -441,7 +465,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public wix(): this {
-    return this.id('wix').name('Wix').founded(2006);
+    return this.id("wix").name("Wix").founded(2006);
   }
 
   /**
@@ -451,7 +475,7 @@ export class ZBrandBuilder {
    *        A reference to this object.
    */
   public line(): this {
-    return this.id('line').name('Line').founded(2011);
+    return this.id("line").name("Line").founded(2011);
   }
 
   /**

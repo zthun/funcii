@@ -43,7 +43,7 @@ export class ZServerBuilder {
    */
   public constructor() {
     this._server = {
-      address: ''
+      address: "",
     };
   }
 

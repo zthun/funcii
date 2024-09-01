@@ -1,38 +1,49 @@
-import { registerDecorator, ValidationArguments } from 'class-validator';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { RequiresOtherProperty, RequiresOtherPropertyValidator } from './requires-other-property.mjs';
+import { registerDecorator, ValidationArguments } from "class-validator";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import {
+  RequiresOtherProperty,
+  RequiresOtherPropertyValidator,
+} from "./requires-other-property.mjs";
 
-vi.mock('class-validator');
+vi.mock("class-validator");
 
-describe('RequiresOtherProperty', () => {
-  describe('Validator', () => {
-    it('registers the decorator.', () => {
+describe("RequiresOtherProperty", () => {
+  describe("Validator", () => {
+    it("registers the decorator.", () => {
       // Arrange
       // Act
-      RequiresOtherProperty('property')({}, 'name');
+      RequiresOtherProperty("property")({}, "name");
       // Assert
       expect(registerDecorator).toHaveBeenCalledWith(
-        expect.objectContaining({ validator: RequiresOtherPropertyValidator, constraints: ['property'] })
+        expect.objectContaining({
+          validator: RequiresOtherPropertyValidator,
+          constraints: ["property"],
+        }),
       );
     });
   });
 
-  describe('Validate', () => {
+  describe("Validate", () => {
     let passwordConfirm: { password: string; confirm?: string };
 
     beforeEach(() => {
-      passwordConfirm = { password: 'bad-password', confirm: 'bad-password' };
+      passwordConfirm = { password: "bad-password", confirm: "bad-password" };
     });
 
-    function assertValid<T extends object>(expected: boolean, object: T, property: keyof T, propertyToCheck: keyof T) {
+    function assertValid<T extends object>(
+      expected: boolean,
+      object: T,
+      property: keyof T,
+      propertyToCheck: keyof T,
+    ) {
       // Arrange
       const target = new RequiresOtherPropertyValidator();
       const args: ValidationArguments = {
         object,
         constraints: [propertyToCheck],
-        targetName: '',
-        value: 'whatever',
-        property: String(property)
+        targetName: "",
+        value: "whatever",
+        property: String(property),
       };
       // Act
       const actual = target.validate(args.value, args);
@@ -40,13 +51,13 @@ describe('RequiresOtherProperty', () => {
       expect(actual).toEqual(expected);
     }
 
-    it('returns false if the other property is missing.', () => {
+    it("returns false if the other property is missing.", () => {
       delete passwordConfirm.confirm;
-      assertValid(false, passwordConfirm, 'password', 'confirm');
+      assertValid(false, passwordConfirm, "password", "confirm");
     });
 
-    it('returns true if the other property is set.', () => {
-      assertValid(true, passwordConfirm, 'password', 'confirm');
+    it("returns true if the other property is set.", () => {
+      assertValid(true, passwordConfirm, "password", "confirm");
     });
   });
 });

@@ -1,4 +1,4 @@
-import { castArray, values } from 'lodash-es';
+import { castArray, values } from "lodash-es";
 
 /**
  * A sorting direction.
@@ -7,11 +7,11 @@ export enum ZSortDirection {
   /**
    * Ascending sort.
    */
-  Ascending = 'asc',
+  Ascending = "asc",
   /**
    * Descending sort.
    */
-  Descending = 'desc'
+  Descending = "desc",
 }
 
 /**

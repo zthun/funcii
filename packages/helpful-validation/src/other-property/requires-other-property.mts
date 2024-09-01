@@ -3,15 +3,17 @@ import {
   ValidationArguments,
   ValidationOptions,
   ValidatorConstraint,
-  ValidatorConstraintInterface
-} from 'class-validator';
-import { get } from 'lodash-es';
+  ValidatorConstraintInterface,
+} from "class-validator";
+import { get } from "lodash-es";
 
 /**
  * Represents a constraint that requires another property to be set as well.
  */
-@ValidatorConstraint({ name: 'requires-other-property', async: false })
-export class RequiresOtherPropertyValidator implements ValidatorConstraintInterface {
+@ValidatorConstraint({ name: "requires-other-property", async: false })
+export class RequiresOtherPropertyValidator
+  implements ValidatorConstraintInterface
+{
   /**
    * Validates that another property is set in addition to the current value.
    *
@@ -41,14 +43,17 @@ export class RequiresOtherPropertyValidator implements ValidatorConstraintInterf
  * @returns
  *        A decorator that applies the constraint.
  */
-export function RequiresOtherProperty<T = any>(property: keyof T, options?: ValidationOptions) {
+export function RequiresOtherProperty<T = any>(
+  property: keyof T,
+  options?: ValidationOptions,
+) {
   return (object: any, propertyName: string) => {
     registerDecorator({
       target: object.constructor,
       propertyName,
       constraints: [property],
       options,
-      validator: RequiresOtherPropertyValidator
+      validator: RequiresOtherPropertyValidator,
     });
   };
 }

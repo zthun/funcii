@@ -1,21 +1,26 @@
-import { registerDecorator } from 'class-validator';
-import { describe, expect, it, vi } from 'vitest';
-import { IsNotWhiteSpace, IsNotWhiteSpaceValidator } from './is-not-white-space.mjs';
+import { registerDecorator } from "class-validator";
+import { describe, expect, it, vi } from "vitest";
+import {
+  IsNotWhiteSpace,
+  IsNotWhiteSpaceValidator,
+} from "./is-not-white-space.mjs";
 
-vi.mock('class-validator');
+vi.mock("class-validator");
 
-describe('IsNotWhiteSpace', () => {
-  describe('Validator', () => {
-    it('registers the decorator.', () => {
+describe("IsNotWhiteSpace", () => {
+  describe("Validator", () => {
+    it("registers the decorator.", () => {
       // Arrange
       // Act
-      IsNotWhiteSpace()({}, 'name');
+      IsNotWhiteSpace()({}, "name");
       // Assert
-      expect(registerDecorator).toHaveBeenCalledWith(expect.objectContaining({ validator: IsNotWhiteSpaceValidator }));
+      expect(registerDecorator).toHaveBeenCalledWith(
+        expect.objectContaining({ validator: IsNotWhiteSpaceValidator }),
+      );
     });
   });
 
-  describe('Validate', () => {
+  describe("Validate", () => {
     function assertValid(expected: boolean, value: any) {
       // Arrange
       const target = new IsNotWhiteSpaceValidator();
@@ -25,24 +30,24 @@ describe('IsNotWhiteSpace', () => {
       expect(actual).toEqual(expected);
     }
 
-    it('returns false if the value is not a string.', () => {
+    it("returns false if the value is not a string.", () => {
       assertValid(false, 4);
     });
 
-    it('returns false if the value is white space.', () => {
-      assertValid(false, '  \r\n');
+    it("returns false if the value is white space.", () => {
+      assertValid(false, "  \r\n");
     });
 
-    it('returns false if the value is null.', () => {
+    it("returns false if the value is null.", () => {
       assertValid(false, null);
     });
 
-    it('returns false if the value is undefined.', () => {
+    it("returns false if the value is undefined.", () => {
       assertValid(false, undefined);
     });
 
-    it('returns true if the value is a valid string with non white space characters.', () => {
-      assertValid(true, 'This should be valid.');
+    it("returns true if the value is a valid string with non white space characters.", () => {
+      assertValid(true, "This should be valid.");
     });
   });
 });

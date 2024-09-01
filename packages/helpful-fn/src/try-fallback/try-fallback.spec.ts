@@ -1,14 +1,14 @@
-import { describe, expect, it } from 'vitest';
-import { createGuid } from '../create-guid/create-guid.mjs';
-import { tryFallback, tryFallbackAsync } from './try-fallback.mjs';
+import { describe, expect, it } from "vitest";
+import { createGuid } from "../create-guid/create-guid.mjs";
+import { tryFallback, tryFallbackAsync } from "./try-fallback.mjs";
 
 const fail = () => {
-  throw new Error('Failed');
+  throw new Error("Failed");
 };
 
-describe('Try With Fallback', () => {
-  describe('Sync', () => {
-    it('should return the value', () => {
+describe("Try With Fallback", () => {
+  describe("Sync", () => {
+    it("should return the value", () => {
       // Arrange.
       const expected = createGuid();
       // Act.
@@ -17,7 +17,7 @@ describe('Try With Fallback', () => {
       expect(actual).toEqual(expected);
     });
 
-    it('should return undefined if an error is thrown', () => {
+    it("should return undefined if an error is thrown", () => {
       // Arrange.
       // Act.
       const actual = tryFallback(fail);
@@ -25,7 +25,7 @@ describe('Try With Fallback', () => {
       expect(actual).toBeUndefined();
     });
 
-    it('should return fallback if an error is thrown', async () => {
+    it("should return fallback if an error is thrown", async () => {
       // Arrange.
       const expected = createGuid();
       // Act.
@@ -35,8 +35,8 @@ describe('Try With Fallback', () => {
     });
   });
 
-  describe('Async', () => {
-    it('should return the value', async () => {
+  describe("Async", () => {
+    it("should return the value", async () => {
       // Arrange.
       const expected = createGuid();
       // Act.
@@ -45,19 +45,24 @@ describe('Try With Fallback', () => {
       expect(actual).toEqual(expected);
     });
 
-    it('should return undefined if a rejected promise is returned', async () => {
+    it("should return undefined if a rejected promise is returned", async () => {
       // Arrange.
       // Act.
-      const actual = await tryFallbackAsync<string>(() => Promise.reject(new Error('Failed')));
+      const actual = await tryFallbackAsync<string>(() =>
+        Promise.reject(new Error("Failed")),
+      );
       // Assert.
       expect(actual).toBeUndefined();
     });
 
-    it('should return fallback if a rejected promise is returned', async () => {
+    it("should return fallback if a rejected promise is returned", async () => {
       // Arrange.
       const expected = createGuid();
       // Act.
-      const actual = await tryFallbackAsync<string>(() => Promise.reject(new Error('Failed')), expected);
+      const actual = await tryFallbackAsync<string>(
+        () => Promise.reject(new Error("Failed")),
+        expected,
+      );
       // Assert.
       expect(actual).toEqual(expected);
     });

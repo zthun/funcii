@@ -28,7 +28,10 @@
  * const errorCannotBeFound = createError({ wut: 'Something went wrong' });
  * ```
  */
-export function createError(problem: any, schema = ['message', 'error', 'exception', 'data']): Error {
+export function createError(
+  problem: any,
+  schema = ["message", "error", "exception", "data"],
+): Error {
   if (problem instanceof Error) {
     return problem;
   }

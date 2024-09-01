@@ -1,1 +1,3 @@
-module.exports = require('@zthun/lint-janitor-config/eslint');
+const config = require("@zthun/lint-janitor-config/eslint");
+config.env = { node: true };
+module.exports = config;

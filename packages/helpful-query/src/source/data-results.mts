@@ -1,7 +1,7 @@
-import { chunk, get } from 'lodash-es';
-import { ZDataMatchOptional } from '../match/data-match-optional.mjs';
-import { IZDataMatch } from '../match/data-match.mjs';
-import { IZSort, ZSortDirection } from '../sort/sort.mjs';
+import { chunk, get } from "lodash-es";
+import { ZDataMatchOptional } from "../match/data-match-optional.mjs";
+import { IZDataMatch } from "../match/data-match.mjs";
+import { IZSort, ZSortDirection } from "../sort/sort.mjs";
 
 /**
  * Takes a list of data and paginates it in memory.
@@ -47,7 +47,11 @@ export function paginate<T>(data: T[], page: number, size: number) {
  * @returns
  *        A subset of data that matches to the given filter.
  */
-export function filter<T, F>(data: T[], filter: F | undefined | null, match: IZDataMatch<T, F>) {
+export function filter<T, F>(
+  data: T[],
+  filter: F | undefined | null,
+  match: IZDataMatch<T, F>,
+) {
   const _match = new ZDataMatchOptional<T, F>(match);
   return data.filter((data) => _match.match(data, filter));
 }

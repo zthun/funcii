@@ -1,10 +1,12 @@
-import { get } from 'lodash-es';
-import { IZDataMatch } from '../match/data-match.mjs';
+import { get } from "lodash-es";
+import { IZDataMatch } from "../match/data-match.mjs";
 
 /**
  * Represents a data match where the data qualifies if any fields contain the search text.
  */
-export class ZDataSearchFields<TData extends object> implements IZDataMatch<TData, string> {
+export class ZDataSearchFields<TData extends object>
+  implements IZDataMatch<TData, string>
+{
   /**
    * Initializes a new instance of this object.
    *
@@ -18,7 +20,7 @@ export class ZDataSearchFields<TData extends object> implements IZDataMatch<TDat
     const _filter = filter.toUpperCase();
 
     return _fields.some((field) => {
-      const value = `${get(data, field) || ''}`.toUpperCase();
+      const value = `${get(data, field) || ""}`.toUpperCase();
       return value.indexOf(_filter) >= 0;
     });
   }

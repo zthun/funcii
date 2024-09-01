@@ -1,9 +1,9 @@
-import { IZCircusSetup } from '@zthun/cirque';
-import { IZCircusReactHook, ZCircusSetupHook } from '@zthun/cirque-du-react';
-import { sleep } from '@zthun/helpful-fn';
-import { get, noop } from 'lodash-es';
-import React, { StrictMode } from 'react';
-import { Mock, afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { IZCircusSetup } from "@zthun/cirque";
+import { IZCircusReactHook, ZCircusSetupHook } from "@zthun/cirque-du-react";
+import { sleep } from "@zthun/helpful-fn";
+import { get, noop } from "lodash-es";
+import React, { StrictMode } from "react";
+import { Mock, afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   ZAsyncDataTuple,
   ZAsyncLoading,
@@ -12,17 +12,21 @@ import {
   isStateErrored,
   isStateLoaded,
   isStateLoading,
-  useAsyncState
-} from './use-async-state.mjs';
+  useAsyncState,
+} from "./use-async-state.mjs";
 
-describe('useAsyncState', () => {
+describe("useAsyncState", () => {
   let load: Mock;
   let _hook: IZCircusReactHook<ZAsyncDataTuple<string>, unknown>;
-  let _setup: IZCircusSetup<IZCircusReactHook<ZAsyncDataTuple<string>, unknown>>;
+  let _setup: IZCircusSetup<
+    IZCircusReactHook<ZAsyncDataTuple<string>, unknown>
+  >;
 
   async function createTestTarget() {
     const wrapper = ({ children }) => <StrictMode>{children}</StrictMode>;
-    _setup = new ZCircusSetupHook(() => useAsyncState<string>(load), { wrapper });
+    _setup = new ZCircusSetupHook(() => useAsyncState<string>(load), {
+      wrapper,
+    });
     _hook = await _setup.setup();
     await sleep(5);
     return _hook;
@@ -49,10 +53,10 @@ describe('useAsyncState', () => {
     await _setup?.destroy?.call(_setup);
   });
 
-  describe('Success', () => {
-    it('should return the data.', async () => {
+  describe("Success", () => {
+    it("should return the data.", async () => {
       // Arrange.
-      const expected = 'OK';
+      const expected = "OK";
       mockLoadedData(expected);
       const target = await createTestTarget();
       // Act.
@@ -62,10 +66,12 @@ describe('useAsyncState', () => {
       expect(asStateData(actual)).toEqual(expected);
     });
 
-    it('should set the correct value in the case the component is unloaded and reloaded', async () => {
+    it("should set the correct value in the case the component is unloaded and reloaded", async () => {
       // Arrange.
-      const expected = 'good';
-      load.mockImplementationOnce(() => sleep(300, 'bad')).mockImplementationOnce(() => sleep(0, expected));
+      const expected = "good";
+      load
+        .mockImplementationOnce(() => sleep(300, "bad"))
+        .mockImplementationOnce(() => sleep(0, expected));
       const target = await createTestTarget();
       // Act.
       await target.rerender();
@@ -75,12 +81,12 @@ describe('useAsyncState', () => {
       expect(actual).toEqual(expected);
     });
 
-    it('should set the correct value in the case that a later refresh is invoked', async () => {
+    it("should set the correct value in the case that a later refresh is invoked", async () => {
       // Arrange.
-      const expected = 'good';
+      const expected = "good";
       load
-        .mockImplementationOnce(() => sleep(300, 'bad'))
-        .mockImplementationOnce(() => sleep(100, 'bad'))
+        .mockImplementationOnce(() => sleep(300, "bad"))
+        .mockImplementationOnce(() => sleep(100, "bad"))
         .mockImplementationOnce(() => sleep(0, expected));
       const target = await createTestTarget();
       // Act.
@@ -92,9 +98,9 @@ describe('useAsyncState', () => {
       expect(actual).toEqual(expected);
     });
 
-    it('should not return data that has failed to load.', async () => {
+    it("should not return data that has failed to load.", async () => {
       // Arrange.
-      mockErrorData('Something went wrong');
+      mockErrorData("Something went wrong");
       const target = await createTestTarget();
       // Acct.
       const [actual] = await target.rerender();
@@ -103,11 +109,11 @@ describe('useAsyncState', () => {
       expect(asStateData(actual)).toBeUndefined();
     });
 
-    it('should return fallback data if the data has failed to load.', async () => {
+    it("should return fallback data if the data has failed to load.", async () => {
       // Arrange.
-      mockErrorData('Something went wrong');
+      mockErrorData("Something went wrong");
       const target = await createTestTarget();
-      const expected = 'Fallback';
+      const expected = "Fallback";
       // Acct.
       const [actual] = await target.rerender();
       // Assert.
@@ -115,7 +121,7 @@ describe('useAsyncState', () => {
       expect(asStateData(actual, expected)).toEqual(expected);
     });
 
-    it('should not return data that is loading.', async () => {
+    it("should not return data that is loading.", async () => {
       // Arrange.
       mockLoadingData();
       const target = await createTestTarget();
@@ -127,10 +133,10 @@ describe('useAsyncState', () => {
     });
   });
 
-  describe('Error', () => {
-    it('should return an error object.', async () => {
+  describe("Error", () => {
+    it("should return an error object.", async () => {
       // Arrange.
-      const expected = { message: 'Something went wrong' };
+      const expected = { message: "Something went wrong" };
       mockErrorData(expected);
       const target = await createTestTarget();
       // Act.
@@ -140,21 +146,21 @@ describe('useAsyncState', () => {
       expect(asStateError(actual)?.message).toEqual(expected.message);
     });
 
-    it('should keep the error in the case that an error is already provided.', async () => {
+    it("should keep the error in the case that an error is already provided.", async () => {
       // Arrange.
-      const expected = 'Something went wrong';
+      const expected = "Something went wrong";
       mockErrorData(new Error(expected));
       const target = await createTestTarget();
       // Act.
       const [value] = await target.rerender();
-      const actual = get(value, 'message');
+      const actual = get(value, "message");
       // Assert.
       expect(actual).toEqual(expected);
     });
 
-    it('should not return errors on loaded data.', async () => {
+    it("should not return errors on loaded data.", async () => {
       // Arrange.
-      mockLoadedData('OK');
+      mockLoadedData("OK");
       const target = await createTestTarget();
       // Act.
       const [actual] = await target.rerender();
@@ -163,7 +169,7 @@ describe('useAsyncState', () => {
       expect(asStateError(actual)).toBeUndefined();
     });
 
-    it('should not return errors on loading data.', async () => {
+    it("should not return errors on loading data.", async () => {
       // Arrange.
       mockLoadingData();
       const target = await createTestTarget();
@@ -175,8 +181,8 @@ describe('useAsyncState', () => {
     });
   });
 
-  describe('Loading', () => {
-    it('should return the loading symbol', async () => {
+  describe("Loading", () => {
+    it("should return the loading symbol", async () => {
       // Arrange.
       mockLoadingData();
       const target = await createTestTarget();
@@ -187,9 +193,9 @@ describe('useAsyncState', () => {
       expect(actual).toEqual(ZAsyncLoading);
     });
 
-    it('should not return the loading symbol on loaded data.', async () => {
+    it("should not return the loading symbol on loaded data.", async () => {
       // Arrange.
-      mockLoadedData('OK');
+      mockLoadedData("OK");
       const target = await createTestTarget();
       // Act.
       const [actual] = await target.rerender();
@@ -198,9 +204,9 @@ describe('useAsyncState', () => {
       expect(actual).not.toEqual(ZAsyncLoading);
     });
 
-    it('should not return the loading symbol on errored data.', async () => {
+    it("should not return the loading symbol on errored data.", async () => {
       // Arrange.
-      mockErrorData('Some error happened');
+      mockErrorData("Some error happened");
       const target = await createTestTarget();
       // Act.
       const [actual] = await target.rerender();
@@ -210,8 +216,8 @@ describe('useAsyncState', () => {
     });
   });
 
-  describe('Update', () => {
-    it('should reload the data when the setter is invoked with undefined', async () => {
+  describe("Update", () => {
+    it("should reload the data when the setter is invoked with undefined", async () => {
       // Arrange
       const target = await createTestTarget();
       const [, refresh] = await target.current();
@@ -223,11 +229,11 @@ describe('useAsyncState', () => {
       expect(load).toHaveBeenCalledTimes(1);
     });
 
-    it('should not reload data if the setter is invoked with a non undefined value', async () => {
+    it("should not reload data if the setter is invoked with a non undefined value", async () => {
       // Arrange
       const target = await createTestTarget();
       const [, setData] = await target.current();
-      const expected = 'This should be set right away';
+      const expected = "This should be set right away";
       // Act.
       load.mockClear();
       await setData(expected);
@@ -237,14 +243,14 @@ describe('useAsyncState', () => {
       expect(actual).toEqual(expected);
     });
 
-    it('should reload the data based on the previous data.', async () => {
+    it("should reload the data based on the previous data.", async () => {
       // Arrange.
-      const expected = '11';
-      mockLoadedData('1');
+      const expected = "11";
+      mockLoadedData("1");
       const target = await createTestTarget();
       const [, setData] = await target.current();
       // Act.
-      await setData((curr) => curr + '1');
+      await setData((curr) => curr + "1");
       const [actual] = await target.rerender();
       // Assert.
       expect(actual).toEqual(expected);

@@ -3,15 +3,17 @@ import {
   ValidationArguments,
   ValidationOptions,
   ValidatorConstraint,
-  ValidatorConstraintInterface
-} from 'class-validator';
-import { get } from 'lodash-es';
+  ValidatorConstraintInterface,
+} from "class-validator";
+import { get } from "lodash-es";
 
 /**
  * Represents a constraint that forces a property on an object to equal another property on the same object.
  */
-@ValidatorConstraint({ name: 'equals-other-property', async: false })
-export class EqualsOtherPropertyValidator implements ValidatorConstraintInterface {
+@ValidatorConstraint({ name: "equals-other-property", async: false })
+export class EqualsOtherPropertyValidator
+  implements ValidatorConstraintInterface
+{
   /**
    * Validates that value equals another property defined by args.constraints.
    *
@@ -45,14 +47,17 @@ export class EqualsOtherPropertyValidator implements ValidatorConstraintInterfac
  * @returns
  *        A reflection decorator function that applies the constraint to a property.
  */
-export function EqualsOtherProperty<T = any>(property: keyof T, options?: ValidationOptions) {
+export function EqualsOtherProperty<T = any>(
+  property: keyof T,
+  options?: ValidationOptions,
+) {
   return (object: any, propertyName: string) => {
     registerDecorator({
       target: object.constructor,
       propertyName,
       constraints: [property],
       options,
-      validator: EqualsOtherPropertyValidator
+      validator: EqualsOtherPropertyValidator,
     });
   };
 }

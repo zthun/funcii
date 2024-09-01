@@ -54,7 +54,12 @@
  * const numberOfPages = countBuckets(25, 101, undefined, 4);
  * ```
  */
-export function countBuckets(weight: number, items: number, min = 0, max = Infinity) {
+export function countBuckets(
+  weight: number,
+  items: number,
+  min = 0,
+  max = Infinity,
+) {
   weight = Math.max(0, weight);
   items = Math.max(0, items);
 

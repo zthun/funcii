@@ -35,6 +35,11 @@ export function sleep<T>(ms: number, val: T): Promise<T>;
  * @returns
  *        A promise that resolves with val after ms milliseconds.
  */
-export function sleep<T>(ms = 0, val: T | undefined = undefined): Promise<T | undefined> {
-  return new Promise<T | undefined>((resolve) => setTimeout(() => resolve(val), ms));
+export function sleep<T>(
+  ms = 0,
+  val: T | undefined = undefined,
+): Promise<T | undefined> {
+  return new Promise<T | undefined>((resolve) =>
+    setTimeout(() => resolve(val), ms),
+  );
 }

@@ -1,4 +1,4 @@
-import { IZEmailEnvelope, ZEmailEnvelopeBuilder } from './email-envelope.mjs';
+import { IZEmailEnvelope, ZEmailEnvelopeBuilder } from "./email-envelope.mjs";
 
 /**
  * Represents an email message.
@@ -31,7 +31,7 @@ export class ZEmailBuilder {
    */
   public constructor() {
     this._email = {
-      envelope: new ZEmailEnvelopeBuilder().build()
+      envelope: new ZEmailEnvelopeBuilder().build(),
     };
   }
 

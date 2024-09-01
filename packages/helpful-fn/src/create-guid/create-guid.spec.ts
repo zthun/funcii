@@ -1,8 +1,8 @@
-import { describe, expect, it } from 'vitest';
-import { createGuid } from './create-guid.mjs';
+import { describe, expect, it } from "vitest";
+import { createGuid } from "./create-guid.mjs";
 
-describe('createGuid', () => {
-  it('should return a new guid', () => {
+describe("createGuid", () => {
+  it("should return a new guid", () => {
     // Arrange.
     const a = createGuid();
     // Act.

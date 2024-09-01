@@ -2,14 +2,14 @@ import {
   registerDecorator,
   ValidationOptions,
   ValidatorConstraint,
-  ValidatorConstraintInterface
-} from 'class-validator';
-import { trim } from 'lodash-es';
+  ValidatorConstraintInterface,
+} from "class-validator";
+import { trim } from "lodash-es";
 
 /**
  * Represents a constraint that a string property is not pure white space.
  */
-@ValidatorConstraint({ name: 'white-space', async: false })
+@ValidatorConstraint({ name: "white-space", async: false })
 export class IsNotWhiteSpaceValidator implements ValidatorConstraintInterface {
   /**
    * Validates that value is a string and has 1 or more non white-space characters.
@@ -21,7 +21,7 @@ export class IsNotWhiteSpaceValidator implements ValidatorConstraintInterface {
    *        True if value is a string and has 1 or more non white space characters.
    */
   public validate(value: any) {
-    return typeof value === 'string' && !!trim(value);
+    return typeof value === "string" && !!trim(value);
   }
 }
 
@@ -40,7 +40,7 @@ export function IsNotWhiteSpace(options?: ValidationOptions) {
       target: object.constructor,
       propertyName,
       options,
-      validator: IsNotWhiteSpaceValidator
+      validator: IsNotWhiteSpaceValidator,
     });
   };
 }

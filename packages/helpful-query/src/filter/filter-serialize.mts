@@ -1,9 +1,9 @@
-import { IZSerialize } from '@zthun/helpful-fn';
-import { isBinaryFilter } from './filter-binary.mjs';
-import { isCollectionFilter } from './filter-collection.mjs';
-import { isLogicFilter } from './filter-logic.mjs';
-import { isUnaryFilter } from './filter-unary.mjs';
-import { IZFilter } from './filter.mjs';
+import { IZSerialize } from "@zthun/helpful-fn";
+import { isBinaryFilter } from "./filter-binary.mjs";
+import { isCollectionFilter } from "./filter-collection.mjs";
+import { isLogicFilter } from "./filter-logic.mjs";
+import { isUnaryFilter } from "./filter-unary.mjs";
+import { IZFilter } from "./filter.mjs";
 
 /**
  * Represents a serializer that can serialize a filter object to a string.
@@ -19,11 +19,11 @@ export class ZFilterSerialize implements IZSerialize<IZFilter> {
     }
 
     if (isCollectionFilter(candidate)) {
-      return `${candidate.operator}(${candidate.subject}, ${candidate.values.map((v) => JSON.stringify(v)).join(', ')})`;
+      return `${candidate.operator}(${candidate.subject}, ${candidate.values.map((v) => JSON.stringify(v)).join(", ")})`;
     }
 
     if (isLogicFilter(candidate)) {
-      return `${candidate.operator}(${candidate.clauses.map((c) => this.serialize(c)).join(', ')})`;
+      return `${candidate.operator}(${candidate.clauses.map((c) => this.serialize(c)).join(", ")})`;
     }
 
     return undefined;

@@ -1,11 +1,11 @@
-import { IZCircusSetup } from '@zthun/cirque';
-import { IZCircusReactHook, ZCircusSetupHook } from '@zthun/cirque-du-react';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { useStateAsArray } from './use-state-as-array.mjs';
+import { IZCircusSetup } from "@zthun/cirque";
+import { IZCircusReactHook, ZCircusSetupHook } from "@zthun/cirque-du-react";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { useStateAsArray } from "./use-state-as-array.mjs";
 
-describe('useStateAsArray', () => {
-  const batman = 'batman';
-  const superman = 'superman';
+describe("useStateAsArray", () => {
+  const batman = "batman";
+  const superman = "superman";
   let initial: string | string[] | undefined;
   let _hook: IZCircusReactHook<any, any>;
   let _setup: IZCircusSetup<IZCircusReactHook<any, any>>;
@@ -25,10 +25,10 @@ describe('useStateAsArray', () => {
     await _setup?.destroy?.call(_setup);
   });
 
-  describe('Initial', () => {
-    it('should set the initial value', async () => {
+  describe("Initial", () => {
+    it("should set the initial value", async () => {
       // Arrange.
-      initial = 'batman';
+      initial = "batman";
       const target = await createTestTarget();
       // Act.
       const [actual] = await target.current();
@@ -36,7 +36,7 @@ describe('useStateAsArray', () => {
       expect(actual).toEqual([initial]);
     });
 
-    it('should be an empty array with no initial value', async () => {
+    it("should be an empty array with no initial value", async () => {
       // Arrange.
       const target = await createTestTarget();
       // Act.
@@ -46,8 +46,8 @@ describe('useStateAsArray', () => {
     });
   });
 
-  describe('Single value', () => {
-    it('should update with an array of one item', async () => {
+  describe("Single value", () => {
+    it("should update with an array of one item", async () => {
       // Arrange.
       const target = await createTestTarget();
       const [, setValue] = await target.current();
@@ -58,7 +58,7 @@ describe('useStateAsArray', () => {
       expect(actual).toEqual([batman]);
     });
 
-    it('should set the value as an array on a reducer', async () => {
+    it("should set the value as an array on a reducer", async () => {
       // Arrange.
       const target = await createTestTarget();
       const [, setValue] = await target.current();
@@ -70,8 +70,8 @@ describe('useStateAsArray', () => {
     });
   });
 
-  describe('Array value', () => {
-    it('should update with the array values', async () => {
+  describe("Array value", () => {
+    it("should update with the array values", async () => {
       // Arrange.
       const expected = [batman, superman];
       const target = await createTestTarget();
@@ -83,7 +83,7 @@ describe('useStateAsArray', () => {
       expect(actual).toEqual(expected);
     });
 
-    it('should set the array value on a reducer', async () => {
+    it("should set the array value on a reducer", async () => {
       // Arrange.
       initial = batman;
       const expected = [batman, superman];

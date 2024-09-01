@@ -7,8 +7,8 @@
  * service that will not have any unit tests.
  */
 
-import { $global } from '@zthun/helpful-fn';
-import { createContext, useContext } from 'react';
+import { $global } from "@zthun/helpful-fn";
+import { createContext, useContext } from "react";
 
 /**
  * A service that allows the user to open a file.
@@ -42,15 +42,15 @@ export class ZFileSelect implements IZFileSelect {
       return this._input;
     }
 
-    this._input = this._doc.createElement('input');
-    this._input.type = 'file';
-    this._input.style.position = 'absolute';
-    this._input.style.visibility = 'hidden';
-    this._input.style.width = '1px';
-    this._input.style.height = '1px';
-    this._input.style.left = '0';
-    this._input.style.top = '0';
-    this._input.style.zIndex = '-1';
+    this._input = this._doc.createElement("input");
+    this._input.type = "file";
+    this._input.style.position = "absolute";
+    this._input.style.visibility = "hidden";
+    this._input.style.width = "1px";
+    this._input.style.height = "1px";
+    this._input.style.left = "0";
+    this._input.style.top = "0";
+    this._input.style.zIndex = "-1";
 
     this._input.onchange = () => {
       const file = this._input.files?.item(0);
@@ -74,7 +74,7 @@ export class ZFileSelect implements IZFileSelect {
    */
   public constructor(
     private readonly _doc: Document = $global.document,
-    private readonly _container: HTMLElement = _doc?.body
+    private readonly _container: HTMLElement = _doc?.body,
   ) {}
 
   /**
@@ -101,7 +101,9 @@ export class ZFileSelect implements IZFileSelect {
 /**
  * Represents the context for using a file select object.
  */
-export const ZFileSelectContext = createContext<IZFileSelect>(new ZFileSelect());
+export const ZFileSelectContext = createContext<IZFileSelect>(
+  new ZFileSelect(),
+);
 
 /**
  * Retrieves the global file select object.

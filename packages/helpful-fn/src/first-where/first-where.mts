@@ -72,7 +72,12 @@ export function firstDefined<T = any>(
   first: T | null | undefined,
   ...remaining: (T | null | undefined)[]
 ): T {
-  return firstWhere<T | null | undefined>((v) => v != null, fallback, first, ...remaining) as T;
+  return firstWhere<T | null | undefined>(
+    (v) => v != null,
+    fallback,
+    first,
+    ...remaining,
+  ) as T;
 }
 
 /**
@@ -109,5 +114,10 @@ export function firstTruthy<T = any>(
   first: T | null | undefined,
   ...remaining: (T | null | undefined)[]
 ): T {
-  return firstWhere<T | null | undefined>((v) => !!v, fallback, first, ...remaining) as T;
+  return firstWhere<T | null | undefined>(
+    (v) => !!v,
+    fallback,
+    first,
+    ...remaining,
+  ) as T;
 }

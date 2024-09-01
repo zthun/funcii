@@ -1,6 +1,6 @@
-import { IZDeserialize, peel, peelBetween } from '@zthun/helpful-fn';
-import { trim, trimStart } from 'lodash-es';
-import { IZSort, ZSortBuilder, ZSortDirections } from './sort.mjs';
+import { IZDeserialize, peel, peelBetween } from "@zthun/helpful-fn";
+import { trim, trimStart } from "lodash-es";
+import { IZSort, ZSortBuilder, ZSortDirections } from "./sort.mjs";
 
 /**
  * A object that can deserialize an {@link IZSort} list from a string.
@@ -9,7 +9,7 @@ export class ZSortDeserialize implements IZDeserialize<IZSort[]> {
   public deserialize(candidate: string): IZSort[] {
     // A sort candidate can be fully between parens to allow for multi sort
     // or can just be a single sort.
-    const [_candidate, rest] = peelBetween(trim(candidate), '(', ')');
+    const [_candidate, rest] = peelBetween(trim(candidate), "(", ")");
     const $candidate = _candidate == null ? rest : _candidate;
     let builder = new ZSortBuilder();
 
@@ -20,7 +20,7 @@ export class ZSortDeserialize implements IZDeserialize<IZSort[]> {
       const [sort] = strippedSort;
       [, remaining] = strippedSort;
       builder = builder.sort(sort);
-      remaining = trimStart(remaining, ', ');
+      remaining = trimStart(remaining, ", ");
     }
 
     return builder.build();
@@ -33,7 +33,7 @@ export class ZSortDeserialize implements IZDeserialize<IZSort[]> {
       throw new Error(`Cannot determine sort direction at ${candidate}`);
     }
 
-    const peeledSubject = peelBetween(rest, '(', ')');
+    const peeledSubject = peelBetween(rest, "(", ")");
     let [subject] = peeledSubject;
     const [, remainingSortsToParse] = peeledSubject;
 

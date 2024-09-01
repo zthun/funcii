@@ -1,12 +1,12 @@
-import { cosmiconfig } from 'cosmiconfig';
-import { IZProxyConfig, ZProxyConfigBuilder } from './proxy-config.mjs';
+import { cosmiconfig } from "cosmiconfig";
+import { IZProxyConfig, ZProxyConfigBuilder } from "./proxy-config.mjs";
 
 export interface IZProxyConfigSearch {
   search(name?: string): Promise<IZProxyConfig>;
 }
 
 export class ZProxyConfigSearch implements IZProxyConfigSearch {
-  public async search(name = 'helpful-proxy') {
+  public async search(name = "helpful-proxy") {
     const explorer = cosmiconfig(name);
     const searched = await explorer.search();
     let builder = new ZProxyConfigBuilder();

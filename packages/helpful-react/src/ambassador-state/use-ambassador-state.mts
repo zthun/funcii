@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 /**
  * A reducer function for the setter.
@@ -13,7 +13,9 @@ export type ZAmbassadorReducer<T> = (current: T | undefined) => T;
 /**
  * The type for setting the current value.
  */
-export type ZAmbassadorSetCurrent<T> = ((val: T | ZAmbassadorReducer<T>) => void) | undefined;
+export type ZAmbassadorSetCurrent<T> =
+  | ((val: T | ZAmbassadorReducer<T>) => void)
+  | undefined;
 
 /**
  * A type of state where the value is used from the props in the case of them being set.
@@ -38,7 +40,7 @@ export type ZAmbassadorSetCurrent<T> = ((val: T | ZAmbassadorReducer<T>) => void
  */
 export function useAmbassadorState<T>(
   current: T | undefined,
-  setCurrent: ZAmbassadorSetCurrent<T>
+  setCurrent: ZAmbassadorSetCurrent<T>,
 ): [T | undefined, (val: T | ZAmbassadorReducer<T>) => void];
 
 /**
@@ -65,7 +67,7 @@ export function useAmbassadorState<T>(
 export function useAmbassadorState<T>(
   current: T | undefined,
   setCurrent: ZAmbassadorSetCurrent<T>,
-  initial: T
+  initial: T,
 ): [T, (val: T | ZAmbassadorReducerRequired<T>) => void];
 
 /**
@@ -94,16 +96,20 @@ export function useAmbassadorState<T>(
 export function useAmbassadorState<T>(
   current: T | undefined,
   setCurrent: ZAmbassadorSetCurrent<T>,
-  initial?: T
+  initial?: T,
 ): [T | undefined, (val: T | ZAmbassadorReducer<T>) => void] {
-  const [localCurrent, setLocalCurrent] = useState<T | undefined>(current || initial);
+  const [localCurrent, setLocalCurrent] = useState<T | undefined>(
+    current || initial,
+  );
 
   const _current = current === undefined ? localCurrent : current;
 
   const _setCurrent = (val: T | ZAmbassadorReducer<T>) => {
     setLocalCurrent(val);
 
-    const isReducer = (v: T | ZAmbassadorReducer<T>): v is ZAmbassadorReducer<T> => typeof v === 'function';
+    const isReducer = (
+      v: T | ZAmbassadorReducer<T>,
+    ): v is ZAmbassadorReducer<T> => typeof v === "function";
 
     if (setCurrent) {
       // There's no guarantee that this comes from a set state.

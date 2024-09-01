@@ -4,7 +4,11 @@
  * @param T -
  *        The type of value that is being checked.
  */
-export type ZObligatedValue<T> = T | null | undefined | Promise<T | null | undefined>;
+export type ZObligatedValue<T> =
+  | T
+  | null
+  | undefined
+  | Promise<T | null | undefined>;
 
 /**
  * Requires a value to be non null.
@@ -25,13 +29,13 @@ export type ZObligatedValue<T> = T | null | undefined | Promise<T | null | undef
  */
 export async function required<T>(val: ZObligatedValue<T>): Promise<T> {
   if (val == null) {
-    throw new Error('A required value was not provided');
+    throw new Error("A required value was not provided");
   }
 
   const _val = await val;
 
   if (_val == null) {
-    throw new Error('A required value was not provided');
+    throw new Error("A required value was not provided");
   }
 
   return _val;
@@ -95,7 +99,10 @@ export function optional<T>(val: ZObligatedValue<T>): Promise<T | null>;
  *        If val is a promise and rejects, then fallback is
  *        also returned.
  */
-export async function optional<T>(val: ZObligatedValue<T>, fallback: T | null = null): Promise<T | null> {
+export async function optional<T>(
+  val: ZObligatedValue<T>,
+  fallback: T | null = null,
+): Promise<T | null> {
   if (val == null) {
     return fallback;
   }

@@ -1,4 +1,4 @@
-import { IZEmailContact } from './email-contact.mjs';
+import { IZEmailContact } from "./email-contact.mjs";
 
 /**
  * Represents an email envelope of information about who the email is from and where it's going to.
@@ -42,7 +42,7 @@ export class ZEmailEnvelopeBuilder {
    */
   public constructor() {
     this._envelope = {
-      from: ''
+      from: "",
     };
   }
 

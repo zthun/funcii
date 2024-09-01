@@ -1,7 +1,10 @@
-import { IZDataRequest } from './data-request.mjs';
-import { filter, paginate, sort } from './data-results.mjs';
-import { IZDataSourceStaticOptions, ZDataSourceStaticOptionsBuilder } from './data-source-static-options.mjs';
-import { IZDataSource } from './data-source.mjs';
+import { IZDataRequest } from "./data-request.mjs";
+import { filter, paginate, sort } from "./data-results.mjs";
+import {
+  IZDataSourceStaticOptions,
+  ZDataSourceStaticOptionsBuilder,
+} from "./data-source-static-options.mjs";
+import { IZDataSource } from "./data-source.mjs";
 
 /**
  * Represents an in memory data source.
@@ -20,7 +23,7 @@ export class ZDataSourceStatic<T> implements IZDataSource<T> {
    */
   public constructor(
     private _data: T[] | Promise<T[]> | Error | Promise<Error>,
-    private _options: IZDataSourceStaticOptions<T> = new ZDataSourceStaticOptionsBuilder().build()
+    private _options: IZDataSourceStaticOptions<T> = new ZDataSourceStaticOptionsBuilder().build(),
   ) {}
 
   /**
@@ -60,7 +63,10 @@ export class ZDataSourceStatic<T> implements IZDataSource<T> {
    *        A new data source where the item list has been updated to include
    *        the new item.
    */
-  public async insert(item: T, index = Infinity): Promise<ZDataSourceStatic<T>> {
+  public async insert(
+    item: T,
+    index = Infinity,
+  ): Promise<ZDataSourceStatic<T>> {
     const items = await this.items();
     index = Math.max(index, 0);
     items.splice(index, 0, item);
@@ -141,21 +147,33 @@ export class ZDataSourceStatic<T> implements IZDataSource<T> {
     const data = await this._data;
 
     if (data instanceof Error) {
-      return new Promise((_, reject) => setTimeout(() => reject(data), this._options.delay));
+      return new Promise((_, reject) =>
+        setTimeout(() => reject(data), this._options.delay),
+      );
     }
 
     let arr: T[] = data;
     arr = filter(arr, _search, this._options.search);
     arr = filter(arr, _filter, this._options.filter);
-    return new Promise((resolve) => setTimeout(() => resolve(arr.length), this._options.delay));
+    return new Promise((resolve) =>
+      setTimeout(() => resolve(arr.length), this._options.delay),
+    );
   }
 
   public async retrieve(request: IZDataRequest): Promise<T[]> {
-    const { page = 1, size = Infinity, search: _search, filter: _filter, sort: _sort } = request;
+    const {
+      page = 1,
+      size = Infinity,
+      search: _search,
+      filter: _filter,
+      sort: _sort,
+    } = request;
     const data = await this._data;
 
     if (data instanceof Error) {
-      return new Promise((_, reject) => setTimeout(() => reject(data), this._options.delay));
+      return new Promise((_, reject) =>
+        setTimeout(() => reject(data), this._options.delay),
+      );
     }
 
     let arr: T[] = data;
@@ -164,6 +182,8 @@ export class ZDataSourceStatic<T> implements IZDataSource<T> {
     arr = sort(arr, _sort);
     arr = paginate(arr, page, size);
 
-    return new Promise((resolve) => setTimeout(() => resolve(arr), this._options.delay));
+    return new Promise((resolve) =>
+      setTimeout(() => resolve(arr), this._options.delay),
+    );
   }
 }

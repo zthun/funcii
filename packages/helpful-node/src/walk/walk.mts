@@ -1,7 +1,7 @@
-import { access } from 'fs';
-import { dirname, isAbsolute, resolve } from 'path';
-import { cwd } from 'process';
-import { promisify } from 'util';
+import { access } from "fs";
+import { dirname, isAbsolute, resolve } from "path";
+import { cwd } from "process";
+import { promisify } from "util";
 
 /**
  * Options for where a directory walk starts.
@@ -66,9 +66,12 @@ export interface ZWalkOptions {
  * const file = walk('path/to/file.json', { start, stop });
  * ```
  */
-export async function walk(search: string, options?: ZWalkOptions): Promise<string | null> {
+export async function walk(
+  search: string,
+  options?: ZWalkOptions,
+): Promise<string | null> {
   const start = options?.start || cwd();
-  const stop = options?.stop || '/';
+  const stop = options?.stop || "/";
   const mode = options?.mode;
 
   const _access = promisify(access);
@@ -77,7 +80,7 @@ export async function walk(search: string, options?: ZWalkOptions): Promise<stri
     try {
       await _access(path, mode);
       return true;
-    } catch (e) {
+    } catch {
       return false;
     }
   };
@@ -95,7 +98,7 @@ export async function walk(search: string, options?: ZWalkOptions): Promise<stri
       return path;
     }
 
-    dir = dir === stop ? '' : dirname(dir);
+    dir = dir === stop ? "" : dirname(dir);
   } while (dir.length);
 
   return null;

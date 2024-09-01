@@ -1,6 +1,6 @@
-import { keyBy, values } from 'lodash-es';
-import { IZFilterMetadata, IZFilterOperator } from './filter-subject.mjs';
-import { IZFilter } from './filter.mjs';
+import { keyBy, values } from "lodash-es";
+import { IZFilterMetadata, IZFilterOperator } from "./filter-subject.mjs";
+import { IZFilter } from "./filter.mjs";
 
 /**
  * The connectors for an {@link IZFilterLogic} filter.
@@ -9,11 +9,11 @@ export enum ZOperatorLogic {
   /**
    * And.
    */
-  And = 'and',
+  And = "and",
   /**
    * Or
    */
-  Or = 'or'
+  Or = "or",
 }
 
 /**
@@ -37,7 +37,7 @@ export class ZFilterLogicBuilder {
   /**
    * The __type__ identifier for an {@link IZFilterLogic} object.
    */
-  public static readonly Type = 'logic';
+  public static readonly Type = "logic";
 
   private _filter: IZFilterLogic;
 
@@ -48,7 +48,7 @@ export class ZFilterLogicBuilder {
     this._filter = {
       clauses: [],
       operator: ZOperatorLogic.And,
-      __type__: ZFilterLogicBuilder.Type
+      __type__: ZFilterLogicBuilder.Type,
     };
   }
 
@@ -130,7 +130,9 @@ export class ZFilterLogicBuilder {
  * @returns
  *        True if filters type is a logic filter.  False otherwise.
  */
-export function isLogicFilter(filter: IZFilterMetadata | null | undefined): filter is IZFilterLogic {
+export function isLogicFilter(
+  filter: IZFilterMetadata | null | undefined,
+): filter is IZFilterLogic {
   return filter?.__type__ === ZFilterLogicBuilder.Type;
 }
 
@@ -147,6 +149,11 @@ const _ZOperatorsLogicLookup = keyBy(ZOperatorsLogic);
  *        Type guard true if candidate is a logic operator, false
  *        otherwise.
  */
-export function isLogicOperator(candidate: string | null | undefined): candidate is ZOperatorLogic {
-  return candidate != null && Object.prototype.hasOwnProperty.call(_ZOperatorsLogicLookup, candidate);
+export function isLogicOperator(
+  candidate: string | null | undefined,
+): candidate is ZOperatorLogic {
+  return (
+    candidate != null &&
+    Object.prototype.hasOwnProperty.call(_ZOperatorsLogicLookup, candidate)
+  );
 }

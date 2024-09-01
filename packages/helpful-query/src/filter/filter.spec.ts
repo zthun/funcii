@@ -1,12 +1,18 @@
-import { describe, expect, it } from 'vitest';
-import { ZFilterBinaryBuilder, isBinaryFilter } from './filter-binary.mjs';
-import { ZFilterCollectionBuilder, isCollectionFilter } from './filter-collection.mjs';
-import { ZFilterLogicBuilder, isLogicFilter } from './filter-logic.mjs';
-import { IZFilterMetadata } from './filter-subject.mjs';
-import { ZFilterUnaryBuilder, isUnaryFilter } from './filter-unary.mjs';
+import { describe, expect, it } from "vitest";
+import { ZFilterBinaryBuilder, isBinaryFilter } from "./filter-binary.mjs";
+import {
+  ZFilterCollectionBuilder,
+  isCollectionFilter,
+} from "./filter-collection.mjs";
+import { ZFilterLogicBuilder, isLogicFilter } from "./filter-logic.mjs";
+import { IZFilterMetadata } from "./filter-subject.mjs";
+import { ZFilterUnaryBuilder, isUnaryFilter } from "./filter-unary.mjs";
 
-describe('Filter', () => {
-  function assertIsFilter<T extends IZFilterMetadata, G>(createTestTarget: () => T, isFilter: (t: T) => G) {
+describe("Filter", () => {
+  function assertIsFilter<T extends IZFilterMetadata, G>(
+    createTestTarget: () => T,
+    isFilter: (t: T) => G,
+  ) {
     // Arrange.
     const target = createTestTarget();
     // Act.
@@ -15,26 +21,29 @@ describe('Filter', () => {
     expect(actual).toBeTruthy();
   }
 
-  describe('Binary', () => {
-    it('should be classified if the __type__ is binary', () => {
+  describe("Binary", () => {
+    it("should be classified if the __type__ is binary", () => {
       assertIsFilter(() => new ZFilterBinaryBuilder().build(), isBinaryFilter);
     });
   });
 
-  describe('Unary', () => {
-    it('should be classified if the __type__ is unary', () => {
+  describe("Unary", () => {
+    it("should be classified if the __type__ is unary", () => {
       assertIsFilter(() => new ZFilterUnaryBuilder().build(), isUnaryFilter);
     });
   });
 
-  describe('Collection', () => {
-    it('should be classified if the __type__ is collection', () => {
-      assertIsFilter(() => new ZFilterCollectionBuilder().build(), isCollectionFilter);
+  describe("Collection", () => {
+    it("should be classified if the __type__ is collection", () => {
+      assertIsFilter(
+        () => new ZFilterCollectionBuilder().build(),
+        isCollectionFilter,
+      );
     });
   });
 
-  describe('Logic', () => {
-    it('should be classified if the __type__ is logic', () => {
+  describe("Logic", () => {
+    it("should be classified if the __type__ is logic", () => {
       assertIsFilter(() => new ZFilterLogicBuilder().build(), isLogicFilter);
     });
   });

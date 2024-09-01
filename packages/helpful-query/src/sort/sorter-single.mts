@@ -1,5 +1,5 @@
-import { IZSort, ZSortBuilder, ZSortDirection } from './sort.mjs';
-import { IZSorter } from './sorter.mjs';
+import { IZSort, ZSortBuilder, ZSortDirection } from "./sort.mjs";
+import { IZSorter } from "./sorter.mjs";
 
 /**
  * Represents a sorter that simulates a single sort at a time.
@@ -22,7 +22,9 @@ export class ZSorterSingle implements IZSorter {
   }
 
   public sorted(subject?: string): ZSortDirection | undefined {
-    return this._sorted && this._sorted?.subject === subject ? this._sorted.direction : undefined;
+    return this._sorted && this._sorted?.subject === subject
+      ? this._sorted.direction
+      : undefined;
   }
 
   public sort(subject?: string): IZSort[] {

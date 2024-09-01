@@ -1,4 +1,4 @@
-import { IZDeserialize } from './deserialize.mjs';
+import { IZDeserialize } from "./deserialize.mjs";
 
 /**
  * A deserializer that deserializes a JSON string.
@@ -10,7 +10,9 @@ export class ZDeserializeJson<T> implements IZDeserialize<T> {
     const parsed = JSON.parse(candidate);
 
     if (this._schema && !this._schema(parsed)) {
-      throw new Error('The parsed JSON does not conform to the given schema requirement');
+      throw new Error(
+        "The parsed JSON does not conform to the given schema requirement",
+      );
     }
 
     return parsed;

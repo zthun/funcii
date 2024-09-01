@@ -3,13 +3,13 @@ import {
   ValidationArguments,
   ValidationOptions,
   ValidatorConstraint,
-  ValidatorConstraintInterface
-} from 'class-validator';
+  ValidatorConstraintInterface,
+} from "class-validator";
 
 /**
  * Represents a validator for forcing the limit of the data section of a data uri to be between a certain length.
  */
-@ValidatorConstraint({ name: 'data-uri-limit', async: false })
+@ValidatorConstraint({ name: "data-uri-limit", async: false })
 export class IsDataURILimitValidator implements ValidatorConstraintInterface {
   /**
    * Validates that the value is a data uri and that the data section is between the minimum and maximum length.
@@ -26,12 +26,12 @@ export class IsDataURILimitValidator implements ValidatorConstraintInterface {
   public validate(value: any, args: ValidationArguments) {
     const [min, max] = args.constraints as number[];
 
-    if (typeof value !== 'string' || !value.startsWith('data:')) {
+    if (typeof value !== "string" || !value.startsWith("data:")) {
       // Wrong type
       return false;
     }
 
-    const [, data] = value.split(',');
+    const [, data] = value.split(",");
     return data.length >= min && data.length <= max;
   }
 }
@@ -48,14 +48,18 @@ export class IsDataURILimitValidator implements ValidatorConstraintInterface {
  *
  * @returns A reflection decorator function that applies the constraint to a property.
  */
-export function IsDataURILimit(min: number, max: number, options?: ValidationOptions) {
+export function IsDataURILimit(
+  min: number,
+  max: number,
+  options?: ValidationOptions,
+) {
   return (object: any, propertyName: string) => {
     registerDecorator({
       target: object.constructor,
       propertyName,
       constraints: [min, max],
       options,
-      validator: IsDataURILimitValidator
+      validator: IsDataURILimitValidator,
     });
   };
 }

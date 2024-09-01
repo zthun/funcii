@@ -1,4 +1,4 @@
-import { IZEmailContact } from './email-contact.mjs';
+import { IZEmailContact } from "./email-contact.mjs";
 
 /**
  * Represents a builder that will build a comma separated
@@ -6,7 +6,7 @@ import { IZEmailContact } from './email-contact.mjs';
  */
 export class ZEmailContactAddressBuilder {
   private _addresses: Array<string | IZEmailContact> = [];
-  private _delimiter = ', ';
+  private _delimiter = ", ";
 
   /**
    * Adds an address to the list to builder.
@@ -65,7 +65,7 @@ export class ZEmailContactAddressBuilder {
         return undefined;
       }
 
-      return typeof ct === 'string' ? ct : ct.address;
+      return typeof ct === "string" ? ct : ct.address;
     };
 
     const truthy = (ct: string) => {

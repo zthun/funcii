@@ -1,5 +1,5 @@
-import { $global } from '@zthun/helpful-fn';
-import { createContext, useContext } from 'react';
+import { $global } from "@zthun/helpful-fn";
+import { createContext, useContext } from "react";
 
 /**
  * Represents the window context.

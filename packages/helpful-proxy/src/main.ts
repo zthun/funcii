@@ -5,11 +5,11 @@ import {
   LetsEncryptSelfSignedOptions,
   LetsEncryptUsingSelfSigned,
   Logger,
-  RouteRegistrationOptions
-} from 'http-reverse-proxy-ts';
-import { join } from 'path';
-import { cwd } from 'process';
-import { ZProxyConfigSearch } from './proxy-config/proxy-config-search.mjs';
+  RouteRegistrationOptions,
+} from "http-reverse-proxy-ts";
+import { join } from "path";
+import { cwd } from "process";
+import { ZProxyConfigSearch } from "./proxy-config/proxy-config-search.mjs";
 
 (async function main() {
   const log = new Logger();
@@ -22,19 +22,19 @@ import { ZProxyConfigSearch } from './proxy-config/proxy-config-search.mjs';
     country: config.security.country,
     locality: config.security.city,
     organizationName: config.security.organization,
-    state: config.security.state
+    state: config.security.state,
   };
 
   const httpsOptions: HttpsServerOptions = {
     certificates: {
-      certificateStoreRoot: './.certificates'
-    }
+      certificateStoreRoot: "./.certificates",
+    },
   };
 
   const options: HttpReverseProxyOptions = {
     letsEncryptOptions,
     httpsOptions,
-    log
+    log,
   };
 
   const registrationOptions: RouteRegistrationOptions = {
@@ -42,9 +42,9 @@ import { ZProxyConfigSearch } from './proxy-config/proxy-config-search.mjs';
       redirectToHttps: true,
       letsEncrypt: {
         email: config.security.email,
-        production: false
-      }
-    }
+        production: false,
+      },
+    },
   };
 
   const proxy = new HttpReverseProxy(options, LetsEncryptUsingSelfSigned);
@@ -58,5 +58,5 @@ import { ZProxyConfigSearch } from './proxy-config/proxy-config-search.mjs';
     });
   });
 
-  log.info(null, 'Proxy server started');
+  log.info(null, "Proxy server started");
 })();

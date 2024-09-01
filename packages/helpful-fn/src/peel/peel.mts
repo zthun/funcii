@@ -12,7 +12,10 @@
  *        does not start with any given candidates, then the first
  *        item will be null and the second item will be str.
  */
-export function peel<T extends string = string>(str: string, candidates: T[]): [T | null, string] {
+export function peel<T extends string = string>(
+  str: string,
+  candidates: T[],
+): [T | null, string] {
   for (const check of candidates) {
     if (str.startsWith(check)) {
       return [str.substring(0, check.length) as T, str.substring(check.length)];
@@ -56,7 +59,11 @@ export function peel<T extends string = string>(str: string, candidates: T[]): [
  *        be found between an open and close pair.  The second argument will
  *        be the remaining text of the string, including whitespace.
  */
-export function peelBetween(str: string, open: string, close: string): [string | null, string] {
+export function peelBetween(
+  str: string,
+  open: string,
+  close: string,
+): [string | null, string] {
   if (!str.startsWith(open)) {
     return [null, str];
   }

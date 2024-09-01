@@ -40,7 +40,7 @@ export class ZQuadrilateralBuilder<T = number> {
       bottom: start,
       left: start,
       right: start,
-      top: start
+      top: start,
     };
   }
 

@@ -1,29 +1,38 @@
-import { registerDecorator, ValidationArguments } from 'class-validator';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { EqualsOtherProperty, EqualsOtherPropertyValidator } from './equals-other-property.mjs';
+import { registerDecorator, ValidationArguments } from "class-validator";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import {
+  EqualsOtherProperty,
+  EqualsOtherPropertyValidator,
+} from "./equals-other-property.mjs";
 
-vi.mock('class-validator');
+vi.mock("class-validator");
 
-describe('EqualsOtherProperty', () => {
-  describe('Validator', () => {
-    it('registers the decorator.', () => {
+describe("EqualsOtherProperty", () => {
+  describe("Validator", () => {
+    it("registers the decorator.", () => {
       // Arrange
       // Act
-      EqualsOtherProperty('property')({}, 'name');
+      EqualsOtherProperty("property")({}, "name");
       // Assert
       expect(registerDecorator).toHaveBeenCalledWith(
-        expect.objectContaining({ validator: EqualsOtherPropertyValidator, constraints: ['property'] })
+        expect.objectContaining({
+          validator: EqualsOtherPropertyValidator,
+          constraints: ["property"],
+        }),
       );
     });
   });
 
-  describe('Validate', () => {
+  describe("Validate", () => {
     let matchedPasswords: { password: string; confirm: string };
     let mismatchedPasswords: { password: string; confirm: string };
 
     beforeEach(() => {
-      matchedPasswords = { password: 'bad-password', confirm: 'bad-password' };
-      mismatchedPasswords = { password: 'bad-password', confirm: 'bad-password-c' };
+      matchedPasswords = { password: "bad-password", confirm: "bad-password" };
+      mismatchedPasswords = {
+        password: "bad-password",
+        confirm: "bad-password-c",
+      };
     });
 
     function assertValid<T extends object>(
@@ -31,16 +40,16 @@ describe('EqualsOtherProperty', () => {
       object: T,
       value: T[keyof T],
       property: keyof T,
-      propertyToMatch: keyof T
+      propertyToMatch: keyof T,
     ) {
       // Arrange
       const target = new EqualsOtherPropertyValidator();
       const args: ValidationArguments = {
         object,
         constraints: [propertyToMatch],
-        targetName: '',
+        targetName: "",
         value,
-        property: String(property)
+        property: String(property),
       };
       // Act
       const actual = target.validate(value, args);
@@ -48,12 +57,24 @@ describe('EqualsOtherProperty', () => {
       expect(actual).toEqual(expected);
     }
 
-    it('returns false if the value does not match the other property', () => {
-      assertValid(false, mismatchedPasswords, mismatchedPasswords.confirm, 'confirm', 'password');
+    it("returns false if the value does not match the other property", () => {
+      assertValid(
+        false,
+        mismatchedPasswords,
+        mismatchedPasswords.confirm,
+        "confirm",
+        "password",
+      );
     });
 
-    it('returns true if the value matches the other property.', () => {
-      assertValid(true, matchedPasswords, matchedPasswords.confirm, 'confirm', 'password');
+    it("returns true if the value matches the other property.", () => {
+      assertValid(
+        true,
+        matchedPasswords,
+        matchedPasswords.confirm,
+        "confirm",
+        "password",
+      );
     });
   });
 });

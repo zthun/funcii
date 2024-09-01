@@ -1,5 +1,5 @@
-import { keyBy, values } from 'lodash-es';
-import { IZFilterMetadata, IZFilterSubject } from './filter-subject.mjs';
+import { keyBy, values } from "lodash-es";
+import { IZFilterMetadata, IZFilterSubject } from "./filter-subject.mjs";
 
 /**
  * The operators for the {@link IZFilterCollection} filter.
@@ -8,17 +8,18 @@ export enum ZOperatorCollection {
   /**
    * In
    */
-  In = 'in',
+  In = "in",
   /**
    * Not in.
    */
-  NotIn = 'not-in'
+  NotIn = "not-in",
 }
 
 /**
  * A filter that operates on a collection of values.
  */
-export interface IZFilterCollection extends IZFilterSubject<ZOperatorCollection> {
+export interface IZFilterCollection
+  extends IZFilterSubject<ZOperatorCollection> {
   /**
    * The values to compare the field against.
    */
@@ -32,7 +33,7 @@ export class ZFilterCollectionBuilder {
   /**
    * The __type__ identifier for an {@link IZFilterCollection} object.
    */
-  public static readonly Type = 'collection';
+  public static readonly Type = "collection";
 
   private _filter: IZFilterCollection;
 
@@ -41,10 +42,10 @@ export class ZFilterCollectionBuilder {
    */
   public constructor() {
     this._filter = {
-      subject: '',
+      subject: "",
       operator: ZOperatorCollection.In,
       values: [],
-      __type__: ZFilterCollectionBuilder.Type
+      __type__: ZFilterCollectionBuilder.Type,
     };
   }
 
@@ -140,16 +141,21 @@ export class ZFilterCollectionBuilder {
  * @returns
  *        True if filters type is a collection filter.  False otherwise.
  */
-export function isCollectionFilter(filter: IZFilterMetadata | null | undefined): filter is IZFilterCollection {
+export function isCollectionFilter(
+  filter: IZFilterMetadata | null | undefined,
+): filter is IZFilterCollection {
   return filter?.__type__ === ZFilterCollectionBuilder.Type;
 }
 
 /**
  * A mapping of comparators that determine if data exists or does not exist within a data set.
  */
-export const ZCollectionComparators: Record<ZOperatorCollection, (data: any, values: any[]) => boolean> = {
+export const ZCollectionComparators: Record<
+  ZOperatorCollection,
+  (data: any, values: any[]) => boolean
+> = {
   [ZOperatorCollection.In]: (d, v) => v.indexOf(d) >= 0,
-  [ZOperatorCollection.NotIn]: (d, v) => v.indexOf(d) < 0
+  [ZOperatorCollection.NotIn]: (d, v) => v.indexOf(d) < 0,
 };
 
 /**
@@ -165,6 +171,11 @@ const _ZOperatorsCollectionLookup = keyBy(ZOperatorsCollection);
  *        Type guard true if candidate is a collection operator, false
  *        otherwise.
  */
-export function isCollectionOperator(candidate: string | null | undefined): candidate is ZOperatorCollection {
-  return candidate != null && Object.prototype.hasOwnProperty.call(_ZOperatorsCollectionLookup, candidate);
+export function isCollectionOperator(
+  candidate: string | null | undefined,
+): candidate is ZOperatorCollection {
+  return (
+    candidate != null &&
+    Object.prototype.hasOwnProperty.call(_ZOperatorsCollectionLookup, candidate)
+  );
 }

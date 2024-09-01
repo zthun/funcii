@@ -1,19 +1,19 @@
-import { IZCircusSetup } from '@zthun/cirque';
-import { IZCircusReactHook, ZCircusSetupHook } from '@zthun/cirque-du-react';
-import { sleep } from '@zthun/helpful-fn';
+import { IZCircusSetup } from "@zthun/cirque";
+import { IZCircusReactHook, ZCircusSetupHook } from "@zthun/cirque-du-react";
+import { sleep } from "@zthun/helpful-fn";
 import {
   IZDataRequest,
   IZDataSource,
   ZDataRequestBuilder,
   ZDataSourceStatic,
-  ZDataSourceStaticOptionsBuilder
-} from '@zthun/helpful-query';
-import { range } from 'lodash-es';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { isStateLoading } from '../async-state/use-async-state.mjs';
-import { usePageViewState } from './use-page-view-state.mjs';
+  ZDataSourceStaticOptionsBuilder,
+} from "@zthun/helpful-query";
+import { range } from "lodash-es";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { isStateLoading } from "../async-state/use-async-state.mjs";
+import { usePageViewState } from "./use-page-view-state.mjs";
 
-describe('usePageViewState', () => {
+describe("usePageViewState", () => {
   let source: IZDataSource<number>;
   let request: IZDataRequest;
   let _hook: IZCircusReactHook<any, any>;
@@ -36,12 +36,15 @@ describe('usePageViewState', () => {
     await _setup?.destroy?.call(_setup);
   });
 
-  describe('Loading', () => {
+  describe("Loading", () => {
     beforeEach(() => {
-      source = new ZDataSourceStatic<number>([], new ZDataSourceStaticOptionsBuilder().delay(500).build());
+      source = new ZDataSourceStatic<number>(
+        [],
+        new ZDataSourceStaticOptionsBuilder().delay(500).build(),
+      );
     });
 
-    it('should start loading the view', async () => {
+    it("should start loading the view", async () => {
       // Arrange.
       const target = await createTestTarget();
       // Act.
@@ -51,7 +54,7 @@ describe('usePageViewState', () => {
       expect(actual).toBeTruthy();
     });
 
-    it('should start loading the count', async () => {
+    it("should start loading the count", async () => {
       // Arrange.
       const target = await createTestTarget();
       // Act.
@@ -62,7 +65,7 @@ describe('usePageViewState', () => {
     });
   });
 
-  describe('Success', () => {
+  describe("Success", () => {
     let data: number[];
 
     beforeEach(() => {
@@ -70,7 +73,7 @@ describe('usePageViewState', () => {
       source = new ZDataSourceStatic(data);
     });
 
-    it('should return the given view page', async () => {
+    it("should return the given view page", async () => {
       // Arrange.
       const expected = data.slice(20, 40);
       const target = await createTestTarget();
@@ -80,7 +83,7 @@ describe('usePageViewState', () => {
       expect(actual).toEqual(expected);
     });
 
-    it('should load all the data if the page size is not specified', async () => {
+    it("should load all the data if the page size is not specified", async () => {
       // Arrange.
       request = new ZDataRequestBuilder().build();
       const target = await createTestTarget();
@@ -90,7 +93,7 @@ describe('usePageViewState', () => {
       expect(actual).toEqual(data);
     });
 
-    it('should return the given count', async () => {
+    it("should return the given count", async () => {
       // Arrange.
       const target = await createTestTarget();
       // Act.
@@ -99,7 +102,7 @@ describe('usePageViewState', () => {
       expect(actual).toEqual(data.length);
     });
 
-    it('should calculate the total number of pages', async () => {
+    it("should calculate the total number of pages", async () => {
       // Arrange.
       const expected = 6;
       const target = await createTestTarget();
@@ -110,12 +113,12 @@ describe('usePageViewState', () => {
     });
   });
 
-  describe('Error', () => {
+  describe("Error", () => {
     beforeEach(() => {
-      source = new ZDataSourceStatic(new Error('Failed to load data'));
+      source = new ZDataSourceStatic(new Error("Failed to load data"));
     });
 
-    it('should set an error for the view', async () => {
+    it("should set an error for the view", async () => {
       // Arrange.
       const target = await createTestTarget();
       // Act.
@@ -124,7 +127,7 @@ describe('usePageViewState', () => {
       expect(actual).toBeInstanceOf(Error);
     });
 
-    it('should set an error for the count', async () => {
+    it("should set an error for the count", async () => {
       // Arrange.
       const target = await createTestTarget();
       // Act.
@@ -133,7 +136,7 @@ describe('usePageViewState', () => {
       expect(actual).toBeInstanceOf(Error);
     });
 
-    it('should set the total number of pages to 1', async () => {
+    it("should set the total number of pages to 1", async () => {
       // Arrange.
       const target = await createTestTarget();
       // Act.

@@ -36,7 +36,7 @@ export class ZEmailContactBuilder {
    */
   public constructor() {
     this._contact = {
-      address: ''
+      address: "",
     };
   }
 

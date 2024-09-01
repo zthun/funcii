@@ -7,17 +7,17 @@ export enum ZVerticalAnchor {
    *
    * In vertical device space, this would equate to y = 0.
    */
-  Top = 'top',
+  Top = "top",
   /**
    * Centerpoint between the top and bottom.
    */
-  Middle = 'middle',
+  Middle = "middle",
   /**
    * Bottom boundary.
    *
    * In vertical device space, this would equate to y = Infinity.
    */
-  Bottom = 'bottom'
+  Bottom = "bottom",
 }
 
 /**
@@ -29,17 +29,17 @@ export enum ZHorizontalAnchor {
    *
    * In horizontal device space, this would equate to x = 0.
    */
-  Left = 'left',
+  Left = "left",
   /**
    * Centerpoint between the left and right boundary.
    */
-  Center = 'center',
+  Center = "center",
   /**
    * Right boundary.
    *
    * In horizontal device space, this would equate to x = Infinity.
    */
-  Right = 'right'
+  Right = "right",
 }
 
 /**

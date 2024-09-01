@@ -1,9 +1,11 @@
-import { castArray } from 'lodash-es';
-import { useState } from 'react';
+import { castArray } from "lodash-es";
+import { useState } from "react";
 
 export type ZStateAsArrayReducer<T> = (val: T[]) => T | T[];
 
-export type ZSetStateAsArray<T> = (val: T | undefined | (T | undefined)[] | ZStateAsArrayReducer<T>) => void;
+export type ZSetStateAsArray<T> = (
+  val: T | undefined | (T | undefined)[] | ZStateAsArrayReducer<T>,
+) => void;
 
 /**
  * A helpful hook for when you can have a single value or array value and
@@ -18,11 +20,16 @@ export type ZSetStateAsArray<T> = (val: T | undefined | (T | undefined)[] | ZSta
  *        cast to an array, and the second item is the setter for
  *        the value.
  */
-export function useStateAsArray<T>(initial?: T | T[]): [T[], ZSetStateAsArray<T>] {
-  const [value, _setValue] = useState<T[]>(initial == null ? [] : castArray(initial));
+export function useStateAsArray<T>(
+  initial?: T | T[],
+): [T[], ZSetStateAsArray<T>] {
+  const [value, _setValue] = useState<T[]>(
+    initial == null ? [] : castArray(initial),
+  );
 
   const setValue = (val: T | T[] | ZStateAsArrayReducer<T>) => {
-    const valueIsReducer = (val: any): val is ZStateAsArrayReducer<T> => typeof val === 'function';
+    const valueIsReducer = (val: any): val is ZStateAsArrayReducer<T> =>
+      typeof val === "function";
 
     if (valueIsReducer(val)) {
       _setValue((v: T[]) => castArray(val(v)).slice());

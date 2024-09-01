@@ -8,7 +8,7 @@ export enum ZOrientation {
    * This type of orientation is a row
    * style orientation or flex-row orientation.
    */
-  Horizontal = 'horizontal',
+  Horizontal = "horizontal",
 
   /**
    * Vertical orientation.
@@ -16,5 +16,5 @@ export enum ZOrientation {
    * This type of orientation is a column
    * style orientation or block orientation.
    */
-  Vertical = 'vertical'
+  Vertical = "vertical",
 }

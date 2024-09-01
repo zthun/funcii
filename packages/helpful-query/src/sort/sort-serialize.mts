@@ -1,4 +1,4 @@
-import { IZSort } from './sort.mjs';
+import { IZSort } from "./sort.mjs";
 
 /**
  * An object that can serialize an {@link IZSort} list to a string.
@@ -19,7 +19,9 @@ export class ZSortSerialize {
       return undefined;
     }
 
-    const params = candidate.map((s) => `${s.direction}(${s.subject})`).join(', ');
+    const params = candidate
+      .map((s) => `${s.direction}(${s.subject})`)
+      .join(", ");
     return candidate.length > 1 ? `(${params})` : params;
   }
 }

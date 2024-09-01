@@ -1,5 +1,5 @@
-import { keyBy, values } from 'lodash-es';
-import { IZFilterMetadata, IZFilterSubject } from './filter-subject.mjs';
+import { keyBy, values } from "lodash-es";
+import { IZFilterMetadata, IZFilterSubject } from "./filter-subject.mjs";
 
 /**
  * The operators for a {@link IZFilterBinary} filter.
@@ -8,31 +8,31 @@ export enum ZOperatorBinary {
   /**
    * Equals
    */
-  Equal = 'eq',
+  Equal = "eq",
   /**
    * Not equals.
    */
-  NotEqual = 'neq',
+  NotEqual = "neq",
   /**
    * Less than or equal to.
    */
-  LessThanEqualTo = 'lteq',
+  LessThanEqualTo = "lteq",
   /**
    * Less than.
    */
-  LessThan = 'lt',
+  LessThan = "lt",
   /**
    * Greater than or equal to.
    */
-  GreaterThanEqualTo = 'gteq',
+  GreaterThanEqualTo = "gteq",
   /**
    * Greater than.
    */
-  GreaterThan = 'gt',
+  GreaterThan = "gt",
   /**
    * Like (Contains)
    */
-  Like = 'like'
+  Like = "like",
 }
 
 /**
@@ -52,7 +52,7 @@ export class ZFilterBinaryBuilder {
   /**
    * The __type__ identifier for an {@link IZFilterBinary} object.
    */
-  public static readonly Type = 'binary';
+  public static readonly Type = "binary";
 
   private _filter: IZFilterBinary;
 
@@ -61,10 +61,10 @@ export class ZFilterBinaryBuilder {
    */
   public constructor() {
     this._filter = {
-      subject: '',
+      subject: "",
       value: null,
       operator: ZOperatorBinary.Equal,
-      __type__: ZFilterBinaryBuilder.Type
+      __type__: ZFilterBinaryBuilder.Type,
     };
   }
 
@@ -148,7 +148,10 @@ export class ZFilterBinaryBuilder {
    * @returns
    *        This object.
    */
-  public lessThanEqualTo = this.operator.bind(this, ZOperatorBinary.LessThanEqualTo);
+  public lessThanEqualTo = this.operator.bind(
+    this,
+    ZOperatorBinary.LessThanEqualTo,
+  );
 
   /**
    * Constructs a greater than or equal to filter.
@@ -156,7 +159,10 @@ export class ZFilterBinaryBuilder {
    * @returns
    *        A new filter builder object.
    */
-  public greaterThanEqualTo = this.operator.bind(this, ZOperatorBinary.GreaterThanEqualTo);
+  public greaterThanEqualTo = this.operator.bind(
+    this,
+    ZOperatorBinary.GreaterThanEqualTo,
+  );
   /**
    * Constructs a like filter.
    *
@@ -185,7 +191,9 @@ export class ZFilterBinaryBuilder {
  * @returns
  *        True if filters type is a binary filter.  False otherwise.
  */
-export function isBinaryFilter(filter: IZFilterMetadata | null | undefined): filter is IZFilterBinary {
+export function isBinaryFilter(
+  filter: IZFilterMetadata | null | undefined,
+): filter is IZFilterBinary {
   return filter?.__type__ === ZFilterBinaryBuilder.Type;
 }
 
@@ -203,19 +211,27 @@ const _ZOperatorsBinaryLookup = keyBy(ZOperatorsBinary);
  *        Type guard true if candidate is a binary operator, false
  *        otherwise.
  */
-export function isBinaryOperator(candidate: string | null | undefined): candidate is ZOperatorBinary {
-  return candidate != null && Object.prototype.hasOwnProperty.call(_ZOperatorsBinaryLookup, candidate);
+export function isBinaryOperator(
+  candidate: string | null | undefined,
+): candidate is ZOperatorBinary {
+  return (
+    candidate != null &&
+    Object.prototype.hasOwnProperty.call(_ZOperatorsBinaryLookup, candidate)
+  );
 }
 
 /**
  * A mapping of comparators that relates a data to a value.
  */
-export const ZBinaryComparators: Record<ZOperatorBinary, (data: any, value: any) => boolean> = {
+export const ZBinaryComparators: Record<
+  ZOperatorBinary,
+  (data: any, value: any) => boolean
+> = {
   [ZOperatorBinary.Equal]: (d, v) => d === v,
   [ZOperatorBinary.NotEqual]: (d, v) => d !== v,
   [ZOperatorBinary.GreaterThan]: (d, v) => d > v,
   [ZOperatorBinary.GreaterThanEqualTo]: (d, v) => d >= v,
   [ZOperatorBinary.LessThan]: (d, v) => d < v,
   [ZOperatorBinary.LessThanEqualTo]: (d, v) => d <= v,
-  [ZOperatorBinary.Like]: (d, v) => `${d}`.indexOf(`${v}`) >= 0
+  [ZOperatorBinary.Like]: (d, v) => `${d}`.indexOf(`${v}`) >= 0,
 };

@@ -1,4 +1,4 @@
-import { createGuid } from '@zthun/helpful-fn';
+import { createGuid } from "@zthun/helpful-fn";
 
 /**
  * Represents the underlying metadata type.
@@ -9,38 +9,38 @@ export enum ZMetadataType {
    *
    * Should be a string or Date value.
    */
-  Date = 'date',
+  Date = "date",
   /**
    * A number.
    *
    * Should be a string or number value.
    */
-  Number = 'number',
+  Number = "number",
   /**
    * A raw string.
    *
    * This is the default type.  Should be a string value.
    */
-  Text = 'text',
+  Text = "text",
   /**
    * An icon value.
    *
    * The underlying metadata cls should be set that
    * defines which class style the icon comes from.
    */
-  Icon = 'icon',
+  Icon = "icon",
   /**
    * An image value.
    *
    * The value should be a URL to an image file.  If the image
    * is binary, then it should be a data URL.
    */
-  Image = 'image',
+  Image = "image",
   /**
    * Custom value that is defined by the person who is using this
    * metadata.
    */
-  Custom = 'custom'
+  Custom = "custom",
 }
 
 /**
@@ -161,7 +161,7 @@ export class ZMetadataBuilder {
     this._metadata = {
       id,
       name: id,
-      type: ZMetadataType.Text
+      type: ZMetadataType.Text,
     };
   }
 

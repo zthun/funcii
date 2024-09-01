@@ -1,6 +1,10 @@
-import { ZAnchor, ZHorizontalAnchor, ZVerticalAnchor } from '../anchor/anchor.mjs';
-import { IZPoint2d } from './point.mjs';
-import { IZQuadrilateral } from './quadrilateral.mjs';
+import {
+  ZAnchor,
+  ZHorizontalAnchor,
+  ZVerticalAnchor,
+} from "../anchor/anchor.mjs";
+import { IZPoint2d } from "./point.mjs";
+import { IZQuadrilateral } from "./quadrilateral.mjs";
 
 /**
  * Represents a helper object that can run calculations on a numeric quadrilateral.
@@ -62,13 +66,13 @@ export class ZRectangle {
     const v: Record<ZVerticalAnchor, number> = {
       [ZVerticalAnchor.Top]: top,
       [ZVerticalAnchor.Middle]: (bottom + top) / 2,
-      [ZVerticalAnchor.Bottom]: bottom
+      [ZVerticalAnchor.Bottom]: bottom,
     };
 
     const h: Record<ZHorizontalAnchor, number> = {
       [ZHorizontalAnchor.Left]: left,
       [ZHorizontalAnchor.Center]: (right + left) / 2,
-      [ZHorizontalAnchor.Right]: right
+      [ZHorizontalAnchor.Right]: right,
     };
 
     return { x: h[horizontal], y: v[vertical] };
@@ -80,61 +84,88 @@ export class ZRectangle {
    * @returns
    *        The top left point of the rectangle.
    */
-  public topLeft = this.point.bind(this, [ZVerticalAnchor.Top, ZHorizontalAnchor.Left]);
+  public topLeft = this.point.bind(this, [
+    ZVerticalAnchor.Top,
+    ZHorizontalAnchor.Left,
+  ]);
   /**
    * Calculates the top center point of the rectangle.
    *
    * @returns
    *        The top center point of the rectangle.
    */
-  public topCenter = this.point.bind(this, [ZVerticalAnchor.Top, ZHorizontalAnchor.Center]);
+  public topCenter = this.point.bind(this, [
+    ZVerticalAnchor.Top,
+    ZHorizontalAnchor.Center,
+  ]);
   /**
    * Calculates the top right point of the rectangle.
    *
    * @returns
    *        The top right point of the rectangle.
    */
-  public topRight = this.point.bind(this, [ZVerticalAnchor.Top, ZHorizontalAnchor.Right]);
+  public topRight = this.point.bind(this, [
+    ZVerticalAnchor.Top,
+    ZHorizontalAnchor.Right,
+  ]);
   /**
    * Calculates the middle left point of the rectangle.
    *
    * @returns
    *        The middle left point of the rectangle.
    */
-  public middleLeft = this.point.bind(this, [ZVerticalAnchor.Middle, ZHorizontalAnchor.Left]);
+  public middleLeft = this.point.bind(this, [
+    ZVerticalAnchor.Middle,
+    ZHorizontalAnchor.Left,
+  ]);
   /**
    * Calculates the middle center point of the rectangle.
    *
    * @returns
    *        The middle center point of the rectangle.
    */
-  public middleCenter = this.point.bind(this, [ZVerticalAnchor.Middle, ZHorizontalAnchor.Center]);
+  public middleCenter = this.point.bind(this, [
+    ZVerticalAnchor.Middle,
+    ZHorizontalAnchor.Center,
+  ]);
   /**
    * Calculates the middle right point of the rectangle.
    *
    * @returns
    *        The middle right point of the rectangle.
    */
-  public middleRight = this.point.bind(this, [ZVerticalAnchor.Middle, ZHorizontalAnchor.Right]);
+  public middleRight = this.point.bind(this, [
+    ZVerticalAnchor.Middle,
+    ZHorizontalAnchor.Right,
+  ]);
   /**
    * Calculates the bottom left point of the rectangle.
    *
    * @returns
    *        The bottom left point of the rectangle.
    */
-  public bottomLeft = this.point.bind(this, [ZVerticalAnchor.Bottom, ZHorizontalAnchor.Left]);
+  public bottomLeft = this.point.bind(this, [
+    ZVerticalAnchor.Bottom,
+    ZHorizontalAnchor.Left,
+  ]);
   /**
    * Calculates the bottom center point of the rectangle.
    *
    * @returns
    *        The bottom center point of the rectangle.
    */
-  public bottomCenter = this.point.bind(this, [ZVerticalAnchor.Bottom, ZHorizontalAnchor.Center]);
+  public bottomCenter = this.point.bind(this, [
+    ZVerticalAnchor.Bottom,
+    ZHorizontalAnchor.Center,
+  ]);
   /**
    * Calculates the bottom right point of the rectangle.
    *
    * @returns
    *        The bottom right point of the rectangle.
    */
-  public bottomRight = this.point.bind(this, [ZVerticalAnchor.Bottom, ZHorizontalAnchor.Right]);
+  public bottomRight = this.point.bind(this, [
+    ZVerticalAnchor.Bottom,
+    ZHorizontalAnchor.Right,
+  ]);
 }

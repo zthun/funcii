@@ -29,7 +29,11 @@
  * return <ComponentWithMultiSelectSupport values={_values} onValuesChange={_setValues} />
  * ```
  */
-export function setFirst<T>(setValue: (val: T) => any, fallback: T, value: T[] | null | undefined) {
+export function setFirst<T>(
+  setValue: (val: T) => any,
+  fallback: T,
+  value: T[] | null | undefined,
+) {
   const _value = value?.length ? value[0] : fallback;
   setValue(_value);
 }

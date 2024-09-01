@@ -1,7 +1,12 @@
-import { describe, expect, it } from 'vitest';
-import { JoinListInputParameter, commaJoinDefined, cssJoinDefined, spaceJoinDefined } from './join-defined.mjs';
+import { describe, expect, it } from "vitest";
+import {
+  JoinListInputParameter,
+  commaJoinDefined,
+  cssJoinDefined,
+  spaceJoinDefined,
+} from "./join-defined.mjs";
 
-describe('join list', () => {
+describe("join list", () => {
   function assertProducesList<T>(
     expected: string,
     _joinList: (...items: JoinListInputParameter<T>[]) => string,
@@ -14,31 +19,31 @@ describe('join list', () => {
     expect(actual).toEqual(expected);
   }
 
-  it('should return the empty string if no items are passed.', () => {
-    assertProducesList('', spaceJoinDefined);
+  it("should return the empty string if no items are passed.", () => {
+    assertProducesList("", spaceJoinDefined);
   });
 
-  it('should return the empty string if only null and undefined items are passed.', () => {
-    assertProducesList('', spaceJoinDefined, undefined, null);
+  it("should return the empty string if only null and undefined items are passed.", () => {
+    assertProducesList("", spaceJoinDefined, undefined, null);
   });
 
-  it('should return the elements if a [T boolean] tuple has a true boolean.', () => {
-    const expected = 'yes';
-    assertProducesList('yes', cssJoinDefined, [expected, true]);
+  it("should return the elements if a [T boolean] tuple has a true boolean.", () => {
+    const expected = "yes";
+    assertProducesList("yes", cssJoinDefined, [expected, true]);
   });
 
-  it('should join all elements that are non null, non undefined, and non false tuples.', () => {
-    const expected = 'One,Two,Four,Seven';
+  it("should join all elements that are non null, non undefined, and non false tuples.", () => {
+    const expected = "One,Two,Four,Seven";
     assertProducesList(
       expected,
       commaJoinDefined,
-      'One',
-      'Two',
+      "One",
+      "Two",
       undefined,
-      'Four',
+      "Four",
       null,
-      ['Six', false],
-      ['Seven', true]
+      ["Six", false],
+      ["Seven", true],
     );
   });
 });

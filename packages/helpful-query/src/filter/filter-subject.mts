@@ -27,7 +27,8 @@ export interface IZFilterOperator<TOperator> extends IZFilterMetadata {
 /**
  * Represents a filter with an operator and contains a subject on a given target.
  */
-export interface IZFilterSubject<TOperator> extends IZFilterOperator<TOperator> {
+export interface IZFilterSubject<TOperator>
+  extends IZFilterOperator<TOperator> {
   /**
    * The filed to sort by.
    */

@@ -1,4 +1,4 @@
-import { IZDeserialize } from './deserialize.mjs';
+import { IZDeserialize } from "./deserialize.mjs";
 
 /**
  * A deserializer that attempts to deserialize multiple times through a series of supported languages.
@@ -34,6 +34,6 @@ export class ZDeserializeTry<T, S = string> implements IZDeserialize<T, S> {
 
     const msg = `Unable to deserialize candidate, ${candidate}.`;
     errors.splice(0, 0, msg);
-    throw new Error(errors.join('\n\n'));
+    throw new Error(errors.join("\n\n"));
   }
 }
