@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.0](https://github.com/zthun/helpful/compare/v5.0.3...v6.0.0) (2024-09-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* helpful-proxy is now an esm module
+
+### Features
+
+* helpful-proxy is now an esm module ([950433a](https://github.com/zthun/helpful/commit/950433ad553bff82d20cdc3a12a6d2bd7e33c748))
+
+
+
 ## [5.0.3](https://github.com/zthun/helpful/compare/v5.0.2...v5.0.3) (2024-07-15)
 
 **Note:** Version bump only for package @zthun/helpful
