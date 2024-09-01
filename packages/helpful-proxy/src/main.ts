@@ -9,7 +9,7 @@ import {
 } from 'http-reverse-proxy-ts';
 import { join } from 'path';
 import { cwd } from 'process';
-import { ZProxyConfigSearch } from './proxy-config/proxy-config-search';
+import { ZProxyConfigSearch } from './proxy-config/proxy-config-search.mjs';
 
 (async function main() {
   const log = new Logger();

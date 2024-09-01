@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { IZProxyConfigTemplate, ZProxyConfigBuilder } from './proxy-config';
+import { IZProxyConfigTemplate, ZProxyConfigBuilder } from './proxy-config.mjs';
 
 describe('ZProxyConfig', () => {
   const createTestTarget = () => new ZProxyConfigBuilder();

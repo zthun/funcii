@@ -8,5 +8,5 @@
       "@zthun/helpful-fn": ["../helpful-fn/src/index"]
     }
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts", "src/**/*.mts"]
 }

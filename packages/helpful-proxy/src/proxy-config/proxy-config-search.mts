@@ -1,5 +1,5 @@
 import { cosmiconfig } from 'cosmiconfig';
-import { IZProxyConfig, ZProxyConfigBuilder } from './proxy-config';
+import { IZProxyConfig, ZProxyConfigBuilder } from './proxy-config.mjs';
 
 export interface IZProxyConfigSearch {
   search(name?: string): Promise<IZProxyConfig>;

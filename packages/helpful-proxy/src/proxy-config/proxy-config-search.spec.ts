@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { ZProxyConfigBuilder } from './proxy-config';
-import { ZProxyConfigSearch } from './proxy-config-search';
+import { ZProxyConfigSearch } from './proxy-config-search.mjs';
+import { ZProxyConfigBuilder } from './proxy-config.mjs';
 
 describe('ZProxyConfigSearch', () => {
   const createTestTarget = () => new ZProxyConfigSearch();
