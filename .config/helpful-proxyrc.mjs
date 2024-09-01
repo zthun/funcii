@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   domains: [
     {
       name: `database.local.zthunworks.com`,
