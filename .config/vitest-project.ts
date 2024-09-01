@@ -6,11 +6,7 @@ export function defineTest(environment?: 'node' | 'jsdom') {
     plugins: [tsConfigPaths()],
     test: {
       environment,
-      testTimeout: 30000,
-      coverage: {
-        all: false,
-        provider: 'istanbul'
-      }
+      testTimeout: 30000
     }
   });
 }

@@ -191,9 +191,7 @@ describe('useMoreViewState', () => {
       // Arrange.
       const _source = mock<IZDataSource<number>>();
       const expected = 'Non Error Returned';
-      // @ts-expect-error See https://github.com/eratio08/vitest-mock-extended/issues/508
       _source.count.mockResolvedValue(10);
-      // @ts-expect-error See https://github.com/eratio08/vitest-mock-extended/issues/508
       _source.retrieve.mockRejectedValue(expected);
       source = _source;
       const target = await createTestTarget();
