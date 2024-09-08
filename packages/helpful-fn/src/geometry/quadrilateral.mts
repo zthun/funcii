@@ -29,6 +29,10 @@ export interface IZQuadrilateral<T = number> {
 
 /**
  * Represents an object that can describe a quadrilateral.
+ *
+ * Note that there will be limitations on what you can describe
+ * when building Quadrilaterals of Quadrilaterals, or Quadrilaterals
+ * of Point2d's which is not supported and has undefined behavior.
  */
 export type ZQuadrilateralLike<T = number> =
   | T
@@ -37,25 +41,44 @@ export type ZQuadrilateralLike<T = number> =
   | null
   | undefined;
 
+/**
+ * Gets whether a quadrilateral like object is a partial point2d.
+ *
+ * @param candidate -
+ *        The candidate to check.
+ *
+ * @returns
+ *        True if candidate is defined and has an x or y property.
+ */
 export function isPoint2d<T>(
-  p: ZQuadrilateralLike<T>,
-): p is Partial<IZPoint2d<T>> {
+  candidate: ZQuadrilateralLike<T>,
+): candidate is Partial<IZPoint2d<T>> {
   return (
-    p != null &&
-    (Object.prototype.hasOwnProperty.call(p, "x") ||
-      Object.prototype.hasOwnProperty.call(p, "y"))
+    candidate != null &&
+    (Object.prototype.hasOwnProperty.call(candidate, "x") ||
+      Object.prototype.hasOwnProperty.call(candidate, "y"))
   );
 }
 
+/**
+ * Gets whether a quadrilateral like object is a partial point2d.
+ *
+ * @param candidate -
+ *        The candidate to check.
+ *
+ * @returns
+ *        True if candidate is defined and has an bottom,
+ *        left, right, or top property.
+ */
 export function isQuadrilateral<T>(
-  q: ZQuadrilateralLike<T>,
-): q is Partial<IZQuadrilateral<T>> {
+  candidate: ZQuadrilateralLike<T>,
+): candidate is Partial<IZQuadrilateral<T>> {
   return (
-    q != null &&
-    (Object.prototype.hasOwnProperty.call(q, "bottom") ||
-      Object.prototype.hasOwnProperty.call(q, "left") ||
-      Object.prototype.hasOwnProperty.call(q, "right") ||
-      Object.prototype.hasOwnProperty.call(q, "top"))
+    candidate != null &&
+    (Object.prototype.hasOwnProperty.call(candidate, "bottom") ||
+      Object.prototype.hasOwnProperty.call(candidate, "left") ||
+      Object.prototype.hasOwnProperty.call(candidate, "right") ||
+      Object.prototype.hasOwnProperty.call(candidate, "top"))
   );
 }
 
@@ -164,6 +187,10 @@ export class ZQuadrilateralBuilder<T = number> {
 
   /**
    * Constructs a full quadrilateral from an object that describes a quadrilateral.
+   *
+   * Note the limitations of this method.  If T is of type Quadrilateral or Point2d,
+   * then this method's behavior is undefined and it will most likely build a
+   * corrupt object.
    *
    * @param other -
    *        The object to build from.
