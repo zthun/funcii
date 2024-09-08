@@ -88,6 +88,7 @@ export class ZRectangle {
     ZVerticalAnchor.Top,
     ZHorizontalAnchor.Left,
   ]);
+
   /**
    * Calculates the top center point of the rectangle.
    *
@@ -98,6 +99,7 @@ export class ZRectangle {
     ZVerticalAnchor.Top,
     ZHorizontalAnchor.Center,
   ]);
+
   /**
    * Calculates the top right point of the rectangle.
    *
@@ -108,6 +110,7 @@ export class ZRectangle {
     ZVerticalAnchor.Top,
     ZHorizontalAnchor.Right,
   ]);
+
   /**
    * Calculates the middle left point of the rectangle.
    *
@@ -118,6 +121,7 @@ export class ZRectangle {
     ZVerticalAnchor.Middle,
     ZHorizontalAnchor.Left,
   ]);
+
   /**
    * Calculates the middle center point of the rectangle.
    *
@@ -128,6 +132,7 @@ export class ZRectangle {
     ZVerticalAnchor.Middle,
     ZHorizontalAnchor.Center,
   ]);
+
   /**
    * Calculates the middle right point of the rectangle.
    *
@@ -138,6 +143,7 @@ export class ZRectangle {
     ZVerticalAnchor.Middle,
     ZHorizontalAnchor.Right,
   ]);
+
   /**
    * Calculates the bottom left point of the rectangle.
    *
@@ -148,6 +154,7 @@ export class ZRectangle {
     ZVerticalAnchor.Bottom,
     ZHorizontalAnchor.Left,
   ]);
+
   /**
    * Calculates the bottom center point of the rectangle.
    *
@@ -158,6 +165,7 @@ export class ZRectangle {
     ZVerticalAnchor.Bottom,
     ZHorizontalAnchor.Center,
   ]);
+
   /**
    * Calculates the bottom right point of the rectangle.
    *
