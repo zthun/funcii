@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   IZQuadrilateralCorners,
   ZQuadrilateralCornersBuilder,
+  ZQuadrilateralCornersLike,
 } from "./quadrilateral-corners.mjs";
 
 describe("Setting all 4 corners at the same time", () => {
@@ -95,6 +96,94 @@ describe("Setting side positions", () => {
 
     // Assert.
     expect(actual).toEqual(expected);
+  });
+});
+
+describe("From", () => {
+  const shouldOutputQuadrilateralCorners = (
+    expected: IZQuadrilateralCorners,
+    other: ZQuadrilateralCornersLike,
+  ) => {
+    // Arrange.
+    const target = new ZQuadrilateralCornersBuilder(0);
+
+    // Act.
+    const actual = target.from(other).build();
+
+    // Assert.
+    expect(actual).toEqual(expected);
+  };
+
+  describe("Raw", () => {
+    it("should set all sides", () => {
+      const expected = new ZQuadrilateralCornersBuilder(10).build();
+      shouldOutputQuadrilateralCorners(expected, 10);
+    });
+  });
+
+  describe("Side", () => {
+    it("should set the bottomLeft and bottomRight for bottom", () => {
+      const expected = new ZQuadrilateralCornersBuilder(0).bottom(10).build();
+      shouldOutputQuadrilateralCorners(expected, { bottom: 10 });
+    });
+
+    it("should set the bottomLeft and topLeft for left", () => {
+      const expected = new ZQuadrilateralCornersBuilder(0).left(10).build();
+      shouldOutputQuadrilateralCorners(expected, { left: 10 });
+    });
+
+    it("should set the bottomRight and topRight for right", () => {
+      const expected = new ZQuadrilateralCornersBuilder(0).right(10).build();
+      shouldOutputQuadrilateralCorners(expected, { right: 10 });
+    });
+
+    it("should set the topLeft and topRight for top", () => {
+      const expected = new ZQuadrilateralCornersBuilder(0).top(10).build();
+      shouldOutputQuadrilateralCorners(expected, { top: 10 });
+    });
+  });
+
+  describe("Point", () => {
+    it("should set bottomLeft", () => {
+      const expected = new ZQuadrilateralCornersBuilder(0)
+        .bottomLeft(10)
+        .build();
+      shouldOutputQuadrilateralCorners(expected, { bottomLeft: 10 });
+    });
+
+    it("should set bottomRight", () => {
+      const expected = new ZQuadrilateralCornersBuilder(0)
+        .bottomRight(10)
+        .build();
+      shouldOutputQuadrilateralCorners(expected, { bottomRight: 10 });
+    });
+
+    it("should set topLeft", () => {
+      const expected = new ZQuadrilateralCornersBuilder(0).topLeft(10).build();
+      shouldOutputQuadrilateralCorners(expected, { topLeft: 10 });
+    });
+
+    it("should set topRight", () => {
+      const expected = new ZQuadrilateralCornersBuilder(0).topRight(10).build();
+      shouldOutputQuadrilateralCorners(expected, { topRight: 10 });
+    });
+  });
+
+  describe("Empty", () => {
+    it("should keep the same values", () => {
+      const expected = new ZQuadrilateralCornersBuilder(0).build();
+      shouldOutputQuadrilateralCorners(expected, {});
+    });
+
+    it("should keep the same values for null", () => {
+      const expected = new ZQuadrilateralCornersBuilder(0).build();
+      shouldOutputQuadrilateralCorners(expected, null);
+    });
+
+    it("should keep the same values for undefined", () => {
+      const expected = new ZQuadrilateralCornersBuilder(0).build();
+      shouldOutputQuadrilateralCorners(expected, undefined);
+    });
   });
 });
 

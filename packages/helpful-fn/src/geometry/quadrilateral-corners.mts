@@ -1,3 +1,6 @@
+import { isEmpty } from "lodash-es";
+import { firstDefined } from "../first-where/first-where.mjs";
+
 /**
  * An object that describes 4 corner values of a quadrilateral.
  *
@@ -13,6 +16,33 @@ export interface IZQuadrilateralCorners<T = number> {
   topLeft: T;
   topRight: T;
 }
+
+/**
+ * A type that describes quadrilateral corners on the vertical axis.
+ */
+type ZCornersVertical<T> = {
+  bottom?: T;
+  top?: T;
+};
+
+/**
+ * A type that describes quadrilateral corners on the horizontal axis.
+ */
+type ZCornersHorizontal<T> = {
+  left?: T;
+  right?: T;
+};
+
+/**
+ * An value that a corners object can be built upon.
+ */
+export type ZQuadrilateralCornersLike<T = number> =
+  | T
+  | ZCornersVertical<T>
+  | ZCornersHorizontal<T>
+  | Partial<IZQuadrilateralCorners<T>>
+  | null
+  | undefined;
 
 /**
  * An object that can be used to build an {@link IZQuadrilateralCorners} object.
@@ -138,6 +168,86 @@ export class ZQuadrilateralCornersBuilder<T = number> {
    */
   public top(value: T): this {
     return this.topLeft(value).topRight(value);
+  }
+
+  /**
+   * Sets the corner values based on an object that
+   * describes a set of quadrilateral corners.
+   *
+   * @param other -
+   *        The object that describes the corners.
+   *
+   * @returns
+   *        This object.
+   */
+  public from(other: ZQuadrilateralCornersLike<T>): this {
+    function isVerticals<T>(
+      candidate: ZQuadrilateralCornersLike<T>,
+    ): candidate is ZCornersVertical<T> {
+      return (
+        candidate != null &&
+        (Object.prototype.hasOwnProperty.call(candidate, "bottom") ||
+          Object.prototype.hasOwnProperty.call(candidate, "top"))
+      );
+    }
+
+    function isHorizontals<T>(
+      candidate: ZQuadrilateralCornersLike<T>,
+    ): candidate is ZCornersHorizontal<T> {
+      return (
+        candidate != null &&
+        (Object.prototype.hasOwnProperty.call(candidate, "left") ||
+          Object.prototype.hasOwnProperty.call(candidate, "right"))
+      );
+    }
+
+    function isCorners<T>(
+      candidate: ZQuadrilateralCornersLike<T>,
+    ): candidate is Partial<IZQuadrilateralCorners<T>> {
+      return (
+        candidate != null &&
+        (Object.prototype.hasOwnProperty.call(candidate, "bottomLeft") ||
+          Object.prototype.hasOwnProperty.call(candidate, "bottomRight") ||
+          Object.prototype.hasOwnProperty.call(candidate, "topLeft") ||
+          Object.prototype.hasOwnProperty.call(candidate, "topRight"))
+      );
+    }
+
+    const { bottomLeft, bottomRight, topLeft, topRight } = this._corners;
+
+    if (isCorners(other)) {
+      this._corners.bottomLeft = firstDefined(bottomLeft, other.bottomLeft);
+      this._corners.bottomRight = firstDefined(bottomRight, other.bottomRight);
+      this._corners.topLeft = firstDefined(topLeft, other.topLeft);
+      this._corners.topRight = firstDefined(topRight, other.topRight);
+      return this;
+    }
+
+    if (isVerticals(other)) {
+      this._corners.bottomLeft = firstDefined(bottomLeft, other.bottom);
+      this._corners.bottomRight = firstDefined(bottomRight, other.bottom);
+      this._corners.topLeft = firstDefined(topLeft, other.top);
+      this._corners.topRight = firstDefined(topRight, other.top);
+      return this;
+    }
+
+    if (isHorizontals(other)) {
+      this._corners.bottomLeft = firstDefined(bottomLeft, other.left);
+      this._corners.bottomRight = firstDefined(bottomRight, other.right);
+      this._corners.topLeft = firstDefined(topLeft, other.left);
+      this._corners.topRight = firstDefined(topRight, other.right);
+      return this;
+    }
+
+    if (typeof other === "object" && isEmpty(other)) {
+      return this;
+    }
+
+    this._corners.bottomLeft = firstDefined(bottomLeft, other);
+    this._corners.bottomRight = firstDefined(bottomRight, other);
+    this._corners.topLeft = firstDefined(topLeft, other);
+    this._corners.topRight = firstDefined(topRight, other);
+    return this;
   }
 
   /**
