@@ -1,3 +1,7 @@
+import { isEmpty } from "lodash-es";
+import { firstDefined } from "../first-where/first-where.mjs";
+import { IZPoint2d } from "./point.mjs";
+
 /**
  * Represents a object of 4 side values.
  *
@@ -21,6 +25,38 @@ export interface IZQuadrilateral<T = number> {
    * Top value.
    */
   top: T;
+}
+
+/**
+ * Represents an object that can describe a quadrilateral.
+ */
+export type ZQuadrilateralLike<T = number> =
+  | T
+  | Partial<IZPoint2d<T>>
+  | Partial<IZQuadrilateral<T>>
+  | null
+  | undefined;
+
+export function isPoint2d<T>(
+  p: ZQuadrilateralLike<T>,
+): p is Partial<IZPoint2d<T>> {
+  return (
+    p != null &&
+    (Object.prototype.hasOwnProperty.call(p, "x") ||
+      Object.prototype.hasOwnProperty.call(p, "y"))
+  );
+}
+
+export function isQuadrilateral<T>(
+  q: ZQuadrilateralLike<T>,
+): q is Partial<IZQuadrilateral<T>> {
+  return (
+    q != null &&
+    (Object.prototype.hasOwnProperty.call(q, "bottom") ||
+      Object.prototype.hasOwnProperty.call(q, "left") ||
+      Object.prototype.hasOwnProperty.call(q, "right") ||
+      Object.prototype.hasOwnProperty.call(q, "top"))
+  );
 }
 
 /**
@@ -124,6 +160,44 @@ export class ZQuadrilateralBuilder<T = number> {
    */
   public y(y: T): this {
     return this.bottom(y).top(y);
+  }
+
+  /**
+   * Constructs a full quadrilateral from an object that describes a quadrilateral.
+   *
+   * @param other -
+   *        The object to build from.
+   *
+   * @returns
+   *        This object.
+   */
+  public from(other: ZQuadrilateralLike<T>): this {
+    if (isQuadrilateral(other)) {
+      this._quad.bottom = firstDefined(this._quad.bottom, other.bottom);
+      this._quad.left = firstDefined(this._quad.left, other.left);
+      this._quad.right = firstDefined(this._quad.right, other.right);
+      this._quad.top = firstDefined(this._quad.top, other.top);
+      return this;
+    }
+
+    if (isPoint2d(other)) {
+      this._quad.bottom = firstDefined(this._quad.bottom, other.y);
+      this._quad.left = firstDefined(this._quad.left, other.x);
+      this._quad.right = firstDefined(this._quad.right, other.x);
+      this._quad.top = firstDefined(this._quad.top, other.y);
+      return this;
+    }
+
+    if (typeof other === "object" && isEmpty(other)) {
+      return this;
+    }
+
+    this._quad.bottom = firstDefined(this._quad.bottom, other);
+    this._quad.left = firstDefined(this._quad.left, other);
+    this._quad.right = firstDefined(this._quad.right, other);
+    this._quad.top = firstDefined(this._quad.top, other);
+
+    return this;
   }
 
   /**
