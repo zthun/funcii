@@ -2775,40 +2775,40 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zthun/cirque-du-dom@npm:^7.0.1":
-  version: 7.0.1
-  resolution: "@zthun/cirque-du-dom@npm:7.0.1"
+"@zthun/cirque-du-dom@npm:^7.0.3":
+  version: 7.0.3
+  resolution: "@zthun/cirque-du-dom@npm:7.0.3"
   dependencies:
     "@testing-library/dom": "npm:^10.4.0"
     "@testing-library/user-event": "npm:^14.5.2"
-    "@zthun/cirque": "npm:^7.0.1"
+    "@zthun/cirque": "npm:^7.0.3"
     lodash-es: "npm:^4.17.21"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
-  checksum: 10c0/fdd96101230e7e5aaf45d2c996dc34be48e33691351b2cc53ed6819393eb490cad495ee0bcea1f8e92a24c44eeb9244d0179cbbc39586cb913069f5ec8cc0ff0
+  checksum: 10c0/701e5e29b5c97c2dd4ddcf093a85640ac00470cd164df5d0b2af8219e6da13b8a3cc320f551b213361ad78aae42a9956c6501c8ee82072aa34e877fab8f2b3b9
   languageName: node
   linkType: hard
 
-"@zthun/cirque-du-react@npm:^7.0.2":
-  version: 7.0.2
-  resolution: "@zthun/cirque-du-react@npm:7.0.2"
+"@zthun/cirque-du-react@npm:^7.0.3":
+  version: 7.0.3
+  resolution: "@zthun/cirque-du-react@npm:7.0.3"
   dependencies:
     "@testing-library/dom": "npm:^10.4.0"
     "@testing-library/react": "npm:^16.0.1"
-    "@zthun/cirque": "npm:^7.0.1"
-    "@zthun/cirque-du-dom": "npm:^7.0.1"
+    "@zthun/cirque": "npm:^7.0.3"
+    "@zthun/cirque-du-dom": "npm:^7.0.3"
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
-  checksum: 10c0/3281dc2a8665e17610cd5f7258c98633f41f52e13e463b1a970b37facfb3111bdc0f45ac3e854b348e335dd20699bb98c73dfaff3d678aebab9fdd2a85464303
+  checksum: 10c0/f1248d44e65b4c307608eb16f023269e523390e88b63cdf0981d7244f421d56c3b3435aabb08a18aea670c120cd2488e59430a5ce27ea355d3d83240c7ebc617
   languageName: node
   linkType: hard
 
-"@zthun/cirque@npm:^7.0.1":
-  version: 7.0.1
-  resolution: "@zthun/cirque@npm:7.0.1"
-  checksum: 10c0/91ffafca832a9540da101aede613ccc2fde42d754abf5224a255b9e010728d918d29998c83039e4420b89ffa6ee28b59538b174a500385ef08d3c2ecc6bbfc54
+"@zthun/cirque@npm:^7.0.3":
+  version: 7.0.3
+  resolution: "@zthun/cirque@npm:7.0.3"
+  checksum: 10c0/ce2aff04bb40153a8b3ec8ce9282eaffb29402f501f6d328da50b024be6b278d52b31ec0d102bc20700b7a0bd2b3a417e342f9daf460132736b8df8b15fba9ee
   languageName: node
   linkType: hard
 
@@ -2857,6 +2857,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-fn@workspace:packages/helpful-fn"
   dependencies:
+    lodash-es: "npm:^4.17.21"
     typescript: "npm:^5.5.4"
     uuid: "npm:^10.0.0"
     vite: "npm:^5.4.3"
@@ -2915,8 +2916,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-react@workspace:packages/helpful-react"
   dependencies:
-    "@zthun/cirque": "npm:^7.0.1"
-    "@zthun/cirque-du-react": "npm:^7.0.2"
+    "@zthun/cirque": "npm:^7.0.3"
+    "@zthun/cirque-du-react": "npm:^7.0.3"
     "@zthun/helpful-fn": "npm:^6.1.0"
     "@zthun/helpful-query": "npm:^6.1.0"
     lodash-es: "npm:^4.17.21"
@@ -2987,7 +2988,7 @@ __metadata:
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.5.4"
     vite: "npm:^5.4.3"
-    vite-plugin-dts: "npm:^4.2.0"
+    vite-plugin-dts: "npm:^4.2.1"
     vite-plugin-externalize-deps: "npm:^0.8.0"
     vite-tsconfig-paths: "npm:^5.0.1"
     vitest: "npm:^2.0.5"
@@ -11640,9 +11641,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-plugin-dts@npm:^4.2.0":
-  version: 4.2.0
-  resolution: "vite-plugin-dts@npm:4.2.0"
+"vite-plugin-dts@npm:^4.2.1":
+  version: 4.2.1
+  resolution: "vite-plugin-dts@npm:4.2.1"
   dependencies:
     "@microsoft/api-extractor": "npm:7.47.7"
     "@rollup/pluginutils": "npm:^5.1.0"
@@ -11659,7 +11660,7 @@ __metadata:
   peerDependenciesMeta:
     vite:
       optional: true
-  checksum: 10c0/5a5b50c6c97b062cccf9d6a352add7fd21da8259d535e99be281ea3565d80332a5d01a09758ae92e81d03c4a47e62ad084b06520d20defe0484cd827971357d5
+  checksum: 10c0/cd18f7ee82ae93d56c90cd723fe93dfd169f4f35b80af520c9fb68d8eae84ee866329ac099fd7944f86c20752662c2aef380e784a9828f591eaa2df7ebf048c7
   languageName: node
   linkType: hard
 
