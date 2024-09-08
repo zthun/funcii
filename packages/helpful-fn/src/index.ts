@@ -5,6 +5,7 @@ export * from "./create-error/create-error.mjs";
 export * from "./create-guid/create-guid.mjs";
 export * from "./first-where/first-where.mjs";
 export * from "./geometry/point.mjs";
+export * from "./geometry/quadrilateral-corners.mjs";
 export * from "./geometry/quadrilateral.mjs";
 export * from "./geometry/rectangle.mjs";
 export * from "./global/global.mjs";
