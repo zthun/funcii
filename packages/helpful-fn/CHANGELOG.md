@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.0](https://github.com/zthun/helpful/compare/v6.0.0...v6.1.0) (2024-09-08)
+
+
+### Features
+
+* required deep recursively requires all properties in a type ([3b30fc2](https://github.com/zthun/helpful/commit/3b30fc20a3a74aa47ca5dc5c9b00ccf51a430267))
+* required pick picks specific properties to be required ([ca1e22e](https://github.com/zthun/helpful/commit/ca1e22e0ab3fa09091e1f4d77707a56e85173b7e))
+
+
+
 ## [6.0.0](https://github.com/zthun/helpful/compare/v5.0.3...v6.0.0) (2024-09-01)
 
 **Note:** Version bump only for package @zthun/helpful-fn
