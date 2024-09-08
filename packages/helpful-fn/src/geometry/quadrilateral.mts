@@ -42,47 +42,6 @@ export type ZQuadrilateralLike<T = number> =
   | undefined;
 
 /**
- * Gets whether a quadrilateral like object is a partial point2d.
- *
- * @param candidate -
- *        The candidate to check.
- *
- * @returns
- *        True if candidate is defined and has an x or y property.
- */
-export function isPoint2d<T>(
-  candidate: ZQuadrilateralLike<T>,
-): candidate is Partial<IZPoint2d<T>> {
-  return (
-    candidate != null &&
-    (Object.prototype.hasOwnProperty.call(candidate, "x") ||
-      Object.prototype.hasOwnProperty.call(candidate, "y"))
-  );
-}
-
-/**
- * Gets whether a quadrilateral like object is a partial point2d.
- *
- * @param candidate -
- *        The candidate to check.
- *
- * @returns
- *        True if candidate is defined and has an bottom,
- *        left, right, or top property.
- */
-export function isQuadrilateral<T>(
-  candidate: ZQuadrilateralLike<T>,
-): candidate is Partial<IZQuadrilateral<T>> {
-  return (
-    candidate != null &&
-    (Object.prototype.hasOwnProperty.call(candidate, "bottom") ||
-      Object.prototype.hasOwnProperty.call(candidate, "left") ||
-      Object.prototype.hasOwnProperty.call(candidate, "right") ||
-      Object.prototype.hasOwnProperty.call(candidate, "top"))
-  );
-}
-
-/**
  * Represents a builder for a quadrilateral object.
  */
 export class ZQuadrilateralBuilder<T = number> {
@@ -199,6 +158,28 @@ export class ZQuadrilateralBuilder<T = number> {
    *        This object.
    */
   public from(other: ZQuadrilateralLike<T>): this {
+    function isPoint2d<T>(
+      candidate: ZQuadrilateralLike<T>,
+    ): candidate is Partial<IZPoint2d<T>> {
+      return (
+        candidate != null &&
+        (Object.prototype.hasOwnProperty.call(candidate, "x") ||
+          Object.prototype.hasOwnProperty.call(candidate, "y"))
+      );
+    }
+
+    function isQuadrilateral<T>(
+      candidate: ZQuadrilateralLike<T>,
+    ): candidate is Partial<IZQuadrilateral<T>> {
+      return (
+        candidate != null &&
+        (Object.prototype.hasOwnProperty.call(candidate, "bottom") ||
+          Object.prototype.hasOwnProperty.call(candidate, "left") ||
+          Object.prototype.hasOwnProperty.call(candidate, "right") ||
+          Object.prototype.hasOwnProperty.call(candidate, "top"))
+      );
+    }
+
     if (isQuadrilateral(other)) {
       this._quad.bottom = firstDefined(this._quad.bottom, other.bottom);
       this._quad.left = firstDefined(this._quad.left, other.left);
