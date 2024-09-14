@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.0](https://github.com/zthun/helpful/compare/v6.2.0...v6.3.0) (2024-09-14)
+
+
+### Features
+
+* isEmptyObject determines whether or not an object is considered empty ([c55ef09](https://github.com/zthun/helpful/commit/c55ef09a9b93e417ffd3abb13cd866b2779a7d7e))
+* pick reduces an object by a key value predicate ([47db96d](https://github.com/zthun/helpful/commit/47db96db1e2023027a4ce87afef443f475a6c3f2))
+
+
+
 ## [6.2.0](https://github.com/zthun/helpful/compare/v6.1.0...v6.2.0) (2024-09-08)
 
 
