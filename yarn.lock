@@ -2857,7 +2857,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-fn@workspace:packages/helpful-fn"
   dependencies:
-    lodash-es: "npm:^4.17.21"
     typescript: "npm:^5.5.4"
     uuid: "npm:^10.0.0"
     vite: "npm:^5.4.3"
