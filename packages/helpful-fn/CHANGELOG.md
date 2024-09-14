@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.0](https://github.com/zthun/helpful/compare/v6.1.0...v6.2.0) (2024-09-08)
+
+
+### Features
+
+* quadrilateral corners allow a set of 4 corner point descriptions ([fb3d9e4](https://github.com/zthun/helpful/commit/fb3d9e4dfbe30c8dedea8dbb2f9b8c6fd8957fb9))
+* quadrilateral's can now be built from an object that describes a quadrilateral ([231626f](https://github.com/zthun/helpful/commit/231626f1ca0a0a15ce12af834aa8752147ef5e10))
+
+
+
 ## [6.1.0](https://github.com/zthun/helpful/compare/v6.0.0...v6.1.0) (2024-09-08)
 
 
