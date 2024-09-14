@@ -1,4 +1,4 @@
-import { isEmpty } from "lodash-es";
+import { isEmptyObject } from "../empty/is-empty-object";
 import { firstDefined } from "../first-where/first-where.mjs";
 
 /**
@@ -239,14 +239,13 @@ export class ZQuadrilateralCornersBuilder<T = number> {
       return this;
     }
 
-    if (typeof other === "object" && isEmpty(other)) {
-      return this;
+    if (!isEmptyObject(other)) {
+      this._corners.bottomLeft = firstDefined(bottomLeft, other);
+      this._corners.bottomRight = firstDefined(bottomRight, other);
+      this._corners.topLeft = firstDefined(topLeft, other);
+      this._corners.topRight = firstDefined(topRight, other);
     }
 
-    this._corners.bottomLeft = firstDefined(bottomLeft, other);
-    this._corners.bottomRight = firstDefined(bottomRight, other);
-    this._corners.topLeft = firstDefined(topLeft, other);
-    this._corners.topRight = firstDefined(topRight, other);
     return this;
   }
 

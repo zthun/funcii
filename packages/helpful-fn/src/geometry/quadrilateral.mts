@@ -1,4 +1,4 @@
-import { isEmpty } from "lodash-es";
+import { isEmptyObject } from "../empty/is-empty-object";
 import { firstDefined } from "../first-where/first-where.mjs";
 import { IZPoint2d } from "./point.mjs";
 
@@ -196,14 +196,12 @@ export class ZQuadrilateralBuilder<T = number> {
       return this;
     }
 
-    if (typeof other === "object" && isEmpty(other)) {
-      return this;
+    if (!isEmptyObject(other)) {
+      this._quad.bottom = firstDefined(this._quad.bottom, other);
+      this._quad.left = firstDefined(this._quad.left, other);
+      this._quad.right = firstDefined(this._quad.right, other);
+      this._quad.top = firstDefined(this._quad.top, other);
     }
-
-    this._quad.bottom = firstDefined(this._quad.bottom, other);
-    this._quad.left = firstDefined(this._quad.left, other);
-    this._quad.right = firstDefined(this._quad.right, other);
-    this._quad.top = firstDefined(this._quad.top, other);
 
     return this;
   }
