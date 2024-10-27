@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.0](https://github.com/zthun/helpful/compare/v6.4.1...v6.5.0) (2024-10-27)
+
+
+### Features
+
+* rectangle attach matches two anchor points ([ca0d44b](https://github.com/zthun/helpful/commit/ca0d44b0e85f21386a6f7a8ba10e95e0c74ec018))
+
+
+
 ## [6.4.1](https://github.com/zthun/helpful/compare/v6.4.0...v6.4.1) (2024-10-27)
 
 
