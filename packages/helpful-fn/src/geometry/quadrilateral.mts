@@ -216,7 +216,14 @@ export class ZQuadrilateralBuilder<T = number> {
    *        This object.
    */
   public copy(other: IZQuadrilateral<T>): this {
-    this._quad = structuredClone(other);
+    // The copy is done this way instead of a structured
+    // copy because we want to support things like
+    // copy(other.getBoundingClientRect()) which
+    // is immutable when working on the client.
+    this._quad.left = other.left;
+    this._quad.right = other.right;
+    this._quad.top = other.top;
+    this._quad.bottom = other.bottom;
     return this;
   }
 
