@@ -140,4 +140,254 @@ describe("ZRectangle", () => {
       shouldReturnPoint({ x: 10, y: 30 }, rectangle, (t) => t.bottomRight());
     });
   });
+
+  describe("OffsetToFit", () => {
+    it("should move the candidate up if the bottom of the candidate is greater than the bottom of the rectangle", () => {
+      // Arrange.
+      const target = createTestTarget(
+        new ZQuadrilateralBuilder(0)
+          .top(200)
+          .bottom(500)
+          .left(25)
+          .right(100)
+          .build(),
+      );
+      const candidate = new ZQuadrilateralBuilder(0)
+        .top(400)
+        .bottom(600)
+        .left(50)
+        .right(75)
+        .build();
+
+      // Act.
+      const actual = target.offsetToFit(candidate);
+
+      // Assert.
+      expect(actual.top).toEqual(300);
+      expect(actual.bottom).toEqual(500);
+    });
+
+    it("should move the candidate down if the top of the candidate is less than the top of the rectangle", () => {
+      // Arrange.
+      const target = createTestTarget(
+        new ZQuadrilateralBuilder(0)
+          .top(200)
+          .bottom(500)
+          .left(0)
+          .right(100)
+          .build(),
+      );
+      const candidate = new ZQuadrilateralBuilder(0)
+        .top(100)
+        .bottom(300)
+        .left(25)
+        .right(75)
+        .build();
+
+      // Act.
+      const actual = target.offsetToFit(candidate);
+
+      // Assert.
+      expect(actual.top).toEqual(200);
+      expect(actual.bottom).toEqual(400);
+    });
+
+    it("should move the candidate to the right if the left of the candidate is less then the left of the rectangle", () => {
+      // Arrange.
+      const target = createTestTarget(
+        new ZQuadrilateralBuilder(0)
+          .top(0)
+          .bottom(500)
+          .left(100)
+          .right(500)
+          .build(),
+      );
+      const candidate = new ZQuadrilateralBuilder(0)
+        .top(50)
+        .bottom(100)
+        .left(50)
+        .right(100)
+        .build();
+
+      // Act.
+      const actual = target.offsetToFit(candidate);
+
+      // Assert.
+      expect(actual.left).toEqual(100);
+      expect(actual.right).toEqual(150);
+    });
+
+    it("should move the candidate to the left if the right of the candidate is greater than the right of the rectangle", () => {
+      // Arrange.
+      const target = createTestTarget(
+        new ZQuadrilateralBuilder(0)
+          .top(0)
+          .bottom(500)
+          .left(100)
+          .right(500)
+          .build(),
+      );
+      const candidate = new ZQuadrilateralBuilder(0)
+        .top(50)
+        .bottom(100)
+        .left(400)
+        .right(600)
+        .build();
+
+      // Act.
+      const actual = target.offsetToFit(candidate);
+
+      // Assert.
+      expect(actual.left).toEqual(300);
+      expect(actual.right).toEqual(500);
+    });
+
+    it("should keep the candidate the same if it fits inside the rectangle", () => {
+      // Arrange.
+      const target = createTestTarget(
+        new ZQuadrilateralBuilder(0)
+          .top(100)
+          .bottom(500)
+          .left(50)
+          .right(400)
+          .build(),
+      );
+      const candidate = new ZQuadrilateralBuilder(0)
+        .top(150)
+        .bottom(300)
+        .left(75)
+        .right(200)
+        .build();
+
+      // Act.
+      const actual = target.offsetToFit(candidate);
+
+      // Assert.
+      expect(actual).toEqual(candidate);
+    });
+
+    it("should keep the candidate the same if the inner rectangle is perfectly centered in the candidate", () => {
+      // Arrange.
+      const target = createTestTarget(
+        new ZQuadrilateralBuilder(0)
+          .top(100)
+          .bottom(300)
+          .left(100)
+          .right(300)
+          .build(),
+      );
+      const candidate = new ZQuadrilateralBuilder(0)
+        .top(0)
+        .bottom(400)
+        .left(0)
+        .right(400)
+        .build();
+
+      // Act.
+      const actual = target.offsetToFit(candidate);
+
+      // Assert.
+      expect(actual).toEqual(candidate);
+    });
+
+    it("should center the candidate horizontally if the total width of the candidate is greater than the width of the rectangle (moving left)", () => {
+      // Arrange.
+      const target = createTestTarget(
+        new ZQuadrilateralBuilder(0)
+          .top(0)
+          .bottom(500)
+          .left(100)
+          .right(300)
+          .build(),
+      );
+      const candidate = new ZQuadrilateralBuilder(0)
+        .top(100)
+        .bottom(400)
+        .left(90)
+        .right(430)
+        .build();
+
+      // Act.
+      const actual = target.offsetToFit(candidate);
+
+      // Assert.
+      expect(actual.left).toEqual(30);
+      expect(actual.right).toEqual(370);
+    });
+
+    it("should center the candidate horizontally if the total width of the candidate is greater than the width of the rectangle (moving right)", () => {
+      // Arrange.
+      const target = createTestTarget(
+        new ZQuadrilateralBuilder(0)
+          .top(0)
+          .bottom(500)
+          .left(100)
+          .right(300)
+          .build(),
+      );
+      const candidate = new ZQuadrilateralBuilder(0)
+        .top(100)
+        .bottom(400)
+        .left(20)
+        .right(310)
+        .build();
+
+      // Act.
+      const actual = target.offsetToFit(candidate);
+
+      // Assert.
+      expect(actual.left).toEqual(55);
+      expect(actual.right).toEqual(345);
+    });
+
+    it("should center the candidate vertically if the total height of the candidate is greater than the height of the rectangle (moving down)", () => {
+      // Arrange.
+      const target = createTestTarget(
+        new ZQuadrilateralBuilder(0)
+          .top(100)
+          .bottom(300)
+          .left(0)
+          .right(500)
+          .build(),
+      );
+      const candidate = new ZQuadrilateralBuilder(0)
+        .top(20)
+        .bottom(310)
+        .left(200)
+        .right(400)
+        .build();
+
+      // Act.
+      const actual = target.offsetToFit(candidate);
+
+      // Assert.
+      expect(actual.top).toEqual(55);
+      expect(actual.bottom).toEqual(345);
+    });
+
+    it("should center the candidate vertically if the total height of the candidate is greater than the height of the rectangle (moving up)", () => {
+      // Arrange.
+      const target = createTestTarget(
+        new ZQuadrilateralBuilder(0)
+          .top(100)
+          .bottom(300)
+          .left(0)
+          .right(500)
+          .build(),
+      );
+      const candidate = new ZQuadrilateralBuilder(0)
+        .top(90)
+        .bottom(400)
+        .left(200)
+        .right(400)
+        .build();
+
+      // Act.
+      const actual = target.offsetToFit(candidate);
+
+      // Assert.
+      expect(actual.top).toEqual(45);
+      expect(actual.bottom).toEqual(355);
+    });
+  });
 });

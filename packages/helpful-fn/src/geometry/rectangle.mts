@@ -4,7 +4,7 @@ import {
   ZVerticalAnchor,
 } from "../anchor/anchor.mjs";
 import { IZPoint2d } from "./point.mjs";
-import { IZQuadrilateral } from "./quadrilateral.mjs";
+import { IZQuadrilateral, ZQuadrilateralBuilder } from "./quadrilateral.mjs";
 
 /**
  * Represents a helper object that can run calculations on a numeric quadrilateral.
@@ -48,6 +48,89 @@ export class ZRectangle {
    */
   public area(): number {
     return this.width() * this.height();
+  }
+
+  /**
+   * Takes the candidate quadrilateral and adjusts it's coordinates to fit inside this rectangle.
+   *
+   * This is done by shifting the rectangle left, right, up, and down to make sure it is bounded
+   * inside.
+   *
+   * If the candidate width or height is larger than this rectangle, thus it cannot fit, then
+   * the candidate will be centered on the dimension where it is too big to fit.
+   *
+   * @param $candidate -
+   *        The candidate quadrilateral to fit.
+   *
+   * @returns
+   *        A new quadrilateral that offsets candidate so that it can fit inside this
+   *        rectangle.
+   */
+  public offsetToFit($candidate: IZQuadrilateral): IZQuadrilateral {
+    let _candidate = $candidate;
+    const candidateRectangle = new ZRectangle($candidate);
+
+    if (candidateRectangle.width() > this.width()) {
+      // Center the horizontal
+      const { x: cx } = candidateRectangle.middleCenter();
+      const { x: tx } = this.middleCenter();
+
+      _candidate = new ZQuadrilateralBuilder(0)
+        .copy(_candidate)
+        .left(_candidate.left - (cx - tx))
+        .right(_candidate.right - (cx - tx))
+        .build();
+    } else {
+      if (_candidate.left < this.sides.left) {
+        // Move the candidate to the right.
+        _candidate = new ZQuadrilateralBuilder(0)
+          .copy(_candidate)
+          .left(this.sides.left)
+          .right(_candidate.right + (this.sides.left - _candidate.left))
+          .build();
+      }
+
+      if (_candidate.right > this.sides.right) {
+        // Move the candidate to the left.
+        _candidate = new ZQuadrilateralBuilder(0)
+          .copy(_candidate)
+          .right(this.sides.right)
+          .left(_candidate.left - (_candidate.right - this.sides.right))
+          .build();
+      }
+    }
+
+    if (candidateRectangle.height() > this.height()) {
+      // Center the vertical
+      const { y: cy } = candidateRectangle.middleCenter();
+      const { y: ty } = this.middleCenter();
+
+      _candidate = new ZQuadrilateralBuilder(0)
+        .copy(_candidate)
+        .top(_candidate.top - (cy - ty))
+        .bottom(_candidate.bottom - (cy - ty))
+        .build();
+    } else {
+      if (_candidate.bottom > this.sides.bottom) {
+        // Move the candidate up.
+        _candidate = new ZQuadrilateralBuilder(0)
+          .copy(_candidate)
+          .bottom(this.sides.bottom)
+          .top(_candidate.top - (_candidate.bottom - this.sides.bottom))
+          .build();
+      }
+
+      if (_candidate.top < this.sides.top) {
+        // Move the candidate down
+        _candidate = new ZQuadrilateralBuilder(0)
+          .copy(_candidate)
+          .top(this.sides.top)
+          .bottom(_candidate.bottom + (this.sides.top - _candidate.top))
+          .build();
+      }
+    }
+
+    return _candidate;
   }
 
   /**
