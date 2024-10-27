@@ -51,6 +51,41 @@ export class ZRectangle {
   }
 
   /**
+   * Takes a candidate and attaches it to this rectangle that matches the anchor points.
+   *
+   * @param origin -
+   *        The anchor point of this rectangle.
+   * @param candidate -
+   *        The candidate rectangle to move
+   *
+   * @returns
+   *        A new quadrilateral that has it's placement such that if candidate was moved
+   *        to this resulting position, would have its candidateAnchor be in the same
+   *        place as this rectangles specified anchor.
+   */
+  public attach(
+    anchor: ZAnchor,
+    candidate: IZQuadrilateral,
+    candidateAnchor: ZAnchor,
+  ): IZQuadrilateral {
+    const _candidate = new ZRectangle(candidate);
+    const { x: ax, y: ay } = this.point(anchor);
+    const { x: ox, y: oy } = new ZRectangle(candidate).point(candidateAnchor);
+
+    const left: number = candidate.left + (ax - ox);
+    const top: number = candidate.top + (ay - oy);
+    const bottom: number = top + _candidate.height();
+    const right = left + _candidate.width();
+
+    return new ZQuadrilateralBuilder(0)
+      .left(left)
+      .right(right)
+      .top(top)
+      .bottom(bottom)
+      .build();
+  }
+
+  /**
    * Takes the candidate quadrilateral and adjusts it's coordinates to fit inside this rectangle.
    *
    * This is done by shifting the rectangle left, right, up, and down to make sure it is bounded
@@ -59,16 +94,16 @@ export class ZRectangle {
    * If the candidate width or height is larger than this rectangle, thus it cannot fit, then
    * the candidate will be centered on the dimension where it is too big to fit.
    *
-   * @param $candidate -
+   * @param candidate -
    *        The candidate quadrilateral to fit.
    *
    * @returns
    *        A new quadrilateral that offsets candidate so that it can fit inside this
    *        rectangle.
    */
-  public offsetToFit($candidate: IZQuadrilateral): IZQuadrilateral {
-    let _candidate = $candidate;
-    const candidateRectangle = new ZRectangle($candidate);
+  public offsetToFit(candidate: IZQuadrilateral): IZQuadrilateral {
+    let _candidate = candidate;
+    const candidateRectangle = new ZRectangle(candidate);
 
     if (candidateRectangle.width() > this.width()) {
       // Center the horizontal

@@ -1,4 +1,9 @@
 import { describe, expect, it } from "vitest";
+import {
+  ZAnchor,
+  ZHorizontalAnchor,
+  ZVerticalAnchor,
+} from "../anchor/anchor.mjs";
 import { IZPoint2d } from "./point.mjs";
 import { IZQuadrilateral, ZQuadrilateralBuilder } from "./quadrilateral.mjs";
 import { ZRectangle } from "./rectangle.mjs";
@@ -138,6 +143,80 @@ describe("ZRectangle", () => {
         .right(10)
         .build();
       shouldReturnPoint({ x: 10, y: 30 }, rectangle, (t) => t.bottomRight());
+    });
+  });
+
+  describe("Attach", () => {
+    const component = new ZQuadrilateralBuilder(0)
+      .left(50)
+      .right(350)
+      .top(100)
+      .bottom(150)
+      .build();
+    const candidate = new ZQuadrilateralBuilder(0)
+      .left(0)
+      .right(100)
+      .top(0)
+      .bottom(300)
+      .build();
+
+    const shouldAdjustTo = (
+      expected: IZQuadrilateral,
+      anchor: ZAnchor,
+      candidateAnchor: ZAnchor,
+    ) => {
+      // Arrange.
+      const target = createTestTarget(component);
+
+      // Act.
+      const actual = target.attach(anchor, candidate, candidateAnchor);
+
+      // Assert.
+      expect(actual).toEqual(expected);
+    };
+
+    it("should return the new position of the rectangle that matches bottom-left to top-left", () => {
+      shouldAdjustTo(
+        new ZQuadrilateralBuilder(0)
+          .left(component.left)
+          .top(component.bottom)
+          .right(component.left + candidate.right)
+          .bottom(component.bottom + candidate.bottom)
+          .build(),
+        [ZVerticalAnchor.Bottom, ZHorizontalAnchor.Left],
+        [ZVerticalAnchor.Top, ZHorizontalAnchor.Left],
+      );
+    });
+
+    it("should return the new position of the rectangle that matches top-left to bottom-left", () => {
+      shouldAdjustTo(
+        new ZQuadrilateralBuilder(0)
+          .left(component.left)
+          .top(component.top - (candidate.bottom - candidate.top))
+          .right(component.left + candidate.right)
+          .bottom(component.top)
+          .build(),
+        [ZVerticalAnchor.Top, ZHorizontalAnchor.Left],
+        [ZVerticalAnchor.Bottom, ZHorizontalAnchor.Left],
+      );
+    });
+
+    it("should return the new position of the rectangle that matches middle-center to middle-center", () => {
+      const { x, y } = new ZRectangle(component).middleCenter();
+      const _candidate = new ZRectangle(candidate);
+      const _width = _candidate.width();
+      const _height = _candidate.height();
+
+      shouldAdjustTo(
+        new ZQuadrilateralBuilder(0)
+          .left(x - _width / 2)
+          .right(x + _width / 2)
+          .top(y - _height / 2)
+          .bottom(y + _height / 2)
+          .build(),
+        [ZVerticalAnchor.Middle, ZHorizontalAnchor.Center],
+        [ZVerticalAnchor.Middle, ZHorizontalAnchor.Center],
+      );
     });
   });
 
