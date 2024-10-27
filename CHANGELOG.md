@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.4.1](https://github.com/zthun/helpful/compare/v6.4.0...v6.4.1) (2024-10-27)
+
+
+### Bug Fixes
+
+* a quadrilateral copying a bounded client rect should no longer throw exceptions ([cffdc64](https://github.com/zthun/helpful/commit/cffdc645947069d32dcd73c87f0b40e230a5f2fb))
+
+
+
 ## [6.4.0](https://github.com/zthun/helpful/compare/v6.3.0...v6.4.0) (2024-10-27)
 
 
