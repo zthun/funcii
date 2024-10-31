@@ -1,3 +1,4 @@
+import { firstDefined } from "@zthun/helpful-fn";
 import { KeyboardEvent, KeyboardEventHandler, useMemo } from "react";
 
 /**
@@ -49,14 +50,16 @@ export const DefaultActivateCodes = ["Enter", "Space"];
  */
 export function createKeyboardActivate<T = Element>(
   handler?: KeyboardEventHandler<T>,
-  codes: string[] = DefaultActivateCodes,
+  codes?: string[],
 ) {
+  const _codes = firstDefined(DefaultActivateCodes, codes);
+
   if (!handler) {
     return undefined;
   }
 
   return (e: KeyboardEvent<T>) => {
-    if (codes.indexOf(e.code) >= 0) {
+    if (_codes.indexOf(e.code) >= 0) {
       handler(e);
     }
   };
