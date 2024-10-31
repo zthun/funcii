@@ -1,6 +1,6 @@
 {
   "name": "@zthun/helpful-react",
-  "version": "6.5.0",
+  "version": "6.5.1",
   "description": "Helpful library that implements some react hooks and helpers.",
   "author": "Anthony Bonta",
   "license": "MIT",
