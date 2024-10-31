@@ -35,6 +35,34 @@ export interface IZKeyboardInteraction<T = Element> {
 export const DefaultActivateCodes = ["Enter", "Space"];
 
 /**
+ * @see {@link useKeyboardActivate}
+ *
+ * @param handler -
+ *        The callback handler to invoke when any of the key codes
+ *        are pressed.  If this is undefined, then it will never be invoked
+ * @param codes -
+ *        The list of key codes that will fire the event handler. The default
+ *        value will be {@link DefaultActivateCodes}.
+ *
+ * @returns
+ *        An object that contains the equivalent keydown event
+ */
+export function createKeyboardActivate<T = Element>(
+  handler?: KeyboardEventHandler<T>,
+  codes: string[] = DefaultActivateCodes,
+) {
+  if (!handler) {
+    return undefined;
+  }
+
+  return (e: KeyboardEvent<T>) => {
+    if (codes.indexOf(e.code) >= 0) {
+      handler(e);
+    }
+  };
+}
+
+/**
  * Represents a hook that generates a keyboard event that can
  * forward to another event as long as a specific key
  * is pressed.  This will also output the best value for the
@@ -57,18 +85,10 @@ export function useKeyboardActivate<T = Element>(
   handler?: KeyboardEventHandler<T>,
   codes: string[] = DefaultActivateCodes,
 ): IZKeyboardInteraction<T> {
-  const onKey = useMemo(() => {
-    if (!handler) {
-      return undefined;
-    }
-
-    return (e: KeyboardEvent<T>) => {
-      if (codes.indexOf(e.code) >= 0) {
-        handler(e);
-      }
-    };
-  }, [handler, codes]);
-
+  const onKey = useMemo(
+    () => createKeyboardActivate(handler, codes),
+    [handler, codes],
+  );
   const tabIndex = handler ? 0 : undefined;
 
   return { onKey, tabIndex };
