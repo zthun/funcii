@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.2](https://github.com/zthun/helpful/compare/v6.5.1...v6.5.2) (2024-11-05)
+
+**Note:** Version bump only for package @zthun/helpful-proxy
+
+
+
+
+
 ## [6.4.0](https://github.com/zthun/helpful/compare/v6.3.0...v6.4.0) (2024-10-27)
 
 **Note:** Version bump only for package @zthun/helpful-proxy
