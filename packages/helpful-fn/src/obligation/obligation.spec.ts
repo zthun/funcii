@@ -1,4 +1,3 @@
-/* eslint-disable require-jsdoc */
 import { describe, expect, it } from "vitest";
 import { optional, required } from "./obligation.mjs";
 
