@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.6.0](https://github.com/zthun/helpful/compare/v6.5.2...v6.6.0) (2024-11-19)
+
+
+### Features
+
+* deep partial describes a recursive partial ([06ac8aa](https://github.com/zthun/helpful/commit/06ac8aa04e9a8d3b3b23ba6b3e8b2b10ef1cea47))
+
+
+
 ## [6.5.2](https://github.com/zthun/helpful/compare/v6.5.1...v6.5.2) (2024-11-05)
 
 **Note:** Version bump only for package @zthun/helpful-fn
