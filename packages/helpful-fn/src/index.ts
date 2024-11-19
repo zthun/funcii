@@ -13,6 +13,7 @@ export * from "./global/global.mjs";
 export * from "./join-defined/join-defined.mjs";
 export * from "./obligation/obligation.mjs";
 export * from "./orientation/orientation.mjs";
+export * from "./partial/deep-partial";
 export * from "./peel/peel.mjs";
 export * from "./pick/pick.mjs";
 export * from "./required/required-deep.mjs";
