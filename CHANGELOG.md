@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.7.0](https://github.com/zthun/helpful/compare/v6.6.0...v6.7.0) (2024-12-29)
+
+
+### Features
+
+* add support for react 19 ([469a2de](https://github.com/zthun/helpful/commit/469a2dec6d94025b3db317bd2dee53a873fa833e))
+
+
+
 ## [6.6.0](https://github.com/zthun/helpful/compare/v6.5.2...v6.6.0) (2024-11-19)
 
 

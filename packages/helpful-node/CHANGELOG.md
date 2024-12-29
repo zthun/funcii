@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.7.0](https://github.com/zthun/helpful/compare/v6.6.0...v6.7.0) (2024-12-29)
+
+**Note:** Version bump only for package @zthun/helpful-node
+
+
+
+
+
 ## [6.6.0](https://github.com/zthun/helpful/compare/v6.5.2...v6.6.0) (2024-11-19)
 
 **Note:** Version bump only for package @zthun/helpful-node
