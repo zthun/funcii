@@ -12,7 +12,7 @@ export interface ZWalkOptions {
    *
    * The default is the current working directory
    *
-   * @see {@link process.cwd} for more information.
+   * @see process.cwd for more information.
    */
   start?: string;
 

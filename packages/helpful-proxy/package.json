@@ -25,9 +25,9 @@
     "http-reverse-proxy-ts": "^1.0.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.7",
-    "typescript": "^5.6.3",
-    "vitest": "^2.1.5",
+    "nodemon": "^3.1.9",
+    "typescript": "~5.6.3",
+    "vitest": "^2.1.8",
     "vitest-mock-extended": "^2.0.2"
   },
   "files": [

@@ -20,7 +20,7 @@ export interface IZQuadrilateralCorners<T = number> {
 /**
  * A type that describes quadrilateral corners on the vertical axis.
  */
-type ZCornersVertical<T> = {
+export type ZCornersVertical<T> = {
   bottom?: T;
   top?: T;
 };
@@ -28,7 +28,7 @@ type ZCornersVertical<T> = {
 /**
  * A type that describes quadrilateral corners on the horizontal axis.
  */
-type ZCornersHorizontal<T> = {
+export type ZCornersHorizontal<T> = {
   left?: T;
   right?: T;
 };

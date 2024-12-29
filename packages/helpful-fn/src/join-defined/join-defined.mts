@@ -11,7 +11,7 @@
 export type JoinListInputParameter<T> = T | [T, boolean] | null | undefined;
 
 /**
- * Similar to {@link Array.join}, but filters out null and undefined items.
+ * Similar to Array.join but filters out null and undefined items.
  *
  * @param delimiter -
  *        The delimiter that separates the items.

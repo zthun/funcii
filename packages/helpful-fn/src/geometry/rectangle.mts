@@ -53,10 +53,12 @@ export class ZRectangle {
   /**
    * Takes a candidate and attaches it to this rectangle that matches the anchor points.
    *
-   * @param origin -
+   * @param anchor -
    *        The anchor point of this rectangle.
    * @param candidate -
    *        The candidate rectangle to move
+   * @param candidateAnchor -
+   *        The anchor point of the candidate rectangle.
    *
    * @returns
    *        A new quadrilateral that has it's placement such that if candidate was moved

@@ -5,7 +5,7 @@ import { ZBrandBuilder } from "./brand.mjs";
  *
  * This array is immutable and frozen.  If you need
  * to have a mutable list of brands, use the
- * {@link Array.slice} method to create one.
+ * Array.slice method to create one.
  */
 export const ZBrands = Object.freeze([
   new ZBrandBuilder().facebook().build(),
