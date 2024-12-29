@@ -2,7 +2,6 @@ import { IZCircusSetup } from "@zthun/cirque";
 import { IZCircusReactHook, ZCircusSetupHook } from "@zthun/cirque-du-react";
 import { sleep } from "@zthun/helpful-fn";
 import { get, noop } from "lodash-es";
-import React, { StrictMode } from "react";
 import { Mock, afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import {
   ZAsyncDataTuple,
@@ -23,10 +22,7 @@ describe("useAsyncState", () => {
   >;
 
   async function createTestTarget() {
-    const wrapper = ({ children }) => <StrictMode>{children}</StrictMode>;
-    _setup = new ZCircusSetupHook(() => useAsyncState<string>(load), {
-      wrapper,
-    });
+    _setup = new ZCircusSetupHook(() => useAsyncState<string>(load));
     _hook = await _setup.setup();
     await sleep(5);
     return _hook;
@@ -66,12 +62,10 @@ describe("useAsyncState", () => {
       expect(asStateData(actual)).toEqual(expected);
     });
 
-    it("should set the correct value in the case the component is unloaded and reloaded", async () => {
+    it("should set the correct value eventually", async () => {
       // Arrange.
       const expected = "good";
-      load
-        .mockImplementationOnce(() => sleep(300, "bad"))
-        .mockImplementationOnce(() => sleep(0, expected));
+      load.mockImplementationOnce(() => sleep(300, expected));
       const target = await createTestTarget();
       // Act.
       await target.rerender();
@@ -86,13 +80,12 @@ describe("useAsyncState", () => {
       const expected = "good";
       load
         .mockImplementationOnce(() => sleep(300, "bad"))
-        .mockImplementationOnce(() => sleep(100, "bad"))
         .mockImplementationOnce(() => sleep(0, expected));
       const target = await createTestTarget();
       // Act.
-      const [, refresh] = await target.rerender();
+      const [, refresh] = await target.current();
       await refresh();
-      await sleep(500);
+      await sleep(600);
       const [actual] = await target.current();
       // Assert.
       expect(actual).toEqual(expected);

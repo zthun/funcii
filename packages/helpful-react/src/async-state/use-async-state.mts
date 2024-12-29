@@ -53,7 +53,7 @@ export function useAsyncState<T>(
   deps: DependencyList = [],
 ): ZAsyncDataTuple<T> {
   const [current, setCurrent] = useState<ZAsyncDataState<T>>(ZAsyncLoading);
-  const subscription = useRef<Subscription>();
+  const subscription = useRef<Subscription | undefined>(undefined);
 
   const _refresh = () => {
     subscription.current?.unsubscribe();

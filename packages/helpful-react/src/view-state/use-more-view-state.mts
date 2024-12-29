@@ -42,7 +42,7 @@ export function useMoreViewState<T = any>(
     new ZDataRequestBuilder().copy(template).page(1).build(),
   );
   const _count = useRef<Promise<number> | null>(null);
-  const subscription = useRef<Subscription>();
+  const subscription = useRef<Subscription | undefined>(undefined);
 
   const _loadMore = (complete: boolean) => {
     subscription.current?.unsubscribe();
