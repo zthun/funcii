@@ -10,13 +10,13 @@
     "url": "https://github.com/zthun/helpful",
     "directory": "packages/helpful-proxy"
   },
-  "main": "./dist/main.js",
+  "main": "./dist/main.mjs",
   "scripts": {
     "build": "tsc -p tsconfig.prod.json",
     "debug": "tsx watch ./src/main.ts",
-    "start": "node ./dist/main.js"
+    "start": "node ./dist/main.mjs"
   },
-  "bin": "./bin/main.js",
+  "bin": "./bin/main.mjs",
   "publishConfig": {
     "access": "public"
   },

@@ -3132,7 +3132,7 @@ __metadata:
     vitest: "npm:^2.1.8"
     vitest-mock-extended: "npm:^2.0.2"
   bin:
-    helpful-proxy: ./bin/main.js
+    helpful-proxy: ./bin/main.mjs
   languageName: unknown
   linkType: soft
 
