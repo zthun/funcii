@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.7.2](https://github.com/zthun/helpful/compare/v6.7.1...v6.7.2) (2025-01-02)
+
+
+### Bug Fixes
+
+* main should now be discoverable with module projects ([ce16690](https://github.com/zthun/helpful/commit/ce166906b78f0ba06c3593e8b6ff3e5bbb88e101))
+
+
+
 ## [6.7.1](https://github.com/zthun/helpful/compare/v6.7.0...v6.7.1) (2025-01-02)
 
 **Note:** Version bump only for package @zthun/helpful-proxy
