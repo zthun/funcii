@@ -3121,7 +3121,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@zthun/helpful-proxy@npm:^6.7.0, @zthun/helpful-proxy@workspace:packages/helpful-proxy":
+"@zthun/helpful-proxy@npm:^6.7.1, @zthun/helpful-proxy@workspace:packages/helpful-proxy":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-proxy@workspace:packages/helpful-proxy"
   dependencies:
@@ -3192,7 +3192,7 @@ __metadata:
     "@zthun/helpful-fn": "npm:^6.7.0"
     "@zthun/helpful-internet": "npm:^6.7.0"
     "@zthun/helpful-node": "npm:^6.7.0"
-    "@zthun/helpful-proxy": "npm:^6.7.0"
+    "@zthun/helpful-proxy": "npm:^6.7.1"
     "@zthun/helpful-query": "npm:^6.7.0"
     "@zthun/helpful-react": "npm:^6.7.0"
     "@zthun/helpful-validation": "npm:^6.7.0"
