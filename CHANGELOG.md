@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.0](https://github.com/zthun/helpful/compare/v6.7.2...v7.0.0) (2025-01-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* helpful-proxy has been removed
+
+### Build System
+
+* helpful-proxy has been removed ([f5f976f](https://github.com/zthun/helpful/commit/f5f976fe834843b7621cc8e74465ea16d5d3df24))
+
+
+
 ## [6.7.2](https://github.com/zthun/helpful/compare/v6.7.1...v6.7.2) (2025-01-02)
 
 
