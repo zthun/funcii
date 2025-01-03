@@ -22,7 +22,6 @@
     "@zthun/helpful-fn": "^6.7.0",
     "@zthun/helpful-internet": "^6.7.0",
     "@zthun/helpful-node": "^6.7.0",
-    "@zthun/helpful-proxy": "^6.7.2",
     "@zthun/helpful-query": "^6.7.0",
     "@zthun/helpful-react": "^6.7.0",
     "@zthun/helpful-validation": "^6.7.0",
