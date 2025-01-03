@@ -14,7 +14,7 @@
  *        The type of data that will be enumerated.
  *
  * @returns
- *        The first value for where {@link predicate} returns true for the given argument value.
+ *        The first value for where predicate returns true for the given argument value.
  *        If first and all values of remaining fail the predicate then fallback is returned.
  */
 export function firstWhere<T = any>(
