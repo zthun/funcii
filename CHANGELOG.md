@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.4](https://github.com/zthun/helpful/compare/v7.0.2...v7.0.4) (2025-01-03)
+
+
+### Bug Fixes
+
+* allow for peer dependencies installed as dev dependencies to be external ([0bbc387](https://github.com/zthun/helpful/commit/0bbc38714a31eee9f4231776f2d9c419b44f14ad))
+
+
+
 ## [7.0.2](https://github.com/zthun/helpful/compare/v7.0.1...v7.0.2) (2025-01-03)
 
 **Note:** Version bump only for package @zthun/helpful
