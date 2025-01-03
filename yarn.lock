@@ -2958,8 +2958,8 @@ __metadata:
   dependencies:
     "@zthun/cirque": "npm:^7.1.1"
     "@zthun/cirque-du-react": "npm:^7.1.1"
-    "@zthun/helpful-fn": "npm:^7.0.3"
-    "@zthun/helpful-query": "npm:^7.0.3"
+    "@zthun/helpful-fn": "npm:^7.0.4"
+    "@zthun/helpful-query": "npm:^7.0.4"
     lodash-es: "npm:^4.17.21"
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
