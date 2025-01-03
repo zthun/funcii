@@ -7,7 +7,7 @@ const generated = [
   "package-lock.json",
   ".yarnrc.yml",
 ];
-const partialGenerated = ["cspell.json", "lerna.json"];
+const partialGenerated = ["lerna.json"];
 
 const esFiles = [
   "*.cjs",
