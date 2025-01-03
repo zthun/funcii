@@ -8,6 +8,5 @@
   "exclude": ["./"],
   "excludeNotDocumented": true,
   "name": "Helpful",
-  "plugin": ["typedoc-plugin-extras"],
   "favicon": "public/images/svg/helpful.svg"
 }
