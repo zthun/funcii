@@ -21,7 +21,10 @@ export function defineLibrary(dir: string) {
     plugins: [
       external({
         nodeBuiltins: true,
-        externalizeDeps: Object.keys(pkg.dependencies || {}),
+        externalizeDeps: [
+          ...Object.keys(pkg.dependencies || {}),
+          ...Object.keys(pkg.devDependencies || {}),
+        ],
       }),
       dts({ tsconfigPath: `${dir}/tsconfig.prod.json` }),
     ],
