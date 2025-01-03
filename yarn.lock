@@ -2900,7 +2900,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zthun/helpful-brands@npm:^7.0.4, @zthun/helpful-brands@workspace:packages/helpful-brands":
+"@zthun/helpful-brands@npm:^7.0.5, @zthun/helpful-brands@workspace:packages/helpful-brands":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-brands@workspace:packages/helpful-brands"
   dependencies:
@@ -2909,7 +2909,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@zthun/helpful-fn@npm:^7.0.4, @zthun/helpful-fn@workspace:packages/helpful-fn":
+"@zthun/helpful-fn@npm:^7.0.5, @zthun/helpful-fn@workspace:packages/helpful-fn":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-fn@workspace:packages/helpful-fn"
   dependencies:
@@ -2921,45 +2921,45 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@zthun/helpful-internet@npm:^7.0.4, @zthun/helpful-internet@workspace:packages/helpful-internet":
+"@zthun/helpful-internet@npm:^7.0.5, @zthun/helpful-internet@workspace:packages/helpful-internet":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-internet@workspace:packages/helpful-internet"
   dependencies:
-    "@zthun/helpful-fn": "npm:^7.0.4"
+    "@zthun/helpful-fn": "npm:^7.0.5"
     vite: "npm:^5.4.11"
     vitest: "npm:^2.1.8"
   languageName: unknown
   linkType: soft
 
-"@zthun/helpful-node@npm:^7.0.4, @zthun/helpful-node@workspace:packages/helpful-node":
+"@zthun/helpful-node@npm:^7.0.5, @zthun/helpful-node@workspace:packages/helpful-node":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-node@workspace:packages/helpful-node"
   dependencies:
-    "@zthun/helpful-fn": "npm:^7.0.4"
+    "@zthun/helpful-fn": "npm:^7.0.5"
     vite: "npm:^5.4.11"
     vitest: "npm:^2.1.8"
   languageName: unknown
   linkType: soft
 
-"@zthun/helpful-query@npm:^7.0.4, @zthun/helpful-query@workspace:packages/helpful-query":
+"@zthun/helpful-query@npm:^7.0.5, @zthun/helpful-query@workspace:packages/helpful-query":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-query@workspace:packages/helpful-query"
   dependencies:
-    "@zthun/helpful-fn": "npm:^7.0.4"
+    "@zthun/helpful-fn": "npm:^7.0.5"
     lodash-es: "npm:^4.17.21"
     vite: "npm:^5.4.11"
     vitest: "npm:^2.1.8"
   languageName: unknown
   linkType: soft
 
-"@zthun/helpful-react@npm:^7.0.4, @zthun/helpful-react@workspace:packages/helpful-react":
+"@zthun/helpful-react@npm:^7.0.5, @zthun/helpful-react@workspace:packages/helpful-react":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-react@workspace:packages/helpful-react"
   dependencies:
     "@zthun/cirque": "npm:^7.1.1"
     "@zthun/cirque-du-react": "npm:^7.1.1"
-    "@zthun/helpful-fn": "npm:^7.0.4"
-    "@zthun/helpful-query": "npm:^7.0.4"
+    "@zthun/helpful-fn": "npm:^7.0.5"
+    "@zthun/helpful-query": "npm:^7.0.5"
     lodash-es: "npm:^4.17.21"
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
@@ -2978,7 +2978,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@zthun/helpful-validation@npm:^7.0.4, @zthun/helpful-validation@workspace:packages/helpful-validation":
+"@zthun/helpful-validation@npm:^7.0.5, @zthun/helpful-validation@workspace:packages/helpful-validation":
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-validation@workspace:packages/helpful-validation"
   dependencies:
@@ -2993,13 +2993,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@zthun/helpful-web@workspace:packages/helpful-web"
   dependencies:
-    "@zthun/helpful-brands": "npm:^7.0.4"
-    "@zthun/helpful-fn": "npm:^7.0.4"
-    "@zthun/helpful-internet": "npm:^7.0.4"
-    "@zthun/helpful-node": "npm:^7.0.4"
-    "@zthun/helpful-query": "npm:^7.0.4"
-    "@zthun/helpful-react": "npm:^7.0.4"
-    "@zthun/helpful-validation": "npm:^7.0.4"
+    "@zthun/helpful-brands": "npm:^7.0.5"
+    "@zthun/helpful-fn": "npm:^7.0.5"
+    "@zthun/helpful-internet": "npm:^7.0.5"
+    "@zthun/helpful-node": "npm:^7.0.5"
+    "@zthun/helpful-query": "npm:^7.0.5"
+    "@zthun/helpful-react": "npm:^7.0.5"
+    "@zthun/helpful-validation": "npm:^7.0.5"
     typedoc: "npm:^0.27.6"
     typescript: "npm:~5.7.2"
   languageName: unknown
