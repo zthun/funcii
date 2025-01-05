@@ -49,6 +49,12 @@ export interface IZFileSystemService {
 }
 
 /**
+ * A token that you can use with a framework like nest-js to describe
+ * a file system service implementation.
+ */
+export const ZFileSystemToken = Symbol("file-system");
+
+/**
  * Represents a node implementation of a file system service.
  */
 export class ZFileSystemService implements IZFileSystemService {
