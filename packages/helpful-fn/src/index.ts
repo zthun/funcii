@@ -16,6 +16,7 @@ export * from "./orientation/orientation.mjs";
 export * from "./partial/deep-partial";
 export * from "./peel/peel.mjs";
 export * from "./pick/pick.mjs";
+export * from "./purge/purge.mjs";
 export * from "./required/required-deep.mjs";
 export * from "./required/required-pick.mjs";
 export * from "./serialize/deserialize-json.mjs";
