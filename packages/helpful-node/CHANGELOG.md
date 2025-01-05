@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.0](https://github.com/zthun/helpful/compare/v7.1.0...v7.2.0) (2025-01-05)
+
+
+### Features
+
+* added a generic file system token ([f76f5f6](https://github.com/zthun/helpful/commit/f76f5f603b4828b9b09843e7d3932788b689705c))
+
+
+
 ## [7.1.0](https://github.com/zthun/helpful/compare/v7.0.5...v7.1.0) (2025-01-05)
 
 

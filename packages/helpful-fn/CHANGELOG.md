@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.0](https://github.com/zthun/helpful/compare/v7.1.0...v7.2.0) (2025-01-05)
+
+
+### Features
+
+* added a lazy class for lazy instantiation of values ([e0425ce](https://github.com/zthun/helpful/commit/e0425cedbb61f1914a89cb867f0d1618a11ea537))
+* added types for suppliers ([dbe8bca](https://github.com/zthun/helpful/commit/dbe8bca97face33e2fc05df68e90bc1c85a71f71))
+
+
+
 ## [7.1.0](https://github.com/zthun/helpful/compare/v7.0.5...v7.1.0) (2025-01-05)
 
 
