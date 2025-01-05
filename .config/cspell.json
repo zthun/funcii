@@ -13,6 +13,7 @@
     "commitlint",
     "conventionalcommits",
     "dockerhub",
+    "fullpath",
     "gteq",
     "kickstarter",
     "lteq",
