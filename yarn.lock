@@ -2936,6 +2936,7 @@ __metadata:
   resolution: "@zthun/helpful-node@workspace:packages/helpful-node"
   dependencies:
     "@zthun/helpful-fn": "npm:^7.0.5"
+    glob: "npm:^11.0.0"
     vite: "npm:^5.4.11"
     vitest: "npm:^2.1.8"
   languageName: unknown
