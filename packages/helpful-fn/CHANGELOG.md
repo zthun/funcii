@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.0](https://github.com/zthun/helpful/compare/v7.0.5...v7.1.0) (2025-01-05)
+
+
+### Features
+
+* purge removes properties if they are undefined ([0aa71bb](https://github.com/zthun/helpful/commit/0aa71bb95470042aff4ba54b9670188ca71a6137))
+
+
+
 ## [7.0.5](https://github.com/zthun/helpful/compare/v7.0.4...v7.0.5) (2025-01-03)
 
 **Note:** Version bump only for package @zthun/helpful-fn
